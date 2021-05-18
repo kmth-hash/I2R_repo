@@ -1,0 +1,14 @@
+.UploadBtn {
+    display: inline-block;
+     
+    cursor: pointer;
+    
+}
+input[type="file"] {
+  position: absolute;
+  z-index: -1;
+ 
+}
+.file-wrapper {
+  position: relative;
+}
