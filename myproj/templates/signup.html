@@ -1,3 +1,91 @@
-<h1>
-    SignUp 
-</h1>
+{% load static %}
+{% block content %}
+
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+        <title>I2R Converter</title>
+        <link rel="stylesheet" href="{% static 'assets/bootstrap/css/bootstrap.min.css' %}">
+        <link rel="stylesheet" href="{% static 'assets/fonts/font-awesome.min.css' %}">
+        <link rel="stylesheet" href="{% static 'assets/css/styles.css' %}">
+
+    </head>
+    <body>
+        <nav class="navbar sticky-top navbar-light navbar-expand-md bg-dark">
+            <div style="padding-left: 10px;" class="navbar-brand">
+              <a href="/">
+                <img src="{% static 'assets/img/I2R_logo2.png' %}" height="35vw" alt="" >
+              </a>
+            </div>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+          
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+              <ul class="navbar-nav ml-auto">
+                <li class="nav-item " ">
+                  <a style="color: white;" class="nav-link" href="/" >Home</a>
+                </li>          
+              </ul>
+            </div>
+        </nav>
+          <div class="container fadeIn animate">
+              <div class="card shadow-lg o-hidden border-0 my-5">
+                  <div class="card-body p-0">
+                      <div class="row">
+                          <div class="col-lg-6 d-none d-lg-flex img-div">
+                              <img src="{% static 'assets/img/sign_up.webp' %}" >
+                          </div>
+                          <div class="col-lg-6">
+                              <div class="p-5">
+                                  <div class="text-center">
+                                      <h4 class="text-dark mb-4">Create an Account!</h4>
+                                  </div>
+                                  <form class="user" >
+                                      <div class="col-12 form-group row">
+          
+                                          <input class="col-12 form-control form-control-user"  type="text" required placeholder="First Name" name="first_name" formControlName="firstname">
+                                          
+                                            <div >
+                                                &nbsp;
+                                            </div>
+                                          
+                                          <input formControlName="lastname" class="col-12 form-control form-control-user" type="text" required placeholder="Last Name" name="last_name">
+                                          <div >
+                                            &nbsp;
+                                        </div>
+                                          <input formControlName="email" class="col-12 form-control form-control-user" type="email" required aria-describedby="emailHelp" placeholder="Email Address" name="email">
+                                          <div >
+                                            &nbsp;
+                                        </div>
+          
+                                          <input class="col-12 form-control form-control-user" type="password" required placeholder="Password" formControlName="password" name="password">
+          
+                                          <div >
+                                            &nbsp;
+                                        </div>
+                                          <input formControlName="confirmpassword" class="col-12 form-control form-control-user" type="password" required  placeholder="Confirm Password" name="conf_password">
+                                          <div >
+                                            &nbsp;
+                                        </div>
+                                          <hr/>
+                                          <button class="col-12 btn btn-success btn-block text-white btn-user"><span class="bi bi-check"></span> &nbsp; Register Account</button>
+          
+          
+          
+                                      </div>
+                                  </form>
+                                  <hr/>
+                                          <a class="col-3 text-primary" href="/login">
+                                              <span class="bi bi-arrow-left"></span> &nbsp;LOG IN</a>
+          
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+    </body>
+</html>
+{% endblock content %}
