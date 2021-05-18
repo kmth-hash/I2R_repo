@@ -7,9 +7,9 @@ from django.conf.urls.static import static
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('signup/' , views.signup) , 
+    path('' , views.signup) , 
     path('login/' , views.login) , 
-    path('' , views.mainpage)
+    path('signup/' , views.mainpage)
 ]
 
 if settings.DEBUG:

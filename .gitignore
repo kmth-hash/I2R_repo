@@ -1,2 +1,16 @@
+#virtual environment
+
 my_env
 env
+
+#migrations file
+migrations/*
+
+#file extensions
+*.log
+*.pyc
+
+#cache files
+migrations/*
+*.DS_Store
+__pycache__/*
