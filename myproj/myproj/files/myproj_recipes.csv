@@ -1,0 +1,4 @@
+"Receipe_Id","Name","Fats","Calories","Quantity","Proteins","Carbohydrates","Receipe_Image","Category_Id_id"
+1,"Potato Fritters","21g","309","100g","7g","23g","assets/img/rec/alooPakoda.png",1
+2,"Tomato Rice","10g","121","90g","2g","7g","assets/img/rec/tomatoRice.png",2
+3,"Fried Rice","15g","394","135g","8g","56g","assets/img/rec/friedRice.png",2

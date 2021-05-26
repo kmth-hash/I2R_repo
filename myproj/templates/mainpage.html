@@ -6,6 +6,8 @@
 
 <head>
     <meta charset="utf-8">
+    <meta name="description" content="I2R Converter">
+    <meta name="keywords" content="BMI , Healthy , HTML , JS , Web">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
     <title>I2R Converter</title>
     <link rel="stylesheet" href="{% static 'assets/bootstrap/css/bootstrap.min.css' %}">
@@ -14,38 +16,37 @@
 </head>
 
 <body>
-    <nav class="navbar navbar-light navbar-expand-lg fixed-top bg-white clean-navbar">
-        <div class="container"><a class="navbar-brand logo" href="#">I2R Converter</a><button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
-            <div class="collapse navbar-collapse"
-                id="navcol-1">
-                <ul class="nav navbar-nav ml-auto"></ul>
+    <nav class="navbar navbar-light shadow sticky-top bg-white clean-navbar">
+        <div class="container">
+            <a class="navbar-brand logo" href="/">I2R Converter</a>            
+            <div class=""  id="navcol-1">
+                <a href = "/login" class="ml-auto btn btn-light font-weight-bold" >Login</a>
+                
             </div>
         </div>
     </nav>
+    {% include './includes/messages.html' %}
     <main class="page login-page">
         <section class="clean-block clean-form dark">
             <div class="container">
                 <div class="block-heading">
-                    <h2 class="text-info">Search</h2>
+                    <h2 class="text-dark font-weight-bold">Search</h2>
                 </div>
-                
+                                
                 <form>
                     <div class="form-group">
                         <label for="name">Ingredient name</label>
                         <input class="form-control item" type="text" id="name" name="Name" placeholder="Ex : Tomatoes">
                     </div>
                     <label class="text-center"  style="min-width: 100%;">OR</label>
-                    <div class="form-group">
+                    <div class="form-group justify-content-center">
                         <label >Upload an Image</label>
                         <div class="form-row file-input">
-                            <div class="col file-wrapper" style="width: 85%;min-width: 85%;">
-                                <label for="fileInput" class="UploadBtn" title="Upload File">
-                                    <i class="fa fa-cloud-upload" data-bs-hover-animate="pulse" style="font-size: 35px;color: rgb(62,140,228);"></i>
-                                </label>
-                                <input class="form-control" type="file" id="fileInput" style="width: 100%;" inputmode="url" name="file_input" placeholder="Filename">
-                                
-                            </div>
-                            
+                            <label for="fileInput" class="UploadBtn" title="Upload File">
+                                <i class="fa fa-cloud-upload" data-bs-hover-animate="pulse" style="font-size: 35px;color: rgb(62,140,228);"></i>
+                            </label>
+                            <input class="form-control" type="file" id="fileInput" style="width: 100%;" inputmode="url" name="file_input" placeholder="Filename">
+                            <label class="ml-2 p-2 text-black-50">Filename.txt</label>
                         </div>
                     <hr/>
                     </div>
