@@ -5,10 +5,11 @@
 <html>
 
 <head>
-    <meta charset="utf-8">
+    <meta charset="utf-8" lang="en-US">
     <meta name="description" content="I2R Converter">
     <meta name="keywords" content="BMI , Healthy , HTML , JS , Web">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <link rel="shortcut icon" href="{% static 'assets/img/favicon.ico' %}" type="image/x-icon">
     <title>I2R Converter</title>
     <link rel="stylesheet" href="{% static 'assets/bootstrap/css/bootstrap.min.css' %}">
     <link rel="stylesheet" href="{% static 'assets/fonts/font-awesome.min.css' %}">
@@ -46,7 +47,7 @@
                                 <i class="fa fa-cloud-upload" data-bs-hover-animate="pulse" style="font-size: 35px;color: rgb(62,140,228);"></i>
                             </label>
                             <input class="form-control" type="file" id="fileInput" style="width: 100%;" inputmode="url" name="file_input" placeholder="Filename">
-                            <label class="ml-2 p-2 text-black-50">Filename.txt</label>
+                            <label class="ml-2 p-2 text-black-75">Filename.txt</label>
                         </div>
                     <hr/>
                     </div>
@@ -54,12 +55,8 @@
                 </form>
             </div>
         </section>
-    </main>
-    
-    
+    </main>        
 </body>
-
 </html>
-
 
 {% endblock content %}

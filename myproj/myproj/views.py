@@ -5,8 +5,7 @@ from django.http import HttpResponse
 from .test import storeDBfromCSV
 
 
-def signup(request):
-    
+def signup(request):    
     if request.method=='POST' :
         name = request.POST['first_name']+" "+request.POST['last_name']
         email = request.POST['email']
@@ -29,6 +28,33 @@ def recipes(request):
     return render(request , 'recipes.html' , {})
 
 def login(request):
+    res = ''
+    if request.method=='POST':
+        name1 = request.POST['email']
+        pass1 = request.POST['password']
+        if '@' in name1:
+            print('true @')            
+            try:
+                user_obj = Users.objects.get(email=name1,password = pass1)                
+                res = user_obj
+                messages.success(request , "Welcome back! Let's cook something good.")
+                return redirect("/")
+                
+            except Exception as ex:
+                messages.error(request , "Oops! Successfully Failed to login. You can do better. Cmon")
+                return redirect("/")
+        else:
+            try:
+                user_obj  = Users.objects.get(username = name1,password=pass1)
+                res = user_obj
+                messages.success(request , "Welcome back! Let's cook something good.")
+                return redirect("/")        
+                        
+            except Exception as ex:
+                messages.error(request , "Oops! Successfully Failed to login. You can do better. Cmon")
+                return redirect("/")
+
+
     return render(request , 'login.html' , {})
 
 def mainpage(request):

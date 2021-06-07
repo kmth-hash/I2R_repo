@@ -2,6 +2,7 @@ from django.db import models
 
 class Users(models.Model):
     username = models.TextField()
+    email = models.TextField(default="")
     password = models.TextField()
     height = models.TextField()
     weight = models.TextField()
