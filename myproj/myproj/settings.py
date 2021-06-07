@@ -66,7 +66,7 @@ DATABASES = {
     'ENGINE': 'django.db.backends.postgresql_psycopg2',
     'NAME': 'I2R_DB',
     'USER': 'postgres',
-    'PASSWORD': 'dimi1234',
+    'PASSWORD': 'postgres',
     'HOST': 'localhost',
     'PORT': '',
     }
