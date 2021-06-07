@@ -63,3 +63,7 @@ def mainpage(request):
 def addRecipe(request):
     storeDBfromCSV()
     return render(request , 'addRecipe.html' , {})
+def bmi(request):
+    return render(request , 'bmi.html' , {})
+
+
