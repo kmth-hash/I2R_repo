@@ -29,7 +29,7 @@
                     <h2 class="text-info">Search</h2>
                 </div>
                 
-                <form>
+                <form method="POST" action="">
                     <div class="form-group">
                         <label for="name">Ingredient name</label>
                         <input class="form-control item" type="text" id="name" name="Name" placeholder="Ex : Tomatoes">
@@ -42,14 +42,14 @@
                                 <label for="fileInput" class="UploadBtn" title="Upload File">
                                     <i class="fa fa-cloud-upload" data-bs-hover-animate="pulse" style="font-size: 35px;color: rgb(62,140,228);"></i>
                                 </label>
-                                <input class="form-control" type="file" id="fileInput" style="width: 100%;" inputmode="url" name="file_input" placeholder="Filename">
+                                <input class="form-control" type="file" id="fileInput" style="width: 100%;" inputmode="url" name="file_input" placeholder="Filename" onchange="loadFile(event)">
                                 
                             </div>
                             
                         </div>
                     <hr/>
                     </div>
-                    <button class="btn btn-primary btn-block" disabled type="submit">Load Input</button>
+                    <button class="btn btn-primary btn-block" type="submit">Load Input</button>
                 </form>
             </div>
         </section>
