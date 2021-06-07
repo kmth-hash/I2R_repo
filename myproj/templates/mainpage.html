@@ -11,6 +11,13 @@
     <link rel="stylesheet" href="{% static 'assets/bootstrap/css/bootstrap.min.css' %}">
     <link rel="stylesheet" href="{% static 'assets/fonts/font-awesome.min.css' %}">
     <link rel="stylesheet" href="{% static 'assets/css/styles.css' %}">
+    <script>
+    function preview(){
+        var name=document.getElementById('name').value;
+        display.innerHTML=name
+    }
+
+    </script>
 </head>
 
 <body>
@@ -32,7 +39,7 @@
                 <form method="POST" action="">
                     <div class="form-group">
                         <label for="name">Ingredient name</label>
-                        <input class="form-control item" type="text" id="name" name="Name" placeholder="Ex : Tomatoes">
+                        <input class="form-control item" type="text" id="name" name="Name" placeholder="Ex : Tomatoes" >
                     </div>
                     <label class="text-center"  style="min-width: 100%;">OR</label>
                     <div class="form-group">
@@ -50,10 +57,22 @@
                     <hr/>
                     </div>
                     <button class="btn btn-primary btn-block" type="submit">Load Input</button>
+                    <button class="btn btn-primary btn-block"  type="button" onclick="preview()">Load Input</button>
+                    
                 </form>
             </div>
+ <div>
+  <div class="block-heading">
+                    <h2 class="text-info">Preview: <br/><br/><span style="color:black" id="display"></span></h2>
+                </div>
+   
+    </div>
         </section>
+
+   
+   
     </main>
+    
     
     
 </body>
