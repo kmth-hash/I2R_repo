@@ -41,7 +41,8 @@
                     <h2 class="text-dark font-weight-bold">Search</h2>
                 </div>
                                 
-                <form>
+                <form method="post" enctype="multipart/form-data" action="">
+                    {% csrf_token %}  
                     <div class="form-group">
                         <label for="name">Ingredient name</label>
                         <input class="form-control item" type="text" id="name" name="Name" placeholder="Ex : Tomatoes" >
@@ -62,20 +63,14 @@
                     
                 </form>
             </div>
- <div>
-  <div class="block-heading">
+            <div>
+                <div class="block-heading">
                     <h2 class="text-info">Preview: <br/><br/><span style="color:black" id="display"></span></h2>
                 </div>
    
-    </div>
-        </section>
-
-   
-   
+            </div>
+        </section> 
     </main>
-    
-    
-    
 </body>
 </html>
 
