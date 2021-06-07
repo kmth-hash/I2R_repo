@@ -12,3 +12,7 @@ def login(request):
 def mainpage(request):
     return render(request , 'mainpage.html' , {})
 
+def bmi(request):
+    return render(request , 'bmi.html' , {})
+
+
