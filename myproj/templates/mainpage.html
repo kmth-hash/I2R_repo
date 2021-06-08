@@ -48,8 +48,10 @@
                             <label for="fileInput" class="UploadBtn" title="Upload File">
                                 <i class="fa fa-cloud-upload" data-bs-hover-animate="pulse" style="font-size: 35px;color: rgb(62,140,228);"></i>
                             </label>
-                            <input class="form-control" type="file" id="fileInput" style="width: 100%;" inputmode="url" name="file_input" placeholder="Filename">
-                            <label class="ml-2 p-2 text-black-75">Filename.txt</label>
+                            <!-- <input class="form-control" type="file" id="fileInput" style="width: 100%;" inputmode="url" name="file_input" placeholder="Filename">
+                            <label class="ml-2 p-2 text-black-75">Filename.txt</label> -->
+                            <input type="file" class="form-control" name="image" id="fileInput" onchange="loadFile(event)" inputmode="url" placeholder="Filename"> <span id="nameImage" ></span>
+                            <div id="hiddeninput"></div>
                         </div>
                     <hr/>
                     </div>
@@ -94,7 +96,7 @@
         }
         else{
             imagepre.innerHTML = ''
-            document.getElementById('nothing').innerHTML = '<div class="container-center"><h1>Nothin To Preview</h1></div>';
+            document.getElementById('nothing').innerHTML = '<div class="container-center"><h1>Nothing To Preview</h1></div>';
         }
         
         }
