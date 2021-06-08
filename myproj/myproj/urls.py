@@ -8,9 +8,13 @@ from django.conf.urls.static import static
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('signup/' , views.signup) , 
-    path('login/' , views.login) , 
+    path('login/' , views.login) ,
     path('bmi/' , views.bmi) , 
-    path('' , views.mainpage)
+    path('recipes/' , views.recipes) ,
+    path('addRecipe/' , views.addRecipe) , 
+    path('' , views.mainpage) , 
+    
+    
 ]
 
 if settings.DEBUG:
