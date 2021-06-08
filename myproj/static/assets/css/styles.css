@@ -12,3 +12,18 @@ input[type="file"] {
 .file-wrapper {
   position: relative;
 }
+.container-center{
+  display: flex;
+	justify-content: center;
+            align-items: center;
+}
+.row img{
+  margin-bottom: 10px;
+}
+.close {
+  cursor: pointer;
+  position: absolute;
+  top: 10%;
+  left: 6%;
+  transform: translate(0%, -50%);
+}

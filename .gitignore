@@ -5,11 +5,10 @@ env
 
 #migrations file
 migrations/*
-
 #file extensions
 *.log
 *.pyc
-
+myproj/media/*
 #cache files
 migrations/*
 *.DS_Store
