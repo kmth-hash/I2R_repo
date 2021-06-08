@@ -5,8 +5,29 @@ from django.http import HttpResponse
 from .test import storeDBfromCSV
 from json import loads,dumps
 from django.core.files.storage import FileSystemStorage
+from keras import preprocessing
+import matplotlib.pyplot as plt
+import numpy as np
+from keras.models import load_model
+from keras import backend as K
 imagesToPreview = []
+predictedNames = []
 datajson = []
+def predict(iurl):
+    K.clear_session()
+    model = load_model('vegetable_predict_3.h5')
+    labels = ['Apple','Banana','Beetroot','Cauliflower','Corn','Onion','Orange','Potato','Tomato','Watermelon']
+    test_image = preprocessing.image.load_img(iurl,target_size=(224,224))
+    test_image = preprocessing.image.img_to_array(test_image)
+    test_image = np.expand_dims(test_image, axis = 0)
+    result = model.predict(test_image)
+    K.clear_session()
+    result1 = result[0]
+    for i in range(0,10):
+        if result1[i] == 1.:
+            break;
+    prediction = labels[i]
+    return prediction
 def signup(request):    
     if request.method=='POST' :
         name = request.POST['first_name']+" "+request.POST['last_name']
@@ -68,7 +89,13 @@ def mainpage(request):
         fs = FileSystemStorage()
         filename = fs.save(doc_name.name, doc_name)
         uploaded_file_url = fs.url(filename)
-        imagesToPreview.append(uploaded_file_url)
+        predictedImage = predict(str(uploaded_file_url)[1:])
+        imageAndName = {
+            'imageURL':uploaded_file_url,
+            'name':predictedImage
+        }
+        # predictedNames.append(predictedImage)
+        imagesToPreview.append(imageAndName)
         datajson = dumps(imagesToPreview)
     return render(request , 'mainpage.html' , {'len':len(imagesToPreview),'imagesToPreview':imagesToPreview,'data':datajson})
 

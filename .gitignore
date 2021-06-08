@@ -25,3 +25,4 @@ myproj/myproj/__pycache__/models.cpython-38.pyc
 myproj/myproj/__pycache__/urls.cpython-38.pyc
 myproj/myproj/__pycache__/wsgi.cpython-38.pyc
 
+myproj/vegetable_predict_3.h5
