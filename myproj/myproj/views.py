@@ -7,6 +7,7 @@ from json import loads,dumps
 from django.core.files.storage import FileSystemStorage
 from keras import preprocessing
 import matplotlib.pyplot as plt
+from django.db import connection
 import numpy as np
 from keras.models import load_model
 from keras import backend as K
@@ -46,8 +47,28 @@ def signup(request):
        
 
     return render(request , 'signup.html' , {})
-
+item_list = ['Tomato','Rice']
 def recipes(request):
+    a=[]
+    for i in item_list:
+        with connection.cursor() as cursor:
+            cursor.execute('SELECT "Receipe_Id_id" FROM myproj_recipe_ingredients WHERE "Ingredient_Id_id"=(SELECT "Ingredient_id" FROM myproj_ingredients WHERE "name"=%s)',[i])
+            row = cursor.fetchall()
+            item = []
+            for j in row:
+                print(list(j)[0])
+                item.append(list(j)[0])
+            a.append(item)
+    s=[[1,2],[1,4],[1],[4]]
+    from itertools import chain
+    from collections import Counter,OrderedDict
+    x = Counter(chain.from_iterable(a))
+    y = OrderedDict(x.most_common()) 
+    final_recipe_list = list(y.keys())
+    print("final recipe id")
+    for recipe_id in final_recipe_list:
+        print(recipe_id)
+    print(x)
     return render(request , 'recipes.html' , {})
 
 def login(request):
