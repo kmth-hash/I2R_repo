@@ -3,6 +3,8 @@ from .models import Ingredients, Recipes , Category , Recipe_Ingredients , Users
 from django.contrib import messages
 from django.http import HttpResponse
 from .test import storeDBfromCSV
+from .add_ons import *
+
 from json import loads,dumps
 from django.core.files.storage import FileSystemStorage
 from keras import preprocessing
@@ -10,6 +12,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 from keras.models import load_model
 from keras import backend as K
+
 imagesToPreview = []
 predictedNames = []
 datajson = []
@@ -36,7 +39,7 @@ def signup(request):
         confirm_password = request.POST['conf_password']
 
         if password==confirm_password:
-            new_user = Users(username= name , password = password , height = "" , weight = "" , role = "user" )
+            new_user = Users(username= name , password = password , height = "" , weight = "" , role = "user", email=email )
             new_user.save()
             messages.success(request  , " Signup successful.")
             return redirect("/")
@@ -51,21 +54,24 @@ def recipes(request):
     return render(request , 'recipes.html' , {})
 
 def login(request):
+    
     res = ''
     if request.method=='POST':
         name1 = request.POST['email']
         pass1 = request.POST['password']
-        if '@' in name1:
-            print('true @')            
+        
+        if '@' in name1:                     
             try:
-                user_obj = Users.objects.get(email=name1,password = pass1)                
+                user_obj = Users.objects.get(password=pass1  , email=name1)                
                 res = user_obj
+                print(res)
                 messages.success(request , "Welcome back! Let's cook something good.")
                 return redirect("/")
                 
             except Exception as ex:
+                print(ex)
                 messages.error(request , "Oops! Successfully Failed to login. You can do better. Cmon")
-                return redirect("/")
+                return redirect("/login")
         else:
             try:
                 user_obj  = Users.objects.get(username = name1,password=pass1)
@@ -75,7 +81,7 @@ def login(request):
                         
             except Exception as ex:
                 messages.error(request , "Oops! Successfully Failed to login. You can do better. Cmon")
-                return redirect("/")
+                return redirect("/login")
 
 
     return render(request , 'login.html' , {})
