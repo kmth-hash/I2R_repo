@@ -106,7 +106,7 @@ def mainpage(request):
     return render(request , 'mainpage.html' , {'len':len(imagesToPreview),'imagesToPreview':imagesToPreview,'data':datajson})
 
 def addRecipe(request):
-    storeDBfromCSV()
+    return_recipes(['egg' , 'onion' , 'butter' , 'salt', 'pepper'])
     return render(request , 'addRecipe.html' , {})
 def bmi(request):
     return render(request , 'bmi.html' , {})
