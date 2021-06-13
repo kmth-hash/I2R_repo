@@ -3,6 +3,8 @@ from .models import Ingredients, Recipes , Category , Recipe_Ingredients , Users
 from django.contrib import messages
 from django.http import HttpResponse
 from .test import storeDBfromCSV
+from .add_ons import *
+
 from json import loads,dumps
 from django.core.files.storage import FileSystemStorage
 from keras import preprocessing
@@ -11,8 +13,12 @@ from django.db import connection
 import numpy as np
 from keras.models import load_model
 from keras import backend as K
+
 imagesToPreview = []
 predictedNames = []
+isLoggedIn = False
+
+
 datajson = []
 def predict(iurl):
     K.clear_session()
@@ -37,8 +43,9 @@ def signup(request):
         confirm_password = request.POST['conf_password']
 
         if password==confirm_password:
-            new_user = Users(username= name , password = password , height = "" , weight = "" , role = "user" )
+            new_user = Users(username= name , password = password , height = "" , weight = "" , role = "user", email=email )
             new_user.save()
+            request.session['username'] = name
             messages.success(request  , " Signup successful.")
             return redirect("/")
         else:
@@ -72,36 +79,52 @@ def recipes(request):
     return render(request , 'recipes.html' , {})
 
 def login(request):
+    global isLoggedIn
     res = ''
     if request.method=='POST':
+
         name1 = request.POST['email']
         pass1 = request.POST['password']
-        if '@' in name1:
-            print('true @')            
+        
+        if '@' in name1:                     
             try:
-                user_obj = Users.objects.get(email=name1,password = pass1)                
+                user_obj = Users.objects.get(password=pass1  , email=name1)                
                 res = user_obj
+                isLoggedIn = True
+                request.session['username'] = user_obj.username
                 messages.success(request , "Welcome back! Let's cook something good.")
-                return redirect("/")
+                return redirect("/" , isLoggedIn = True , username = user_obj.username)
                 
             except Exception as ex:
+                
+                isLoggedIn = False
                 messages.error(request , "Oops! Successfully Failed to login. You can do better. Cmon")
-                return redirect("/")
+                return redirect("/login" )
         else:
             try:
                 user_obj  = Users.objects.get(username = name1,password=pass1)
                 res = user_obj
+                isLoggedIn = True
+                request.session['username'] = user_obj.username
                 messages.success(request , "Welcome back! Let's cook something good.")
-                return redirect("/")        
+                return redirect("/" , isLoggedIn = True , username = user_obj.username)  
                         
             except Exception as ex:
+                isLoggedIn = False
                 messages.error(request , "Oops! Successfully Failed to login. You can do better. Cmon")
-                return redirect("/")
+                return redirect("/login")
 
 
     return render(request , 'login.html' , {})
 
 def mainpage(request):
+    username = ''
+    global isLoggedIn 
+    if request.session.has_key('username'):
+        print(request.session['username'])
+        isLoggedIn = True
+        username = setUserName(request.session['username'])
+
     global imagesToPreview,datajson
     if request.POST:
         imagesToPreview = loads(request.POST['hiddeninput'])
@@ -118,12 +141,25 @@ def mainpage(request):
         # predictedNames.append(predictedImage)
         imagesToPreview.append(imageAndName)
         datajson = dumps(imagesToPreview)
-    return render(request , 'mainpage.html' , {'len':len(imagesToPreview),'imagesToPreview':imagesToPreview,'data':datajson})
+    return render(request , 'mainpage.html' , {'len':len(imagesToPreview),'imagesToPreview':imagesToPreview,'data':datajson , 'isLoggedIn' : isLoggedIn , 'username' : username })
 
 def addRecipe(request):
-    storeDBfromCSV()
+    return_recipes(['egg' , 'onion' , 'butter' , 'salt', 'pepper'])
     return render(request , 'addRecipe.html' , {})
 def bmi(request):
-    return render(request , 'bmi.html' , {})
+    global isLoggedIn
+    username = ''
+    weight = 0
+    height = 0
+    if request.session.has_key('username'):
+        username = setUserName(request.session['username'])
+        user_obj = Users.objects.get( username = request.session['username'])
+        isLoggedIn = True
+        if(user_obj.weight.isnumeric()):
+            weight = user_obj.weight
+        if(user_obj.height.isnumeric()):
+            height = user_obj.height
+
+    return render(request , 'bmi.html' , {'isLoggedIn' : isLoggedIn , 'username' : username , 'weight' : weight , 'height': height })
 
 
