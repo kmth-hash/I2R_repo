@@ -22,8 +22,12 @@
         <div class="container">
             <a class="navbar-brand logo" href="/">I2R Converter</a>            
             <div class=""  id="navcol-1">
+                {% if isLoggedIn %}
+                <label> {{username}} </label>
+                {% else %}
                 <a href = "/login" class="ml-auto btn btn-light font-weight-bold" >Login</a>
                 
+                {%endif%}
             </div>
         </div>
     </nav>
@@ -91,7 +95,7 @@
         }
         else{
             imagepre.innerHTML = ''
-            document.getElementById('nothing').innerHTML = '<div class="container-center"><h1>Nothing To Preview</h1></div>';
+            document.getElementById('nothing').innerHTML = '<div class="container-center"><label>Nothing To Preview</label></div>';
         }
         
         }

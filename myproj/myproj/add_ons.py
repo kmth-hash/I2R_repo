@@ -66,7 +66,11 @@ def return_recipes(curr_list = []):
 
         
     
-            
+def setUserName(username):
+    if len(username.split(' '))>1:
+        return (username.split(' ')[0]).capitalize()
+    else :
+        return username.capitalize()            
 
 
     
