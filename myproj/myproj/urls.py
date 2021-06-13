@@ -13,7 +13,7 @@ urlpatterns = [
     path('recipes/' , views.recipes) ,
     path('addRecipe/' , views.addRecipe) , 
     path('' , views.mainpage) , 
-    
+    path('callme/',views.recipes)
     
 ]
 
