@@ -5,78 +5,126 @@
 <html>
 
 <head>
-    <meta charset="utf-8">
+    <meta charset="utf-8" lang="en-US">
+    <meta name="description" content="I2R Converter">
+    <meta name="keywords" content="BMI , Healthy , HTML , JS , Web">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <link rel="shortcut icon" href="{% static 'assets/img/favicon.ico' %}" type="image/x-icon">
     <title>I2R Converter</title>
     <link rel="stylesheet" href="{% static 'assets/bootstrap/css/bootstrap.min.css' %}">
     <link rel="stylesheet" href="{% static 'assets/fonts/font-awesome.min.css' %}">
     <link rel="stylesheet" href="{% static 'assets/css/styles.css' %}">
-    <script>
-    function preview(){
-        var name=document.getElementById('name').value;
-        display.innerHTML=name
-    }
-
-    </script>
+    
 </head>
 
-<body>
-    <nav class="navbar navbar-light navbar-expand-lg fixed-top bg-white clean-navbar">
-        <div class="container"><a class="navbar-brand logo" href="#">I2R Converter</a><button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
-            <div class="collapse navbar-collapse"
-                id="navcol-1">
-                <ul class="nav navbar-nav ml-auto"></ul>
+<body onload="callme()">
+    <nav class="navbar navbar-light shadow sticky-top bg-white clean-navbar">
+        <div class="container">
+            <a class="navbar-brand logo" href="/">I2R Converter</a>            
+            <div class=""  id="navcol-1">
+            
+                {% if isLoggedIn %}
+                <label> {{username}} </label>
+                <a href="/logout" >
+                    <i class="fa fa-sign-out" data-bs-hover-animate="pulse" style="margin-left: 10px;color: rgb(62,140,228);"></i>
+                </a>
+                {% else %}
+                <a href = "/login" class="ml-auto btn btn-light font-weight-bold" >Login</a>
+                
+                {%endif%}
             </div>
         </div>
     </nav>
+
+    {% include './includes/messages.html' %}
+
     <main class="page login-page">
         <section class="clean-block clean-form dark">
             <div class="container">
                 <div class="block-heading">
-                    <h2 class="text-info">Search</h2>
+                    <h2 class="text-dark font-weight-bold">Search</h2>
                 </div>
-                
-                <form>
+                                
+                <form method="post" enctype="multipart/form-data" action="" onreset="resets()">
+                    {% csrf_token %}  
                     <div class="form-group">
                         <label for="name">Ingredient name</label>
                         <input class="form-control item" type="text" id="name" name="Name" placeholder="Ex : Tomatoes" >
                     </div>
                     <label class="text-center"  style="min-width: 100%;">OR</label>
-                    <div class="form-group">
+                    <div class="form-group justify-content-center">
                         <label >Upload an Image</label>
                         <div class="form-row file-input">
-                            <div class="col file-wrapper" style="width: 85%;min-width: 85%;">
-                                <label for="fileInput" class="UploadBtn" title="Upload File">
-                                    <i class="fa fa-cloud-upload" data-bs-hover-animate="pulse" style="font-size: 35px;color: rgb(62,140,228);"></i>
-                                </label>
-                                <input class="form-control" type="file" id="fileInput" style="width: 100%;" inputmode="url" name="file_input" placeholder="Filename">
-                                
-                            </div>
-                            
+                            <label for="fileInput" class="UploadBtn" title="Upload File">
+                                <i class="fa fa-cloud-upload" data-bs-hover-animate="pulse" style="font-size: 35px;color: rgb(62,140,228);"></i>
+                            </label>
+                            <!-- <input class="form-control" type="file" id="fileInput" style="width: 100%;" inputmode="url" name="file_input" placeholder="Filename">
+                            <label class="ml-2 p-2 text-black-75">Filename.txt</label> -->
+                            <input type="file" class="form-control" name="image" id="fileInput" onchange="loadFile(event)" inputmode="url" placeholder="Filename"> <span id="nameImage" ></span>
+                            <div id="hiddeninput"></div>
                         </div>
                     <hr/>
                     </div>
-                    <button class="btn btn-primary btn-block"  type="button" onclick="preview()">Load Input</button>
+                    <button class="btn btn-primary btn-block" type="submit">Load Input</button>
+                    <br>
+                    <div class="container-center">
+                        <button class="btn btn-primary">Get Recipe</button> &nbsp; <span><button type="reset" class="btn btn-danger">Reset</button></span>
+                    </div>
+                    <!-- <button class="btn btn-primary btn-block"  type="button" onclick="preview()">Load Input</button> -->
                     
                 </form>
             </div>
- <div>
-  <div class="block-heading">
-                    <h2 class="text-info">Preview: <br/><br/><span style="color:black" id="display"></span></h2>
-                </div>
+        <div>
+            <div class="block-heading">
+                <h2 class="text-info">Preview: <br/><br/><span style="color:black" id="display"></span></h2>
+            </div>
+            <div class="container">
+                <div class="row" id="imagepreview"></div>
+                <div id="nothing"></div>
+            </div>
+        </div>
+        </section>   
    
-    </div>
-        </section>
-
-   
-   
-    </main>
+    </main>    
     
-    
-    
+    <script>
+        var data = JSON.parse("{{data|escapejs}}");;
+        function callme(){
+            var hiddeninput = document.getElementById('hiddeninput');
+            hiddeninput.innerHTML = '<input type="hidden" id="custId" name="hiddeninput" value='+JSON.stringify(data)+'>'
+            var imagepre = document.getElementById('imagepreview')
+            imagepre.innerHTML = '';
+            if(data.length>=1){
+                for(var i in data){
+                    imagepre.innerHTML += '<div class="col-lg-4 col-md-6 col-sm-12" style="position: relative;"><span onclick="closeMe('+i+')" class="close">&times;</span><img src="'+data[i].imageURL+'" alt="" height="200px" width="300px"><div class="container-center">'+data[i].name+'</div></div>'
+                    }
+            }
+            else{
+                imagepre.innerHTML = ''
+                document.getElementById('nothing').innerHTML = '<div class="container-center"><label>Nothing To Preview</label></div>';
+            }
+        
+        }
+        function preview(){
+            var name=document.getElementById('name').value;
+            display.innerHTML=name
+        }
+        var loadFile = function(event) {
+            var name = document.getElementById('nameImage');
+            name.innerHTML = event.target.files[0]['name'];
+        };
+        function resets(){
+            var name = document.getElementById('nameImage');
+            name.innerHTML = "";
+            
+        }
+        function closeMe(i){
+            data = data.filter((value)=>value!=data[i]);
+            console.log(data)
+            callme()
+        }
+    </script>  
 </body>
-
 </html>
-
 
 {% endblock content %}

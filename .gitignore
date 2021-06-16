@@ -5,12 +5,24 @@ env
 
 #migrations file
 migrations/*
+__pycache__/*
 
 #file extensions
 *.log
+*.pot
 *.pyc
-
+myproj/media/*
 #cache files
-migrations/*
+migrations
 *.DS_Store
-__pycache__/*
+
+
+media
+myproj/myproj/__pycache__
+myproj/myproj/__pycache__/
+myproj/myproj/__pycache__/__init__.cpython-38.pyc
+myproj/myproj/__pycache__/models.cpython-38.pyc
+myproj/myproj/__pycache__/urls.cpython-38.pyc
+myproj/myproj/__pycache__/wsgi.cpython-38.pyc
+
+myproj/vegetable_predict_3.h5

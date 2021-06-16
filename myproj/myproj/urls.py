@@ -8,9 +8,15 @@ from django.conf.urls.static import static
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('signup/' , views.signup) , 
-    path('login/' , views.login) , 
+    path('login/' , views.login) ,
+    path('home/' , views.home) ,
+    path('logout/' , views.logout) ,
     path('bmi/' , views.bmi) , 
-    path('' , views.mainpage)
+    path('recipes/' , views.recipes) ,
+    path('addRecipe/' , views.addRecipe) , 
+    path('' , views.mainpage) , 
+    path('callme/',views.recipes)
+    
 ]
 
 if settings.DEBUG:

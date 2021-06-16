@@ -1,0 +1,170 @@
+{% load static %}
+{% block content %}
+
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="description" content="I2R Converter">
+        <meta name="keywords" content="BMI , Healthy , HTML , JS , Web">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+        <link rel="shortcut icon" href="{% static 'assets/img/favicon.ico' %}" type="image/x-icon">
+        <title>I2R Converter</title>
+        <link rel="stylesheet" href="{% static 'assets/bootstrap/css/bootstrap.min.css' %}">
+        <link rel="stylesheet" href="{% static 'assets/fonts/font-awesome.min.css' %}">
+        <link rel="stylesheet" href="{% static 'assets/css/styles.css' %}">
+        <script src="{% static 'assets/js/myscript.js' %}"></script>
+        <style>
+            a{
+                color: inherit;
+                text-decoration: none !important;
+            }
+
+            a:hover{
+                color: black;
+                text-decoration: none !important;
+            }
+
+            a i{
+                color: white;
+            }
+
+            a:hover i{
+                color: red;
+                transition: 1.5s ease-out;
+            }
+
+        </style>
+
+        <script>
+
+        </script>
+
+    </head>
+    <body>
+      <nav class="navbar navbar-light shadow sticky-top bg-white clean-navbar">
+        <div class="container">
+            <a class="navbar-brand logo" href="/">I2R Converter</a>            
+            <div class=""  id="navcol-1">
+                <a class="font-weight-bold ml-auto text-dark" href = "/login">Sign In</a>
+                
+            </div>
+        </div>
+      </nav>
+      {% include './includes/messages.html' %}
+      <div class="p-2"></div>
+
+      <div class="album py-5 bg-light">
+        <div class="container">
+          <div class="row">
+            <div class="col-xl-3 col-md-6 col-lg-4 col-sm-12">
+                <a href="/">
+                    <div class="card mb-4 box-shadow">
+                        <div class="card-body">
+                            <p class="card-text text-center">Search Now</p>
+                            <hr/>
+                            <div class="d-flex justify-content-between align-items-right">
+                                <p>
+                                    Just some gibberish to fill this empty space. Very important.
+                                </p>                                         
+                            </div>
+                            <i class="fa fa-search"></i>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            
+            <div class="col-xl-3 col-md-6 col-lg-4 col-sm-12">
+                <a href="/recipes">
+                    <div class="card mb-4 box-shadow">
+                        <div class="card-body">
+                            <p class="card-text text-center">Recipes</p>
+                            <hr/>
+                            <div class="d-flex justify-content-between align-items-right">
+                                <p>
+                                    Just some gibberish to fill this empty space. Very important.
+                                </p>                                         
+                            </div>
+                            <i class="fa fa-cutlery"></i>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+            <div class="col-xl-3 col-md-6 col-lg-4 col-sm-12">
+                <a href="/bmi">
+                    <div class="card mb-4 box-shadow">
+                        <div class="card-body">
+                            <p class="card-text text-center">BMI</p>
+                            <hr/>
+                            <div class="d-flex justify-content-between align-items-right">
+                                <p>
+                                    Just some gibberish to fill this empty space. Very important.
+                                </p>                                         
+                            </div>
+                            <i class="fa  fa-heart"></i>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+            <div class="col-xl-3 col-md-6 col-lg-4 col-sm-12">
+                <a href="/#">
+                    <div class="card mb-4 box-shadow">
+                        <div class="card-body">
+                            <p class="card-text text-center">Option1</p>
+                            <hr/>
+                            <div class="d-flex justify-content-between align-items-right">
+                                <p>
+                                    Just some gibberish to fill this empty space. Very important.
+                                </p>                                         
+                            </div>
+                            <i class="fa  fa-home"></i>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+            <div class="col-xl-3 col-md-6 col-lg-4 col-sm-12">
+                <a href="/#">
+                    <div class="card mb-4 box-shadow">
+                        <div class="card-body">
+                            <p class="card-text text-center">Option 2</p>
+                            <hr/>
+                            <div class="d-flex justify-content-between align-items-right">
+                                <p>
+                                    Just some gibberish to fill this empty space. Very important.
+                                </p>                                         
+                            </div>
+                            <i class="fa  fa-home"></i>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+            <div class="col-xl-3 col-md-6 col-lg-4 col-sm-12">
+                <a href="/#">
+                    <div class="card mb-4 box-shadow">
+                        <div class="card-body">
+                            <p class="card-text text-center">Option 3</p>
+                            <hr/>
+                            <div class="d-flex justify-content-between align-items-right">
+                                <p>
+                                    Just some gibberish to fill this empty space. Very important.
+                                </p>                                         
+                            </div>
+                            <i class="fa  fa-home"></i>
+                        </div>
+                    </div>
+                </a>
+            </div>
+              
+          </div>
+        </div>
+      </div>
+
+
+
+    </body>
+</html>
+
+{% endblock content %}
