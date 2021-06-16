@@ -17,9 +17,10 @@ from keras import backend as K
 imagesToPreview = []
 predictedNames = []
 isLoggedIn = False
-
-
+item_list = ['Tomato','Rice']
 datajson = []
+
+
 def predict(iurl):
     K.clear_session()
     model = load_model('vegetable_predict_3.h5')
@@ -35,6 +36,7 @@ def predict(iurl):
             break;
     prediction = labels[i]
     return prediction
+
 def signup(request):    
     if request.method=='POST' :
         name = request.POST['first_name']+" "+request.POST['last_name']
@@ -50,11 +52,10 @@ def signup(request):
             return redirect("/")
         else:
             messages.error(request  , " Password did not match.")
-            return redirect("/signup")              
-       
-
+            return redirect("/signup")
     return render(request , 'signup.html' , {})
-item_list = ['Tomato','Rice']
+
+
 def recipes(request):
     a=[]
     for i in item_list:
@@ -63,7 +64,7 @@ def recipes(request):
             row = cursor.fetchall()
             item = []
             for j in row:
-                print(list(j)[0])
+                #print(list(j)[0])
                 item.append(list(j)[0])
             a.append(item)
     s=[[1,2],[1,4],[1],[4]]
@@ -72,10 +73,10 @@ def recipes(request):
     x = Counter(chain.from_iterable(a))
     y = OrderedDict(x.most_common()) 
     final_recipe_list = list(y.keys())
-    print("final recipe id")
-    for recipe_id in final_recipe_list:
-        print(recipe_id)
-    print(x)
+    #print("final recipe id")
+    #for recipe_id in final_recipe_list:
+        #print(recipe_id)
+    #print(x)
     return render(request , 'recipes.html' , {})
 
 def login(request):
@@ -114,14 +115,23 @@ def login(request):
                 messages.error(request , "Oops! Successfully Failed to login. You can do better. Cmon")
                 return redirect("/login")
 
-
     return render(request , 'login.html' , {})
+
+def logout(request):
+    try:
+        del request.session['username']
+        messages.success(request , 'Successfully Logged out')
+    except:
+        messages.error(request , 'Error while logging out')
+        #print('Error in clearing session')
+    #return render(request , 'mainpage.html' , { 'isLoggedIn' : False , 'username' : '' })
+    return redirect('/')
 
 def mainpage(request):
     username = ''
     global isLoggedIn 
     if request.session.has_key('username'):
-        print(request.session['username'])
+        #print(request.session['username'])
         isLoggedIn = True
         username = setUserName(request.session['username'])
 
@@ -146,6 +156,7 @@ def mainpage(request):
 def addRecipe(request):
     return_recipes(['egg' , 'onion' , 'butter' , 'salt', 'pepper'])
     return render(request , 'addRecipe.html' , {})
+
 def bmi(request):
     global isLoggedIn
     username = ''
@@ -161,5 +172,10 @@ def bmi(request):
             height = user_obj.height
 
     return render(request , 'bmi.html' , {'isLoggedIn' : isLoggedIn , 'username' : username , 'weight' : weight , 'height': height })
+
+def home(request):
+
+    return render(request , 'home.html' , {})
+
 
 

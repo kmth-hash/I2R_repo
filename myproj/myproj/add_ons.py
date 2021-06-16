@@ -36,7 +36,6 @@ def compare_rec(my_recipe , other_recipe):
 
 
 
-
 def return_recipes(curr_list = []):
     print(curr_list)
     my_list = []

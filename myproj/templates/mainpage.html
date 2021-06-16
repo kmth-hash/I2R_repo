@@ -22,8 +22,12 @@
         <div class="container">
             <a class="navbar-brand logo" href="/">I2R Converter</a>            
             <div class=""  id="navcol-1">
+            
                 {% if isLoggedIn %}
                 <label> {{username}} </label>
+                <a href="/logout" >
+                    <i class="fa fa-sign-out" data-bs-hover-animate="pulse" style="margin-left: 10px;color: rgb(62,140,228);"></i>
+                </a>
                 {% else %}
                 <a href = "/login" class="ml-auto btn btn-light font-weight-bold" >Login</a>
                 
@@ -31,7 +35,9 @@
             </div>
         </div>
     </nav>
+
     {% include './includes/messages.html' %}
+
     <main class="page login-page">
         <section class="clean-block clean-form dark">
             <div class="container">
@@ -86,37 +92,37 @@
         function callme(){
             var hiddeninput = document.getElementById('hiddeninput');
             hiddeninput.innerHTML = '<input type="hidden" id="custId" name="hiddeninput" value='+JSON.stringify(data)+'>'
-        var imagepre = document.getElementById('imagepreview')
-        imagepre.innerHTML = '';
-        if(data.length>=1){
-            for(var i in data){
-                imagepre.innerHTML += '<div class="col-lg-4 col-md-6 col-sm-12" style="position: relative;"><span onclick="closeMe('+i+')" class="close">&times;</span><img src="'+data[i].imageURL+'" alt="" height="200px" width="300px"><div class="container-center">'+data[i].name+'</div></div>'
-                }
-        }
-        else{
-            imagepre.innerHTML = ''
-            document.getElementById('nothing').innerHTML = '<div class="container-center"><label>Nothing To Preview</label></div>';
-        }
+            var imagepre = document.getElementById('imagepreview')
+            imagepre.innerHTML = '';
+            if(data.length>=1){
+                for(var i in data){
+                    imagepre.innerHTML += '<div class="col-lg-4 col-md-6 col-sm-12" style="position: relative;"><span onclick="closeMe('+i+')" class="close">&times;</span><img src="'+data[i].imageURL+'" alt="" height="200px" width="300px"><div class="container-center">'+data[i].name+'</div></div>'
+                    }
+            }
+            else{
+                imagepre.innerHTML = ''
+                document.getElementById('nothing').innerHTML = '<div class="container-center"><label>Nothing To Preview</label></div>';
+            }
         
         }
-    function preview(){
-        var name=document.getElementById('name').value;
-        display.innerHTML=name
-    }
-    var loadFile = function(event) {
-        var name = document.getElementById('nameImage');
-        name.innerHTML = event.target.files[0]['name'];
-    };
-    function resets(){
-        var name = document.getElementById('nameImage');
-        name.innerHTML = "";
-        
-    }
-    function closeMe(i){
-        data = data.filter((value)=>value!=data[i]);
-        console.log(data)
-        callme()
-    }
+        function preview(){
+            var name=document.getElementById('name').value;
+            display.innerHTML=name
+        }
+        var loadFile = function(event) {
+            var name = document.getElementById('nameImage');
+            name.innerHTML = event.target.files[0]['name'];
+        };
+        function resets(){
+            var name = document.getElementById('nameImage');
+            name.innerHTML = "";
+            
+        }
+        function closeMe(i){
+            data = data.filter((value)=>value!=data[i]);
+            console.log(data)
+            callme()
+        }
     </script>  
 </body>
 </html>

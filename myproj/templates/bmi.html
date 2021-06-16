@@ -2,18 +2,18 @@
 {% block content %}
 
 <html>
-<head>
-    <meta charset="utf-8">
-        <meta name="description" content="I2R Converter">
-        <meta name="keywords" content="BMI , Healthy , HTML , JS , Web">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-        <link rel="shortcut icon" href="{% static 'assets/img/favicon.ico' %}" type="image/x-icon">
-        <title>I2R Converter</title>
-        <link rel="stylesheet" href="{% static 'assets/bootstrap/css/bootstrap.min.css' %}">
-        <link rel="stylesheet" href="{% static 'assets/fonts/font-awesome.min.css' %}">
-        <link rel="stylesheet" href="{% static 'assets/css/styles.css' %}">
-        <script src="{% static 'assets/js/myscript.js' %}"></script>
-</head>
+    <head>
+        <meta charset="utf-8">
+            <meta name="description" content="I2R Converter">
+            <meta name="keywords" content="BMI , Healthy , HTML , JS , Web">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+            <link rel="shortcut icon" href="{% static 'assets/img/favicon.ico' %}" type="image/x-icon">
+            <title>I2R Converter</title>
+            <link rel="stylesheet" href="{% static 'assets/bootstrap/css/bootstrap.min.css' %}">
+            <link rel="stylesheet" href="{% static 'assets/fonts/font-awesome.min.css' %}">
+            <link rel="stylesheet" href="{% static 'assets/css/styles.css' %}">
+            <script src="{% static 'assets/js/myscript.js' %}"></script>
+    </head>
 <script language="JavaScript">
 
 function calculateBmi() {
@@ -62,48 +62,48 @@ else
 
     }
 </style>
-<body>
-    <nav class="navbar navbar-light shadow sticky-top bg-white clean-navbar">
-        <div class="container">
-            <a class="navbar-brand logo" href="/">I2R Converter</a>            
-            <div class=""  id="navcol-1">
-                {% if isLoggedIn %}
-                <label> {{username}} </label>
-                {% else %}
-                <a href = "/login" class="ml-auto btn btn-light font-weight-bold" >Login</a>
+    <body>
+        <nav class="navbar navbar-light shadow sticky-top bg-white clean-navbar">
+            <div class="container">
+                <a class="navbar-brand logo" href="/">I2R Converter</a>            
+                <div class=""  id="navcol-1">
+                    {% if isLoggedIn %}
+                    <label> {{username}} </label>
+                    {% else %}
+                    <a href = "/login" class="ml-auto btn btn-light font-weight-bold" >Login</a>
 
-                {%endif%}
+                    {%endif%}
+                </div>
             </div>
-        </div>
-      </nav>
-      {% include './includes/messages.html' %}
+        </nav>
+        {% include './includes/messages.html' %}
 
-    <form class="txt-al" >
-        <div class="form-group">
-            Your Weight (kg):<br/><br/> 
-            <input class="form-control input-sm"  type="number" value="{{weight}}" id="w" name="weight" size="10">
-            <br/>
-        </div>
-        <div class="form-group">
-            Your Height (cm): <br/><br/>
-            <input class="form-control input-sm"  type="number" value="{{height}}" id="h" name="height" size="10">
-            <br/><br/>
-        </div>
-        <div> 
-            <button class="btn btn-info btn-sm btn-block" type="button" class="btn btn-info" value="Calculate BMI" onClick="calculateBmi()">Calculate BMI</button>
-            <br/><br/>
-        </div>
-        <div class="form-group">
-            <p id="bmi" ></p>
-        </div>
-        <div class="form-group">
-            <p id="means"></p>
-            <br />
-        </div>
+        <form class="txt-al" >
+            <div class="form-group">
+                Your Weight (kg):<br/><br/> 
+                <input class="form-control input-sm"  type="number" value="{{weight}}" id="w" name="weight" size="10">
+                <br/>
+            </div>
+            <div class="form-group">
+                Your Height (cm): <br/><br/>
+                <input class="form-control input-sm"  type="number" value="{{height}}" id="h" name="height" size="10">
+                <br/><br/>
+            </div>
+            <div> 
+                <button class="btn btn-info btn-sm btn-block" type="button" class="btn btn-info" value="Calculate BMI" onClick="calculateBmi()">Calculate BMI</button>
+                <br/><br/>
+            </div>
+            <div class="form-group">
+                <p id="bmi" ></p>
+            </div>
+            <div class="form-group">
+                <p id="means"></p>
+                <br />
+            </div>
 
-    </form>
+        </form>
 
-</body>
+    </body>
 </html>
 
 {% endblock content %}
