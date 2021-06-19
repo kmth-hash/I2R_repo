@@ -95,6 +95,7 @@
             var imagepre = document.getElementById('imagepreview')
             imagepre.innerHTML = '';
             if(data.length>=1){
+                console.log(data)
                 for(var i in data){
                     imagepre.innerHTML += '<div class="col-lg-4 col-md-6 col-sm-12" style="position: relative;"><span onclick="closeMe('+i+')" class="close">&times;</span><img src="'+data[i].imageURL+'" alt="" height="200px" width="300px"><div class="container-center">'+data[i].name+'</div></div>'
                     }

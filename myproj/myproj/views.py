@@ -159,7 +159,6 @@ def login(request):
                 return redirect("/login")
 
     return render(request , 'login.html' , {})
-
 def logout(request):
     global isLoggedIn
     try:
@@ -209,7 +208,7 @@ def mainpage(request):
             # predictedNames.append(predictedImage)
             imagesToPreview.append(imageAndName)
             datajson = dumps(imagesToPreview)
-        return render(request , 'mainpage.html' , {'len':len(imagesToPreview),'imagesToPreview':imagesToPreview,'data':datajson , 'isLoggedIn' : isLoggedIn , 'username' : username })
+    return render(request , 'mainpage.html' , {'len':len(imagesToPreview),'imagesToPreview':imagesToPreview,'data':datajson , 'isLoggedIn' : isLoggedIn , 'username' : username })
 
 def addRecipe(request):
     all_recipe_percentage = return_recipes(['egg' , 'onion' , 'butter' , 'salt', 'pepper'])
@@ -239,5 +238,5 @@ def home(request):
 
 
 def recipe(request, id):
-
+    print(id)
     return render(request, 'recipe.html', {})

@@ -44,7 +44,8 @@
         }
         
         function get_more_recipe(i){
-            console.log(data[i])
+            window.location.href = window.location.href+'recipe/'+i
+            localStorage.setItem('recipe_detail',JSON.stringify(data[i]))
         }
     </script>
     
