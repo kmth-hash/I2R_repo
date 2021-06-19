@@ -3,6 +3,8 @@ from .models import Ingredients, Recipes , Category , Recipe_Ingredients , Users
 from django.contrib import messages
 from django.http import HttpResponse
 from .test import storeDBfromCSV
+from .add_ons import *
+
 from json import loads,dumps
 from django.core.files.storage import FileSystemStorage
 # from keras import preprocessing
@@ -22,6 +24,7 @@ fats=[]
 calories=[]
 quantity=[]
 proteins=[]
+isLoggedIn = False
 recipe_json=[]
 recipes_array = []
 carbohydrates=[]
@@ -59,7 +62,8 @@ def predict(iurl):
                 predcited_items.append(str(line.strip()).title())
     print(predcited_items)
     return jh
-def signup(request):    
+def signup(request):
+    global isLoggedIn      
     if request.method=='POST' :
         name = request.POST['first_name']+" "+request.POST['last_name']
         email = request.POST['email']
@@ -67,15 +71,15 @@ def signup(request):
         confirm_password = request.POST['conf_password']
 
         if password==confirm_password:
-            new_user = Users(username= name , password = password , height = "" , weight = "" , role = "user" )
+            new_user = Users(username= name , password = password , height = "" , weight = "" , role = "user", email=email )
             new_user.save()
+            request.session['username'] = name
+            isLoggedIn = True
             messages.success(request  , " Signup successful.")
             return redirect("/")
         else:
             messages.error(request  , " Password did not match.")
-            return redirect("/signup")              
-       
-
+            return redirect("/signup")
     return render(request , 'signup.html' , {})
 def recipes(request):
     global imagesToPreview,recipes_array,predcited_items
@@ -119,36 +123,63 @@ def recipes(request):
     return render(request , 'recipes.html' , {'recipe_data':recipe_json})
 
 def login(request):
+    global isLoggedIn
     res = ''
     if request.method=='POST':
+
         name1 = request.POST['email']
         pass1 = request.POST['password']
-        if '@' in name1:
-            print('true @')            
+        
+        if '@' in name1:                     
             try:
-                user_obj = Users.objects.get(email=name1,password = pass1)                
+                user_obj = Users.objects.get(password=pass1  , email=name1)                
                 res = user_obj
+                isLoggedIn = True
+                request.session['username'] = user_obj.username
                 messages.success(request , "Welcome back! Let's cook something good.")
-                return redirect("/")
+                return redirect("/" , isLoggedIn = True , username = user_obj.username)
                 
             except Exception as ex:
+                
+                isLoggedIn = False
                 messages.error(request , "Oops! Successfully Failed to login. You can do better. Cmon")
-                return redirect("/")
+                return redirect("/login" )
         else:
             try:
                 user_obj  = Users.objects.get(username = name1,password=pass1)
                 res = user_obj
+                isLoggedIn = True
+                request.session['username'] = user_obj.username
                 messages.success(request , "Welcome back! Let's cook something good.")
-                return redirect("/")        
+                return redirect("/" , isLoggedIn = True , username = user_obj.username)  
                         
             except Exception as ex:
+                isLoggedIn = False
                 messages.error(request , "Oops! Successfully Failed to login. You can do better. Cmon")
-                return redirect("/")
-
+                return redirect("/login")
 
     return render(request , 'login.html' , {})
 
+def logout(request):
+    global isLoggedIn
+    try:
+        del request.session['username']
+        isLoggedIn = False
+        messages.success(request , 'Successfully Logged out')
+    except:
+        messages.error(request , 'Error while logging out')
+        #print('Error in clearing session')
+    #return render(request , 'mainpage.html' , { 'isLoggedIn' : False , 'username' : '' })
+    return redirect('/')
+
 def mainpage(request):
+    username = ''
+    global isLoggedIn 
+    if request.session.has_key('username'):
+        #print(request.session['username'])
+        isLoggedIn = True
+        username = setUserName(request.session['username'])
+
     global imagesToPreview,datajson
     if request.POST:
         if request.POST['Name']:
@@ -178,12 +209,35 @@ def mainpage(request):
             # predictedNames.append(predictedImage)
             imagesToPreview.append(imageAndName)
             datajson = dumps(imagesToPreview)
-    return render(request , 'mainpage.html' , {'len':len(imagesToPreview),'data':datajson})
+        return render(request , 'mainpage.html' , {'len':len(imagesToPreview),'imagesToPreview':imagesToPreview,'data':datajson , 'isLoggedIn' : isLoggedIn , 'username' : username })
 
 def addRecipe(request):
-    storeDBfromCSV()
+    all_recipe_percentage = return_recipes(['egg' , 'onion' , 'butter' , 'salt', 'pepper'])
+    #valid_recipes = find_valid_recipes(all_recipe_percentage)
+    print(all_recipe_percentage)
     return render(request , 'addRecipe.html' , {})
+
 def bmi(request):
-    return render(request , 'bmi.html' , {})
+    global isLoggedIn
+    username = ''
+    weight = 0
+    height = 0
+    if request.session.has_key('username'):
+        username = setUserName(request.session['username'])
+        user_obj = Users.objects.get( username = request.session['username'])
+        isLoggedIn = True
+        if(user_obj.weight.isnumeric()):
+            weight = user_obj.weight
+        if(user_obj.height.isnumeric()):
+            height = user_obj.height
+
+    return render(request , 'bmi.html' , {'isLoggedIn' : isLoggedIn , 'username' : username , 'weight' : weight , 'height': height })
+
+def home(request):
+
+    return render(request , 'home.html' , {})
 
 
+def recipe(request, id):
+
+    return render(request, 'recipe.html', {})

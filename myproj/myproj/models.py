@@ -51,3 +51,5 @@ class Category(models.Model):
 
     def __str__(self):
         return "Category : "+self.Category_Name
+        
+
