@@ -28,73 +28,25 @@
     </nav>
     <main class="page login-page bg-white">
         <section class="clean-form dark">
-            <div class="container">
-                <div class="rounded border m-3 p-1 col-12">
-                    <div class="row">
-                        <div class="col-lg-2 col-3">
-                            <img src="{% static 'assets/img/I2R_logo2.png' %}" width="100px" class="m-2 rounded ">
-                        </div>
-                        <div class="col-lg-10 col-9">
-                            <h5 class="">Chicken Fried Rice</h5>
-                            <hr class="p-1 m-0"/>
-                            <p>Chicken, rice, soy sauce and shredded egg stir fried together. This is a very simple recipe. It is easy, but tasty! Note: Never use rice that you have just cooked.</p>
-                            <div id="scrollmenu">
-                                <a href="spicy">Spicy</a>
-                                <a href="rice-items">Rice Items</a>
-                                <a href="non-veg">Non Veg</a>
-                                <a href="Chicken">Chicken</a>
-                                <a href="Chinese">Chinese</a>
-                                <a href="More Options">More Options</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>               
-
-                <div class="rounded border m-3 p-1 col-12">
-                    <div class="row">
-                        <div class="col-lg-2 col-3">
-                            <img src="{% static 'assets/img/I2R_logo2.png' %}" width="100px" class="m-2 rounded ">
-                        </div>
-                        <div class="col-lg-10 col-9">
-                            <h5 class="">Chicken Fried Rice</h5>
-                            <hr class="p-1 m-0"/>
-                            <p>Chicken, rice, soy sauce and shredded egg stir fried together. This is a very simple recipe. It is easy, but tasty! Note: Never use rice that you have just cooked.</p>
-                            <div id="scrollmenu">
-                                <a href="spicy">Spicy</a>
-                                <a href="rice-items">Rice Items</a>
-                                <a href="non-veg">Non Veg</a>
-                                <a href="Chicken">Chicken</a>
-                                <a href="Chinese">Chinese</a>
-                                <a href="More Options">More Options</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="rounded border m-3 p-1 col-12">
-                    <div class="row">
-                        <div class="col-lg-2 col-3">
-                            <img src="{% static 'assets/img/I2R_logo2.png' %}" width="100px" class="m-2 rounded ">
-                        </div>
-                        <div class="col-lg-10 col-9">
-                            <h5 class="">Chicken Fried Rice</h5>
-                            <hr class="p-1 m-0"/>
-                            <p>Chicken, rice, soy sauce and shredded egg stir fried together. This is a very simple recipe. It is easy, but tasty! Note: Never use rice that you have just cooked.</p>
-                            <div id="scrollmenu" >
-                                <a href="spicy">Spicy</a>
-                                <a href="rice-items">Rice Items</a>
-                                <a href="non-veg">Non Veg</a>
-                                <a href="Chicken">Chicken</a>
-                                <a href="Chinese">Chinese</a>
-                                <a href="More Options">More Options</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+            <div class="container" id="recipe_container">
+                
             </div>
         </section>
     </main>
-    
+    <script>
+        var data = {}
+        data = JSON.parse("{{recipe_data|escapejs}}");
+        var recipe_container=document.getElementById('recipe_container');
+        recipe_container.innerHTML = '';
+        console.log(data)
+        for(var i in data){
+            recipe_container.innerHTML+='<div onclick="get_more_recipe('+i+')" class="get_more_recipe rounded border m-3 p-1 col-12"><div class="row"><div class="col-lg-2 col-3"><img src="'+data[i].imageURL+'" width="100%" class="m-2 rounded "></div><div class="col-lg-10 col-9"><h1 class="">'+data[i].name+'</h1><hr class="p-1 m-0"/><p>'+data[i].description+'</p><div id="scrollmenu"><a href="spicy">Spicy</a><a href="rice-items">Rice Items</a><a href="non-veg">Non Veg</a><a href="Chicken">Chicken</a><a href="Chinese">Chinese</a><a href="More Options">More Options</a></div></div></div></div>'
+        }
+        
+        function get_more_recipe(i){
+            console.log(data[i])
+        }
+    </script>
     
 </body>
 

@@ -40,6 +40,8 @@ def store_recipes():
                         Proteins=row['Proteins'] ,
                         Carbohydrates=row['Carbohydrates'] ,
                         Receipe_Image = row['Receipe_Image'] ,
+                        Description = row['Description'] ,
+                        procedure = row['procedure'] 
                         )
         print(obj)
         obj.save()

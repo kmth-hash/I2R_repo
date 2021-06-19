@@ -58,7 +58,7 @@
                     <button class="btn btn-primary btn-block" type="submit">Load Input</button>
                     <br>
                     <div class="container-center">
-                        <button class="btn btn-primary">Get Recipe</button> &nbsp; <span><button type="reset" class="btn btn-danger">Reset</button></span>
+                        <button type="submit" formaction="recipes/" class="btn btn-primary">Get Recipes</button> &nbsp; <span><button type="reset" class="btn btn-danger">Reset</button></span>
                     </div>
                     <!-- <button class="btn btn-primary btn-block"  type="button" onclick="preview()">Load Input</button> -->
                     
@@ -81,7 +81,7 @@
     
     
     <script>
-        var data = JSON.parse("{{data|escapejs}}");;
+        var data = JSON.parse("{{data|escapejs}}");
         function callme(){
             var hiddeninput = document.getElementById('hiddeninput');
             hiddeninput.innerHTML = '<input type="hidden" id="custId" name="hiddeninput" value='+JSON.stringify(data)+'>'

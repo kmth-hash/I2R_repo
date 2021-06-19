@@ -26,3 +26,6 @@ myproj/myproj/__pycache__/urls.cpython-38.pyc
 myproj/myproj/__pycache__/wsgi.cpython-38.pyc
 
 myproj/vegetable_predict_3.h5
+myproj/templates/recipes.html
+myproj/*
+myproj/myproj/files/*

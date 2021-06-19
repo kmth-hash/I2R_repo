@@ -51,3 +51,6 @@ input[type="file"] {
 #scrollmenu a:hover{
   background-color:#777 ;
 }
+.get_more_recipe{
+  cursor: pointer;
+}
