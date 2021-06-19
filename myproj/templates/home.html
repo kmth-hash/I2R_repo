@@ -33,6 +33,29 @@
                 transition: 1.5s ease-out;
             }
 
+            .arrow1{
+                animation: slide1 1s ease-in-out infinite;
+                margin-left: 9px;
+                color: white;
+            }
+
+            @keyframes slide1 {
+                0% {
+                  transform: translate(0, 0);
+                }
+              
+                50% {
+                  transform: translate(15px, 0);
+                }
+
+                100% {
+                    transform: translate(30px, 0);
+                }
+              }
+
+            .arrow1:hover {
+                color: rgb(47, 197, 47);
+            }
         </style>
 
         <script>
@@ -85,6 +108,7 @@
                                 </p>                                         
                             </div>
                             <i class="fa fa-cutlery"></i>
+                            <i class="fa fa-chevron-right arrow1" aria-hidden="true"></i>
                         </div>
                     </div>
                 </a>

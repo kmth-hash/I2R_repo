@@ -37,7 +37,8 @@ def predict(iurl):
     prediction = labels[i]
     return prediction
 
-def signup(request):    
+def signup(request):
+    global isLoggedIn    
     if request.method=='POST' :
         name = request.POST['first_name']+" "+request.POST['last_name']
         email = request.POST['email']
@@ -48,6 +49,7 @@ def signup(request):
             new_user = Users(username= name , password = password , height = "" , weight = "" , role = "user", email=email )
             new_user.save()
             request.session['username'] = name
+            isLoggedIn = True
             messages.success(request  , " Signup successful.")
             return redirect("/")
         else:
@@ -118,8 +120,10 @@ def login(request):
     return render(request , 'login.html' , {})
 
 def logout(request):
+    global isLoggedIn
     try:
         del request.session['username']
+        isLoggedIn = False
         messages.success(request , 'Successfully Logged out')
     except:
         messages.error(request , 'Error while logging out')
@@ -154,7 +158,9 @@ def mainpage(request):
     return render(request , 'mainpage.html' , {'len':len(imagesToPreview),'imagesToPreview':imagesToPreview,'data':datajson , 'isLoggedIn' : isLoggedIn , 'username' : username })
 
 def addRecipe(request):
-    return_recipes(['egg' , 'onion' , 'butter' , 'salt', 'pepper'])
+    all_recipe_percentage = return_recipes(['egg' , 'onion' , 'butter' , 'salt', 'pepper'])
+    #valid_recipes = find_valid_recipes(all_recipe_percentage)
+    print(all_recipe_percentage)
     return render(request , 'addRecipe.html' , {})
 
 def bmi(request):
@@ -178,4 +184,6 @@ def home(request):
     return render(request , 'home.html' , {})
 
 
+def recipe(request, id):
 
+    return render(request, 'recipe.html', {})

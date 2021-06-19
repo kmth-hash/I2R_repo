@@ -55,14 +55,13 @@ def return_recipes(curr_list = []):
     for itr in all_rec:
         ing_list = []
         all_ing = Recipe_Ingredients.objects.filter(Receipe_Id = itr.Receipe_Id)
-        
+        #print(all_ing)
         for i in all_ing:            
             ing_list.append(i.Ingredient_Id)
                
         rating_recipe[itr.Name] = compare_rec( my_ing , ing_list )
     rating_recipe = sorted(rating_recipe.items() , key=lambda x : x[1] , reverse= True)
-    print(rating_recipe)
-
+    return(rating_recipe)
         
     
 def setUserName(username):
@@ -70,9 +69,6 @@ def setUserName(username):
         return (username.split(' ')[0]).capitalize()
     else :
         return username.capitalize()            
-
-
-    
 
 
 
