@@ -9,43 +9,59 @@
     <meta name="description" content="I2R Converter">
     <meta name="keywords" content="BMI , Healthy , HTML , JS , Web">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-    <link rel="shortcut icon" href="{% static 'assets/img/favicon.ico' %}" type="image/x-icon">
+    <link rel="shortcut icon" href="{% static 'assets/img/bento.png' %}" type="image/x-icon">
     <title>I2R Converter</title>
     <link rel="stylesheet" href="{% static 'assets/bootstrap/css/bootstrap.min.css' %}">
     <link rel="stylesheet" href="{% static 'assets/fonts/font-awesome.min.css' %}">
     <link rel="stylesheet" href="{% static 'assets/css/styles.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/style.css' %}">
     
 </head>
 
 <body onload="callme()">
-    <nav class="navbar navbar-light shadow sticky-top bg-white clean-navbar">
-        <div class="container">
-            <a class="navbar-brand logo" href="/">I2R Converter</a>            
-            <div class=""  id="navcol-1">
-            
-                {% if isLoggedIn %}
-                <label> {{username}} </label>
-                <a href="/logout" >
-                    <i class="fa fa-sign-out" data-bs-hover-animate="pulse" style="margin-left: 10px;color: rgb(62,140,228);"></i>
-                </a>
-                {% else %}
-                <a href = "/login" class="ml-auto btn btn-light font-weight-bold" >Login</a>
-                
-                {%endif%}
+
+    <header class="top-navbar">
+        <nav style="top: 0px;" class="navbar navbar-expand-lg navbar-light bg-dark navbar-right ">
+            <a style="margin-left: 20px; padding-bottom: 0px;" class="navbar-brand" href="#"><img src="{% static 'assets/img/bento.png' %}" height="50px" width="50px" alt=""><span style="color: white; font-weight: bold; margin-left: 5px;">I2R</span></a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+              <ul class="navbar-nav">
+                <li class="nav-item">
+                  <a class="nav-link" href="/">Home <span class="sr-only"></span></a>
+                </li>
+                <li class="nav-item active">
+                  <a class="nav-link" href="/identify">Get Recipe</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="/bmi">BMI calculator</a>
+                </li>
+                <li class="nav-item dropdown">
+					<a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+						{{username}} &nbsp;<i class="fa fa-user"></i>
+					</a>
+					<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+					  <a class="dropdown-item" href="/logout">Logout</a>
+					  <a class="dropdown-item" href="#">Profile</a>
+					  <a class="dropdown-item" href="#">About</a>
+					</div>
+				  </li>
+              </ul>
             </div>
-        </div>
-    </nav>
-
-    {% include './includes/messages.html' %}
-
+          </nav>
+          
+    </header>
     <main class="page login-page">
-        <section class="clean-block clean-form dark">
+        <section style="background-color: rgba(44, 44, 44, 0.678);" class="clean-block clean-form dark">
             <div class="container">
                 <div class="block-heading">
-                    <h2 class="text-dark font-weight-bold">Search</h2>
+                    <h2 class="text-white-50 font-weight-bold">Search</h2>
                 </div>
                                 
-                <form method="post" enctype="multipart/form-data" action="" onreset="resets()">
+                <form style="border-radius: 20px;-webkit-box-shadow: 2px 2px 13px -4px rgba(0,0,0,0.75);
+                -moz-box-shadow: 2px 2px 13px -4px rgba(0,0,0,0.75);
+                box-shadow: 2px 2px 13px -4px rgba(0,0,0,0.75)" method="post" enctype="multipart/form-data" action="" onreset="resets()">
                     {% csrf_token %}  
                     <div class="form-group">
                         <label for="name">Ingredient name</label>
@@ -58,25 +74,22 @@
                             <label for="fileInput" class="UploadBtn" title="Upload File">
                                 <i class="fa fa-cloud-upload" data-bs-hover-animate="pulse" style="font-size: 35px;color: rgb(62,140,228);"></i>
                             </label>
-                            <!-- <input class="form-control" type="file" id="fileInput" style="width: 100%;" inputmode="url" name="file_input" placeholder="Filename">
-                            <label class="ml-2 p-2 text-black-75">Filename.txt</label> -->
                             <input type="file" class="form-control" name="image" id="fileInput" onchange="loadFile(event)" inputmode="url" placeholder="Filename"> <span id="nameImage" ></span>
                             <div id="hiddeninput"></div>
                         </div>
                     <hr/>
                     </div>
-                    <button class="btn btn-primary btn-block" type="submit">Load Input</button>
+                    <button style="background-color: rgb(110, 41, 41); color: white;border-radius: 30px;" class="btn btn-block" type="submit">Load Input</button>
                     <br>
-                    <div class="container-center">
-                        <button type="submit" formaction="recipes/" class="btn btn-primary">Get Recipes</button> &nbsp; <span><button type="reset" class="btn btn-danger">Reset</button></span>
+                    <div style="margin-top: 10px;" class="container-center">
+                        <button type="submit" formaction="recipes/" style="background-color: rgb(27, 68, 114);color: white; border-radius: 20px;" class="btn ">Get Recipes</button> &nbsp; <span><button style="border-radius: 20px;" type="reset" class="btn btn-danger">Reset</button></span>
                     </div>
-                    <!-- <button class="btn btn-primary btn-block"  type="button" onclick="preview()">Load Input</button> -->
                     
                 </form>
             </div>
         <div>
             <div class="block-heading">
-                <h2 class="text-info">Preview: <br/><br/><span style="color:black" id="display"></span></h2>
+                <h2 class="text-white-50 font-weight-bold">Preview: <br/><br/><span style="color:black" id="display"></span></h2>
             </div>
             <div class="container">
                 <div class="row" id="imagepreview"></div>
@@ -91,17 +104,19 @@
         var data = JSON.parse("{{data|escapejs}}");
         function callme(){
             var hiddeninput = document.getElementById('hiddeninput');
+            console.log(JSON.stringify(data))
             hiddeninput.innerHTML = '<input type="hidden" id="custId" name="hiddeninput" value='+JSON.stringify(data)+'>'
             var imagepre = document.getElementById('imagepreview')
             imagepre.innerHTML = '';
             if(data.length>=1){
+                console.log(data)
                 for(var i in data){
-                    imagepre.innerHTML += '<div class="col-lg-4 col-md-6 col-sm-12" style="position: relative;"><span onclick="closeMe('+i+')" class="close">&times;</span><img src="'+data[i].imageURL+'" alt="" height="200px" width="300px"><div class="container-center">'+data[i].name+'</div></div>'
+                    imagepre.innerHTML += '<div class="col-lg-4 col-md-6 col-sm-12" style="position: relative;"><span onclick="closeMe('+i+')" class="close">&times;</span><img style="border-radius:10px;-webkit-box-shadow: 2px 2px 13px -4px rgba(0,0,0,0.75);-moz-box-shadow: 2px 2px 13px -4px rgba(0,0,0,0.75);box-shadow: 2px 2px 13px -4px rgba(0,0,0,0.75);" src="'+data[i].imageURL+'" alt="" height="300px" width="100%"><div  class="container-center text-white-50 font-weight-bold">'+data[i].name+'</div></div>'
                     }
             }
             else{
                 imagepre.innerHTML = ''
-                document.getElementById('nothing').innerHTML = '<div class="container-center"><label>Nothing To Preview</label></div>';
+                document.getElementById('nothing').innerHTML = '<h1 style="color:white;opacity:0.4" class="container-center"><label>Nothing To Preview</label></h1>';
             }
         
         }
@@ -124,6 +139,17 @@
             callme()
         }
     </script>  
+    <script src="{% static 'assets/js/jquery-3.2.1.min.js' %}"></script>
+	<script src="{% static 'assets/js/popper.min.js' %}"></script>
+	<script src="{% static 'assets/js/bootstrap.min.js' %}"></script>
+    <!-- ALL PLUGINS -->
+	<script src="{% static 'assets/js/jquery.superslides.min.js' %}"></script>
+	<script src="{% static 'assets/js/images-loded.min.js' %}"></script>
+	<script src="{% static 'assets/js/isotope.min.js' %}"></script>
+	<script src="{% static 'assets/js/baguetteBox.min.js' %}"></script>
+	<script src="{% static 'assets/js/form-validator.min.js' %}"></script>
+    <script src="{% static 'assets/js/contact-form-script.js' %}"></script>
+    <script src="{% static 'assets/js/custom.js' %}"></script>
 </body>
 </html>
 

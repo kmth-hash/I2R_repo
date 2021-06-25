@@ -1,0 +1,328 @@
+{% load static %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en"><!-- Basic -->
+<head>
+	<meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">   
+   
+    <!-- Mobile Metas -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+ 
+     <!-- Site Metas -->
+	 <title>I2R Converter</title>
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- Site Icons -->
+	<link rel="shortcut icon" href="{% static 'assets/img/bento.png' %}" type="image/x-icon">
+    <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="{% static 'assets/css/bootstrap.min.css' %}">    
+	<!-- Site CSS -->
+    <link rel="stylesheet" href="{% static 'assets/css/style.css' %}">    
+    <link rel="stylesheet" href="{% static 'assets/css/styles.css' %}">    
+    <!-- Responsive CSS -->
+    <link rel="stylesheet" href="{% static 'assets/css/responsive.css' %}">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="{% static 'assets/css/custom.css' %}">
+
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+
+<body>
+	<!-- Start header -->
+	<header class="top-navbar">
+		<nav class="navbar navbar-expand-lg navbar-light bg-dark navbar-right ">
+			<a style="margin-left: 20px; padding-bottom: 0px;" class="navbar-brand" href="#"><img src="{% static 'assets/img/bento.png' %}" height="50px" width="50px" alt=""><span style="color: white; font-weight: bold; margin-left: 5px;">I2R</span></a>
+			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+			  <span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+			  <ul class="navbar-nav">
+				<li class="nav-item active">
+				  <a class="nav-link" href="#">Home <span class="sr-only"></span></a>
+				</li>
+				<li class="nav-item">
+				  <a class="nav-link" href="/identify">Get Recipe</a>
+				</li>
+				<li class="nav-item">
+				  <a class="nav-link" href="/bmi">BMI calculator</a>
+				</li>
+				<li class="nav-item dropdown">
+					<a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+						{{username}} &nbsp;<i class="fa fa-user"></i>
+					</a>
+					<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+					  {% if isLoggedIn %}
+					  <a class="dropdown-item" href="/logout">Logout</a>
+					  {% else %}
+					  <a class="dropdown-item" href="/login">Login</a>
+					  {%endif%}
+					  <a class="dropdown-item" href="#">Profile</a>
+					  <a class="dropdown-item" href="#">About</a>
+					</div>
+				  </li>
+			  </ul>
+			</div>
+			
+		  </nav>
+		  
+	</header>
+	{% include './includes/messages.html' %}
+	<!-- End header -->
+	<!-- Start slides -->
+	<div id="slides" class="cover-slides">
+		<ul class="slides-container">
+			<li class="text-center">
+				<img src="{% static 'assets/img/slider-01.jpg' %}" alt="">
+				<div class="container">
+					<div class="row">
+						<div class="col-md-12">
+							<h1 class="m-b-20"><strong>Welcome To <br> Image To Recipe Converter</strong></h1>
+							<p class="m-b-40">Know your vegetables and maintain a diet  <br> 
+							</p>
+							<p><a class="btn btn-lg btn-circle btn-outline-new-white" href="#hereabout">Get Started</a></p>
+						</div>
+					</div>
+				</div>
+			</li>
+			<li class="text-center">
+				<img src="{% static 'assets/img/slider-02.jpg' %}" alt="">
+				<div class="container">
+					<div class="row">
+						<div class="col-md-12">
+							<h1 class="m-b-20"><strong>Welcome To <br> Image To Recipe Converter</strong></h1>
+							<p class="m-b-40">Know your vegetables and maintain a diet  <br> 
+							</p>
+							<p><a class="btn btn-lg btn-circle btn-outline-new-white" href="#hereabout">Get Started</a></p>
+						</div>
+					</div>
+				</div>
+			</li>
+			<li class="text-center">
+				<img src="{% static 'assets/img/slider-03.jpg' %}" alt="">
+				<div class="container">
+					<div class="row">
+						<div class="col-md-12">
+							<h1 class="m-b-20"><strong>Welcome To <br> Image To Recipe Converter</strong></h1>
+							<p class="m-b-40">Know your vegetables and maintain a diet  <br> 
+							</p>
+							<p><a class="btn btn-lg btn-circle btn-outline-new-white" href="#hereabout">Get Started</a></p>
+						</div>
+					</div>
+				</div>
+			</li>
+		</ul>
+		<div class="slides-navigation">
+			<a href="#" class="next"><i class="fa fa-angle-right" aria-hidden="true"></i></a>
+			<a href="#" class="prev"><i class="fa fa-angle-left" aria-hidden="true"></i></a>
+		</div>
+	</div>
+	
+	<!-- End slides -->
+	
+	<!-- Start About -->
+	<div id="hereabout" class="about-section-box">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-6 col-md-6 col-sm-12">
+					<img style="opacity: 0.8;" src="{% static 'assets/img/as.jpg' %}" alt="" class="img-fluid">
+				</div>
+				<div class="col-lg-6 col-md-6 col-sm-12 text-center">
+					<div class="inner-column">
+						<h1>Welcome To <span>Image To Recipe</span></h1>
+						<h4>Little Story</h4>
+						<p></p>
+						<p>Here we help you to identify the the vegetables that you are not aware of and help you prepare a dish on that...</p>
+						<a class="btn btn-lg btn-circle btn-outline-new-white" href="/identify">Go</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- End About -->
+	
+	<!-- Start QT -->
+	<div class="qt-box qt-background">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-8 ml-auto mr-auto text-left">
+					<p class="lead ">
+						" If you're not the one cooking, stay out of the way and compliment the chef. "
+					</p>
+					<span class="lead">Michael Strahan</span>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- End QT -->
+	
+	<!-- Start Menu -->
+	<div class="menu-box">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-12">
+					<div class="heading-title text-center">
+						<h2>Recommendations</h2>
+						<p>Lorem Ipsum is simply dummy text of the printing and typesetting</p>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-lg-12">
+					<div class="special-menu text-center">
+						<div class="button-group filter-button-group">
+							<button class="active" data-filter="*">All</button>
+							<button data-filter=".drinks">Drinks</button>
+							<button data-filter=".lunch">Lunch</button>
+							<button data-filter=".dinner">Dinner</button>
+						</div>
+					</div>
+				</div>
+			</div>
+				
+			<div class="row special-list">
+				<div class="col-lg-4 col-md-6 special-grid drinks">
+					<div class="gallery-single fix">
+						<img src="images/img-01.jpg" class="img-fluid" alt="Image">
+						<div class="why-text">
+							<h4>Special Drinks 1</h4>
+							<p>Sed id magna vitae eros sagittis euismod.</p>
+							<h5> $7.79</h5>
+						</div>
+					</div>
+				</div>
+				
+				<div class="col-lg-4 col-md-6 special-grid drinks">
+					<div class="gallery-single fix">
+						<img src="images/img-02.jpg" class="img-fluid" alt="Image">
+						<div class="why-text">
+							<h4>Special Drinks 2</h4>
+							<p>Sed id magna vitae eros sagittis euismod.</p>
+							<h5> $9.79</h5>
+						</div>
+					</div>
+				</div>
+				
+				<div class="col-lg-4 col-md-6 special-grid drinks">
+					<div class="gallery-single fix">
+						<img src="images/img-03.jpg" class="img-fluid" alt="Image">
+						<div class="why-text">
+							<h4>Special Drinks 3</h4>
+							<p>Sed id magna vitae eros sagittis euismod.</p>
+							<h5> $10.79</h5>
+						</div>
+					</div>
+				</div>
+				
+				<div class="col-lg-4 col-md-6 special-grid lunch">
+					<div class="gallery-single fix">
+						<img src="images/img-04.jpg" class="img-fluid" alt="Image">
+						<div class="why-text">
+							<h4>Special Lunch 1</h4>
+							<p>Sed id magna vitae eros sagittis euismod.</p>
+							<h5> $15.79</h5>
+						</div>
+					</div>
+				</div>
+				
+				<div class="col-lg-4 col-md-6 special-grid lunch">
+					<div class="gallery-single fix">
+						<img src="images/img-05.jpg" class="img-fluid" alt="Image">
+						<div class="why-text">
+							<h4>Special Lunch 2</h4>
+							<p>Sed id magna vitae eros sagittis euismod.</p>
+							<h5> $18.79</h5>
+						</div>
+					</div>
+				</div>
+				
+				<div class="col-lg-4 col-md-6 special-grid lunch">
+					<div class="gallery-single fix">
+						<img src="images/img-06.jpg" class="img-fluid" alt="Image">
+						<div class="why-text">
+							<h4>Special Lunch 3</h4>
+							<p>Sed id magna vitae eros sagittis euismod.</p>
+							<h5> $20.79</h5>
+						</div>
+					</div>
+				</div>
+				
+				<div class="col-lg-4 col-md-6 special-grid dinner">
+					<div class="gallery-single fix">
+						<img src="images/img-07.jpg" class="img-fluid" alt="Image">
+						<div class="why-text">
+							<h4>Special Dinner 1</h4>
+							<p>Sed id magna vitae eros sagittis euismod.</p>
+							<h5> $25.79</h5>
+						</div>
+					</div>
+				</div>
+				
+				<div class="col-lg-4 col-md-6 special-grid dinner">
+					<div class="gallery-single fix">
+						<img src="images/img-08.jpg" class="img-fluid" alt="Image">
+						<div class="why-text">
+							<h4>Special Dinner 2</h4>
+							<p>Sed id magna vitae eros sagittis euismod.</p>
+							<h5> $22.79</h5>
+						</div>
+					</div>
+				</div>
+				
+				<div class="col-lg-4 col-md-6 special-grid dinner">
+					<div class="gallery-single fix">
+						<img src="images/img-09.jpg" class="img-fluid" alt="Image">
+						<div class="why-text">
+							<h4>Special Dinner 3</h4>
+							<p>Sed id magna vitae eros sagittis euismod.</p>
+							<h5> $24.79</h5>
+						</div>
+					</div>
+				</div>
+				
+			</div>
+		</div>
+	</div>
+	<!-- End Menu -->
+	
+	<!-- Start Footer -->
+	<footer class="footer-area bg-f">
+		
+		<div class="copyright">
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-12">
+						<p class="company-name">All Rights Reserved. &copy; I2R
+					</div>
+				</div>
+			</div>
+		</div>
+		
+	</footer>
+	<!-- End Footer -->
+	
+	<a href="#" id="back-to-top" title="Back to top" style="display: none;">&uarr;</a>
+
+	<!-- ALL JS FILES -->
+	<script src="{% static 'assets/js/jquery-3.2.1.min.js' %}"></script>
+	<script src="{% static 'assets/js/popper.min.js' %}"></script>
+	<script src="{% static 'assets/js/bootstrap.min.js' %}"></script>
+    <!-- ALL PLUGINS -->
+	<script src="{% static 'assets/js/jquery.superslides.min.js' %}"></script>
+	<script src="{% static 'assets/js/images-loded.min.js' %}"></script>
+	<script src="{% static 'assets/js/isotope.min.js' %}"></script>
+	<script src="{% static 'assets/js/baguetteBox.min.js' %}"></script>
+	<script src="{% static 'assets/js/form-validator.min.js' %}"></script>
+    <script src="{% static 'assets/js/contact-form-script.js' %}"></script>
+    <script src="{% static 'assets/js/custom.js' %}"></script>
+</body>
+</html>
+{% endblock content %}

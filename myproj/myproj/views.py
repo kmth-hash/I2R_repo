@@ -25,6 +25,7 @@ calories=[]
 quantity=[]
 proteins=[]
 isLoggedIn = False
+username = ''
 recipe_json=[]
 recipes_array = []
 carbohydrates=[]
@@ -36,22 +37,11 @@ predcited_items=[]
 # fd=exec(Path("yolov5/detect.py").read_text())
 # print(fd)
 # print(gh)
+def firstcall(request):
+    return redirect('/home')
 def predict(iurl):
     global predcited_items
     toexecute = 'python yolov5/detect.py --weights probably_the_last_one.pt --img 640 --conf 0.1 --source '
-    # K.clear_session()
-    # model = load_model('vegetable_predict_3.h5')
-    # labels = ['Apple','Banana','Beetroot','Cauliflower','Corn','Onion','Orange','Potato','Tomato','Watermelon']
-    # test_image = preprocessing.image.load_img(iurl,target_size=(224,224))
-    # test_image = preprocessing.image.img_to_array(test_image)
-    # test_image = np.expand_dims(test_image, axis = 0)
-    # result = model.predict(test_image)
-    # K.clear_session()
-    # result1 = result[0]
-    # for i in range(0,10):
-    #     if result1[i] == 1.:
-    #         break;
-    # prediction = labels[i]
     jh=[]
     toexecute+=iurl
     gh=os.system(toexecute)
@@ -82,12 +72,22 @@ def signup(request):
             return redirect("/signup")
     return render(request , 'signup.html' , {})
 def recipes(request):
+    recipe_string = ''
+    if not request.session.has_key('username'):
+        return redirect('/login')
     global imagesToPreview,recipes_array,predcited_items
     a=[]
     recipes_array=[]
     imagesToPreview = loads(request.POST['hiddeninput'])
     print(imagesToPreview)
-    for i in predcited_items:
+    for j,i in enumerate(predcited_items):
+        if len(predcited_items)>1:
+            if j == len(predcited_items)-1:
+                recipe_string +=i
+            else:
+                recipe_string +=i+', '
+        else:
+            recipe_string = i
         with connection.cursor() as cursor:
             cursor.execute('SELECT "Receipe_Id_id" FROM myproj_recipe_ingredients WHERE "Ingredient_Id_id"=(SELECT "Ingredient_id" FROM myproj_ingredients WHERE "name"=%s)',[i])
             row = cursor.fetchall()
@@ -120,7 +120,7 @@ def recipes(request):
                 recipes_array.append(recipe_details)
         connection.close()
     recipe_json = dumps(recipes_array)
-    return render(request , 'recipes.html' , {'recipe_data':recipe_json})
+    return render(request , 'recipes.html' , {'recipe_data':recipe_json,'predcited_items':recipe_string,'username':username})
 
 def login(request):
     global isLoggedIn
@@ -159,12 +159,14 @@ def login(request):
                 return redirect("/login")
 
     return render(request , 'login.html' , {})
-
 def logout(request):
-    global isLoggedIn
+    global isLoggedIn,username,datajson
     try:
         del request.session['username']
         isLoggedIn = False
+        username = ''
+        imagesToPreview=[]
+        datajson=[]
         messages.success(request , 'Successfully Logged out')
     except:
         messages.error(request , 'Error while logging out')
@@ -173,16 +175,14 @@ def logout(request):
     return redirect('/')
 
 def mainpage(request):
-    username = ''
-    global isLoggedIn 
-    if request.session.has_key('username'):
-        #print(request.session['username'])
-        isLoggedIn = True
-        username = setUserName(request.session['username'])
-
+    if not request.session.has_key('username'):
+        return redirect('/login')
     global imagesToPreview,datajson
     if request.POST:
         if request.POST['Name']:
+            imagesToPreview = loads(request.POST['hiddeninput'])
+            print("sdfgdf")
+            print(imagesToPreview)
             image_text = request.POST['Name']
             uploaded_file_url = '/static/assets/img/veg/'+str(image_text).lower()+'.jpg'
             imageAndName = {
@@ -196,6 +196,8 @@ def mainpage(request):
         else:
 
             imagesToPreview = loads(request.POST['hiddeninput'])
+            print("sdfgdf")
+            print(imagesToPreview)
             doc = request.FILES #returns a dict-like object
             doc_name = doc['image']
             fs = FileSystemStorage()
@@ -209,7 +211,7 @@ def mainpage(request):
             # predictedNames.append(predictedImage)
             imagesToPreview.append(imageAndName)
             datajson = dumps(imagesToPreview)
-        return render(request , 'mainpage.html' , {'len':len(imagesToPreview),'imagesToPreview':imagesToPreview,'data':datajson , 'isLoggedIn' : isLoggedIn , 'username' : username })
+    return render(request , 'mainpage.html' , {'len':len(imagesToPreview),'imagesToPreview':imagesToPreview,'data':datajson , 'isLoggedIn' : isLoggedIn , 'username' : username })
 
 def addRecipe(request):
     all_recipe_percentage = return_recipes(['egg' , 'onion' , 'butter' , 'salt', 'pepper'])
@@ -218,6 +220,8 @@ def addRecipe(request):
     return render(request , 'addRecipe.html' , {})
 
 def bmi(request):
+    if not request.session.has_key('username'):
+        return redirect('/login')
     global isLoggedIn
     username = ''
     weight = 0
@@ -234,10 +238,15 @@ def bmi(request):
     return render(request , 'bmi.html' , {'isLoggedIn' : isLoggedIn , 'username' : username , 'weight' : weight , 'height': height })
 
 def home(request):
-
-    return render(request , 'home.html' , {})
+    global username
+    global isLoggedIn 
+    if request.session.has_key('username'):
+        #print(request.session['username'])
+        isLoggedIn = True
+        username = setUserName(request.session['username'])
+    return render(request , 'index.html' , {'isLoggedIn':isLoggedIn,'username':username})
 
 
 def recipe(request, id):
-
-    return render(request, 'recipe.html', {})
+    print(id)
+    return render(request, 'recipe.html', {'username':username})

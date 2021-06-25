@@ -9,30 +9,55 @@
     <meta name="description" content="I2R Converter">
     <meta name="keywords" content="BMI , Healthy , HTML , JS , Web">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-    <link rel="shortcut icon" href="{% static 'assets/img/favicon.ico' %}" type="image/x-icon">
+    <link rel="shortcut icon" href="{% static 'assets/img/bento.png' %}" type="image/x-icon">
     <title>I2R Converter</title>
-    <link rel="stylesheet" href="{% static 'assets/bootstrap/css/bootstrap.min.css' %}">
+   <link rel="stylesheet" href="{% static 'assets/bootstrap/css/bootstrap.min.css' %}">
     <link rel="stylesheet" href="{% static 'assets/fonts/font-awesome.min.css' %}">
     <link rel="stylesheet" href="{% static 'assets/css/styles.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/style.css' %}">
 </head>
 
 <body>
-    <nav class="navbar navbar-light shadow sticky-top bg-white clean-navbar">
-        <div class="container">
-            <a class="navbar-brand logo" href="/">I2R Converter</a>            
-            <div class=""  id="navcol-1">
-                <a href = "/" class="ml-auto btn btn-light font-weight-bold" >Home</a>
-                
+    <header class="top-navbar">
+        <nav style="top: 0px;" class="navbar navbar-expand-lg navbar-light bg-dark navbar-right ">
+            <a style="margin-left: 20px; padding-bottom: 0px;" class="navbar-brand" href="#"><img src="{% static 'assets/img/bento.png' %}" height="50px" width="50px" alt=""><span style="color: white; font-weight: bold; margin-left: 5px;">I2R</span></a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+              <ul class="navbar-nav">
+                <li class="nav-item">
+                  <a class="nav-link" href="/">Home <span class="sr-only"></span></a>
+                </li>
+                <li class="nav-item active">
+                  <a class="nav-link" href="/identify">Get Recipe</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="/bmi">BMI calculator</a>
+                </li>
+                <li class="nav-item dropdown">
+					<a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+						{{username}} &nbsp;<i class="fa fa-user"></i>
+					</a>
+					<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+					  <a class="dropdown-item" href="/logout">Logout</a>
+					  <a class="dropdown-item" href="#">Profile</a>
+					  <a class="dropdown-item" href="#">About</a>
+					</div>
+				  </li>
+              </ul>
             </div>
-        </div>
-    </nav>
-    <main class="page login-page bg-white">
-        <section class="clean-form dark">
-            <div class="container" id="recipe_container">
+          </nav>
+          
+    </header>
+    <div style="margin-top: 80px;">
+        <h3 style="color: whitesmoke;">
+            Showing recipes that can be prepared using {{predcited_items}}
+        </h3>
+    </div>
+    <div style="padding-bottom: 20px;" class="container" id="recipe_container">
                 
-            </div>
-        </section>
-    </main>
+    </div>
     <script>
         var data = {}
         data = JSON.parse("{{recipe_data|escapejs}}");
@@ -40,14 +65,25 @@
         recipe_container.innerHTML = '';
         console.log(data)
         for(var i in data){
-            recipe_container.innerHTML+='<div onclick="get_more_recipe('+i+')" class="get_more_recipe rounded border m-3 p-1 col-12"><div class="row"><div class="col-lg-2 col-3"><img src="'+data[i].imageURL+'" width="100%" class="m-2 rounded "></div><div class="col-lg-10 col-9"><h1 class="">'+data[i].name+'</h1><hr class="p-1 m-0"/><p>'+data[i].description+'</p><div id="scrollmenu"><a href="spicy">Spicy</a><a href="rice-items">Rice Items</a><a href="non-veg">Non Veg</a><a href="Chicken">Chicken</a><a href="Chinese">Chinese</a><a href="More Options">More Options</a></div></div></div></div>'
+            recipe_container.innerHTML+='<div onclick="get_more_recipe('+i+')" class="get_more_recipe rounded m-3 p-1 col-12"><div class="row"><div class="col-lg-2 col-3"><img src="'+data[i].imageURL+'" width="100%" class="m-2 rounded "></div><div class="recipe_name col-lg-10 col-9"><h2 class="">'+data[i].name+'</h2><hr style="background-color:white"><p class="text-white-50 font-weight-bold">'+data[i].description+'</p><div id="scrollmenu"><a href="spicy">Spicy</a><a href="rice-items">Rice Items</a><a href="non-veg">Non Veg</a><a href="Chicken">Chicken</a><a href="Chinese">Chinese</a><a href="More Options">More Options</a></div></div></div></div>'
         }
         
         function get_more_recipe(i){
-            console.log(data[i])
+            window.location.href = window.location.href+'recipe/'+i
+            localStorage.setItem('recipe_detail',JSON.stringify(data[i]))
         }
     </script>
-    
+    <script src="{% static 'assets/js/jquery-3.2.1.min.js' %}"></script>
+	<script src="{% static 'assets/js/popper.min.js' %}"></script>
+	<script src="{% static 'assets/js/bootstrap.min.js' %}"></script>
+    <!-- ALL PLUGINS -->
+	<script src="{% static 'assets/js/jquery.superslides.min.js' %}"></script>
+	<script src="{% static 'assets/js/images-loded.min.js' %}"></script>
+	<script src="{% static 'assets/js/isotope.min.js' %}"></script>
+	<script src="{% static 'assets/js/baguetteBox.min.js' %}"></script>
+	<script src="{% static 'assets/js/form-validator.min.js' %}"></script>
+    <script src="{% static 'assets/js/contact-form-script.js' %}"></script>
+    <script src="{% static 'assets/js/custom.js' %}"></script>
 </body>
 
 </html>

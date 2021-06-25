@@ -27,5 +27,12 @@ myproj/myproj/__pycache__/wsgi.cpython-38.pyc
 
 myproj/vegetable_predict_3.h5
 myproj/templates/recipes.html
-myproj/*
+# myproj/*
 myproj/myproj/files/*
+myproj/runs/*
+myproj/probably_the_last_one.pt
+myproj/yolov5s.pt
+myproj/yolo_weights.pt
+myproj/last.pt
+.gitignore
+myproj/custom_best.pt

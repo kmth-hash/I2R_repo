@@ -10,7 +10,16 @@ body{
 input[type="file"] {
   position: absolute;
   z-index: -1;
- 
+  width: 80px;
+}
+input[type="text"] {
+  border-radius: 20px;
+}
+input[type="email"] {
+  border-radius: 20px;
+}
+input[type="password"]{
+  border-radius: 20px;
 }
 .file-wrapper {
   position: relative;
@@ -26,14 +35,18 @@ input[type="file"] {
 .close {
   cursor: pointer;
   position: absolute;
-  top: 10%;
+  /* top: 10%; */
   left: 6%;
   transform: translate(0%, -50%);
+  position:absolute;
+  top:20px;
+  font-weight: bold;
 }
 #scrollmenu{
-  background-color: #ffffff;
+  background-color: transparent;
   overflow: auto;
   white-space: nowrap;
+  margin-bottom: 10px;
 }
 
 #scrollmenu a{
@@ -42,15 +55,46 @@ input[type="file"] {
   text-align: center;
   padding-right: 15px;
   padding-left: 15px;
+  margin-left: 5px;
   text-decoration: none;
   background-color: rgb(255, 255, 255);
-  border-radius: 3px;
-  border: 0.5px #000000a6 solid;
+  border-radius: 5px;
+  border: 0.5px #0000005b solid;
 }
 
 #scrollmenu a:hover{
   background-color:#777 ;
+  color: white;
 }
 .get_more_recipe{
   cursor: pointer;
+  border: 0.5px solid rgba(88, 88, 88, 0.582);
+  
+}
+.get_more_recipe:hover{
+  -webkit-box-shadow: 2px 2px 18px -11px rgb(255, 255, 255);
+  -moz-box-shadow: 2px 2px 18px -11px rgb(255, 255, 255);
+  box-shadow: 2px 2px 18px -11px rgba(255,255,255,1);
+}
+.recipe_name h2,hr{
+  color: white;
+  /* background-color: white; */
+}
+.alert{
+  /* margin-top: 75px; */
+  position: absolute;
+  width: 100%;
+  top: 75px;
+  z-index: 11;
+}
+#description h6{
+  color: white;
+  font-size: 17px;
+}
+#procedure h2{
+  color: white;
+}
+#procedure{
+  font-size: 17px;
+  color: rgba(245, 245, 245, 0.877);
 }
