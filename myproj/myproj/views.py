@@ -1,5 +1,5 @@
 from django.shortcuts import render , redirect
-from .models import Ingredients, Recipes , Category , Recipe_Ingredients , Users
+from .models import Ingredients, Recipes , Category , Recipe_Ingredients , Users, User_Details,Receipe_Tracker
 from django.contrib import messages
 from django.http import HttpResponse
 from .test import storeDBfromCSV
@@ -33,6 +33,8 @@ description=[]
 # names = ['Tomato','cauli']
 procedure=[]
 predcited_items=[]
+user_id=""
+name=""
 # from pathlib import Path
 # fd=exec(Path("yolov5/detect.py").read_text())
 # print(fd)
@@ -56,8 +58,9 @@ def predict(iurl):
                 predcited_items.append(str(line.strip()).title())
     print(predcited_items)
     return jh
+
 def signup(request):
-    global isLoggedIn      
+    global isLoggedIn,user_id,name  
     if request.method=='POST' :
         name = request.POST['first_name']+" "+request.POST['last_name']
         email = request.POST['email']
@@ -65,16 +68,21 @@ def signup(request):
         confirm_password = request.POST['conf_password']
 
         if password==confirm_password:
-            new_user = Users(username= name , password = password , height = "" , weight = "" , role = "user", email=email )
+            new_user = Users(username= name , password = password , role = "user", email=email )
             new_user.save()
             request.session['username'] = name
             isLoggedIn = True
-            messages.success(request  , " Signup successful.")
-            return redirect("/")
+            with connection.cursor() as cursor:
+                cursor.execute('SELECT "id" FROM myproj_users WHERE "username"=%s',[name])
+                row = cursor.fetchone()
+                user_id = row[0]
+                cursor.close()
+            return redirect('/signup/profile')
         else:
             messages.error(request  , " Password did not match.")
             return redirect("/signup")
     return render(request , 'signup.html' , {})
+
 def recipes(request):
     recipe_string = ''
     if not request.session.has_key('username'):
@@ -219,10 +227,8 @@ def mainpage(request):
     return render(request , 'mainpage.html' , {'len':len(imagesToPreview),'imagesToPreview':imagesToPreview,'data':datajson , 'isLoggedIn' : isLoggedIn , 'username' : username })
 
 def addRecipe(request):
-    all_recipe_percentage = return_recipes(['egg' , 'onion' , 'butter' , 'salt', 'pepper'])
-    #valid_recipes = find_valid_recipes(all_recipe_percentage)
-    print(all_recipe_percentage)
-    return render(request , 'addRecipe.html' , {})
+    storeDBfromCSV()
+    return render(request , 'addRecipe.html' , {}) 
 
 def bmi(request):
     if not request.session.has_key('username'):
@@ -255,3 +261,17 @@ def home(request):
 def recipe(request, id):
     print(id)
     return render(request, 'recipe.html', {'username':username})
+
+def signupprofile(request):
+    global user_id,name
+    print("reached")
+    if request.method == 'POST':
+        height = request.POST['height']
+        weight = request.POST['weight']
+        age = request.POST['age']
+        gender = request.POST['gender']
+        user_details = User_Details(User_Id_id=user_id, height=height , weight = weight , age=age, gender=gender,Calories="2000" )
+        user_details.save()
+        messages.success(request  , " Signup successful.")
+        return redirect('/')
+    return render(request, "signupprofile.html",{'username':name})
