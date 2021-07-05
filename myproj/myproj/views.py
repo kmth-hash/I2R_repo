@@ -33,14 +33,28 @@ description=[]
 # names = ['Tomato','cauli']
 procedure=[]
 predcited_items=[]
-user_id=""
+user_id = None
 name=""
 # from pathlib import Path
 # fd=exec(Path("yolov5/detect.py").read_text())
 # print(fd)
 # print(gh)
 def profile(request):
-    return render(request,'profile.html')
+    global isLoggedIn
+    user_id = request.session['uid']
+    email = request.session['email']
+    username = setUserName(request.session['username'])
+    with connection.cursor() as cursor:
+            cursor.execute('SELECT * FROM myproj_user_details WHERE "User_Id_id"=%s',[user_id])
+            row = cursor.fetchall()
+            item = []
+            print(row)
+            for j in row:
+                item.append(list(j))
+                # print(j)
+    connection.close()
+    print(user_id)
+    return render(request,'profile.html',{'isLoggedIn':isLoggedIn,'username':username,'data':item,'mail':email})
 def signupprofile(request):
     return render(request,'signupprofile.html')
 def firstcall(request):
@@ -71,11 +85,14 @@ def signup(request):
             new_user = Users(username= name , password = password , role = "user", email=email )
             new_user.save()
             request.session['username'] = name
+            request.session['email'] = email
+
             isLoggedIn = True
             with connection.cursor() as cursor:
-                cursor.execute('SELECT "id" FROM myproj_users WHERE "username"=%s',[name])
+                cursor.execute('SELECT "id" FROM myproj_users WHERE "username"=%s and "password"=%s',[name,password])
                 row = cursor.fetchone()
                 user_id = row[0]
+                request.session['uid'] = user_id
                 cursor.close()
             return redirect('/signup/profile')
         else:
@@ -148,7 +165,9 @@ def login(request):
                 user_obj = Users.objects.get(password=pass1  , email=name1)                
                 res = user_obj
                 isLoggedIn = True
+                request.session['uid'] = user_obj.id
                 request.session['username'] = user_obj.username
+                request.session['email'] = user_obj.email
                 messages.success(request , "Welcome back! Let's cook something good.")
                 return redirect("/" , isLoggedIn = True , username = user_obj.username)
                 
@@ -176,6 +195,8 @@ def logout(request):
     global isLoggedIn,username,datajson
     try:
         del request.session['username']
+        del request.session['uid']
+        del request.session['email']
         isLoggedIn = False
         username = ''
         imagesToPreview=[]

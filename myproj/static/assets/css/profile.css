@@ -421,7 +421,6 @@ ul.summary-list > li:last-child  {
     align-content: center;
     height: 40px;
     font-weight: 500;
-    background-color: #ffffff21;
 }
 #activity{
     border-left: 5px solid rgb(218,159,65);
@@ -477,8 +476,10 @@ input[type="number"]:focus {
     border-width: 0px; */
     outline:none !important;
 }
+input[type="text"]{
+    padding-left: 10px;
+}
 input[type="text"]:focus {
-    padding-left: 5px;
     /* border: 0px; 
     border-width: 0px; */
     outline:none !important;
