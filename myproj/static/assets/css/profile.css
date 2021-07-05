@@ -429,6 +429,24 @@ ul.summary-list > li:last-child  {
     padding-top: 5px;
     cursor: pointer;
 }
+#editme{
+    position: absolute;
+    -webkit-box-shadow: 4px 4px 17px -6px rgba(0,0,0,0.75);
+-moz-box-shadow: 4px 4px 17px -6px rgba(0,0,0,0.75);
+box-shadow: 4px 4px 17px -6px rgba(0,0,0,0.75);
+    top: -310px;
+    /* top: 50%; */
+    border-radius: 10px;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    transition: all 0.5s ease-in-out;
+    height: fit-content;
+    padding-bottom: 10px; 
+    z-index: 20000;
+    background: rgb(64,52,52);
+background: linear-gradient(149deg, rgba(64,52,52,1) 37%, rgba(162,35,35,1) 88%);
+    /* background-color: rgb(29, 25, 25); */
+}
 #insideact{
     position: absolute;
     -webkit-box-shadow: 4px 4px 17px -6px rgba(0,0,0,0.75);
@@ -445,7 +463,9 @@ box-shadow: 4px 4px 17px -6px rgba(0,0,0,0.75);
     height: fit-content;
     padding-bottom: 10px; 
     z-index: 20000;
-    background-color: rgb(29, 25, 25);
+    
+background: linear-gradient(149deg, rgba(64,52,52,1) 37%, rgba(162,35,35,1) 88%);
+    /* background-color: rgb(29, 25, 25); */
 }
 #quantity{
     width: 40%;
@@ -453,6 +473,12 @@ box-shadow: 4px 4px 17px -6px rgba(0,0,0,0.75);
     padding: 2px;
 }
 input[type="number"]:focus {
+    /* border: 0px; 
+    border-width: 0px; */
+    outline:none !important;
+}
+input[type="text"]:focus {
+    padding-left: 5px;
     /* border: 0px; 
     border-width: 0px; */
     outline:none !important;

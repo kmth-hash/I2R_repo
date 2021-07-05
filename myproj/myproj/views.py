@@ -125,7 +125,7 @@ def recipes(request):
                 recipes_array.append(recipe_details)
         connection.close()
     recipe_json = dumps(recipes_array)
-    return render(request , 'recipes.html' , {'recipe_data':recipe_json,'predcited_items':recipe_string,'username':username})
+    return render(request , 'recipes.html' , {'recipe_data':recipes_array,'predcited_items':recipe_string,'username':username})
 
 def login(request):
     global isLoggedIn

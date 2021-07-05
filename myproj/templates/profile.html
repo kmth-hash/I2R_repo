@@ -12,6 +12,7 @@
         <link rel="stylesheet" href="{% static 'assets/css/all.css' %}">
         <link rel="stylesheet" href="{% static 'assets/css/profile.css' %}">
         <link rel="stylesheet" href="{% static 'assets/css/style.css' %}">
+        <link rel="stylesheet" href="{% static 'assets/css/styles.css' %}">
         <!-- <link rel="stylesheet" href="{% static 'assets/css/style.css' %}"> -->
     <!-- <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet"> -->
 </head>
@@ -68,7 +69,7 @@
                   Profile
               </div>
               <hr style="margin: 0px;">
-              <div id="edit_profile">
+              <div onclick="edit_profile()" id="edit_profile">
                   Edit profile
               </div>
           <hr style="margin: 0px;">
@@ -199,7 +200,61 @@ box-shadow: 6px 3px 16px -5px rgba(0,0,0,0.75);" class="panel">
     </div>
     
 </div>
+<div id="editme" class="col-md-6">
+    <h4 style="color: whitesmoke;padding: 20px;">Edit Profile</h4>
+    <hr style="background-color: whitesmoke;margin:0px;margin-left: 20px;">
+    <br>
+    <div style="padding-left: 20px;">
+        <div class="row" style="padding-bottom: 10px;">
+            <div class="col-md-2"">
+                <h5 class="text-white-50 font-weight-bold">Name:</h5>
+            </div>
+            <div class="col-md-6">
+                <input id="editname" type="text">
+            </div>
+        </div>
+        <div class="row" style="padding-bottom: 10px;">
+            <div class="col-md-2">
+                <h5 class="text-white-50 font-weight-bold">Age:</h5>
+            </div>
+            <div class="col-md-6">
+                <input id="editage"  type="text">
+            </div>
+        </div>
+        <div class="row" style="padding-bottom: 10px;">
+            <div class="col-md-2">
+                <h5 class="text-white-50 font-weight-bold">Height:</h5>
+            </div>
+            <div class="col-md-6">
+                <input id="editheight"  type="text">
+            </div>
+        </div>
+        <div class="row" style="padding-bottom: 10px;">
+            <div class="col-md-2">
+                <h5 class="text-white-50 font-weight-bold">Weight:</h5>
+            </div>
+            <div class="col-md-6">
+                <input id="editweight"  type="text">
+            </div>
+        </div>
+    <!-- <h5 class="text-white-50 font-weight-bold">Name: <span style="padding-left: 10px;"><input type="text"></span></h5>
+    <h5 class="text-white-50 font-weight-bold">Age: <span style="padding-left: 25px;"><input type="text"></span></h5>
+    <h5 class="text-white-50 font-weight-bold">Height: <span><input type="text"></span></h5>
+    <h5 class="text-white-50 font-weight-bold">Weight: <span><input type="text"></span></h5> -->
+
+    </div>            
+    <div style="padding: 20px;">
+        <button id="actbutton" onclick="mh()">
+            Done
+        </button>
+    </div>
+    
+</div>
 <script>
+    function edit_profile(){
+        document.getElementById('body').style.display = 'block'
+        document.getElementById('editme').style.top = '50%'
+    }
     function running(){
         document.getElementById('running').style.border = '3px solid red'
         document.getElementById('gym').style.border = 'none'
@@ -226,9 +281,14 @@ box-shadow: 6px 3px 16px -5px rgba(0,0,0,0.75);" class="panel">
     function clearme(){
         document.getElementById('body').style.display = 'none'
         document.getElementById('insideact').style.top = '-310px'
+        document.getElementById('editme').style.top = '-310px'
         document.getElementById('running').style.border = 'none'
         document.getElementById('gym').style.border = 'none'
         document.getElementById('cycle').style.border = 'none' 
+        document.getElementById('editname').value = '' 
+        document.getElementById('editage').value = '' 
+        document.getElementById('editheight').value = '' 
+        document.getElementById('editweight').value = '' 
 
     }
 </script>
