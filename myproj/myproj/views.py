@@ -257,7 +257,8 @@ def home(request):
 
 
 def recipe(request, id):
-    rec = Recipes.objects.get( Receipe_Id=id)
+    rec = Recipes.objects.get(Receipe_Id=id)
+    print(rec)
     ing_list = Recipe_Ingredients.objects.filter(Receipe_Id=id)
     ingredients = []
     image_url = rec.Receipe_Image
