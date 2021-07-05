@@ -17,7 +17,6 @@
 
     <!-- Site Icons -->
 	<link rel="shortcut icon" href="{% static 'assets/img/bento.png' %}" type="image/x-icon">
-    <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="{% static 'assets/css/bootstrap.min.css' %}">    
@@ -61,7 +60,7 @@
 					  {% else %}
 					  <a class="dropdown-item" href="/login">Login</a>
 					  {%endif%}
-					  <a class="dropdown-item" href="#">Profile</a>
+					  <a class="dropdown-item" href="/profile">Profile</a>
 					  <a class="dropdown-item" href="#">About</a>
 					</div>
 				  </li>
@@ -173,7 +172,7 @@
 				<div class="col-lg-12">
 					<div class="heading-title text-center">
 						<h2>Recommendations</h2>
-						<p>Lorem Ipsum is simply dummy text of the printing and typesetting</p>
+						<p>Eat healthy, home-cooked meals, and save some bucks with our easy-to-use meal planning</p>
 					</div>
 				</div>
 			</div>
@@ -182,49 +181,46 @@
 					<div class="special-menu text-center">
 						<div class="button-group filter-button-group">
 							<button class="active" data-filter="*">All</button>
+							<button data-filter=".main">Maincourse</button>
+							<button data-filter=".snacks">Snacks</button>
 							<button data-filter=".drinks">Drinks</button>
-							<button data-filter=".lunch">Lunch</button>
-							<button data-filter=".dinner">Dinner</button>
 						</div>
 					</div>
 				</div>
 			</div>
 				
 			<div class="row special-list">
-				<div class="col-lg-4 col-md-6 special-grid drinks">
+				<div class="col-lg-4 col-md-6 special-grid main">
 					<div class="gallery-single fix">
-						<img src="images/img-01.jpg" class="img-fluid" alt="Image">
+						<img src="{% static 'assets/img/recc/idli.jpg'%}" class="img-fluid" alt="Image">
 						<div class="why-text">
-							<h4>Special Drinks 1</h4>
-							<p>Sed id magna vitae eros sagittis euismod.</p>
-							<h5> $7.79</h5>
+							<h4>Idli</h4>
+							<p>It is naturally vegetarian, vegan, gluten-free and makes for one of the healthiest breakfast options served with Sambar and Coconut Chutney.</p>
 						</div>
 					</div>
 				</div>
 				
-				<div class="col-lg-4 col-md-6 special-grid drinks">
+				<div class="col-lg-4 col-md-6 special-grid main">
 					<div class="gallery-single fix">
-						<img src="images/img-02.jpg" class="img-fluid" alt="Image">
+						<img src="{% static 'assets/img/recc/masaldosa.jpg'%}" class="img-fluid" alt="Image">
 						<div class="why-text">
-							<h4>Special Drinks 2</h4>
-							<p>Sed id magna vitae eros sagittis euismod.</p>
-							<h5> $9.79</h5>
+							<h4>Masala Dosa</h4>
+							<p>While masala dosa is a famous snack most popular in South India, these tasty stuffed crepes are enjoyed in North India as well and can be found on menus throughout the world</p>
 						</div>
 					</div>
 				</div>
 				
-				<div class="col-lg-4 col-md-6 special-grid drinks">
+				<div class="col-lg-4 col-md-6 special-grid main">
 					<div class="gallery-single fix">
-						<img src="images/img-03.jpg" class="img-fluid" alt="Image">
+						<img src="{% static 'assets/img/recc/vada.jpg'%}" class="img-fluid" alt="Image">
 						<div class="why-text">
-							<h4>Special Drinks 3</h4>
-							<p>Sed id magna vitae eros sagittis euismod.</p>
-							<h5> $10.79</h5>
+							<h4>Medu Vada</h4>
+							<p>These doughnuts shaped fritters are made with black gram, herbs, coconut and spices. Even though the main ingredient is urad dal (black gram) but the herbs and spices can vary. You can also add vegetables like onions or grated carrots or grated beetroot.</p>
 						</div>
 					</div>
 				</div>
 				
-				<div class="col-lg-4 col-md-6 special-grid lunch">
+				<div class="col-lg-4 col-md-6 special-grid snacks">
 					<div class="gallery-single fix">
 						<img src="images/img-04.jpg" class="img-fluid" alt="Image">
 						<div class="why-text">
@@ -235,7 +231,7 @@
 					</div>
 				</div>
 				
-				<div class="col-lg-4 col-md-6 special-grid lunch">
+				<div class="col-lg-4 col-md-6 special-grid snacks">
 					<div class="gallery-single fix">
 						<img src="images/img-05.jpg" class="img-fluid" alt="Image">
 						<div class="why-text">
@@ -246,7 +242,7 @@
 					</div>
 				</div>
 				
-				<div class="col-lg-4 col-md-6 special-grid lunch">
+				<div class="col-lg-4 col-md-6 special-grid snacks">
 					<div class="gallery-single fix">
 						<img src="images/img-06.jpg" class="img-fluid" alt="Image">
 						<div class="why-text">
@@ -257,7 +253,7 @@
 					</div>
 				</div>
 				
-				<div class="col-lg-4 col-md-6 special-grid dinner">
+				<div class="col-lg-4 col-md-6 special-grid drinks">
 					<div class="gallery-single fix">
 						<img src="images/img-07.jpg" class="img-fluid" alt="Image">
 						<div class="why-text">
@@ -268,7 +264,7 @@
 					</div>
 				</div>
 				
-				<div class="col-lg-4 col-md-6 special-grid dinner">
+				<div class="col-lg-4 col-md-6 special-grid drinks">
 					<div class="gallery-single fix">
 						<img src="images/img-08.jpg" class="img-fluid" alt="Image">
 						<div class="why-text">
@@ -279,7 +275,7 @@
 					</div>
 				</div>
 				
-				<div class="col-lg-4 col-md-6 special-grid dinner">
+				<div class="col-lg-4 col-md-6 special-grid drinks">
 					<div class="gallery-single fix">
 						<img src="images/img-09.jpg" class="img-fluid" alt="Image">
 						<div class="why-text">

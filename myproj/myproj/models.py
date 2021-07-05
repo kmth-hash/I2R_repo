@@ -4,12 +4,27 @@ class Users(models.Model):
     username = models.TextField()
     email = models.TextField(default="")
     password = models.TextField()
-    height = models.TextField()
-    weight = models.TextField()
     role = models.TextField()
 
     def __str__(self):
         return "Name : "+self.username
+    
+class User_Details(models.Model):
+    User_Id = models.ForeignKey("Users",on_delete=models.SET_NULL,null=True)
+    height = models.TextField()
+    weight = models.TextField()
+    age = models.TextField()
+    gender = models.TextField()
+    Calories = models.TextField()
+
+    def __str__(self):
+        return "Name : "+self.Calories
+
+class Receipe_Tracker(models.Model):
+    User_Id = models.ForeignKey("Users",on_delete=models.SET_NULL,null=True)
+    Receipe_Id = models.ForeignKey("Recipes",on_delete=models.SET_NULL,null=True)
+    Day = models.TextField()
+
 
 class Ingredients(models.Model):
     Ingredient_id = models.IntegerField(primary_key=True  )
@@ -41,6 +56,7 @@ class Recipes(models.Model):
     Receipe_Image = models.ImageField(upload_to = 'images/Receipe')
     Description = models.TextField(default="")
     procedure = models.TextField(default="")
+    Ingredients = models.TextField(default="")
 
     def __str__(self):
         return "Recipe name : "+self.Name

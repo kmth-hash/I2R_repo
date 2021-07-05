@@ -45,6 +45,8 @@ body {
     background-color: rgba(0, 0, 0, 0.863);
     color: #666666;
     font-size: 15px;
+    margin:0;
+  padding:0;
     font-family: 'Athiti', sans-serif;
     line-height: 1.80857;
 }
