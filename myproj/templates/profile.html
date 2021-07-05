@@ -54,6 +54,7 @@
 			
 		  </nav>
 	</header> 
+    {% include './includes/messages.html' %}
 <div style="position: relative; top: 90px;" class="container">
 <div class="row">
     <div style="padding: 0px;" class="col-md-4">
@@ -204,45 +205,48 @@ box-shadow: 6px 3px 16px -5px rgba(0,0,0,0.75);" class="panel">
     <h4 style="color: whitesmoke;padding: 20px;">Edit Profile</h4>
     <hr style="background-color: whitesmoke;margin:0px;margin-left: 20px;">
     <br>
-    <div style="padding-left: 20px;">
-        <div class="row" style="padding-bottom: 10px;">
-            <div class="col-md-2"">
-                <h5 class="text-white-50 font-weight-bold">Name:</h5>
+    <form action="" method="post">
+        {% csrf_token %}
+        <div style="padding-left: 20px;">
+            <div class="row" style="padding-bottom: 10px;">
+                <div class="col-md-2"">
+                    <h5 class="text-white-50 font-weight-bold">Name:</h5>
+                </div>
+                <div class="col-md-6">
+                    <input name="name" id="editname" type="text" value="{{username}}">
+                </div>
             </div>
-            <div class="col-md-6">
-                <input id="editname" type="text" value="{{username}}">
+            <div class="row" style="padding-bottom: 10px;">
+                <div class="col-md-2">
+                    <h5 class="text-white-50 font-weight-bold">Age:</h5>
+                </div>
+                <div class="col-md-6">
+                    <input name="age" id="editage"  type="text" value="{{i.3}}">
+                </div>
             </div>
+            <div class="row" style="padding-bottom: 10px;">
+                <div class="col-md-2">
+                    <h5 class="text-white-50 font-weight-bold">Height:</h5>
+                </div>
+                <div class="col-md-6">
+                    <input name="height" id="editheight"  type="text" value="{{i.1}}">
+                </div>
+            </div>
+            <div class="row" style="padding-bottom: 10px;">
+                <div class="col-md-2">
+                    <h5 class="text-white-50 font-weight-bold">Weight:</h5>
+                </div>
+                <div class="col-md-6">
+                    <input name="weight" id="editweight"  type="text" value="{{i.2}}">
+                </div>
+            </div>
+        </div> 
+        <div style="padding: 20px;">
+            <button id="actbutton" type="submit">
+                Update
+            </button>
         </div>
-        <div class="row" style="padding-bottom: 10px;">
-            <div class="col-md-2">
-                <h5 class="text-white-50 font-weight-bold">Age:</h5>
-            </div>
-            <div class="col-md-6">
-                <input id="editage"  type="text" value="{{i.3}}">
-            </div>
-        </div>
-        <div class="row" style="padding-bottom: 10px;">
-            <div class="col-md-2">
-                <h5 class="text-white-50 font-weight-bold">Height:</h5>
-            </div>
-            <div class="col-md-6">
-                <input id="editheight"  type="text" value="{{i.1}}">
-            </div>
-        </div>
-        <div class="row" style="padding-bottom: 10px;">
-            <div class="col-md-2">
-                <h5 class="text-white-50 font-weight-bold">Weight:</h5>
-            </div>
-            <div class="col-md-6">
-                <input id="editweight"  type="text" value="{{i.2}}">
-            </div>
-        </div>
-    </div>            
-    <div style="padding: 20px;">
-        <button id="actbutton" onclick="mh()">
-            Update
-        </button>
-    </div>
+    </form>           
     
 </div>
 <script>
@@ -273,6 +277,7 @@ box-shadow: 6px 3px 16px -5px rgba(0,0,0,0.75);" class="panel">
     function activities(){
         document.getElementById('body').style.display = 'block'
         document.getElementById('insideact').style.top = '50%'
+        document.getElementById('activity').style.background = '#03000021'
         
     }
     function clearme(){
@@ -284,6 +289,8 @@ box-shadow: 6px 3px 16px -5px rgba(0,0,0,0.75);" class="panel">
         document.getElementById('cycle').style.border = 'none' 
         document.getElementById('edit_profile').style.background = 'none'
         document.getElementById('profile_button').style.background = '#03000021'
+        document.getElementById('activity').style.background = 'none'
+
 
     }
 </script>

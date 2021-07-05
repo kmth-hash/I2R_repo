@@ -39,21 +39,35 @@ name=""
 # fd=exec(Path("yolov5/detect.py").read_text())
 # print(fd)
 # print(gh)
+def item_return(userid):
+    with connection.cursor() as cursor:
+            cursor.execute('SELECT * FROM myproj_user_details WHERE "User_Id_id"=%s',[userid])
+            row = cursor.fetchall()
+            item = []
+            for j in row:
+                item.append(list(j))
+                # print(j)
+    connection.close()
+    return item
 def profile(request):
     global isLoggedIn
     user_id = request.session['uid']
     email = request.session['email']
     username = setUserName(request.session['username'])
-    with connection.cursor() as cursor:
-            cursor.execute('SELECT * FROM myproj_user_details WHERE "User_Id_id"=%s',[user_id])
-            row = cursor.fetchall()
-            item = []
-            print(row)
-            for j in row:
-                item.append(list(j))
-                # print(j)
-    connection.close()
-    print(user_id)
+    if request.method == 'POST':
+        name = request.POST['name']
+        age = request.POST['age']
+        height = request.POST['height']
+        weight = request.POST['weight']
+        with connection.cursor() as cursor:
+            cursor.execute('UPDATE myproj_users SET "username"=%s WHERE "id"=%s',[name,user_id])
+            cursor.execute('UPDATE myproj_user_details SET "height"=%s,"weight"=%s,"age"=%s WHERE "User_Id_id"=%s',[height,weight,age,user_id])
+        connection.close()
+        request.session['username'] = name
+        messages.success(request , 'Profile Updated Successfully!')
+        return redirect('/profile')
+    else:
+        item=item_return(user_id)
     return render(request,'profile.html',{'isLoggedIn':isLoggedIn,'username':username,'data':item,'mail':email})
 def signupprofile(request):
     return render(request,'signupprofile.html')
