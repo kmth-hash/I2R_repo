@@ -54,13 +54,13 @@
                                 {% csrf_token %}
                                 <div class="col-12 form-group row">
     
-                                  <input class="col-12 form-control form-control-user"  type="text" required placeholder="First Name" name="first_name" formControlName="firstname">
+                                  <input class="col-12 form-control form-control-user"  type="text" required placeholder="First Name" name="first_name" value=" {{ username }} " formControlName="firstname">
                                     
                                   <div >
                                       &nbsp;
                                   </div>
                                   <div style="margin-top: 15px;margin-bottom: 15px;color: whitesmoke;font-size: 18px;">
-                                  <input type="radio" name="gender" formControlName="gender" checked>Male <span style="margin-left: 10px;"> <input type="radio" name="gender" formControlName="gender">Female</span>
+                                  <input type="radio" name="gender" formControlName="gender" value="male" checked>Male <span style="margin-left: 10px;"> <input type="radio" name="gender" value="female" formControlName="gender">Female</span>
 
                                   </div>
                                   <div >

@@ -17,7 +17,7 @@ urlpatterns = [
     path('identify/recipes/' , views.recipes) ,
     path('addRecipe/' , views.addRecipe) , 
     path('' , views.firstcall) , 
-    path('signup/profile' , views.signupprofile) , 
+    path('signup/profile/' , views.signupprofile) , 
     path('identify/' , views.mainpage) , 
     path('callme/',views.recipes)
     
