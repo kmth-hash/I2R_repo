@@ -7,14 +7,11 @@ from .add_ons import *
 
 from json import loads,dumps
 from django.core.files.storage import FileSystemStorage
-# from keras import preprocessing
-# import matplotlib.pyplot as plt
 import os
-# import yolov5
+
 from django.db import connection
 import numpy as np
-# from keras.models import load_model
-# from keras import backend as K
+
 from itertools import chain
 from collections import Counter,OrderedDict
 imagesToPreview = []
@@ -30,13 +27,10 @@ recipe_json=[]
 recipes_array = []
 carbohydrates=[]
 description=[]
-# names = ['Tomato','cauli']
+
 procedure=[]
 predcited_items=[]
-# from pathlib import Path
-# fd=exec(Path("yolov5/detect.py").read_text())
-# print(fd)
-# print(gh)
+
 def firstcall(request):
     return redirect('/home')
 def predict(iurl):
@@ -184,7 +178,7 @@ def mainpage(request):
             print("sdfgdf")
             print(imagesToPreview)
             image_text = request.POST['Name']
-            uploaded_file_url = '/static/assets/img/veg/'+str(image_text).lower()+'.jpg'
+            uploaded_file_url = '/assets/img/veg/'+str(image_text).lower()+'.jpg'
             imageAndName = {
                 'imageURL':uploaded_file_url,
                 'name':image_text
@@ -248,5 +242,14 @@ def home(request):
 
 
 def recipe(request, id):
-    print(id)
-    return render(request, 'recipe.html', {'username':username})
+    rec = Recipes.objects.get( Receipe_Id=id)
+    ing_list = Recipe_Ingredients.objects.filter(Receipe_Id=id)
+    ingredients = []
+    image_url = rec.Receipe_Image
+    print(image_url)
+    for i in ing_list:
+        #print(i)
+        ingredients.append(Ingredients.objects.get(Ingredient_id=i.Ingredient_Id_id))
+    
+    
+    return render(request, 'recipe.html', {'username':username , 'recipe': rec, 'ing_list': ingredients, 'img_url': image_url})

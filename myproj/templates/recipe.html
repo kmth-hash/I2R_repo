@@ -50,7 +50,7 @@
                   <a class="nav-link" href="/">Home <span class="sr-only"></span></a>
                 </li>
                 <li class="nav-item active">
-                  <a class="nav-link" href="/identify">Get Recipe</a>
+                  <a class="nav-link" href="/search">Get Recipe</a>
                 </li>
                 <li class="nav-item">
                   <a class="nav-link" href="/bmi">BMI calculator</a>
@@ -72,9 +72,9 @@
     </header>
     <div style="margin-top: 80px;" class="container">
         <div class="mt-3"></div>
-        <h4 style="color: white;" id="name_to_show"></h4>
+        <h4 style="color: white;" id="name_to_show">{{ recipe.Name }}</h4>
         <div class="container text-center" id="image_to_show">
-            
+            <img src="../../../../static/{{img_url}}" class="text-center p-3 m-2 border col-8">
         </div>
 
         <div class="container">
@@ -90,11 +90,16 @@
                     <h4 style="color: white;">Ingredients</h4>
                     <hr/>
                     <div style="color: white;font-size: 16px;" class="container">
+                        {% for i in ing_list %}
                         <span>
                             <i class="fa fa-check-circle-o" aria-hidden="true"></i>
-                            3 Russet Potatoes
+                            {{ i.name  }}
                         </span>
                         <br/>
+                        
+                        {% endfor %}
+                        
+                        <!--
                         <span>
                             <i class="fa fa-check-circle-o" aria-hidden="true"></i>
                             1 Cup Vegetable Oil 
@@ -130,7 +135,7 @@
                             Black Pepper
                         </span>
                         <br/>
-                        
+                        -->
 
                     </div>
                 </div>
@@ -141,22 +146,22 @@
                         <table style="color: whitesmoke;" class="table">
                             <tr>
                                 <td>Calories</td>
-                                <th id="calories"></th>
+                                <th id="calories">{{ recipe.Calories }}</th>
                             </tr>
 
                             <tr>
                                 <td>Proteins</td>
-                                <th id="proteins"></th>
+                                <th id="proteins">{{ recipe.Proteins }}</th>
                             </tr>
 
                             <tr>
                                 <td>Fats</td>
-                                <th id="fats"></th>
+                                <th id="fats">{{ recipe.Fats }}</th>
                             </tr>
 
                             <tr>
                                 <td>Carbohydrates</td>
-                                <th id="carbo"></th>
+                                <th id="carbo">{{ recipe.Carbohydrates }}</th>
                             </tr>
                         </table>
                     </div>
@@ -167,6 +172,7 @@
             <div>
                 <h4 style="color: white;">Directions :</h4>
                 <div class="container description" id="procedure">
+                    {{ recipe.Description }}
                 </div>
             </div>
             <div class="header">

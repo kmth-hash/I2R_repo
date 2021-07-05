@@ -12,12 +12,12 @@ urlpatterns = [
     path('home/' , views.home) ,
     path('logout/' , views.logout) ,
     path('bmi/' , views.bmi) , 
-    path('identify/recipes/recipe/<int:id>/', views.recipe) ,
-    path('identify/recipes/' , views.recipes) ,
+    path('search/recipes/recipe/<int:id>/', views.recipe) ,
+    path('search/recipes/' , views.recipes) ,
+    path('search/' , views.mainpage) ,
     path('addRecipe/' , views.addRecipe) , 
-    path('' , views.firstcall) , 
-    path('identify/' , views.mainpage) , 
-    path('callme/',views.recipes)
+    path('' , views.firstcall) ,      
+    
     
 ]
 
