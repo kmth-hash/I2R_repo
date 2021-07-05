@@ -119,7 +119,8 @@ def recipes(request):
                     'carbohydrates':list(j)[6],
                     'imageURL':list(j)[7],
                     'description':list(j)[8],
-                    'procedure':list(j)[9]
+                    'procedure':list(j)[9],
+                    'ingredients':list(j)[10]
                 }
                 recipes_array.append(recipe_details)
         connection.close()
