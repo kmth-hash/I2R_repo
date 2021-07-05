@@ -37,6 +37,10 @@ predcited_items=[]
 # fd=exec(Path("yolov5/detect.py").read_text())
 # print(fd)
 # print(gh)
+def profile(request):
+    return render(request,'profile.html')
+def signupprofile(request):
+    return render(request,'signupprofile.html')
 def firstcall(request):
     return redirect('/home')
 def predict(iurl):

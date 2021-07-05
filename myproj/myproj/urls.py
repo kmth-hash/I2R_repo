@@ -10,12 +10,14 @@ urlpatterns = [
     path('signup/' , views.signup) , 
     path('login/' , views.login) ,
     path('home/' , views.home) ,
+    path('profile/' , views.profile) ,
     path('logout/' , views.logout) ,
     path('bmi/' , views.bmi) , 
     path('identify/recipes/recipe/<int:id>/', views.recipe) ,
     path('identify/recipes/' , views.recipes) ,
     path('addRecipe/' , views.addRecipe) , 
     path('' , views.firstcall) , 
+    path('signup/profile' , views.signupprofile) , 
     path('identify/' , views.mainpage) , 
     path('callme/',views.recipes)
     
