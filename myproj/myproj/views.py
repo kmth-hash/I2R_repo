@@ -218,10 +218,8 @@ def mainpage(request):
     return render(request , 'mainpage.html' , {'len':len(imagesToPreview),'imagesToPreview':imagesToPreview,'data':datajson , 'isLoggedIn' : isLoggedIn , 'username' : username })
 
 def addRecipe(request):
-    all_recipe_percentage = return_recipes(['egg' , 'onion' , 'butter' , 'salt', 'pepper'])
-    #valid_recipes = find_valid_recipes(all_recipe_percentage)
-    print(all_recipe_percentage)
-    return render(request , 'addRecipe.html' , {})
+    storeDBfromCSV()
+    return render(request , 'addRecipe.html' , {}) 
 
 def bmi(request):
     if not request.session.has_key('username'):
