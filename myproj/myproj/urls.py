@@ -6,16 +6,17 @@ from django.conf import settings
 from django.conf.urls.static import static
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
+    
     path('signup/' , views.signup) , 
     path('login/' , views.login) ,
     path('home/' , views.home) ,
     path('profile/' , views.profile) ,
     path('logout/' , views.logout) ,
     path('bmi/' , views.bmi) , 
-    path('identify/recipes/recipe/<int:id>/', views.recipe) ,
-    path('identify/recipes/' , views.recipes) ,
+    path('search/recipes/recipe/<int:id>/', views.recipe) ,
+    path('search/recipes/' , views.recipes) ,
     path('addRecipe/' , views.addRecipe) , 
+    path('add/', views.addNewRecipe),
     path('' , views.firstcall) , 
     path('signup/profile/' , views.signupprofile) , 
     path('identify/' , views.mainpage) , 

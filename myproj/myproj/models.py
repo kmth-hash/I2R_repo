@@ -18,7 +18,7 @@ class User_Details(models.Model):
     Calories = models.TextField()
 
     def __str__(self):
-        return "Name : "+self.Calories
+        return "Name : "+self.User_Id
 
 class Receipe_Tracker(models.Model):
     User_Id = models.ForeignKey("Users",on_delete=models.SET_NULL,null=True)
