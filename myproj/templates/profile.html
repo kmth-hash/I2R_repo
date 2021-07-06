@@ -253,6 +253,11 @@ box-shadow: 6px 3px 16px -5px rgba(0,0,0,0.75);" class="panel">
     function edit_profile(){
         document.getElementById('body').style.display = 'block'
         document.getElementById('editme').style.top = '50%'
+        var body = document.body,html = document.documentElement;
+        var height = Math.max( body.scrollHeight, body.offsetHeight, 
+                       html.clientHeight, html.scrollHeight, html.offsetHeight );
+            document.getElementById('body').style.height = height+'px';
+            document.body.style.overflowY = 'hidden'
         document.getElementById('edit_profile').style.background = '#03000021'
         document.getElementById('profile_button').style.background = 'none'
     }
@@ -277,10 +282,16 @@ box-shadow: 6px 3px 16px -5px rgba(0,0,0,0.75);" class="panel">
     function activities(){
         document.getElementById('body').style.display = 'block'
         document.getElementById('insideact').style.top = '50%'
+        var body = document.body,html = document.documentElement;
+        var height = Math.max( body.scrollHeight, body.offsetHeight, 
+                       html.clientHeight, html.scrollHeight, html.offsetHeight );
+            document.getElementById('body').style.height = height+'px';
+            document.body.style.overflowY = 'hidden'
         document.getElementById('activity').style.background = '#03000021'
         
     }
     function clearme(){
+        document.body.style.overflowY = 'scroll'
         document.getElementById('body').style.display = 'none'
         document.getElementById('insideact').style.top = '-310px'
         document.getElementById('editme').style.top = '-310px'

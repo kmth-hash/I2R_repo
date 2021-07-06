@@ -39,6 +39,8 @@ name=""
 # fd=exec(Path("yolov5/detect.py").read_text())
 # print(fd)
 # print(gh)
+def admin(request):
+    return render(request,'adminpanel.html')
 def item_return(userid):
     with connection.cursor() as cursor:
             cursor.execute('SELECT * FROM myproj_user_details WHERE "User_Id_id"=%s',[userid])
