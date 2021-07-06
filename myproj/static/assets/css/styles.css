@@ -91,7 +91,7 @@ input[type="number"]:focus {
   position: absolute;
   width: 100%;
   top: 75px;
-  z-index: 11;
+  z-index: 8;
 }
 #description h6{
   color: white;

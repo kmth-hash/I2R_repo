@@ -33,14 +33,42 @@ description=[]
 # names = ['Tomato','cauli']
 procedure=[]
 predcited_items=[]
-user_id=""
+user_id = None
 name=""
 # from pathlib import Path
 # fd=exec(Path("yolov5/detect.py").read_text())
 # print(fd)
 # print(gh)
+def item_return(userid):
+    with connection.cursor() as cursor:
+            cursor.execute('SELECT * FROM myproj_user_details WHERE "User_Id_id"=%s',[userid])
+            row = cursor.fetchall()
+            item = []
+            for j in row:
+                item.append(list(j))
+                # print(j)
+    connection.close()
+    return item
 def profile(request):
-    return render(request,'profile.html')
+    global isLoggedIn
+    user_id = request.session['uid']
+    email = request.session['email']
+    username = setUserName(request.session['username'])
+    if request.method == 'POST':
+        name = request.POST['name']
+        age = request.POST['age']
+        height = request.POST['height']
+        weight = request.POST['weight']
+        with connection.cursor() as cursor:
+            cursor.execute('UPDATE myproj_users SET "username"=%s WHERE "id"=%s',[name,user_id])
+            cursor.execute('UPDATE myproj_user_details SET "height"=%s,"weight"=%s,"age"=%s WHERE "User_Id_id"=%s',[height,weight,age,user_id])
+        connection.close()
+        request.session['username'] = name
+        messages.success(request , 'Profile Updated Successfully!')
+        return redirect('/profile')
+    else:
+        item=item_return(user_id)
+    return render(request,'profile.html',{'isLoggedIn':isLoggedIn,'username':username,'data':item,'mail':email})
 def signupprofile(request):
     return render(request,'signupprofile.html')
 def firstcall(request):
@@ -71,11 +99,14 @@ def signup(request):
             new_user = Users(username= name , password = password , role = "user", email=email )
             new_user.save()
             request.session['username'] = name
+            request.session['email'] = email
+
             isLoggedIn = True
             with connection.cursor() as cursor:
-                cursor.execute('SELECT "id" FROM myproj_users WHERE "username"=%s',[name])
+                cursor.execute('SELECT "id" FROM myproj_users WHERE "username"=%s and "password"=%s',[name,password])
                 row = cursor.fetchone()
                 user_id = row[0]
+                request.session['uid'] = user_id
                 cursor.close()
             return redirect('/signup/profile')
         else:
@@ -133,7 +164,7 @@ def recipes(request):
                 recipes_array.append(recipe_details)
         connection.close()
     recipe_json = dumps(recipes_array)
-    return render(request , 'recipes.html' , {'recipe_data':recipe_json,'predcited_items':recipe_string,'username':username})
+    return render(request , 'recipes.html' , {'recipe_data':recipes_array,'predcited_items':recipe_string,'username':username})
 
 def login(request):
     global isLoggedIn
@@ -148,7 +179,9 @@ def login(request):
                 user_obj = Users.objects.get(password=pass1  , email=name1)                
                 res = user_obj
                 isLoggedIn = True
+                request.session['uid'] = user_obj.id
                 request.session['username'] = user_obj.username
+                request.session['email'] = user_obj.email
                 messages.success(request , "Welcome back! Let's cook something good.")
                 return redirect("/" , isLoggedIn = True , username = user_obj.username)
                 
@@ -176,6 +209,8 @@ def logout(request):
     global isLoggedIn,username,datajson
     try:
         del request.session['username']
+        del request.session['uid']
+        del request.session['email']
         isLoggedIn = False
         username = ''
         imagesToPreview=[]

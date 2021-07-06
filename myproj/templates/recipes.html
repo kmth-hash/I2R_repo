@@ -41,7 +41,7 @@
 					</a>
 					<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
 					  <a class="dropdown-item" href="/logout">Logout</a>
-					  <a class="dropdown-item" href="#">Profile</a>
+					  <a class="dropdown-item" href="/profile">Profile</a>
 					  <a class="dropdown-item" href="#">About</a>
 					</div>
 				  </li>
@@ -55,7 +55,35 @@
             Showing recipes that can be prepared using {{predcited_items}}
         </h3>
     </div>
+    
     <div style="padding-bottom: 20px;" class="container" id="recipe_container">  
+      {% for i in recipe_data%}
+      <div class="get_more_recipe rounded m-3 p-1 col-12">
+        <div class="row">
+          <div class="col-lg-2 col-3">
+            <img src="{% static ''|add:i.imageURL %}" width="100%" class="m-2 rounded ">
+          </div>
+          <div class="recipe_name col-lg-10 col-9">
+            <h2 class="">{{i.name}}</h2>
+            <hr style="background-color:white">
+            <p class="text-white-50 font-weight-bold">{{i.description}}</p>
+            <div id="scrollmenu">
+              <a href="spicy">Spicy</a><a href="rice-items">Rice Items</a><a href="non-veg">Non Veg</a><a href="Chicken">Chicken</a>
+              <a href="Chinese">Chinese</a>
+              <a href="More Options">More Options</a>
+            </div>
+              <div style="align-items: flex-end;text-align: right;margin-bottom: 3px;"> <div>
+                <span style="background-color: rgb(182, 47, 47);color: white;padding: 3px;border-radius: 5px;padding-left: 5px;"data-toggle="modal" data-target="#bottom_modal">Try it now 
+                  <span>
+                  <i class="fa fa-arrow-right"></i>
+                </span>
+              </span>
+            </div>
+          </div>
+        </div>
+    </div>
+  </div>
+      {%endfor%}
     </div>
     <!-- <div class="mt-5">
       <button type="button" class="btn btn-light border rounded-pill shadow-sm mb-1" data-toggle="modal" data-target="#bottom_modal">Bottom Modal <i class="fa fa-angle-down pl-2"></i></button>
@@ -81,7 +109,9 @@
         </div>
       </div>
     </div>
-     
+    <!-- for(var i in data){
+      recipe_container.innerHTML+='<div class="get_more_recipe rounded m-3 p-1 col-12"><div class="row"><div class="col-lg-2 col-3"><img src="'+data[i].imageURL+'" width="100%" class="m-2 rounded "></div><div class="recipe_name col-lg-10 col-9"><h2 class="">'+data[i].name+'</h2><hr style="background-color:white"><p class="text-white-50 font-weight-bold">'+data[i].description+'</p><div id="scrollmenu"><a href="spicy">Spicy</a><a href="rice-items">Rice Items</a><a href="non-veg">Non Veg</a><a href="Chicken">Chicken</a><a href="Chinese">Chinese</a><a href="More Options">More Options</a></div><div style="align-items: flex-end;text-align: right;margin-bottom: 3px;"> <div><span style="background-color: rgb(182, 47, 47);color: white;padding: 3px;border-radius: 5px;"data-toggle="modal" data-target="#bottom_modal">Try it now <span><i class="fa fa-arrow-right"></i></span></span></div></div></div></div></div>'
+  }  -->
     <script>
         
       var data = {}
@@ -89,9 +119,7 @@
       var recipe_container=document.getElementById('recipe_container');
       recipe_container.innerHTML = '';
       console.log(data)
-      for(var i in data){
-          recipe_container.innerHTML+='<div onclick="get_more_recipe('+i+')" class="get_more_recipe rounded m-3 p-1 col-12"><div class="row"><div class="col-lg-2 col-3"><img src="'+data[i].imageURL+'" width="100%" class="m-2 rounded "></div><div class="recipe_name col-lg-10 col-9"><h2 class="">'+data[i].name+'</h2><hr style="background-color:white"><p class="text-white-50 font-weight-bold">'+data[i].description+'</p><div id="scrollmenu"><a href="spicy">Spicy</a><a href="rice-items">Rice Items</a><a href="non-veg">Non Veg</a><a href="Chicken">Chicken</a><a href="Chinese">Chinese</a><a href="More Options">More Options</a></div><div style="align-items: flex-end;text-align: right;margin-bottom: 3px;"> <div><span style="background-color: rgb(182, 47, 47);color: white;padding: 3px;border-radius: 5px;"data-toggle="modal" data-target="#bottom_modal">Try it now <span><i class="fa fa-arrow-right"></i></span></span></div></div></div></div></div>'
-      } 
+    
         function get_more_recipe(i){
             window.location.href = window.location.href+'recipe/'+i
             localStorage.setItem('recipe_detail',JSON.stringify(data[i]))
