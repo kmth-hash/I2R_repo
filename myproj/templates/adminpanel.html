@@ -65,281 +65,37 @@
                             Weight
                         </th>
                     </tr>
+                    {% for i in user_list %}
+                    <form action="" method="POST">
+                        {% csrf_token %}
+                        <input type="hidden" name="form_type" value="formOne">
                     <tr>
                         <td>
-                            1
+                            {{ forloop.counter }}
                         </td>
                         <td>
-                            Vinayak
+                            {{ i.1 }}
                         </td>
                         <td>
-                            vinayakudupa@gmail.com
+                            {{ i.2 }}
                         </td>
                         <td>
-                            21
+                            {{ i.5 }}
                         </td>
                         <td>
-                            180
+                            {{ i.3 }}
                         </td>
                         <td>
-                            65
+                            {{ i.4 }}
                         </td>
                         <td>
-                            <button class="btn btn-danger" style="padding: 5px;font-size: 15px;">
+                            <button name="delete_button" value="{{i.0}}" class="btn btn-danger" style="padding: 5px;font-size: 15px;">
                                 Delete
                             </button>
                         </td>
                     </tr>
-                    <tr>
-                        <td>
-                            1
-                        </td>
-                        <td>
-                            Vinayak
-                        </td>
-                        <td>
-                            vinayakudupa@gmail.com
-                        </td>
-                        <td>
-                            21
-                        </td>
-                        <td>
-                            180
-                        </td>
-                        <td>
-                            65
-                        </td>
-                        <td>
-                            <button class="btn btn-danger" style="padding: 5px;font-size: 15px;">
-                                Delete
-                            </button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            1
-                        </td>
-                        <td>
-                            Vinayak
-                        </td>
-                        <td>
-                            vinayakudupa@gmail.com
-                        </td>
-                        <td>
-                            21
-                        </td>
-                        <td>
-                            180
-                        </td>
-                        <td>
-                            65
-                        </td>
-                        <td>
-                            <button class="btn btn-danger" style="padding: 5px;font-size: 15px;">
-                                Delete
-                            </button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            1
-                        </td>
-                        <td>
-                            Vinayak
-                        </td>
-                        <td>
-                            vinayakudupa@gmail.com
-                        </td>
-                        <td>
-                            21
-                        </td>
-                        <td>
-                            180
-                        </td>
-                        <td>
-                            65
-                        </td>
-                        <td>
-                            <button class="btn btn-danger" style="padding: 5px;font-size: 15px;">
-                                Delete
-                            </button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            1
-                        </td>
-                        <td>
-                            Vinayak
-                        </td>
-                        <td>
-                            vinayakudupa@gmail.com
-                        </td>
-                        <td>
-                            21
-                        </td>
-                        <td>
-                            180
-                        </td>
-                        <td>
-                            65
-                        </td>
-                        <td>
-                            <button class="btn btn-danger" style="padding: 5px;font-size: 15px;">
-                                Delete
-                            </button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            1
-                        </td>
-                        <td>
-                            Vinayak
-                        </td>
-                        <td>
-                            vinayakudupa@gmail.com
-                        </td>
-                        <td>
-                            21
-                        </td>
-                        <td>
-                            180
-                        </td>
-                        <td>
-                            65
-                        </td>
-                        <td>
-                            <button class="btn btn-danger" style="padding: 5px;font-size: 15px;">
-                                Delete
-                            </button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            1
-                        </td>
-                        <td>
-                            Vinayak
-                        </td>
-                        <td>
-                            vinayakudupa@gmail.com
-                        </td>
-                        <td>
-                            21
-                        </td>
-                        <td>
-                            180
-                        </td>
-                        <td>
-                            65
-                        </td>
-                        <td>
-                            <button class="btn btn-danger" style="padding: 5px;font-size: 15px;">
-                                Delete
-                            </button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            1
-                        </td>
-                        <td>
-                            Vinayak
-                        </td>
-                        <td>
-                            vinayakudupa@gmail.com
-                        </td>
-                        <td>
-                            21
-                        </td>
-                        <td>
-                            180
-                        </td>
-                        <td>
-                            65
-                        </td>
-                        <td>
-                            <button class="btn btn-danger" style="padding: 5px;font-size: 15px;">
-                                Delete
-                            </button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            1
-                        </td>
-                        <td>
-                            Vinayak
-                        </td>
-                        <td>
-                            vinayakudupa@gmail.com
-                        </td>
-                        <td>
-                            21
-                        </td>
-                        <td>
-                            180
-                        </td>
-                        <td>
-                            65
-                        </td>
-                        <td>
-                            <button class="btn btn-danger" style="padding: 5px;font-size: 15px;">
-                                Delete
-                            </button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            1
-                        </td>
-                        <td>
-                            Vinayak
-                        </td>
-                        <td>
-                            vinayakudupa@gmail.com
-                        </td>
-                        <td>
-                            21
-                        </td>
-                        <td>
-                            180
-                        </td>
-                        <td>
-                            65
-                        </td>
-                        <td>
-                            <button class="btn btn-danger" style="padding: 5px;font-size: 15px;">
-                                Delete
-                            </button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            1
-                        </td>
-                        <td>
-                            Vinayak
-                        </td>
-                        <td>
-                            vinayakudupa@gmail.com
-                        </td>
-                        <td>
-                            21
-                        </td>
-                        <td>
-                            180
-                        </td>
-                        <td>
-                            65
-                        </td>
-                        <td>
-                            <button class="btn btn-danger" style="padding: 5px;font-size: 15px;">
-                                Delete
-                            </button>
-                        </td>
-                    </tr>
+                    </form>
+                    {% endfor %}
                 </table>
         </div>
         <h5 class="text-white-50 font-weight-bold">
@@ -362,82 +118,31 @@
                         Calories
                     </th>
                 </tr>
+                {% for i in recipe_list %}
+                <form action="" method="POST">
+                    {% csrf_token %}
+                    <input type="hidden" name="form_type" value="formTwo">
                 <tr>
                     <td>
-                        1
+                        {{ forloop.counter }}
                     </td>
                     <td>
-                        French Fries
+                        {{ i.1 }}
                     </td>
                     <td>
-                        long elongated potato stuff
+                        {{ i.8 }}
                     </td>
                     <td>
-                        100
+                        {{ i.3 }}
                     </td>
                     <td>
-                        <button class="btn btn-danger" style="padding: 5px;font-size: 15px;">
+                        <button name="recipe_delete_button" value="{{i.0}}" class="btn btn-danger" style="padding: 5px;font-size: 15px;">
                             Delete
                         </button>
                     </td>
                 </tr>
-                <tr>
-                    <td>
-                        1
-                    </td>
-                    <td>
-                        French Fries
-                    </td>
-                    <td>
-                        long elongated potato stuff
-                    </td>
-                    <td>
-                        100
-                    </td>
-                    <td>
-                        <button class="btn btn-danger" style="padding: 5px;font-size: 15px;">
-                            Delete
-                        </button>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        1
-                    </td>
-                    <td>
-                        French Fries
-                    </td>
-                    <td>
-                        long elongated potato stuff
-                    </td>
-                    <td>
-                        100
-                    </td>
-                    <td>
-                        <button class="btn btn-danger" style="padding: 5px;font-size: 15px;">
-                            Delete
-                        </button>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        1
-                    </td>
-                    <td>
-                        French Fries
-                    </td>
-                    <td>
-                        long elongated potato stuff
-                    </td>
-                    <td>
-                        100
-                    </td>
-                    <td>
-                        <button class="btn btn-danger" style="padding: 5px;font-size: 15px;">
-                            Delete
-                        </button>
-                    </td>
-                </tr>
+                </form>
+                {% endfor %}
                 <tr>
                     <td>
                         <button onclick="activities()" style="-webkit-box-shadow: 4px 3px 11px -4px rgba(0,0,0,0.75);
