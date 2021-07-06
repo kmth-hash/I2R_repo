@@ -19,7 +19,7 @@ urlpatterns = [
     path('add/', views.addNewRecipe),
     path('' , views.firstcall) , 
     path('signup/profile/' , views.signupprofile) , 
-    path('identify/' , views.mainpage) , 
+    path('search/' , views.mainpage) , 
     path('callme/',views.recipes),
     path('adminpanel/',views.admin)
     

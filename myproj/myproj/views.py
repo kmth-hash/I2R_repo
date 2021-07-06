@@ -180,6 +180,9 @@ def login(request):
             try:
                 user_obj = Users.objects.get(password=pass1  , email=name1)                
                 res = user_obj
+                role = res.role
+                if role == "admin":
+                    return render(request,'adminpanel.html')
                 isLoggedIn = True
                 request.session['uid'] = user_obj.id
                 request.session['username'] = user_obj.username
