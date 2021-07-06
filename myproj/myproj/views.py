@@ -326,3 +326,54 @@ def signupprofile(request):
         messages.success(request  , " Signup successful.")
         return redirect('/')
     return render(request, "signupprofile.html",{'username':name})
+
+
+def users():
+    with connection.cursor() as cursor:
+        cursor.execute('SELECT  t1.id,t1.username,t1.email,t2.height,t2.weight,t2.age,t2.gender from myproj_users as t1,myproj_user_details as t2 WHERE t1.id = t2."User_Id_id" ' )
+        row = cursor.fetchall()
+        user_list = list()
+        for values in row:
+            user_list.append(list(values)) 
+    connection.close()
+    return user_list
+
+
+def receipe_returned():
+    with connection.cursor() as cursor:
+        cursor.execute('SELECT * FROM myproj_recipes' )
+        row = cursor.fetchall()
+        recipe_list = list()
+        for values in row:
+            recipe_list.append(list(values)) 
+    connection.close()
+    return recipe_list
+
+
+
+def admin(request):
+    if request.method == "POST" and request.POST.get("form_type") == 'formOne':
+        id_return = request.POST['delete_button']
+        with connection.cursor() as cursor:
+            cursor.execute('DELETE from myproj_user_details where "User_Id_id"=%s',[id_return])
+            cursor.execute('DELETE from myproj_users where "id"=%s',[id_return])
+        connection.close()
+        user_list = users()
+        #print(user_list)
+        return redirect("/adminpanel")
+    elif  request.method == "POST" and request.POST.get("form_type") == 'formTwo':
+        id_return = request.POST['recipe_delete_button']
+        with connection.cursor() as cursor:
+            cursor.execute('DELETE from myproj_recipe_ingredients where "Receipe_Id_id"=%s',[id_return])
+            cursor.execute('DELETE from myproj_recipes where "Receipe_Id"=%s',[id_return])
+        connection.close()
+        receipe_list = receipe_returned()
+        return redirect("/adminpanel")
+
+    else:
+        user_list = users()
+        receipe_list = receipe_returned()
+        print(receipe_list)
+    
+    
+    return render(request,"adminpanel.html", {'user_list':user_list,'recipe_list':receipe_list})

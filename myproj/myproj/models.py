@@ -10,7 +10,7 @@ class Users(models.Model):
         return "Name : "+self.username
     
 class User_Details(models.Model):
-    User_Id = models.ForeignKey("Users",on_delete=models.SET_NULL,null=True)
+    User_Id = models.ForeignKey("Users",on_delete=models.CASCADE,null=True)
     height = models.TextField()
     weight = models.TextField()
     age = models.TextField()
