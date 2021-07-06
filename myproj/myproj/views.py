@@ -257,6 +257,17 @@ def home(request):
         username = setUserName(request.session['username'])
     return render(request , 'index.html' , {'isLoggedIn':isLoggedIn,'username':username})
 
+def addNewRecipe(request):
+    if request.session.has_key('username'):
+        user = Users.objects.get(username = request.session['username'] )
+        if user.role.lower() == 'admin':
+            return render(request, 'add.html', {'isLoggedIn' : True , 'username' : user.username } )
+        else:
+            return redirect('/')
+
+    else:
+        return redirect('/')
+
 
 def recipe(request, id):
     print(id)
