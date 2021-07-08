@@ -201,6 +201,20 @@
                     <input style="border-radius: 7px;" type="text" name="new_fats" placeholder="Fats">
                 </div>
                 <div class="col-md-2">
+                    <h6 class="text-white-50 font-weight-bold">Category Name: </h6>
+                </div>
+                <div class="col-md-4">
+                    <select name="new_category">
+                        <option selected="selected" disabled>Categories:</option>
+                                <option value="Snacks">Snacks</option>
+                                <option value="Rice Items">Rice Item</option>
+                                <option value="Curry">Curry</option>
+                                <option value="Sweets">Sweet</option>
+                    </select>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-2">
                     <h6 class="text-white-50 font-weight-bold">Carbohydrates: </h6>
                 </div>
                 <div class="col-md-4">
@@ -209,10 +223,14 @@
             </div>
             <div class="row">
                 <div class="col-md-2">
-                    <h6 class="text-white-50 font-weight-bold">Category Name: </h6>
+                    <h6 class="text-white-50 font-weight-bold">Image of Recipe: </h6>
                 </div>
-                <div class="col-md-4">
-                    <input style="border-radius: 7px;" type="text" name="new_category" placeholder="Carbohydrates">
+                <div class="form-row file-input">
+                    <label for="fileInput" class="UploadBtn" title="Upload File">
+                        <i class="fa fa-cloud-upload" data-bs-hover-animate="pulse" style="font-size: 35px;color: rgb(62,140,228);"></i>
+                    </label>
+                    <input type="file" class="form-control" name="image" id="fileInput" onchange="loadFile(event)" inputmode="url" placeholder="Filename"> <span id="nameImage" ></span>
+                    <div id="hiddeninput"></div>
                 </div>
             </div>
             <div class="row">

@@ -383,12 +383,28 @@ def admin(request):
         procedure = request.POST['new_procedure']
         category = request.POST['new_category']
         ing_list = list(ingredients.split(','))
+        ing_list_tags = list(ingredients.split(','))
+        for i in range(len(ing_list)):
+            ing_list_tags[i] = "&#9830"+ing_list[i]+"<br>"
+        
+        recipe_ingredient_to_add = " ".join(ing_list_tags)
+
         image_to_add = "assests/img/rec/"+name+".png"
         category_obj = Category.objects.get(Category_Name=category)
         category_id = category_obj.Category_Id
         max_recp_obj = Recipes.objects.last()
         max_key = max_recp_obj.Receipe_Id
-        print(max_key)
+
+        procedure_list = list(procedure.split(','))
+        print(procedure_list)
+        loop_count = 1
+        for j in range(len(procedure_list)):
+            procedure_list[j] = "<h2>Step"+str(loop_count)+"</h2> "+procedure_list[j]+"<br>"
+            loop_count += 1
+        procedure_to_add = " ".join(procedure_list)
+
+
+
         new_recipe = Recipes(
                         Receipe_Id = max_key + 1,
                         Category_Id_id = category_id ,
@@ -400,8 +416,8 @@ def admin(request):
                         Carbohydrates=carbohydrates ,
                         Receipe_Image = image_to_add ,
                         Description = description ,
-                        procedure = procedure, 
-                        Ingredients = ingredients)
+                        procedure = procedure_to_add, 
+                        Ingredients = recipe_ingredient_to_add)
         new_recipe.save()
         messages.success(request  , " Added successfully.")
        
