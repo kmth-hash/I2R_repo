@@ -40,7 +40,8 @@
 <body>
     <header class="top-navbar">
         <nav style="top: 0px;" class="navbar navbar-expand-lg navbar-light bg-dark navbar-right ">
-            <a style="margin-left: 20px; padding-bottom: 0px;" class="navbar-brand" href="#"><img src="{% static 'assets/img/bento.png' %}" height="50px" width="50px" alt=""><span style="color: white; font-weight: bold; margin-left: 5px;">I2R</span></a>
+            <a style="margin-left: 20px; padding-bottom: 0px;" class="navbar-brand" href="#">
+                <img src="{% static 'assets/img/bento.png' %}" height="50px" width="50px" alt=""><span style="color: white; font-weight: bold; margin-left: 5px;">I2R</span></a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
               <span class="navbar-toggler-icon"></span>
             </button>
@@ -74,7 +75,7 @@
         <div class="mt-3"></div>
         <h4 style="color: white;" id="name_to_show"></h4>
         <div class="container text-center" id="image_to_show">
-            
+            <img src="../../../../static/{{recipe.Recipe_Image}}" class="text-center p-3 m-2 border col-8">
         </div>
 
         <div class="container">
@@ -82,7 +83,7 @@
                 <h6>French fries are arguably the perfect snack or side dish when you are craving for something crisp, salty, savory, cheesy or satisfying.</h6>
             </div> -->
             <div class="description" id="description">
-
+                {{ recipe.Description}}
             </div>
             <br/>
             <div class="row">
@@ -90,48 +91,14 @@
                     <h4 style="color: white;">Ingredients</h4>
                     <hr/>
                     <div style="color: white;font-size: 16px;" class="container">
+                        {% for item in ing_list %}
                         <span>
                             <i class="fa fa-check-circle-o" aria-hidden="true"></i>
-                            1  Potatoe
-                        </span>
-                        <br/>
-                        <span>
-                            <i class="fa fa-check-circle-o" aria-hidden="true"></i>
-                            ½ carrot 
-                        </span>
-                        <br/>
-                        <span>
-                            <i class="fa fa-check-circle-o" aria-hidden="true"></i>
-                            1 tomato
-                        </span>
-                        <br/>
-                        <span>
-                            <i class="fa fa-check-circle-o" aria-hidden="true"></i>
-                            5 beans
-                        </span>
-                        <br/>
-                        <span>
-                            <i class="fa fa-check-circle-o" aria-hidden="true"></i>
-                            ½ onion
-                        </span>
-                        <br/>
-                        <span>
-                            <i class="fa fa-check-circle-o" aria-hidden="true"></i>
-                            ½ tsp pepper
-                        </span>
-                        <br/>
-                        <span>
-                            <i class="fa fa-check-circle-o" aria-hidden="true"></i>
-                            1 cup basmati rice
-                        </span>
-                        <br/>
-                        <span>
-                            <i class="fa fa-check-circle-o" aria-hidden="true"></i>
-                            5 cashew
+                            {{ item }}
                         </span>
                         <br/>
                         
-
+                        {% endfor %}
                     </div>
                 </div>
                 <div style="border-radius: 10px;" class="col-lg-6 col-md-12 col-sm-12 border col-xs-12">
@@ -141,22 +108,22 @@
                         <table style="color: whitesmoke;" class="table">
                             <tr>
                                 <td>Calories</td>
-                                <th id="calories"></th>
+                                <th id="calories">{{ recipe.Calories}}</th>
                             </tr>
 
                             <tr>
                                 <td>Proteins</td>
-                                <th id="proteins"></th>
+                                <th id="proteins">{{ recipe.Proteins}}</th>
                             </tr>
 
                             <tr>
                                 <td>Fats</td>
-                                <th id="fats"></th>
+                                <th id="fats">{{ recipe.Fats}}</th>
                             </tr>
 
                             <tr>
                                 <td>Carbohydrates</td>
-                                <th id="carbo"></th>
+                                <th id="carbo">{{ recipe.carbohydrates}}</th>
                             </tr>
                         </table>
                     </div>

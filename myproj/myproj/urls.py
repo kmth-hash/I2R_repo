@@ -17,9 +17,10 @@ urlpatterns = [
     path('search/recipes/' , views.recipes) ,
     path('addRecipe/' , views.addRecipe) , 
     path('add/', views.addNewRecipe),
+    path('record/<int:id>/',views.record),
     path('' , views.firstcall) , 
     path('signup/profile/' , views.signupprofile) , 
-    path('identify/' , views.mainpage) , 
+    path('search/' , views.mainpage) , 
     path('callme/',views.recipes),
     path('adminpanel/',views.admin)
     

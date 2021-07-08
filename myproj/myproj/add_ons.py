@@ -1,6 +1,8 @@
 
-from .models import Ingredients , Recipe_Ingredients , Recipes 
+from .models import *
 from django.db.models.functions import Lower
+import datetime 
+
 
 def Ing_details(name):
     inst_name = " ".join( i.capitalize() for i in  name.split(" "))
@@ -70,7 +72,102 @@ def setUserName(username):
     else :
         return username.capitalize()            
 
+'''
+                        data: {
+							  labels: [1500,1600,1700,1750,1800,1850,1900,1950,1999,2050],
+							  datasets: [{ 
+								  data: [86,114,106,106,107,111,133,221,783,2478],
+								  label: "Africa",
+								  borderColor: "#3e95cd",
+								  fill: false
+								}, { 
+								  data: [282,350,411,502,635,809,947,1402,3700,5267],
+								  label: "Asia",
+								  borderColor: "#8e5ea2",
+								  fill: false
+								}, { 
+								  data: [168,170,178,190,203,276,408,547,675,734],
+								  label: "Europe",
+								  borderColor: "#3cba9f",
+								  fill: false
+								}, { 
+								  data: [40,20,10,16,24,38,74,167,508,784],
+								  label: "Latin America",
+								  borderColor: "#e8c3b9",
+								  fill: false
+								}, { 
+								  data: [6,3,2,2,7,26,82,172,312,433],
+								  label: "North America",
+								  borderColor: "#c45850",
+								  fill: false
+								}
+							  ]
+							}
+
+'''
+
+def getChartData(userID):
+    user = Users.objects.get(id = userID)
+    trackerData = []
+    days = []
+    labels = []
+    for i in range(7):
+        d = datetime.date.today() - datetime.timedelta(days = i)
+        
+        days.append(str(d))
+    labels = days
+    days.sort()
+    print(days)
+    for i in range(7):
+        Kcal = Receipe_Tracker.objects.filter(User_Id=user, Day= days[i])
+        dailyTotal = 0
+        if len(Kcal)>0:
+            for itr in Kcal:
+                recipe = Recipes.objects.get(Receipe_Id= itr.Receipe_Id_id)
+                #print(recipe)
+                dailyTotal += float(recipe.Calories)
+            
+        trackerData.append(dailyTotal)
+    
+    data = dict()
+    data['labels'] = days
+    data['datasets'] = [{'data': trackerData,
+								  "label": "Calorie Intake",
+								  'borderColor': "#3e95cd",
+								  'fill': False
+								}]
+    print(data)
+    return data
+
+def weeklyCalories(userId):
+    user = Users.objects.get(id = userId)    
+    weeklyCal = 0
+    for i in range(7):
+        d = datetime.date.today() - datetime.timedelta(days = i)        
+        Kcal = Receipe_Tracker.objects.filter(User_Id=user, Day= str(d))
+        
+        if len(Kcal)>0:
+            for itr in Kcal:
+                recipe = Recipes.objects.get(Receipe_Id= itr.Receipe_Id_id)                
+                weeklyCal += float(recipe.Calories)
+            
+    return weeklyCal
 
 
+def getDailyCal(userId):
+    user = Users.objects.get(id = userId)    
+    calToday = 0
+    
+    d = datetime.date.today()     
+    Kcal = Receipe_Tracker.objects.filter(User_Id=user, Day= str(d))
+        
+    if len(Kcal)>0:
+        for itr in Kcal:
+            recipe = Recipes.objects.get(Receipe_Id= itr.Receipe_Id_id)                
+            calToday += float(recipe.Calories)
+            
+    return calToday
 
-
+def getUserInfo(userId):
+    u  = User_Details.objects.get(User_Id=userId)
+    return u

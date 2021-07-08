@@ -13,7 +13,7 @@
         <link rel="stylesheet" href="{% static 'assets/css/profile.css' %}">
         <link rel="stylesheet" href="{% static 'assets/css/style.css' %}">
         <link rel="stylesheet" href="{% static 'assets/css/styles.css' %}">
-        <link rel="stylesheet" href="{% static 'assets/css/style.css' %}"
+        <link rel="stylesheet" href="{% static 'assets/css/style.css' %}">
 </head>
 <body>
     <header class="top-navbar">
@@ -34,15 +34,18 @@
 					</div>
 				  </li>
 			  </ul>
-			</div>
-			
+			</div>			
 		  </nav>
-	</header> 
+    </header> 
+    
+    
     <div style="position: relative;top:75px;padding:20px;">
         <h5 class="text-white-50 font-weight-bold">
             Users
         </h5>
+
         <hr style="background-color: whitesmoke;">
+
         <div style="height: 300px;background-color: whitesmoke;border-radius: 10px; overflow-y: scroll; padding: 10px; margin-bottom: 20px;">
                 <table class="table">
                     <tr>
@@ -98,10 +101,13 @@
                     {% endfor %}
                 </table>
         </div>
+
         <h5 class="text-white-50 font-weight-bold">
             Recipes
         </h5>
+
         <hr style="background-color: whitesmoke;">
+        
         <div style="height: 300px;background-color: whitesmoke;border-radius: 10px; overflow-y: scroll; padding: 10px; margin-bottom: 20px;">
             <table class="table">
                 <tr>
@@ -261,15 +267,14 @@
         function activities(){
             document.getElementById('body').style.display = 'block'
             var body = document.body,html = document.documentElement;
-        var height = Math.max( body.scrollHeight, body.offsetHeight, 
+            var height = Math.max( body.scrollHeight, body.offsetHeight, 
                        html.clientHeight, html.scrollHeight, html.offsetHeight );
             document.getElementById('body').style.height = height+'px';
             document.body.style.overflowY = 'hidden'
-        document.getElementById('insideact').style.top = height/2 +'px'
-
-            
+            document.getElementById('insideact').style.top = height/2 +'px'
             
         }
+
         function clearme(){
             document.getElementById('body').style.display = 'none'   
             document.body.style.overflowY = 'scroll'
@@ -278,24 +283,27 @@
             
     
         }
+
         function callme(){
-            alert("dgfdfg")
+            window.open("/logout");
         }
+
         function me(){
             alert("fdsthgdfh")
         }
+
     </script>
     <script src="{% static 'assets/js/jquery-3.2.1.min.js' %}"></script>
-<script src="{% static 'assets/js/popper.min.js' %}"></script>
-<script src="{% static 'assets/js/bootstrap.min.js' %}"></script>
-<!-- ALL PLUGINS -->
-<script src="{% static 'assets/js/jquery.superslides.min.js' %}"></script>
-<script src="{% static 'assets/js/images-loded.min.js' %}"></script>
-<script src="{% static 'assets/js/isotope.min.js' %}"></script>
-<script src="{% static 'assets/js/baguetteBox.min.js' %}"></script>
-<script src="{% static 'assets/js/form-validator.min.js' %}"></script>
-<script src="{% static 'assets/js/contact-form-script.js' %}"></script>
-<script src="{% static 'assets/js/custom.js' %}"></script> 
+    <script src="{% static 'assets/js/popper.min.js' %}"></script>
+    <script src="{% static 'assets/js/bootstrap.min.js' %}"></script>
+    <!-- ALL PLUGINS -->
+    <script src="{% static 'assets/js/jquery.superslides.min.js' %}"></script>
+    <script src="{% static 'assets/js/images-loded.min.js' %}"></script>
+    <script src="{% static 'assets/js/isotope.min.js' %}"></script>
+    <script src="{% static 'assets/js/baguetteBox.min.js' %}"></script>
+    <script src="{% static 'assets/js/form-validator.min.js' %}"></script>
+    <script src="{% static 'assets/js/contact-form-script.js' %}"></script>
+    <script src="{% static 'assets/js/custom.js' %}"></script> 
 </body>
 </html>
 {% endblock content %}

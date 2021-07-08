@@ -1,9 +1,11 @@
 from django.shortcuts import render , redirect
 from .models import Ingredients, Recipes , Category , Recipe_Ingredients , Users, User_Details,Receipe_Tracker
 from django.contrib import messages
-from django.http import HttpResponse
+from django.http import HttpResponse , JsonResponse
 from .test import storeDBfromCSV
 from .add_ons import *
+import datetime 
+import json
 
 from json import loads,dumps
 from django.core.files.storage import FileSystemStorage
@@ -150,8 +152,9 @@ def recipes(request):
             row = cursor.fetchall()
             item = []
             for j in row:
-                # print(list(j))
+                print(list(j))
                 recipe_details = {
+                    'id' :list(j)[0],
                     'name':list(j)[1],
                     'fats':list(j)[2],
                     'calories':list(j)[3],
@@ -166,7 +169,10 @@ def recipes(request):
                 recipes_array.append(recipe_details)
         connection.close()
     recipe_json = dumps(recipes_array)
-    return render(request , 'recipes.html' , {'recipe_data':recipes_array,'predcited_items':recipe_string,'username':username})
+    global isLoggedIn
+    user = request.session['username']
+
+    return render(request , 'recipes.html' , {'recipe_data':recipes_array,'predcited_items':recipe_string,'username':user,'isLoggedIn': isLoggedIn })
 
 def login(request):
     global isLoggedIn
@@ -211,6 +217,7 @@ def login(request):
                 return redirect("/login")
 
     return render(request , 'login.html' , {})
+
 def logout(request):
     global isLoggedIn,username,datajson
     try:
@@ -311,8 +318,15 @@ def addNewRecipe(request):
 
 
 def recipe(request, id):
-    print(id)
-    return render(request, 'recipe.html', {'username':username})
+    global isLoggedIn
+    recipe = Recipes.objects.get(Receipe_Id=id)
+    ing_list = []
+    temp = Recipe_Ingredients.objects.filter(Receipe_Id=id)
+    for i in temp:
+        ing_list.append(Ingredients.objects.get(Ingredient_id=i.Ingredient_Id_id).name)
+    print(ing_list)
+    print(recipe.Description, recipe.Fats)
+    return render(request, 'recipe.html', {'isLoggedIn': isLoggedIn, 'username':username , 'ing_list': ing_list, 'recipe' : recipe })
 
 def signupprofile(request):
     global user_id,name
@@ -378,3 +392,34 @@ def admin(request):
     
     
     return render(request,"adminpanel.html", {'user_list':user_list,'recipe_list':receipe_list})
+
+def updateTracker(userID,recipeID,cheatDay):
+    user = Users.objects.get(id = userID)
+    recipeObj = Recipes.objects.get(Receipe_Id=recipeID)
+    current_date = datetime.date.today()
+    if not cheatDay :
+        obj = Receipe_Tracker(User_Id=user, Receipe_Id=recipeObj,Day=current_date)
+        obj.save()
+        print('Tracker Updated for User : ',user.username)
+
+        
+def record(request,id):
+    global isLoggedIn
+
+    user = Users.objects.get(id = id)
+    userinfo = User_Details.objects.get(User_Id=user)
+    
+    print(user)
+    data = getChartData(id)
+    weeklyCaldata  = weeklyCalories(id)
+    todayCal = getDailyCal(id)
+    
+    print(weeklyCaldata , todayCal)
+    labels = json.dumps(data['labels']) 
+    datasets = json.dumps(data['datasets'][0]['data'])
+    #updateTracker(user.id,1,False)
+    
+    return render(request, "records.html" , {'labels' : labels ,
+                                            "datasets":datasets, 'isLoggedIn' : isLoggedIn , 
+                                            'username' : user.username, 'user' : user , 
+                                            'userinfo' : userinfo , 'weeklyCal' : weeklyCaldata , 'dailyCal' : todayCal })

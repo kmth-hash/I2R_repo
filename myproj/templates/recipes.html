@@ -51,38 +51,48 @@
           
     </header>
     <div style="margin-top: 80px;">
-        <h3 style="color: whitesmoke;">
+        <div class="container">
+          <h3 style="color: whitesmoke;">
             Showing recipes that can be prepared using {{predcited_items}}
-        </h3>
+          </h3>
+        </div>
     </div>
     
     <div style="padding-bottom: 20px;" class="container" id="recipe_container">  
       {% for i in recipe_data%}
-      <div class="get_more_recipe rounded m-3 p-1 col-12">
-        <div class="row">
-          <div class="col-lg-2 col-3">
-            <img src="{% static ''|add:i.imageURL %}" width="100%" class="m-2 rounded ">
-          </div>
-          <div class="recipe_name col-lg-10 col-9">
-            <h2 class="">{{i.name}}</h2>
-            <hr style="background-color:white">
-            <p class="text-white-50 font-weight-bold">{{i.description}}</p>
-            <div id="scrollmenu">
-              <a href="spicy">Spicy</a><a href="rice-items">Rice Items</a><a href="non-veg">Non Veg</a><a href="Chicken">Chicken</a>
-              <a href="Chinese">Chinese</a>
-              <a href="More Options">More Options</a>
+      <form action="" class="user" method="POST">
+        {% csrf_token %}
+              <input type="hidden" value="{{i.id}}" name="recipeId">
+              <div class="get_more_recipe rounded m-3 p-1 col-12">
+                <div class="row">
+                  <div class="col-lg-2 col-3">
+                    <a href="/search/recipe/1">
+                      <img src="{% static ''|add:i.imageURL %}" width="100%" class="m-2 rounded ">
+                    </a>
+                  </div>
+                  <div class="recipe_name col-lg-10 col-9">
+                    <a href="/search/recipes/recipe/{{i.id}}">
+                      <h2 class="">{{i.name}}</h2>
+                    <hr style="background-color:white">
+                    <p class="text-white-50 font-weight-bold">{{i.description}}</p>
+                    <div id="scrollmenu">
+                      <a href="spicy">Spicy</a><a href="rice-items">Rice Items</a><a href="non-veg">Non Veg</a><a href="Chicken">Chicken</a>
+                      <a href="Chinese">Chinese</a>
+                      <a href="More Options">More Options</a>
+                    </div>
+                      <div style="align-items: flex-end;text-align: right;margin-bottom: 3px;"> <div>
+                        <span style="background-color: rgb(182, 47, 47);color: white;padding: 3px;border-radius: 5px;padding-left: 5px;"data-toggle="modal" data-target="#bottom_modal">Try it now 
+                          <span>
+                          <i class="fa fa-arrow-right"></i>
+                        </span>
+                      </span>
+                    </div>
+                  </div>
+                    </a>
+                </div>
             </div>
-              <div style="align-items: flex-end;text-align: right;margin-bottom: 3px;"> <div>
-                <span style="background-color: rgb(182, 47, 47);color: white;padding: 3px;border-radius: 5px;padding-left: 5px;"data-toggle="modal" data-target="#bottom_modal">Try it now 
-                  <span>
-                  <i class="fa fa-arrow-right"></i>
-                </span>
-              </span>
-            </div>
           </div>
-        </div>
-    </div>
-  </div>
+        </form>
       {%endfor%}
     </div>
     <!-- <div class="mt-5">
