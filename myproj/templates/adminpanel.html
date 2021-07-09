@@ -264,7 +264,6 @@
         var height = Math.max( body.scrollHeight, body.offsetHeight, 
                        html.clientHeight, html.scrollHeight, html.offsetHeight );
             document.getElementById('body').style.height = height+'px';
-            document.body.style.overflowY = 'hidden'
         document.getElementById('insideact').style.top = height/2 +'px'
 
             
@@ -272,7 +271,6 @@
         }
         function clearme(){
             document.getElementById('body').style.display = 'none'   
-            document.body.style.overflowY = 'scroll'
         document.getElementById('insideact').style.top = '-310px'
             document.getElementById('activity').style.background = 'none'
             

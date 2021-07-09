@@ -1,42 +1,24 @@
 {% load static %}
 {% block content %}
 <!DOCTYPE html>
-<html lang="en"><!-- Basic -->
+<html lang="en">
 <head>
 	<meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">   
-   
-    <!-- Mobile Metas -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
- 
-     <!-- Site Metas -->
 	 <title>I2R Converter</title>
     <meta name="keywords" content="">
     <meta name="description" content="">
     <meta name="author" content="">
-
-    <!-- Site Icons -->
 	<link rel="shortcut icon" href="{% static 'assets/img/bento.png' %}" type="image/x-icon">
-
-    <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="{% static 'assets/css/bootstrap.min.css' %}">    
-	<!-- Site CSS -->
     <link rel="stylesheet" href="{% static 'assets/css/style.css' %}">    
     <link rel="stylesheet" href="{% static 'assets/css/styles.css' %}">    
-    <!-- Responsive CSS -->
     <link rel="stylesheet" href="{% static 'assets/css/responsive.css' %}">
-    <!-- Custom CSS -->
     <link rel="stylesheet" href="{% static 'assets/css/custom.css' %}">
-
-    <!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
-
 </head>
 
 <body>
-	<!-- Start header -->
 	<header class="top-navbar">
 		<nav class="navbar navbar-expand-lg navbar-light bg-dark navbar-right ">
 			<a style="margin-left: 20px; padding-bottom: 0px;" class="navbar-brand" href="#"><img src="{% static 'assets/img/bento.png' %}" height="50px" width="50px" alt=""><span style="color: white; font-weight: bold; margin-left: 5px;">I2R</span></a>
@@ -46,7 +28,7 @@
 			<div class="collapse navbar-collapse justify-content-center" id="navbarNav">
 			  <ul class="navbar-nav">
 				<li class="nav-item active">
-				  <a class="nav-link" href="#">Home <span class="sr-only"></span></a>
+				  <a class="nav-link" href="/home">Home <span class="sr-only"></span></a>
 				</li>
 				<li class="nav-item">
 				  <a class="nav-link" href="/search">Get Recipe</a>
@@ -75,8 +57,6 @@
 		  
 	</header>
 	{% include './includes/messages.html' %}
-	<!-- End header -->
-	<!-- Start slides -->
 	<div id="slides" class="cover-slides">
 		<ul class="slides-container">
 			<li class="text-center">
@@ -124,10 +104,6 @@
 			<a href="#" class="prev"><i class="fa fa-angle-left" aria-hidden="true"></i></a>
 		</div>
 	</div>
-	
-	<!-- End slides -->
-	
-	<!-- Start About -->
 	<div id="hereabout" class="about-section-box">
 		<div class="container">
 			<div class="row">
@@ -146,9 +122,6 @@
 			</div>
 		</div>
 	</div>
-	<!-- End About -->
-	
-	<!-- Start QT -->
 	<div class="qt-box qt-background">
 		<div class="container">
 			<div class="row">
@@ -161,135 +134,67 @@
 			</div>
 		</div>
 	</div>
-	<!-- End QT -->
-	
-	<!-- Start Menu -->
 	<div class="menu-box">
 		<div class="container">
 			<div class="row">
 				<div class="col-lg-12">
 					<div class="heading-title text-center">
 						<h2>Recommendations</h2>
-						<p>Eat healthy, home-cooked meals, and save some bucks with our easy-to-use meal planning</p>
+						<h6 class="text-white-50 font-weight-bold">Top 5 popular dishes</h6>
 					</div>
 				</div>
-			</div>
-			<div class="row">
-				<div class="col-lg-12">
-					<div class="special-menu text-center">
-						<div class="button-group filter-button-group">
-							<button class="active" data-filter="*">All</button>
-							<button data-filter=".main">Maincourse</button>
-							<button data-filter=".snacks">Snacks</button>
-							<button data-filter=".drinks">Drinks</button>
-						</div>
-					</div>
-				</div>
-			</div>
-				
+			</div>				
 			<div class="row special-list">
 				<div class="col-lg-4 col-md-6 special-grid main">
 					<div class="gallery-single fix">
-						<img src="{% static 'assets/img/recc/idli.jpg'%}" class="img-fluid" alt="Image">
+						<img src="{% static ''|add:recommendation.0.0.7%}" class="img-fluid" alt="Image">
 						<div class="why-text">
-							<h4>Idli</h4>
-							<p>It is naturally vegetarian, vegan, gluten-free and makes for one of the healthiest breakfast options served with Sambar and Coconut Chutney.</p>
+							<h4>{{recommendation.0.0.1}}</h4>
+							<h6 style="text-align: justify; color: whitesmoke;"">{{recommendation.0.0.8}}</h6>
 						</div>
 					</div>
 				</div>
-				
 				<div class="col-lg-4 col-md-6 special-grid main">
 					<div class="gallery-single fix">
-						<img src="{% static 'assets/img/recc/masaldosa.jpg'%}" class="img-fluid" alt="Image">
+						<img src="{% static ''|add:recommendation.0.1.7%}" class="img-fluid" alt="Image">
 						<div class="why-text">
-							<h4>Masala Dosa</h4>
-							<p>While masala dosa is a famous snack most popular in South India, these tasty stuffed crepes are enjoyed in North India as well and can be found on menus throughout the world</p>
+							<h4>{{recommendation.0.1.1}}</h4>
+							<h6 style="text-align: justify; color: whitesmoke;"">{{recommendation.0.1.8}}</h6>
 						</div>
 					</div>
 				</div>
-				
 				<div class="col-lg-4 col-md-6 special-grid main">
 					<div class="gallery-single fix">
-						<img src="{% static 'assets/img/recc/vada.jpg'%}" class="img-fluid" alt="Image">
+						<img src="{% static ''|add:recommendation.0.2.7%}" class="img-fluid" alt="Image">
 						<div class="why-text">
-							<h4>Medu Vada</h4>
-							<p>These doughnuts shaped fritters are made with black gram, herbs, coconut and spices. Even though the main ingredient is urad dal (black gram) but the herbs and spices can vary. You can also add vegetables like onions or grated carrots or grated beetroot.</p>
+							<h4>{{recommendation.0.2.1}}</h4>
+							<h6 style="text-align: justify; color: whitesmoke;"">{{recommendation.0.2.8}}</h6>
 						</div>
 					</div>
 				</div>
-				
-				<div class="col-lg-4 col-md-6 special-grid snacks">
+				<div class="col-lg-4 col-md-6 special-grid main">
 					<div class="gallery-single fix">
-						<img src="images/img-04.jpg" class="img-fluid" alt="Image">
+						<img src="{% static ''|add:recommendation.0.3.7%}" class="img-fluid" alt="Image">
 						<div class="why-text">
-							<h4>Special Lunch 1</h4>
-							<p>Sed id magna vitae eros sagittis euismod.</p>
-							<h5> $15.79</h5>
+							<h4>{{recommendation.0.3.1}}</h4>
+							<h6 style="text-align: justify; color: whitesmoke;"">{{recommendation.0.3.8}}</h6>
 						</div>
 					</div>
 				</div>
-				
-				<div class="col-lg-4 col-md-6 special-grid snacks">
+				<div class="col-lg-4 col-md-6 special-grid main">
+				</div>
+				<div class="col-lg-4 col-md-6 special-grid main">
 					<div class="gallery-single fix">
-						<img src="images/img-05.jpg" class="img-fluid" alt="Image">
+						<img src="{% static ''|add:recommendation.0.4.7%}" class="img-fluid" alt="Image">
 						<div class="why-text">
-							<h4>Special Lunch 2</h4>
-							<p>Sed id magna vitae eros sagittis euismod.</p>
-							<h5> $18.79</h5>
+							<h4>{{recommendation.0.4.1}}</h4>
+							<h6 style="text-align: justify; color: whitesmoke;"">{{recommendation.0.4.8}}</h6>
 						</div>
 					</div>
 				</div>
-				
-				<div class="col-lg-4 col-md-6 special-grid snacks">
-					<div class="gallery-single fix">
-						<img src="images/img-06.jpg" class="img-fluid" alt="Image">
-						<div class="why-text">
-							<h4>Special Lunch 3</h4>
-							<p>Sed id magna vitae eros sagittis euismod.</p>
-							<h5> $20.79</h5>
-						</div>
-					</div>
-				</div>
-				
-				<div class="col-lg-4 col-md-6 special-grid drinks">
-					<div class="gallery-single fix">
-						<img src="images/img-07.jpg" class="img-fluid" alt="Image">
-						<div class="why-text">
-							<h4>Special Dinner 1</h4>
-							<p>Sed id magna vitae eros sagittis euismod.</p>
-							<h5> $25.79</h5>
-						</div>
-					</div>
-				</div>
-				
-				<div class="col-lg-4 col-md-6 special-grid drinks">
-					<div class="gallery-single fix">
-						<img src="images/img-08.jpg" class="img-fluid" alt="Image">
-						<div class="why-text">
-							<h4>Special Dinner 2</h4>
-							<p>Sed id magna vitae eros sagittis euismod.</p>
-							<h5> $22.79</h5>
-						</div>
-					</div>
-				</div>
-				
-				<div class="col-lg-4 col-md-6 special-grid drinks">
-					<div class="gallery-single fix">
-						<img src="images/img-09.jpg" class="img-fluid" alt="Image">
-						<div class="why-text">
-							<h4>Special Dinner 3</h4>
-							<p>Sed id magna vitae eros sagittis euismod.</p>
-							<h5> $24.79</h5>
-						</div>
-					</div>
-				</div>
-				
 			</div>
 		</div>
 	</div>
-	<!-- End Menu -->
-	
-	<!-- Start Footer -->
 	<footer class="footer-area bg-f">
 		
 		<div class="copyright">
@@ -300,18 +205,12 @@
 					</div>
 				</div>
 			</div>
-		</div>
-		
+		</div>	
 	</footer>
-	<!-- End Footer -->
-	
 	<a href="#" id="back-to-top" title="Back to top" style="display: none;">&uarr;</a>
-
-	<!-- ALL JS FILES -->
 	<script src="{% static 'assets/js/jquery-3.2.1.min.js' %}"></script>
 	<script src="{% static 'assets/js/popper.min.js' %}"></script>
 	<script src="{% static 'assets/js/bootstrap.min.js' %}"></script>
-    <!-- ALL PLUGINS -->
 	<script src="{% static 'assets/js/jquery.superslides.min.js' %}"></script>
 	<script src="{% static 'assets/js/images-loded.min.js' %}"></script>
 	<script src="{% static 'assets/js/isotope.min.js' %}"></script>

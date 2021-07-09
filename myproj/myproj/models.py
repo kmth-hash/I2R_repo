@@ -35,18 +35,9 @@ class Ingredients(models.Model):
     def __str__(self):
         return "Item name : "+self.name
 
-class Recipe_Ingredients(models.Model):
-    Receipe_Ingredient_Id = models.IntegerField(primary_key=True)
-    Receipe_Id = models.ForeignKey("Recipes",on_delete=models.SET_NULL,null=True)
-    Ingredient_Id = models.ForeignKey("Ingredients",on_delete=models.SET_NULL,null=True)
-    Qty = models.DecimalField(decimal_places=2 ,max_digits=10 , default= 0)
-        
-    def __str__(self):
-        return "Too many numbers. Math.No No."
-
 class Recipes(models.Model):
     Receipe_Id = models.IntegerField(primary_key=True)
-    Category_Id = models.ForeignKey("Category",on_delete=models.SET_NULL,null=True)
+    Category_Id = models.ForeignKey("Category",on_delete=models.CASCADE,null=True)
     Name = models.TextField()
     Fats = models.TextField()
     Calories = models.TextField()
@@ -60,6 +51,14 @@ class Recipes(models.Model):
 
     def __str__(self):
         return "Recipe name : "+self.Name
+class Recipe_Ingredients(models.Model):
+    Receipe_Ingredient_Id = models.IntegerField(primary_key=True)
+    Receipe_Id = models.ForeignKey("Recipes",on_delete=models.CASCADE,null=True)
+    Ingredient_Id = models.ForeignKey("Ingredients",on_delete=models.SET_NULL,null=True)
+    Qty = models.DecimalField(decimal_places=2 ,max_digits=10 , default= 0)
+        
+    def __str__(self):
+        return "Too many numbers. Math.No No."
 
 class Category(models.Model):
     Category_Id = models.IntegerField(primary_key=True)
@@ -67,5 +66,11 @@ class Category(models.Model):
 
     def __str__(self):
         return "Category : "+self.Category_Name
-        
 
+class recipe_liked_table(models.Model):
+    Receipe_Id = models.ForeignKey("Recipes",on_delete=models.CASCADE,null=True)
+    User_Id = models.ForeignKey("Users",on_delete=models.CASCADE,null=True)
+        
+class recipe_like_count(models.Model):
+    Receipe_Id = models.ForeignKey("Recipes",on_delete=models.CASCADE,null=True)
+    likes = models.IntegerField()

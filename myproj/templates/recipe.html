@@ -1,222 +1,329 @@
-{% load static %}
-{% block content %}
+{% load static %} {% block content %}
 
 <!DOCTYPE html>
 <html>
-
-<head>
-    <meta charset="utf-8">
-    <meta name="description" content="I2R Converter">
-    <meta name="keywords" content="BMI , Healthy , HTML , JS , Web">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-    <link rel="shortcut icon" href="{% static 'assets/img/bento.png' %}" type="image/x-icon">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="description" content="I2R Converter" />
+    <meta name="keywords" content="BMI , Healthy , HTML , JS , Web" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, shrink-to-fit=no"
+    />
+    <link
+      rel="shortcut icon"
+      href="{% static 'assets/img/bento.png' %}"
+      type="image/x-icon"
+    />
     <title>I2R Converter</title>
-    <link rel="stylesheet" href="{% static 'assets/bootstrap/css/bootstrap.min.css' %}">
-    <link rel="stylesheet" href="{% static 'assets/fonts/font-awesome.min.css' %}">
-    <link rel="stylesheet" href="{% static 'assets/css/styles.css' %}">
-    <link rel="stylesheet" href="{% static 'assets/css/style.css' %}">
+    <link
+      rel="stylesheet"
+      href="{% static 'assets/bootstrap/css/bootstrap.min.css' %}"
+    />
+    <link
+      rel="stylesheet"
+      href="{% static 'assets/fonts/font-awesome.min.css' %}"
+    />
+    <link rel="stylesheet" href="{% static 'assets/css/styles.css' %}" />
+    <link rel="stylesheet" href="{% static 'assets/css/style.css' %}" />
     <style>
-        i {
-            color: rgb(50, 145, 50);
-        }
-        .description {
-            text-align: justify;
-        }
-        .bold{
-            font-size: 25px;
-            font-weight: 600;
-        }
-        .btn{
-            margin-right: 5px;
-            margin-left: 5px;
-            padding: 10px;
-            border-radius: 10px;
-        }
+      i {
+        color: rgb(50, 145, 50);
+      }
+      .description {
+        text-align: justify;
+      }
+      .bold {
+        font-size: 25px;
+        font-weight: 600;
+      }
+      .btn {
+        margin-right: 5px;
+        margin-left: 5px;
+        padding: 10px;
+        border-radius: 10px;
+      }
     </style>
+  </head>
 
-
-</head>
-
-<body>
+  <body>
     <header class="top-navbar">
-        <nav style="top: 0px;" class="navbar navbar-expand-lg navbar-light bg-dark navbar-right ">
-            <a style="margin-left: 20px; padding-bottom: 0px;" class="navbar-brand" href="#"><img src="{% static 'assets/img/bento.png' %}" height="50px" width="50px" alt=""><span style="color: white; font-weight: bold; margin-left: 5px;">I2R</span></a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-              <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
-              <ul class="navbar-nav">
-                <li class="nav-item">
-                  <a class="nav-link" href="/">Home <span class="sr-only"></span></a>
-                </li>
-                <li class="nav-item active">
-                  <a class="nav-link" href="/search">Get Recipe</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="/bmi">BMI calculator</a>
-                </li>
-                <li class="nav-item dropdown">
-					<a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-						{{username}} &nbsp;<i style="color: white;" class="fa fa-user"></i>
-					</a>
-					<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-					  <a class="dropdown-item" href="/logout">Logout</a>
-					  <a class="dropdown-item" href="#">Profile</a>
-					  <a class="dropdown-item" href="#">About</a>
-					</div>
-				  </li>
-              </ul>
-            </div>
-          </nav>
-          
-    </header>
-    <div style="margin-top: 80px;" class="container">
-        <div class="mt-3"></div>
-        <h4 style="color: white;" id="name_to_show"></h4>
-        <div class="container text-center" id="image_to_show">
-            
+      <nav
+        style="top: 0px"
+        class="navbar navbar-expand-lg navbar-light bg-dark navbar-right"
+      >
+        <a
+          style="margin-left: 20px; padding-bottom: 0px"
+          class="navbar-brand"
+          href="#"
+          ><img
+            src="{% static 'assets/img/bento.png' %}"
+            height="50px"
+            width="50px"
+            alt=""
+          /><span style="color: white; font-weight: bold; margin-left: 5px"
+            >I2R</span
+          ></a
+        >
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-toggle="collapse"
+          data-target="#navbarNav"
+          aria-controls="navbarNav"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div
+          class="collapse navbar-collapse justify-content-center"
+          id="navbarNav"
+        >
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link" href="/home"
+                >Home <span class="sr-only"></span
+              ></a>
+            </li>
+            <li class="nav-item active">
+              <a class="nav-link" href="/search">Get Recipe</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/bmi">BMI calculator</a>
+            </li>
+            <li class="nav-item dropdown">
+              <a
+                class="nav-link dropdown-toggle"
+                href="#"
+                id="navbarDropdownMenuLink"
+                data-toggle="dropdown"
+                aria-haspopup="true"
+                aria-expanded="false"
+              >
+                {{username}} &nbsp;<i
+                  style="color: white"
+                  class="fa fa-user"
+                ></i>
+              </a>
+              <div
+                class="dropdown-menu"
+                aria-labelledby="navbarDropdownMenuLink"
+              >
+                <a class="dropdown-item" href="/logout">Logout</a>
+                <a class="dropdown-item" href="#">Profile</a>
+                <a class="dropdown-item" href="#">About</a>
+              </div>
+            </li>
+          </ul>
         </div>
+      </nav>
+    </header>
+    <div style="margin-top: 80px" class="container">
+      <div class="mt-3"></div>
+      <div class="row justify-content-between">
+        <h4 style="color: white" id="name_to_show">{{tolist.name}}</h4>
+        {% if present %}
+        <form action="" method="POST">
+            {% csrf_token %}
+            <input type="hidden" name="form_type" value="present">
+          <button
+            class="container-center"
+            style="
+              -webkit-box-shadow: 4px 6px 10px -3px rgba(0, 0, 0, 0.75);
+              -moz-box-shadow: 4px 6px 10px -3px rgba(0, 0, 0, 0.75);
+              border: none;
+              box-shadow: 4px 6px 10px -3px rgba(0, 0, 0, 0.75);
+              height: 40px;
+              width: 40px;
+              border-radius: 20px;
+              background-color: whitesmoke;
+              position: fixed;
+              top: 85px;
+              right: 30px;
+              z-index: 999;
+            "
+          >
+            <i style="background-color: white" class="fa fa-heart"></i>
+          </button>
+        </form>
+        {%else%}
+        <form action="" method="POST">
+            {% csrf_token %}
+            <input type="hidden" name="form_type" value="notpresent">
+            <button
+          class="container-center"
+          style="
+            -webkit-box-shadow: 4px 6px 10px -3px rgba(0, 0, 0, 0.75);
+            -moz-box-shadow: 4px 6px 10px -3px rgba(0, 0, 0, 0.75);
+            border: none;
+            box-shadow: 4px 6px 10px -3px rgba(0, 0, 0, 0.75);
+            height: 40px;
+            width: 40px;
+            border-radius: 20px;
+            background-color: whitesmoke;
+            position: fixed;
+            top: 85px;
+            right: 30px;
+            z-index: 999;
+          "
+        >
+          <i style="background-color: white" class="fa fa-heart-o"></i>
+        </button>
+        </form>
+        {%endif%}
 
-        <div class="container">
-            <!-- <div class="description">
+        <div
+          class="container-center"
+          style="
+            width: 40px;
+            height: 15px;
+            position: fixed;
+            top: 132px;
+            right: 30px;
+          "
+        >
+          <label style="z-index: 999; color: whitesmoke">{{likes}}</label>
+        </div>
+      </div>
+      <div class="container text-center" id="image_to_show">
+        <img
+          style="
+            border-radius: 10px;
+            border: 0.5px solid rgba(88, 88, 88, 0.82);
+          "
+          src="{%static ''|add:tolist.imageURL %}"
+          class="text-center p-3 m-2 col-8"
+        />
+      </div>
+
+      <div class="container">
+        <!-- <div class="description">
                 <h6>French fries are arguably the perfect snack or side dish when you are craving for something crisp, salty, savory, cheesy or satisfying.</h6>
             </div> -->
-            <div class="description" id="description">
-
+        <div class="description" id="description">
+          <h6>{{tolist.description}}</h6>
+        </div>
+        <br />
+        <div class="row">
+          <div
+            style="margin-bottom: 20px"
+            class="col-lg-6 col-md-12 col-sm-12 col-xs-12"
+          >
+            <h4 style="color: white">Ingredients</h4>
+            <hr />
+            <div style="color: white; font-size: 16px" class="container">
+              <span>
+                <i class="fa fa-check-circle-o" aria-hidden="true"></i>
+                1 Potatoe
+              </span>
+              <br />
+              <span>
+                <i class="fa fa-check-circle-o" aria-hidden="true"></i>
+                ½ carrot
+              </span>
+              <br />
+              <span>
+                <i class="fa fa-check-circle-o" aria-hidden="true"></i>
+                1 tomato
+              </span>
+              <br />
+              <span>
+                <i class="fa fa-check-circle-o" aria-hidden="true"></i>
+                5 beans
+              </span>
+              <br />
+              <span>
+                <i class="fa fa-check-circle-o" aria-hidden="true"></i>
+                ½ onion
+              </span>
+              <br />
+              <span>
+                <i class="fa fa-check-circle-o" aria-hidden="true"></i>
+                ½ tsp pepper
+              </span>
+              <br />
+              <span>
+                <i class="fa fa-check-circle-o" aria-hidden="true"></i>
+                1 cup basmati rice
+              </span>
+              <br />
+              <span>
+                <i class="fa fa-check-circle-o" aria-hidden="true"></i>
+                5 cashew
+              </span>
+              <br />
             </div>
-            <br/>
-            <div class="row">
-                <div style="margin-bottom: 20px;" class="col-lg-6 col-md-12 col-sm-12 col-xs-12">
-                    <h4 style="color: white;">Ingredients</h4>
-                    <hr/>
-                    <div style="color: white;font-size: 16px;" class="container">
-                        <span>
-                            <i class="fa fa-check-circle-o" aria-hidden="true"></i>
-                            1  Potatoe
-                        </span>
-                        <br/>
-                        <span>
-                            <i class="fa fa-check-circle-o" aria-hidden="true"></i>
-                            ½ carrot 
-                        </span>
-                        <br/>
-                        <span>
-                            <i class="fa fa-check-circle-o" aria-hidden="true"></i>
-                            1 tomato
-                        </span>
-                        <br/>
-                        <span>
-                            <i class="fa fa-check-circle-o" aria-hidden="true"></i>
-                            5 beans
-                        </span>
-                        <br/>
-                        <span>
-                            <i class="fa fa-check-circle-o" aria-hidden="true"></i>
-                            ½ onion
-                        </span>
-                        <br/>
-                        <span>
-                            <i class="fa fa-check-circle-o" aria-hidden="true"></i>
-                            ½ tsp pepper
-                        </span>
-                        <br/>
-                        <span>
-                            <i class="fa fa-check-circle-o" aria-hidden="true"></i>
-                            1 cup basmati rice
-                        </span>
-                        <br/>
-                        <span>
-                            <i class="fa fa-check-circle-o" aria-hidden="true"></i>
-                            5 cashew
-                        </span>
-                        <br/>
-                        
-
-                    </div>
-                </div>
-                <div style="border-radius: 10px;" class="col-lg-6 col-md-12 col-sm-12 border col-xs-12">
-                    <h4 style="color: white;" class="mt-2">Nutritional Facts</h4>
-                    <p style="color: rgba(245, 245, 245, 0.767);" id="quantities"></p>
-                    <div>
-                        <table style="color: whitesmoke;" class="table">
-                            <tr>
-                                <td>Calories</td>
-                                <th id="calories"></th>
-                            </tr>
-
-                            <tr>
-                                <td>Proteins</td>
-                                <th id="proteins"></th>
-                            </tr>
-
-                            <tr>
-                                <td>Fats</td>
-                                <th id="fats"></th>
-                            </tr>
-
-                            <tr>
-                                <td>Carbohydrates</td>
-                                <th id="carbo"></th>
-                            </tr>
-                        </table>
-                    </div>
-                </div>
-
-            </div>
-            <br/>
+          </div>
+          <div
+            style="border-radius: 10px"
+            class="col-lg-6 col-md-12 col-sm-12 border col-xs-12"
+          >
+            <h4 style="color: white" class="mt-2">Nutritional Facts</h4>
+            <p style="color: rgba(245, 245, 245, 0.767)" id="quantities">
+              Serving per {{tolist.quantity}}
+            </p>
             <div>
-                <h4 style="color: white;">Directions :</h4>
-                <div class="container description" id="procedure">
-                </div>
+              <table style="color: whitesmoke" class="table">
+                <tr>
+                  <td>Calories</td>
+                  <th id="calories">{{tolist.calories}}</th>
+                </tr>
+
+                <tr>
+                  <td>Proteins</td>
+                  <th id="proteins">{{tolist.proteins}}</th>
+                </tr>
+
+                <tr>
+                  <td>Fats</td>
+                  <th id="fats">{{tolist.fats}}</th>
+                </tr>
+
+                <tr>
+                  <td>Carbohydrates</td>
+                  <th id="carbo">{{tolist.carbohydrates}}</th>
+                </tr>
+              </table>
             </div>
-            <div class="header">
-                <h4 style="color: white;">Categories :</h4>
-                <div class="row">
-                    <button class="btn btn-primary">Snacky</button>
-                    <button class="btn btn-success">Easy</button>
-                    <button class="btn btn-danger">Spicy</button>
-                    <button class="btn btn-warning">Cheesy</button>
-                    <button class="btn btn-info">Sides</button>
-
-                </div>
-
-            </div>
-
+          </div>
         </div>
-
-        <div class="m-3 p-3">
-            &nbsp;
+        <br />
+        <div>
+          <h4 style="color: white">Directions :</h4>
+          <div class="container description" id="procedure">
+            {{tolist.procedure | safe}}
+          </div>
+          <hr />
         </div>
+        <div class="header">
+          <h4 style="color: white">Categories :</h4>
+          <div class="row">
+            <button class="btn btn-primary">Snacky</button>
+            <button class="btn btn-success">Easy</button>
+            <button class="btn btn-danger">Spicy</button>
+            <button class="btn btn-warning">Cheesy</button>
+            <button class="btn btn-info">Sides</button>
+          </div>
+        </div>
+      </div>
 
-
-
+      <div class="m-3 p-3">&nbsp;</div>
     </div>
-    <script>
-        var t=JSON.parse(localStorage.getItem('recipe_detail'))
-        document.getElementById('name_to_show').innerHTML = t.name
-        document.getElementById('image_to_show').innerHTML = '<img style="border-radius: 10px; border: 0.5px solid rgba(88, 88, 88, 0.82);" src="'+t.imageURL+'" class="text-center p-3 m-2 col-8">'
-        document.getElementById('description').innerHTML = '<h6>'+t.description;+'</h6';
-            document.getElementById('procedure').innerHTML = t.procedure+'<hr>'
-            document.getElementById('quantities').innerHTML = 'Serving per '+t.quantity
-            document.getElementById('fats').innerHTML = t.fats
-            document.getElementById('proteins').innerHTML = t.proteins
-            document.getElementById('carbo').innerHTML = t.carbohydrates
-            document.getElementById('calories').innerHTML = t.calories
-    </script>
+
+    <script></script>
     <script src="{% static 'assets/js/jquery-3.2.1.min.js' %}"></script>
-	<script src="{% static 'assets/js/popper.min.js' %}"></script>
-	<script src="{% static 'assets/js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'assets/js/popper.min.js' %}"></script>
+    <script src="{% static 'assets/js/bootstrap.min.js' %}"></script>
     <!-- ALL PLUGINS -->
-	<script src="{% static 'assets/js/jquery.superslides.min.js' %}"></script>
-	<script src="{% static 'assets/js/images-loded.min.js' %}"></script>
-	<script src="{% static 'assets/js/isotope.min.js' %}"></script>
-	<script src="{% static 'assets/js/baguetteBox.min.js' %}"></script>
-	<script src="{% static 'assets/js/form-validator.min.js' %}"></script>
+    <script src="{% static 'assets/js/jquery.superslides.min.js' %}"></script>
+    <script src="{% static 'assets/js/images-loded.min.js' %}"></script>
+    <script src="{% static 'assets/js/isotope.min.js' %}"></script>
+    <script src="{% static 'assets/js/baguetteBox.min.js' %}"></script>
+    <script src="{% static 'assets/js/form-validator.min.js' %}"></script>
     <script src="{% static 'assets/js/contact-form-script.js' %}"></script>
     <script src="{% static 'assets/js/custom.js' %}"></script>
-</body>
-
+  </body>
 </html>
-
 
 {% endblock content %}
