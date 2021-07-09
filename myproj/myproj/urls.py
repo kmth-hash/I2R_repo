@@ -17,6 +17,7 @@ urlpatterns = [
     path('search/recipes/' , views.recipes) ,
     path('addRecipe/' , views.addRecipe) , 
     path('add/', views.addNewRecipe),
+    path('record/<int:id>/',views.record),
     path('' , views.firstcall) , 
     path('signup/profile/' , views.signupprofile) , 
     path('search/' , views.mainpage) , 

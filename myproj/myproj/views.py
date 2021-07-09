@@ -1,9 +1,12 @@
 from django.shortcuts import render , redirect
 from .models import Ingredients, Recipes , Category , Recipe_Ingredients , Users, User_Details,Receipe_Tracker
 from django.contrib import messages
-from django.http import HttpResponse
+from django.http import HttpResponse , JsonResponse
 from .test import storeDBfromCSV
 from .add_ons import *
+import datetime 
+import json
+
 from json import loads,dumps
 from django.core.files.storage import FileSystemStorage
 import os
@@ -216,6 +219,7 @@ def login(request):
                 return redirect("/login")
 
     return render(request , 'login.html' , {})
+
 def logout(request):
     global isLoggedIn,username,datajson
     try:
@@ -434,9 +438,108 @@ def admin(request):
         receipe_list = receipe_returned()
         return redirect("/adminpanel")
 
+    elif request.method == "POST" and request.POST.get("form_type") == 'formThree':
+        name = request.POST['new_recipe']
+        quantity = request.POST['new_quantity']
+        description = request.POST['new_desc']
+        calories = request.POST['new_calories']
+        proteins = request.POST['new_proteins']
+        fats = request.POST['new_fats']
+        carbohydrates = request.POST['new_carbo']
+        ingredients = request.POST['new_ing']
+        procedure = request.POST['new_procedure']
+        category = request.POST['new_category']
+        ing_list = list(ingredients.split(','))
+        ing_list_tags = list(ingredients.split(','))
+        for i in range(len(ing_list)):
+            ing_list_tags[i] = "&#9830"+ing_list[i]+"<br>"
+        
+        recipe_ingredient_to_add = " ".join(ing_list_tags)
+
+        image_to_add = "assests/img/rec/"+name+".png"
+        category_obj = Category.objects.get(Category_Name=category)
+        category_id = category_obj.Category_Id
+        max_recp_obj = Recipes.objects.last()
+        max_key = max_recp_obj.Receipe_Id
+
+        procedure_list = list(procedure.split(','))
+        print(procedure_list)
+        loop_count = 1
+        for j in range(len(procedure_list)):
+            procedure_list[j] = "<h2>Step"+str(loop_count)+"</h2> "+procedure_list[j]+"<br>"
+            loop_count += 1
+        procedure_to_add = " ".join(procedure_list)
+
+
+
+        new_recipe = Recipes(
+                        Receipe_Id = max_key + 1,
+                        Category_Id_id = category_id ,
+                        Name = name ,
+                        Fats = fats ,
+                        Calories= calories ,
+                        Quantity = quantity ,
+                        Proteins= proteins ,
+                        Carbohydrates=carbohydrates ,
+                        Receipe_Image = image_to_add ,
+                        Description = description ,
+                        procedure = procedure_to_add, 
+                        Ingredients = recipe_ingredient_to_add)
+        new_recipe.save()
+        messages.success(request  , " Added successfully.")
+       
+        ingredient_id_list = list()
+        for names in ing_list:
+            ingredient_id = Ingredients.objects.get(name=names).Ingredient_id
+            ingredient_id_list.append(ingredient_id)
+        print(ingredient_id_list)
+        max_recp_ing_obj = Recipe_Ingredients.objects.last()
+        max_key_ing = max_recp_ing_obj.Receipe_Ingredient_Id
+        count = 1
+        for id in ingredient_id_list:
+            max_key_ing += count
+            new_ing_obj = Recipe_Ingredients(Receipe_Ingredient_Id=max_key_ing,Qty=0.00,Ingredient_Id_id=id,Receipe_Id_id=max_key+1)
+            new_ing_obj.save()
+            count +=1
+        
+
+        return redirect("/adminpanel")
+
     else:
         user_list = users()
         receipe_list = receipe_returned()
+        #print(receipe_list)
     
     
     return render(request,"adminpanel.html", {'user_list':user_list,'recipe_list':receipe_list})
+
+def updateTracker(userID,recipeID,cheatDay):
+    user = Users.objects.get(id = userID)
+    recipeObj = Recipes.objects.get(Receipe_Id=recipeID)
+    current_date = datetime.date.today()
+    if not cheatDay :
+        obj = Receipe_Tracker(User_Id=user, Receipe_Id=recipeObj,Day=current_date)
+        obj.save()
+        print('Tracker Updated for User : ',user.username)
+
+        
+def record(request,id):
+    global isLoggedIn
+
+    user = Users.objects.get(id = id)
+    userinfo = User_Details.objects.get(User_Id=user)
+    
+    print(user)
+    data = getChartData(id)
+    weeklyCaldata  = weeklyCalories(id)
+    todayCal = getDailyCal(id)
+    
+    print(weeklyCaldata , todayCal)
+    labels = json.dumps(data['labels']) 
+    datasets = json.dumps(data['datasets'][0]['data'])
+    #updateTracker(user.id,1,False)
+    
+    return render(request, "records.html" , {'labels' : labels ,
+                                            "datasets":datasets, 'isLoggedIn' : isLoggedIn , 
+                                            'username' : user.username, 'user' : user , 
+                                            'userinfo' : userinfo , 'weeklyCal' : weeklyCaldata , 'dailyCal' : todayCal })

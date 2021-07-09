@@ -13,7 +13,7 @@
         <link rel="stylesheet" href="{% static 'assets/css/profile.css' %}">
         <link rel="stylesheet" href="{% static 'assets/css/style.css' %}">
         <link rel="stylesheet" href="{% static 'assets/css/styles.css' %}">
-        <link rel="stylesheet" href="{% static 'assets/css/style.css' %}"
+        <link rel="stylesheet" href="{% static 'assets/css/style.css' %}">
 </head>
 <body>
     <header class="top-navbar">
@@ -34,15 +34,18 @@
 					</div>
 				  </li>
 			  </ul>
-			</div>
-			
+			</div>			
 		  </nav>
-	</header> 
+    </header> 
+    
+    
     <div style="position: relative;top:75px;padding:20px;">
         <h5 class="text-white-50 font-weight-bold">
             Users
         </h5>
+
         <hr style="background-color: whitesmoke;">
+
         <div style="height: 300px;background-color: whitesmoke;border-radius: 10px; overflow-y: scroll; padding: 10px; margin-bottom: 20px;">
                 <table class="table">
                     <tr>
@@ -98,10 +101,13 @@
                     {% endfor %}
                 </table>
         </div>
+
         <h5 class="text-white-50 font-weight-bold">
             Recipes
         </h5>
+
         <hr style="background-color: whitesmoke;">
+        
         <div style="height: 300px;background-color: whitesmoke;border-radius: 10px; overflow-y: scroll; padding: 10px; margin-bottom: 20px;">
             <table class="table">
                 <tr>
@@ -158,6 +164,9 @@
     <div onclick="clearme()" id="body" style="display: none; background: rgba(0, 0, 0, 0.589);width: 100%;position: absolute;top: 0%;">
         
     </div>
+    <form action="" method="POST">
+        {% csrf_token %}
+        <input type="hidden" name="form_type" value="formThree">
     <div id="insideact" class="col-md-10">
         <h4 style="color: whitesmoke;padding: 20px;">Add new recipe</h4>
         <hr style="background-color: whitesmoke;margin:0px;margin-left: 20px;">
@@ -167,7 +176,13 @@
                     <h6 class="text-white-50 font-weight-bold">Name of the recipe: </h6>
                 </div>
                 <div class="col-md-4">
-                    <input style="border-radius: 7px;" type="text" placeholder="Recipe name">
+                    <input style="border-radius: 7px;" type="text" name="new_recipe" placeholder="Recipe name">
+                </div>
+                <div class="col-md-2">
+                    <h6 class="text-white-50 font-weight-bold">Proteins: </h6>
+                </div>
+                <div class="col-md-4">
+                    <input style="border-radius: 7px;" type="text" name="new_proteins" placeholder="Proteins">
                 </div>
             </div>
             <div class="row">
@@ -175,27 +190,13 @@
                     <h6 class="text-white-50 font-weight-bold">Quantity: </h6>
                 </div>
                 <div class="col-md-4">
-                    <input style="border-radius: 7px;" type="text" placeholder="Quantity">
+                    <input style="border-radius: 7px;" type="text" name="new_quantity" placeholder="Quantity">
                 </div>
-                <div class="col-md-2">
-                    <h6 class="text-white-50 font-weight-bold">Description: </h6>
-                </div>
-                <div class="col-md-4">
-                    <input style="border-radius: 7px;" type="text" placeholder="Description">
-                </div>
-            </div>
-            <div class="row">
                 <div class="col-md-2">
                     <h6 class="text-white-50 font-weight-bold">Calories: </h6>
                 </div>
                 <div class="col-md-4">
-                    <input style="border-radius: 7px;" type="text" placeholder="Calories">
-                </div>
-                <div class="col-md-2">
-                    <h6 class="text-white-50 font-weight-bold">Proteins: </h6>
-                </div>
-                <div class="col-md-4">
-                    <input style="border-radius: 7px;" type="text" placeholder="Proteins">
+                    <input style="border-radius: 7px;" type="text" name="new_calories" placeholder="Calories">
                 </div>
             </div>
             <div class="row">
@@ -203,65 +204,80 @@
                     <h6 class="text-white-50 font-weight-bold">Fats: </h6>
                 </div>
                 <div class="col-md-4">
-                    <input style="border-radius: 7px;" type="text" placeholder="Fats">
+                    <input style="border-radius: 7px;" type="text" name="new_fats" placeholder="Fats">
                 </div>
+                <div class="col-md-2">
+                    <h6 class="text-white-50 font-weight-bold">Category Name: </h6>
+                </div>
+                <div class="col-md-4">
+                    <select name="new_category">
+                        <option selected="selected" disabled>Categories:</option>
+                                <option value="Snacks">Snacks</option>
+                                <option value="Rice Items">Rice Item</option>
+                                <option value="Curry">Curry</option>
+                                <option value="Sweets">Sweet</option>
+                    </select>
+                </div>
+            </div>
+            <div class="row">
                 <div class="col-md-2">
                     <h6 class="text-white-50 font-weight-bold">Carbohydrates: </h6>
                 </div>
                 <div class="col-md-4">
-                    <input style="border-radius: 7px;" type="text" placeholder="Carbohydrates">
+                    <input style="border-radius: 7px;" type="text" name="new_carbo" placeholder="Carbohydrates">
                 </div>
             </div>
-            <div  class="row">
+            <div class="row">
                 <div class="col-md-2">
-                    <h6 class="text-white-50 font-weight-bold">Ingredient 1: </h6>
+                    <h6 class="text-white-50 font-weight-bold">Image of Recipe: </h6>
                 </div>
-                <div class="col-md-4">
-                    <input style="border-radius: 7px;" type="text" placeholder="Ingredient 1">
-                </div>
-                <div class="col-md-2">
-                    <h6 class="text-white-50 font-weight-bold">Ingredient 1: </h6>
-                </div>
-                <div class="col-md-4">
-                    <input style="border-radius: 7px;" type="text" placeholder="Ingredient 1">
-                </div>
-                <div class="col-md-2">
-                    <h6 class="text-white-50 font-weight-bold">Ingredient 1: </h6>
-                </div>
-                <div class="col-md-4">
-                    <input style="border-radius: 7px;" type="text" placeholder="Ingredient 1">
-                </div>
-                <div class="col-md-2">
-                    <h6 class="text-white-50 font-weight-bold">Ingredient 1: </h6>
-                </div>
-                <div class="col-md-4">
-                    <input style="border-radius: 7px;" type="text" placeholder="Ingredient 1">
-                </div>
-                <div class="col-md-2">
-                    <h6 class="text-white-50 font-weight-bold">Ingredient 1: </h6>
-                </div>
-                <div class="col-md-4">
-                    <input style="border-radius: 7px;" type="text" placeholder="Ingredient 1">
+                <div class="form-row file-input">
+                    <label for="fileInput" class="UploadBtn" title="Upload File">
+                        <i class="fa fa-cloud-upload" data-bs-hover-animate="pulse" style="font-size: 35px;color: rgb(62,140,228);"></i>
+                    </label>
+                    <input type="file" class="form-control" name="image" id="fileInput" onchange="loadFile(event)" inputmode="url" placeholder="Filename"> <span id="nameImage" ></span>
+                    <div id="hiddeninput"></div>
                 </div>
             </div>
-            <button style="-webkit-box-shadow: 4px 3px 11px -4px rgba(0,0,0,0.75);
-                        -moz-box-shadow: 4px 3px 11px -4px rgba(0,0,0,0.75);
-                        box-shadow: 4px 3px 11px -4px rgba(0,0,0,0.75); height: 40px; width:40px;border-radius: 20px; border: none;outline:none">
-                                <i class="fa fa-plus"></i>
-                        </button>
+            <div class="row">
+                <div class="col-md-2">
+                    <h6 class="text-white-50 font-weight-bold">Description: </h6>
+                </div>
+                <div class="col-md-10">
+                    <textarea placeholder="Description" rows="3" name="new_desc" style="width: 81%; border-radius: 5px;"></textarea>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-2">
+                    <h6 class="text-white-50 font-weight-bold">Ingredients: </h6>
+                </div>
+                <div class="col-md-10">
+                    <textarea placeholder="Ingredients" name="new_ing" rows="3" style="width: 81%; border-radius: 5px;"></textarea>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-2">
+                    <h6 class="text-white-50 font-weight-bold">Procedure: </h6>
+                </div>
+                <div class="col-md-10">
+                    <textarea placeholder="Procedure" rows="3" name="new_procedure" style="width: 81%; border-radius: 5px;"></textarea>
+                </div>
+            </div>
+            
         </div>
         <div style="padding: 20px;">
             <button id="actbutton" onclick="mh()">
                 Add
             </button>
         </div>
-        
+     
     </div>
+    </form>
     <script>
         function activities(){
             document.getElementById('body').style.display = 'block'
             var body = document.body,html = document.documentElement;
-        var height = Math.max( body.scrollHeight, body.offsetHeight, 
+            var height = Math.max( body.scrollHeight, body.offsetHeight, 
                        html.clientHeight, html.scrollHeight, html.offsetHeight );
             document.getElementById('body').style.height = height+'px';
         document.getElementById('insideact').style.top = height/2 +'px'
@@ -269,6 +285,7 @@
             
             
         }
+
         function clearme(){
             document.getElementById('body').style.display = 'none'   
         document.getElementById('insideact').style.top = '-310px'
@@ -276,24 +293,27 @@
             
     
         }
+
         function callme(){
-            alert("dgfdfg")
+            window.open("/logout");
         }
+
         function me(){
             alert("fdsthgdfh")
         }
+
     </script>
     <script src="{% static 'assets/js/jquery-3.2.1.min.js' %}"></script>
-<script src="{% static 'assets/js/popper.min.js' %}"></script>
-<script src="{% static 'assets/js/bootstrap.min.js' %}"></script>
-<!-- ALL PLUGINS -->
-<script src="{% static 'assets/js/jquery.superslides.min.js' %}"></script>
-<script src="{% static 'assets/js/images-loded.min.js' %}"></script>
-<script src="{% static 'assets/js/isotope.min.js' %}"></script>
-<script src="{% static 'assets/js/baguetteBox.min.js' %}"></script>
-<script src="{% static 'assets/js/form-validator.min.js' %}"></script>
-<script src="{% static 'assets/js/contact-form-script.js' %}"></script>
-<script src="{% static 'assets/js/custom.js' %}"></script> 
+    <script src="{% static 'assets/js/popper.min.js' %}"></script>
+    <script src="{% static 'assets/js/bootstrap.min.js' %}"></script>
+    <!-- ALL PLUGINS -->
+    <script src="{% static 'assets/js/jquery.superslides.min.js' %}"></script>
+    <script src="{% static 'assets/js/images-loded.min.js' %}"></script>
+    <script src="{% static 'assets/js/isotope.min.js' %}"></script>
+    <script src="{% static 'assets/js/baguetteBox.min.js' %}"></script>
+    <script src="{% static 'assets/js/form-validator.min.js' %}"></script>
+    <script src="{% static 'assets/js/contact-form-script.js' %}"></script>
+    <script src="{% static 'assets/js/custom.js' %}"></script> 
 </body>
 </html>
 {% endblock content %}

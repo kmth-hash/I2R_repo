@@ -25,6 +25,8 @@ class Receipe_Tracker(models.Model):
     Receipe_Id = models.ForeignKey("Recipes",on_delete=models.SET_NULL,null=True)
     Day = models.TextField()
 
+    def __str__(self):
+        return "happy"
 
 class Ingredients(models.Model):
     Ingredient_id = models.IntegerField(primary_key=True  )
