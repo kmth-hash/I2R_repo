@@ -15,7 +15,11 @@
     <link rel="stylesheet" href="{% static 'assets/fonts/font-awesome.min.css' %}">
     <link rel="stylesheet" href="{% static 'assets/css/styles.css' %}">
     <link rel="stylesheet" href="{% static 'assets/css/style.css' %}">
-    
+    <style>
+        #preview-text {
+            font-size: 1.5rem;
+        }
+    </style>
 </head>
 
 <body onload="callme()">
@@ -89,7 +93,11 @@
             </div>
         <div>
             <div class="block-heading">
-                <h2 class="text-white-50 font-weight-bold">Preview: <br/><br/><span style="color:black" id="display"></span></h2>
+                <h2 class="text-white-50 font-weight-bold">Preview: <br/>
+                    <span style="color:black" id="display">
+
+                    </span>
+                </h2>
             </div>
             <div class="container">
                 <div class="row" id="imagepreview"></div>
@@ -116,7 +124,7 @@
             }
             else{
                 imagepre.innerHTML = ''
-                document.getElementById('nothing').innerHTML = '<h1 style="color:white;opacity:0.4" class="container-center"><label>Nothing To Preview</label></h1>';
+                document.getElementById('nothing').innerHTML = '<h1 style="color:white;opacity:0.4" class="container-center"><label id="preview-text">Nothing To Preview</label></h1>';
             }
         
         }

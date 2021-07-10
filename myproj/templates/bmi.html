@@ -15,32 +15,32 @@
             <link rel="stylesheet" href="{% static 'assets/css/style.css' %}">
             <script src="{% static 'assets/js/myscript.js' %}"></script>
     </head>
-<script language="JavaScript">
+    <script language="JavaScript">
 
-function calculateBmi() {
-var weight = document.getElementById('h').value
-var height = document.getElementById('w').value
-if(weight > 0 && height > 0){   
-var finalBmi = weight/(height/100*height/100)
-document.getElementById('bmi').innerHTML = " Your BMI is :"+finalBmi
-if(finalBmi < 18.5)
-    {
-        document.getElementById('means').innerHTML = "That you are too thin."
+    function calculateBmi() {
+    var weight = document.getElementById('w').value;
+    var height = document.getElementById('h').value;
+    if(weight > 0 && height > 0){   
+    var finalBmi = (weight/(height/100*height/100)).toFixed(2);
+    document.getElementById('bmi').innerHTML = " Your BMI is :  <b>"+finalBmi+"</b>";
+    if(finalBmi < 18.5)
+        {
+            document.getElementById('means').innerHTML = "That you are <b>too thin</b>.";
+        }
+    if(finalBmi > 18.5 && finalBmi < 25)
+        {
+            document.getElementById('means').innerHTML = "That you are <b>healthy</b>.";
+        }
+    if(finalBmi > 25)
+        {
+            document.getElementById('means').innerHTML = "you have <b>overweight</b>.";
+        }
     }
-if(finalBmi > 18.5 && finalBmi < 25)
-    {
-        document.getElementById('means').innerHTML = "That you are healthy."
+    else
+        {
+            alert("Please Fill in everything correctly");
+        }
     }
-if(finalBmi > 25)
-    {
-        document.getElementById('means').innerHTML = "you have overweight."
-    }
-}
-else
-    {
-        alert("Please Fill in everything correctly")
-    }
-}
 
 </script>
 <style >
@@ -110,7 +110,7 @@ else
                 <br/><br/>
             </div>
             <div> 
-                <button style="background-color: rgb(110, 41, 41);" class="btn btn-info btn-sm btn-block" type="button" value="Calculate BMI" onClick="calculateBmi()">Calculate BMI</button>
+                <button style="background-color: #ffa45c;" class="btn btn-light btn-sm btn-block" type="button" value="Calculate BMI" onClick="calculateBmi()">Calculate BMI</button>
                 <br/><br/>
             </div>
             <div class="form-group">
@@ -124,6 +124,17 @@ else
         </form>
 
     </body>
+    <script src="{% static 'assets/js/jquery-3.2.1.min.js' %}"></script>
+	<script src="{% static 'assets/js/popper.min.js' %}"></script>
+	<script src="{% static 'assets/js/bootstrap.min.js' %}"></script>
+    <!-- ALL PLUGINS -->
+	<script src="{% static 'assets/js/jquery.superslides.min.js' %}"></script>
+	<script src="{% static 'assets/js/images-loded.min.js' %}"></script>
+	<script src="{% static 'assets/js/isotope.min.js' %}"></script>
+	<script src="{% static 'assets/js/baguetteBox.min.js' %}"></script>
+	<script src="{% static 'assets/js/form-validator.min.js' %}"></script>
+    <script src="{% static 'assets/js/contact-form-script.js' %}"></script>
+    <script src="{% static 'assets/js/custom.js' %}"></script>
 </html>
 
 {% endblock content %}

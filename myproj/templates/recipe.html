@@ -73,7 +73,7 @@
     </header>
     <div style="margin-top: 80px;" class="container">
         <div class="mt-3"></div>
-        <h4 style="color: white;" id="name_to_show"></h4>
+        <h4 style="color: white;" id="name_to_show">{{ recipe.Name }}</h4>
         <div class="container text-center" id="image_to_show">
             <img src="../../../../static/{{recipe.Recipe_Image}}" class="text-center p-3 m-2 border col-8">
         </div>
@@ -134,6 +134,7 @@
             <div>
                 <h4 style="color: white;">Directions :</h4>
                 <div class="container description" id="procedure">
+                    {{ recipe.Description }}
                 </div>
             </div>
             <div class="header">

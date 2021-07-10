@@ -34,5 +34,5 @@ myproj/probably_the_last_one.pt
 myproj/yolov5s.pt
 myproj/yolo_weights.pt
 myproj/last.pt
-.gitignore
+
 myproj/custom_best.pt
