@@ -65,7 +65,7 @@ def return_recipes(curr_list = []):
         for i in all_ing:            
             ing_list.append(i.Ingredient_Id)
         print(itr.Receipe_Image)
-        rating_recipe[itr.Receipe_Id,itr.Name,itr.Fats,itr.Calories,itr.Quantity,itr.Proteins,itr.Carbohydrates,itr.Receipe_Image,itr.Description,itr.procedure,itr.Ingredients] = compare_rec( my_ing , ing_list )
+        rating_recipe[itr.Receipe_Id,itr.Name,itr.Fats,itr.Calories,itr.Quantity,itr.Proteins,itr.Carbohydrates,itr.Receipe_Image,itr.Description,itr.procedure,itr.Ingredients,itr.Category_Id_id] = compare_rec( my_ing , ing_list )
     rating_recipe = sorted(rating_recipe.items() , key=lambda x : x[1] , reverse= True)
     return(rating_recipe)
         
