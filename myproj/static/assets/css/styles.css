@@ -7,6 +7,9 @@
 body{
   overflow-x: hidden;
 }
+#nameImage{
+  margin-left: 5px;
+}
 input[type="file"] {
   position: absolute;
   z-index: -1;

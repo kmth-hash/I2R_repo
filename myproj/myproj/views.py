@@ -29,22 +29,21 @@ recipe_json=[]
 recipes_array = []
 carbohydrates=[]
 description=[]
+<<<<<<< HEAD
 
 procedure=[]
 predcited_items=[]
 <<<<<<< HEAD
+=======
+procedure=[]
+predicted_items=[]
+>>>>>>> bac72e8a8ad8b1b3314c557e5b88f00591fd062e
 user_id = None
 =======
 
 user_id=""
 >>>>>>> b73b3b3e0715d8d75568b6eec8c6fb7ebb92b70d
 name=""
-# from pathlib import Path
-# fd=exec(Path("yolov5/detect.py").read_text())
-# print(fd)
-# print(gh)
-def admin(request):
-    return render(request,'adminpanel.html')
 def item_return(userid):
     with connection.cursor() as cursor:
             cursor.execute('SELECT * FROM myproj_user_details WHERE "User_Id_id"=%s',[userid])
@@ -59,7 +58,7 @@ def profile(request):
     global isLoggedIn
     user_id = request.session['uid']
     email = request.session['email']
-    username = setUserName(request.session['username'])
+    username = request.session['username']
     if request.method == 'POST':
         name = request.POST['name']
         age = request.POST['age']
@@ -74,13 +73,22 @@ def profile(request):
         return redirect('/profile')
     else:
         item=item_return(user_id)
-    return render(request,'profile.html',{'isLoggedIn':isLoggedIn,'username':username,'data':item,'mail':email})
-def signupprofile(request):
-    return render(request,'signupprofile.html')
+    return render(request,'profile.html',{'isLoggedIn':isLoggedIn,'username':username,'data':item,'mail':email,'uid':user_id})
 def firstcall(request):
+    print("here inside first")
+    if request.session.has_key('username'):
+        uid=request.session['uid']
+        with connection.cursor() as cursor:
+                cursor.execute('SELECT "Calories" FROM myproj_user_details WHERE "User_Id_id"=%s',[uid])
+                row = cursor.fetchone()
+                calories = row[0]
+                request.session['remaining_calories_perday']=calories
+                cursor.close()
+        request.session['imagestopreview']=[]
+        request.session['predicted_items']=[]
+        request.session['recipe_array']=[]
     return redirect('/home')
-def predict(iurl):
-    global predcited_items
+def predict(iurl,predicted_items,request):
     toexecute = 'python yolov5/detect.py --weights probably_the_last_one.pt --img 640 --conf 0.1 --source '
     jh=[]
     toexecute+=iurl
@@ -88,9 +96,9 @@ def predict(iurl):
     with open('predictions.txt','r') as f:
         for line in f:
             jh.append(line.strip())
-            if line.strip() not in predcited_items:
-                predcited_items.append(str(line.strip()).title())
-    print(predcited_items)
+            if line.strip().title() not in predicted_items:
+                predicted_items.append(str(line.strip()).title())
+    request.session['predicted_items']=predicted_items
     return jh
 
 def signup(request):
@@ -124,57 +132,61 @@ def recipes(request):
     recipe_string = ''
     if not request.session.has_key('username'):
         return redirect('/login')
-    global imagesToPreview,recipes_array,predcited_items
-    a=[]
-    recipes_array=[]
-    imagesToPreview = loads(request.POST['hiddeninput'])
-    print(imagesToPreview)
-    for j,i in enumerate(predcited_items):
-        if len(predcited_items)>1:
-            if j == len(predcited_items)-1:
-                recipe_string +=i
-            else:
-                recipe_string +=i+', '
+    if request.method == "POST":
+        uid=request.session['uid']
+        recipes_array=request.session['recipe_array']
+        if not request.POST.get('cheatday', None) == None:
+            print("its a cheatday")
         else:
-            recipe_string = i
-        with connection.cursor() as cursor:
-            cursor.execute('SELECT "Receipe_Id_id" FROM myproj_recipe_ingredients WHERE "Ingredient_Id_id"=(SELECT "Ingredient_id" FROM myproj_ingredients WHERE "name"=%s)',[i])
-            row = cursor.fetchall()
-            item = []
-            for j in row:
-                item.append(list(j)[0])
-            a.append(item)
-        connection.close()
-    x = Counter(chain.from_iterable(a))
-    y = OrderedDict(x.most_common()) 
-    final_recipe_list = list(y.keys())
-    for recipe_id in final_recipe_list:
-        with connection.cursor() as cursor:
-            cursor.execute('SELECT * FROM myproj_recipes WHERE "Receipe_Id"=%s',[recipe_id])
-            row = cursor.fetchall()
-            item = []
-            for j in row:
-                print(list(j))
-                recipe_details = {
-                    'id' :list(j)[0],
-                    'name':list(j)[1],
-                    'fats':list(j)[2],
-                    'calories':list(j)[3],
-                    'quantity':list(j)[4],
-                    'proteins':list(j)[5],
-                    'carbohydrates':list(j)[6],
-                    'imageURL':list(j)[7],
-                    'description':list(j)[8],
-                    'procedure':list(j)[9],
-                    'ingredients':list(j)[10]
-                }
-                recipes_array.append(recipe_details)
-        connection.close()
-    recipe_json = dumps(recipes_array)
-    global isLoggedIn
-    user = request.session['username']
-
-    return render(request , 'recipes.html' , {'recipe_data':recipes_array,'predcited_items':recipe_string,'username':user,'isLoggedIn': isLoggedIn })
+            id = request.POST['continue_button']
+            qty = request.POST['num_qty']
+            updateTracker(uid,recipes_array[int(id)]['recipe_id'],qty)
+        request.session['recipe_array'] = recipes_array[int(id)]
+        # return redirect('/search/recipes')
+        return redirect('/search/recipes/recipe/'+id)
+    else:
+        predicted_items=request.session['predicted_items']
+    username=request.session['username']
+    a=[]
+    remaining_calories=[]
+    recipes_array=[]
+    recipe_string = ', '.join(map(str, predicted_items))
+    calories = request.session['remaining_calories_perday']
+    for i in return_recipes(predicted_items):
+        # recipes_array.append(i)
+        if i[1]>20.0:
+            recipe_details = {
+            'recipe_id':i[0][0],
+            'name':i[0][1],
+            'fats':i[0][2],
+            'calories':i[0][3],
+            'quantity':i[0][4],
+            'proteins':i[0][5],
+            'carbohydrates':i[0][6],
+            'imageURL':str(i[0][7]),
+            'description':i[0][8],
+            'procedure':i[0][9],
+            'ingredients':i[0][10],
+            'remaining_calories':int(calories)//int(i[0][3])
+            }
+            recipes_array.append(recipe_details)
+        else:
+            pass
+        
+    # 'recipe_id':recipe_id,
+    #                 'name':list(j)[1],
+    #                 'fats':list(j)[2],
+    #                 'calories':list(j)[3],
+    #                 'quantity':list(j)[4],
+    #                 'proteins':list(j)[5],
+    #                 'carbohydrates':list(j)[6],
+    #                 'imageURL':list(j)[7],
+    #                 'description':list(j)[8],
+    #                 'procedure':list(j)[9],
+    #                 'ingredients':list(j)[10],
+    #                 'remaining_calories':int(calories)//int(list(j)[3])
+    request.session['recipe_array'] = recipes_array
+    return render(request , 'recipes.html' , {'recipe_data':recipes_array,'predicted_items':recipe_string,'username':username,'calories':calories})
 
 def login(request):
     global isLoggedIn
@@ -188,14 +200,17 @@ def login(request):
             try:
                 user_obj = Users.objects.get(password=pass1  , email=name1)                
                 res = user_obj
-                print(user_obj.role)
-                role = user_obj.role
+                role = res.role
                 if role == "admin":
-                    return redirect("/adminpanel")
+                    return redirect('/adminpanel')
                 isLoggedIn = True
                 request.session['uid'] = user_obj.id
                 request.session['username'] = user_obj.username
                 request.session['email'] = user_obj.email
+                request.session['imagestopreview']=[]
+                request.session['predicted_items']=[]
+                request.session['recipe_array']=[]
+
                 messages.success(request , "Welcome back! Let's cook something good.")
                 return redirect("/" , isLoggedIn = True , username = user_obj.username)
                 
@@ -211,7 +226,7 @@ def login(request):
                 isLoggedIn = True
                 request.session['username'] = user_obj.username
                 messages.success(request , "Welcome back! Let's cook something good.")
-                return redirect("/" , isLoggedIn = True , username = user_obj.username)  
+                return redirect("/home" , isLoggedIn = True , username = user_obj.username)  
                         
             except Exception as ex:
                 isLoggedIn = False
@@ -226,6 +241,10 @@ def logout(request):
         del request.session['username']
         del request.session['uid']
         del request.session['email']
+        del request.session['imagestopreview']
+        del request.session['predicted_items']
+        del request.session['remaining_calories_perday']
+        del request.session['recipe_array']
         isLoggedIn = False
         username = ''
         imagesToPreview=[]
@@ -233,79 +252,103 @@ def logout(request):
         messages.success(request , 'Successfully Logged out')
     except:
         messages.error(request , 'Error while logging out')
-        #print('Error in clearing session')
-    #return render(request , 'mainpage.html' , { 'isLoggedIn' : False , 'username' : '' })
-    return redirect('/')
+    return redirect('/home')
 
 def mainpage(request):
     if not request.session.has_key('username'):
         return redirect('/login')
-    global imagesToPreview,datajson
-    if request.POST:
+    imagesToPreview=request.session['imagestopreview']
+    predicted_items = request.session['predicted_items']
+    print(predicted_items)
+    username = request.session['username']
+    if request.method == "POST" and request.POST.get("form_close") == 'form_close':
+        imagesToPreview=request.session['imagestopreview']
+        predicted_items=request.session['predicted_items']
+        del predicted_items[int(request.POST['close_button'])-1]
+        del imagesToPreview[int(request.POST['close_button'])-1]
+        request.session['imagestopreview']=imagesToPreview
+        request.session['predicted_items']=predicted_items
+        return redirect('/search')
+    
+    elif request.method == 'POST' and request.POST.get("recipe") == 'recipe':
+        return redirect('/search/recipes')
+
+    elif request.method == 'POST' and request.POST.get("predciton") == 'predciton':
         if request.POST['Name']:
-            imagesToPreview = loads(request.POST['hiddeninput'])
-            print("sdfgdf")
-            print(imagesToPreview)
             image_text = request.POST['Name']
+<<<<<<< HEAD
             uploaded_file_url = '/assets/img/veg/'+str(image_text).lower()+'.jpg'
+=======
+            uploaded_file_url = '/media/veg/'+str(image_text).lower()+'.jpg'
+>>>>>>> bac72e8a8ad8b1b3314c557e5b88f00591fd062e
             imageAndName = {
                 'imageURL':uploaded_file_url,
                 'name':image_text
             }
-            # predictedNames.append(predictedImage)
-            predcited_items.append(str(image_text).title())
-            imagesToPreview.append(imageAndName)
-            datajson = dumps(imagesToPreview)
+            print("bye")
+            print(predicted_items)
+            if str(image_text).title() not in predicted_items:
+                print("hello")
+                predicted_items.append(str(image_text).title())
+                imagesToPreview.append(imageAndName)
+                request.session['predicted_items']=predicted_items
+            request.session['imagestopreview']=imagesToPreview
+            return redirect('/search')
         else:
-
-            imagesToPreview = loads(request.POST['hiddeninput'])
-            print("sdfgdf")
-            print(imagesToPreview)
-            doc = request.FILES #returns a dict-like object
+            doc = request.FILES
             doc_name = doc['image']
             fs = FileSystemStorage()
             filename = fs.save(doc_name.name, doc_name)
             uploaded_file_url = fs.url(filename)
-            predictedImage = predict(str(uploaded_file_url)[1:])
+            predictedImage = predict(str(uploaded_file_url)[1:],predicted_items,request)
+            listToStr = ', '.join(map(str, predictedImage))
             imageAndName = {
                 'imageURL':uploaded_file_url,
-                'name':predictedImage
+                'name':listToStr
             }
-            # predictedNames.append(predictedImage)
             imagesToPreview.append(imageAndName)
-            datajson = dumps(imagesToPreview)
-    return render(request , 'mainpage.html' , {'len':len(imagesToPreview),'imagesToPreview':imagesToPreview,'data':datajson , 'isLoggedIn' : isLoggedIn , 'username' : username })
+            # request.session['imagestopreview']=imagesToPreview
+
+    return render(request , 'mainpage.html' , {'len':len(imagesToPreview),'imagesToPreview':imagesToPreview , 'isLoggedIn' : isLoggedIn , 'username' : username })
 
 def addRecipe(request):
     storeDBfromCSV()
     return render(request , 'addRecipe.html' , {}) 
 
-def bmi(request):
-    if not request.session.has_key('username'):
-        return redirect('/login')
-    global isLoggedIn
-    username = ''
-    weight = 0
-    height = 0
-    if request.session.has_key('username'):
-        username = setUserName(request.session['username'])
-        user_obj = Users.objects.get( username = request.session['username'])
-        isLoggedIn = True
-        if(user_obj.weight.isnumeric()):
-            weight = user_obj.weight
-        if(user_obj.height.isnumeric()):
-            height = user_obj.height
+# def bmi(request):
+#     if not request.session.has_key('username'):
+#         return redirect('/login')
+#     global isLoggedIn
+#     username = ''
+#     weight = 0
+#     height = 0
+#     if request.session.has_key('username'):
+#         username = setUserName(request.session['username'])
+#         user_obj = Users.objects.get( username = request.session['username'])
+#         isLoggedIn = True
+#         if(user_obj.weight.isnumeric()):
+#             weight = user_obj.weight
+#         if(user_obj.height.isnumeric()):
+#             height = user_obj.height
 
-    return render(request , 'bmi.html' , {'isLoggedIn' : isLoggedIn , 'username' : username , 'weight' : weight , 'height': height })
+#     return render(request , 'bmi.html' , {'isLoggedIn' : isLoggedIn , 'username' : username , 'weight' : weight , 'height': height })
 
 def home(request):
     global username
-    global isLoggedIn 
+    global isLoggedIn
+    recommendations=[]
+    with connection.cursor() as cursor:
+                cursor.execute('SELECT * from myproj_recipes as t1,myproj_recipe_like_count as t2 WHERE t1."Receipe_Id"=t2."Receipe_Id_id" AND t2.likes>=1 ORDER BY t2."likes" DESC LIMIT 5')
+                row = cursor.fetchall()
+                print(row[0][7])
+                recommendations.append(row)
+                print(recommendations[0][0][7])
+    connection.close()
     if request.session.has_key('username'):
         #print(request.session['username'])
         isLoggedIn = True
         username = setUserName(request.session['username'])
-    return render(request , 'index.html' , {'isLoggedIn':isLoggedIn,'username':username})
+    return render(request , 'index.html' , {'isLoggedIn':isLoggedIn,'username':username,'recommendation':recommendations})
 
 def addNewRecipe(request):
     if request.session.has_key('username'):
@@ -316,19 +359,42 @@ def addNewRecipe(request):
             return redirect('/')
 
     else:
-        return redirect('/')
+        return redirect('/home')
 
 
 def recipe(request, id):
-    global isLoggedIn
-    recipe = Recipes.objects.get(Receipe_Id=id)
-    ing_list = []
-    temp = Recipe_Ingredients.objects.filter(Receipe_Id=id)
-    for i in temp:
-        ing_list.append(Ingredients.objects.get(Ingredient_id=i.Ingredient_Id_id).name)
-    print(ing_list)
-    print(recipe.Description, recipe.Fats)
-    return render(request, 'recipe.html', {'isLoggedIn': isLoggedIn, 'username':username , 'ing_list': ing_list, 'recipe' : recipe })
+    tolist=request.session['recipe_array']
+    recipe_id=tolist['recipe_id']
+    uid=request.session['uid']
+    if request.method == "POST" and request.POST.get("form_type") == 'present':
+        with connection.cursor() as cursor:
+                cursor.execute('DELETE FROM myproj_recipe_liked_table WHERE "Receipe_Id_id"=%s and "User_Id_id"=%s',[recipe_id,uid])
+                cursor.execute('UPDATE myproj_recipe_like_count SET likes = likes - 1 WHERE "Receipe_Id_id"=%s',[recipe_id])
+        connection.close()
+        return redirect('/search/recipes/recipe/'+id)
+    elif request.method == "POST" and request.POST.get("form_type") == 'notpresent':
+        with connection.cursor() as cursor:
+                cursor.execute('INSERT INTO myproj_recipe_liked_table VALUES(%s,%s)',[recipe_id,uid])
+                cursor.execute('UPDATE myproj_recipe_like_count SET likes = likes + 1 WHERE "Receipe_Id_id"=%s',[recipe_id])
+        connection.close()
+        return redirect('/search/recipes/recipe/'+id)
+    else:
+        print("reached inside else")
+        with connection.cursor() as cursor:
+                cursor.execute('SELECT "likes" from myproj_recipe_like_count WHERE "Receipe_Id_id"=%s',[recipe_id])
+                row = cursor.fetchone()
+                likes=row[0]
+        connection.close()
+        with connection.cursor() as cursor:
+                cursor.execute('SELECT * from myproj_recipe_liked_table WHERE "Receipe_Id_id"=%s and "User_Id_id"=%s',[recipe_id,uid])
+                row = cursor.fetchone()
+                print(row)
+                if str(row)=="None":
+                    present = False
+                else:
+                    present = True
+        connection.close()
+    return render(request, 'recipe.html', {'username':username,'tolist':tolist,'likes':likes,'present':present})
 
 def signupprofile(request):
     global user_id,name
@@ -338,7 +404,11 @@ def signupprofile(request):
         weight = request.POST['weight']
         age = request.POST['age']
         gender = request.POST['gender']
-        user_details = User_Details(User_Id_id=user_id, height=height , weight = weight , age=age, gender=gender,Calories="2000" )
+        if gender == 'male':
+            BMR = int((10*float(weight)) + (6.25*float(height)) - (5*float(age)) + 5)
+        else:
+            BMR = int((10*float(weight)) + (6.25*float(height)) - (5*float(age)) - 161)
+        user_details = User_Details(User_Id_id=user_id, height=height , weight = weight , age=age, gender=gender,Calories=BMR )
         user_details.save()
         messages.success(request  , " Signup successful.")
         return redirect('/')
@@ -376,7 +446,7 @@ def admin(request):
             cursor.execute('DELETE from myproj_users where "id"=%s',[id_return])
         connection.close()
         user_list = users()
-        #print(user_list)
+        print(user_list)
         return redirect("/adminpanel")
     elif  request.method == "POST" and request.POST.get("form_type") == 'formTwo':
         id_return = request.POST['recipe_delete_button']
@@ -462,17 +532,18 @@ def admin(request):
     
     return render(request,"adminpanel.html", {'user_list':user_list,'recipe_list':receipe_list})
 
-def updateTracker(userID,recipeID,cheatDay):
+def updateTracker(userID,recipeID,qty):
     user = Users.objects.get(id = userID)
     recipeObj = Recipes.objects.get(Receipe_Id=recipeID)
     current_date = datetime.date.today()
-    if not cheatDay :
-        obj = Receipe_Tracker(User_Id=user, Receipe_Id=recipeObj,Day=current_date)
-        obj.save()
-        print('Tracker Updated for User : ',user.username)
+    obj = Receipe_Tracker(User_Id=user, Receipe_Id=recipeObj,Day=current_date,qty=qty)
+    obj.save()
+    print('Tracker Updated for User : ',user.username)
 
         
 def record(request,id):
+    if not request.session.has_key('username'):
+        return redirect('/login')
     global isLoggedIn
 
     user = Users.objects.get(id = id)
@@ -482,7 +553,7 @@ def record(request,id):
     data = getChartData(id)
     weeklyCaldata  = weeklyCalories(id)
     todayCal = getDailyCal(id)
-    
+    print(isLoggedIn)
     print(weeklyCaldata , todayCal)
     labels = json.dumps(data['labels']) 
     datasets = json.dumps(data['datasets'][0]['data'])

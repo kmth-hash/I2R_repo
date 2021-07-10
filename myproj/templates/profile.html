@@ -27,7 +27,7 @@
 			<div class="collapse navbar-collapse justify-content-center" id="navbarNav">
 			  <ul class="navbar-nav">
 				<li class="nav-item">
-				  <a class="nav-link" href="/">Home <span class="sr-only"></span></a>
+				  <a class="nav-link" href="/home">Home <span class="sr-only"></span></a>
 				</li>
 				<li class="nav-item">
 				  <a class="nav-link" href="/search">Get Recipe</a>
@@ -74,6 +74,10 @@
                   Edit profile
               </div>
           <hr style="margin: 0px;">
+          <div onclick="user_activity('{{uid}}')" id="edit_profile">
+            User activities
+        </div>
+    <hr style="margin: 0px;">
           
             </div>
             
@@ -126,7 +130,7 @@ box-shadow: 6px 3px 16px -5px rgba(0,0,0,0.75);" class="panel">
         <div style="font-size: 20px;" class="bio-graph-heading">
             Previously tried recipes
         </div>
-        <div  style="background: whitesmoke; padding-left: 20px;height: 270px; overflow-y: scroll; overflow-x: hidden;" class="panel-body bio-graph-info">
+        <div  style="background: whitesmoke; padding-left: 20px;height: 320px; overflow-y: scroll; overflow-x: hidden;" class="panel-body bio-graph-info">
             <h1 class="text-black-50 font-weight-bold"></h1>
             <div class="row">
                 <h1>1.</h1>
@@ -250,13 +254,18 @@ box-shadow: 6px 3px 16px -5px rgba(0,0,0,0.75);" class="panel">
     
 </div>
 <script>
+    function user_activity(id){
+        console.log(id)
+        window.location.href = '/record/'+id
+    }
     function edit_profile(){
         document.getElementById('body').style.display = 'block'
-        document.getElementById('editme').style.top = '50%'
+        
         var body = document.body,html = document.documentElement;
         var height = Math.max( body.scrollHeight, body.offsetHeight, 
                        html.clientHeight, html.scrollHeight, html.offsetHeight );
             document.getElementById('body').style.height = height+'px';
+            document.getElementById('editme').style.top = '50%';
             document.body.style.overflowY = 'hidden'
         document.getElementById('edit_profile').style.background = '#03000021'
         document.getElementById('profile_button').style.background = 'none'
@@ -281,11 +290,11 @@ box-shadow: 6px 3px 16px -5px rgba(0,0,0,0.75);" class="panel">
     }
     function activities(){
         document.getElementById('body').style.display = 'block'
-        document.getElementById('insideact').style.top = '50%'
         var body = document.body,html = document.documentElement;
         var height = Math.max( body.scrollHeight, body.offsetHeight, 
                        html.clientHeight, html.scrollHeight, html.offsetHeight );
             document.getElementById('body').style.height = height+'px';
+            document.getElementById('insideact').style.top = '50%';
             document.body.style.overflowY = 'hidden'
         document.getElementById('activity').style.background = '#03000021'
         

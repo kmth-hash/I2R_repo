@@ -11,13 +11,11 @@ __pycache__/*
 *.log
 *.pot
 *.pyc
-myproj/media/*
 #cache files
 migrations
 *.DS_Store
 
 
-media
 myproj/myproj/__pycache__
 myproj/myproj/__pycache__/
 myproj/myproj/__pycache__/__init__.cpython-38.pyc
@@ -36,3 +34,11 @@ myproj/yolo_weights.pt
 myproj/last.pt
 
 myproj/custom_best.pt
+myproj/static/assets/img/rec/cauliflowercarrot.jpg
+myproj/static/assets/img/rec/cauliflowerfriedrice.jpg
+myproj/static/assets/img/rec/tomatobruschette.jpg
+myproj/static/assets/img/rec/samosa.jpg
+myproj/static/assets/img/recc/buns.jpg
+myproj/static/assets/img/recc/idlichat.jpg
+myproj/static/assets/img/recc/pancakes.jpg
+myproj/static/assets/img/recc/sandwich.jpg

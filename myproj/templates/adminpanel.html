@@ -164,7 +164,7 @@
     <div onclick="clearme()" id="body" style="display: none; background: rgba(0, 0, 0, 0.589);width: 100%;position: absolute;top: 0%;">
         
     </div>
-    <form action="" method="POST">
+    <form action="" method="POST" enctype="multipart/form-data">
         {% csrf_token %}
         <input type="hidden" name="form_type" value="formThree">
     <div id="insideact" class="col-md-10">
@@ -210,7 +210,7 @@
                     <h6 class="text-white-50 font-weight-bold">Category Name: </h6>
                 </div>
                 <div class="col-md-4">
-                    <select name="new_category">
+                    <select style="border: none; border-radius: 4px;" name="new_category">
                         <option selected="selected" disabled>Categories:</option>
                                 <option value="Snacks">Snacks</option>
                                 <option value="Rice Items">Rice Item</option>
@@ -231,12 +231,11 @@
                 <div class="col-md-2">
                     <h6 class="text-white-50 font-weight-bold">Image of Recipe: </h6>
                 </div>
-                <div class="form-row file-input">
-                    <label for="fileInput" class="UploadBtn" title="Upload File">
-                        <i class="fa fa-cloud-upload" data-bs-hover-animate="pulse" style="font-size: 35px;color: rgb(62,140,228);"></i>
-                    </label>
-                    <input type="file" class="form-control" name="image" id="fileInput" onchange="loadFile(event)" inputmode="url" placeholder="Filename"> <span id="nameImage" ></span>
-                    <div id="hiddeninput"></div>
+                <div class="col-md-10">
+                        <label for="fileInput" class="UploadBtn" title="Upload File">
+                            <i class="fa fa-cloud-upload" data-bs-hover-animate="pulse" style="font-size: 35px;color: rgb(62,140,228);"></i>
+                        </label>
+                        <input style="background-color: transparent; display: none;" type="file" class="form-control" name="image" id="fileInput" onchange="loadFile(event)" inputmode="url" placeholder="Filename"> <span style="color: whitesmoke;" id="nameImage" ></span>
                 </div>
             </div>
             <div class="row">
@@ -274,23 +273,26 @@
     </div>
     </form>
     <script>
+        function loadFile(event) {
+            var name = document.getElementById('nameImage');
+            name.innerHTML = event.target.files[0]['name'];
+        };
         function activities(){
             document.getElementById('body').style.display = 'block'
             var body = document.body,html = document.documentElement;
             var height = Math.max( body.scrollHeight, body.offsetHeight, 
                        html.clientHeight, html.scrollHeight, html.offsetHeight );
             document.getElementById('body').style.height = height+'px';
-            document.body.style.overflowY = 'hidden'
-        document.getElementById('insideact').style.top = screen.height/1.3 +'px'
-
+            document.getElementById('insideact').style.top = height/2+50 +'px'
+            document.body.style.overflowY = "hidden";
             
             
         }
 
         function clearme(){
+            document.body.style.overflowY = "scroll";
             document.getElementById('body').style.display = 'none'   
-            document.body.style.overflowY = 'scroll'
-        document.getElementById('insideact').style.top = '-310px'
+        document.getElementById('insideact').style.top = '-400px'
             document.getElementById('activity').style.background = 'none'
             
     
