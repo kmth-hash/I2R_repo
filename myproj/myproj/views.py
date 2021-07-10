@@ -323,9 +323,8 @@ def home(request):
     with connection.cursor() as cursor:
                 cursor.execute('SELECT * from myproj_recipes as t1,myproj_recipe_like_count as t2 WHERE t1."Receipe_Id"=t2."Receipe_Id_id" AND t2.likes>=1 ORDER BY t2."likes" DESC LIMIT 5')
                 row = cursor.fetchall()
-                print(row[0][7])
-                recommendations.append(row)
-                print(recommendations[0][0][7])
+                if len(row)!=0:
+                    recommendations.append(row)
     connection.close()
     if request.session.has_key('username'):
         #print(request.session['username'])
