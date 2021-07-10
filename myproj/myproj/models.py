@@ -71,3 +71,12 @@ class Category(models.Model):
         return "Category : "+self.Category_Name
         
 
+class Activities(models.Model):
+    User_Id = models.ForeignKey("Users",on_delete=models.SET_NULL,null=True )
+    Name = models.TextField()
+    Calories = models.FloatField()
+    Duration = models.FloatField()
+    Day = models.TextField()
+
+    def __str__(self):
+        return "Activity : "+self.Name + " Kcal : "+self.Calories
