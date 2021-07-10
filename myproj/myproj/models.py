@@ -24,7 +24,7 @@ class Receipe_Tracker(models.Model):
     User_Id = models.ForeignKey("Users",on_delete=models.SET_NULL,null=True)
     Receipe_Id = models.ForeignKey("Recipes",on_delete=models.SET_NULL,null=True)
     Day = models.TextField()
-    qty = models.IntegerField()
+    qty = models.IntegerField(default=0)
     def __str__(self):
         return "happy"
 

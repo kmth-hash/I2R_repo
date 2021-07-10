@@ -1,13 +1,11 @@
 from django.shortcuts import render , redirect
-from .models import Ingredients, Recipes , Category , Recipe_Ingredients , Users, User_Details,Receipe_Tracker
+from .models import *
 from django.contrib import messages
 from django.http import HttpResponse , JsonResponse
 from .test import storeDBfromCSV
 from .add_ons import *
 import datetime 
-import json
-
-from json import loads,dumps
+from json import *
 from django.core.files.storage import FileSystemStorage
 import os
 
@@ -16,6 +14,7 @@ import numpy as np
 
 from itertools import chain
 from collections import Counter,OrderedDict
+
 imagesToPreview = []
 datajson = []
 name_of_the_recipe=[]
@@ -29,21 +28,13 @@ recipe_json=[]
 recipes_array = []
 carbohydrates=[]
 description=[]
-<<<<<<< HEAD
-
 procedure=[]
 predcited_items=[]
-<<<<<<< HEAD
-=======
-procedure=[]
 predicted_items=[]
->>>>>>> bac72e8a8ad8b1b3314c557e5b88f00591fd062e
 user_id = None
-=======
-
-user_id=""
->>>>>>> b73b3b3e0715d8d75568b6eec8c6fb7ebb92b70d
 name=""
+
+
 def item_return(userid):
     with connection.cursor() as cursor:
             cursor.execute('SELECT * FROM myproj_user_details WHERE "User_Id_id"=%s',[userid])
@@ -276,11 +267,7 @@ def mainpage(request):
     elif request.method == 'POST' and request.POST.get("predciton") == 'predciton':
         if request.POST['Name']:
             image_text = request.POST['Name']
-<<<<<<< HEAD
-            uploaded_file_url = '/assets/img/veg/'+str(image_text).lower()+'.jpg'
-=======
             uploaded_file_url = '/media/veg/'+str(image_text).lower()+'.jpg'
->>>>>>> bac72e8a8ad8b1b3314c557e5b88f00591fd062e
             imageAndName = {
                 'imageURL':uploaded_file_url,
                 'name':image_text
@@ -340,9 +327,9 @@ def home(request):
     with connection.cursor() as cursor:
                 cursor.execute('SELECT * from myproj_recipes as t1,myproj_recipe_like_count as t2 WHERE t1."Receipe_Id"=t2."Receipe_Id_id" AND t2.likes>=1 ORDER BY t2."likes" DESC LIMIT 5')
                 row = cursor.fetchall()
-                print(row[0][7])
+                #print(row[0][7])
                 recommendations.append(row)
-                print(recommendations[0][0][7])
+                #print(recommendations[0][0][7])
     connection.close()
     if request.session.has_key('username'):
         #print(request.session['username'])
