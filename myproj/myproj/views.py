@@ -60,7 +60,7 @@ def profile(request):
         return redirect('/profile')
     else:
         item=item_return(user_id)
-    return render(request,'profile.html',{'isLoggedIn':isLoggedIn,'username':username,'data':item,'mail':email})
+    return render(request,'profile.html',{'isLoggedIn':isLoggedIn,'username':username,'data':item,'mail':email,'uid':user_id})
 def firstcall(request):
     print("here inside first")
     if request.session.has_key('username'):
@@ -120,11 +120,14 @@ def recipes(request):
     if not request.session.has_key('username'):
         return redirect('/login')
     if request.method == "POST":
+        uid=request.session['uid']
+        recipes_array=request.session['recipe_array']
         if not request.POST.get('cheatday', None) == None:
             print("its a cheatday")
-        print(request.POST['num_qty'])
-        id = request.POST['continue_button']
-        recipes_array=request.session['recipe_array']
+        else:
+            id = request.POST['continue_button']
+            qty = request.POST['num_qty']
+            updateTracker(uid,recipes_array[int(id)]['recipe_id'],qty)
         request.session['recipe_array'] = recipes_array[int(id)]
         # return redirect('/search/recipes')
         return redirect('/search/recipes/recipe/'+id)
@@ -135,42 +138,41 @@ def recipes(request):
     remaining_calories=[]
     recipes_array=[]
     recipe_string = ', '.join(map(str, predicted_items))
-    for j,i in enumerate(predicted_items):
-        with connection.cursor() as cursor:
-            cursor.execute('SELECT "Receipe_Id_id" FROM myproj_recipe_ingredients WHERE "Ingredient_Id_id"=(SELECT "Ingredient_id" FROM myproj_ingredients WHERE "name"=%s)',[i])
-            row = cursor.fetchall()
-            item = []
-            for j in row:
-                item.append(list(j)[0])
-            a.append(item)
-        connection.close()
-    x = Counter(chain.from_iterable(a))
-    y = OrderedDict(x.most_common()) 
-    final_recipe_list = list(y.keys())
     calories = request.session['remaining_calories_perday']
-    for recipe_id in final_recipe_list:
-        with connection.cursor() as cursor:
-            cursor.execute('SELECT * FROM myproj_recipes WHERE "Receipe_Id"=%s',[recipe_id])
-            row = cursor.fetchall()
-            item = []
-            for j in row:
-                recipe_details = {
-                    'recipe_id':recipe_id,
-                    'name':list(j)[1],
-                    'fats':list(j)[2],
-                    'calories':list(j)[3],
-                    'quantity':list(j)[4],
-                    'proteins':list(j)[5],
-                    'carbohydrates':list(j)[6],
-                    'imageURL':list(j)[7],
-                    'description':list(j)[8],
-                    'procedure':list(j)[9],
-                    'ingredients':list(j)[10],
-                    'remaining_calories':int(calories)//int(list(j)[3])
-                }
-                recipes_array.append(recipe_details)
-        connection.close()
-        request.session['recipe_array'] = recipes_array
+    for i in return_recipes(predicted_items):
+        # recipes_array.append(i)
+        if i[1]>20.0:
+            recipe_details = {
+            'recipe_id':i[0][0],
+            'name':i[0][1],
+            'fats':i[0][2],
+            'calories':i[0][3],
+            'quantity':i[0][4],
+            'proteins':i[0][5],
+            'carbohydrates':i[0][6],
+            'imageURL':str(i[0][7]),
+            'description':i[0][8],
+            'procedure':i[0][9],
+            'ingredients':i[0][10],
+            'remaining_calories':int(calories)//int(i[0][3])
+            }
+            recipes_array.append(recipe_details)
+        else:
+            pass
+        
+    # 'recipe_id':recipe_id,
+    #                 'name':list(j)[1],
+    #                 'fats':list(j)[2],
+    #                 'calories':list(j)[3],
+    #                 'quantity':list(j)[4],
+    #                 'proteins':list(j)[5],
+    #                 'carbohydrates':list(j)[6],
+    #                 'imageURL':list(j)[7],
+    #                 'description':list(j)[8],
+    #                 'procedure':list(j)[9],
+    #                 'ingredients':list(j)[10],
+    #                 'remaining_calories':int(calories)//int(list(j)[3])
+    request.session['recipe_array'] = recipes_array
     return render(request , 'recipes.html' , {'recipe_data':recipes_array,'predicted_items':recipe_string,'username':username,'calories':calories})
 
 def login(request):
@@ -513,17 +515,18 @@ def admin(request):
     
     return render(request,"adminpanel.html", {'user_list':user_list,'recipe_list':receipe_list})
 
-def updateTracker(userID,recipeID,cheatDay):
+def updateTracker(userID,recipeID,qty):
     user = Users.objects.get(id = userID)
     recipeObj = Recipes.objects.get(Receipe_Id=recipeID)
     current_date = datetime.date.today()
-    if not cheatDay :
-        obj = Receipe_Tracker(User_Id=user, Receipe_Id=recipeObj,Day=current_date)
-        obj.save()
-        print('Tracker Updated for User : ',user.username)
+    obj = Receipe_Tracker(User_Id=user, Receipe_Id=recipeObj,Day=current_date,qty=qty)
+    obj.save()
+    print('Tracker Updated for User : ',user.username)
 
         
 def record(request,id):
+    if not request.session.has_key('username'):
+        return redirect('/login')
     global isLoggedIn
 
     user = Users.objects.get(id = id)
@@ -533,7 +536,7 @@ def record(request,id):
     data = getChartData(id)
     weeklyCaldata  = weeklyCalories(id)
     todayCal = getDailyCal(id)
-    
+    print(isLoggedIn)
     print(weeklyCaldata , todayCal)
     labels = json.dumps(data['labels']) 
     datasets = json.dumps(data['datasets'][0]['data'])

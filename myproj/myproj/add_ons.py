@@ -6,7 +6,6 @@ import datetime
 
 def Ing_details(name):
     inst_name = " ".join( i.capitalize() for i in  name.split(" "))
-    print(inst_name)
     ingredient = Ingredients.objects.get(name = inst_name)
     d = dict({
         "name" : ingredient.name ,
@@ -29,17 +28,23 @@ def compare_rec(my_recipe , other_recipe):
             other_rec_list.append(rec.name)
 
         res = 0
+        
         for i in other_rec_list:
             if i in my_recipe_list:            
                 res+=1
             else:
                 pass
-        return(res/len(other_rec_list)*100)
+        print(res)
+        if len(other_rec_list)==1:
+            print(len(my_recipe_list))
+            return res/len(my_recipe_list)*100
+        else:
+            print(len(other_rec_list))
+            return(res/len(other_rec_list)*100)
 
 
 
 def return_recipes(curr_list = []):
-    print(curr_list)
     my_list = []
     my_ing  =  []
     rating_recipe = {}
@@ -57,11 +62,10 @@ def return_recipes(curr_list = []):
     for itr in all_rec:
         ing_list = []
         all_ing = Recipe_Ingredients.objects.filter(Receipe_Id = itr.Receipe_Id)
-        #print(all_ing)
         for i in all_ing:            
             ing_list.append(i.Ingredient_Id)
-               
-        rating_recipe[itr.Name] = compare_rec( my_ing , ing_list )
+        print(itr.Receipe_Image)
+        rating_recipe[itr.Receipe_Id,itr.Name,itr.Fats,itr.Calories,itr.Quantity,itr.Proteins,itr.Carbohydrates,itr.Receipe_Image,itr.Description,itr.procedure,itr.Ingredients] = compare_rec( my_ing , ing_list )
     rating_recipe = sorted(rating_recipe.items() , key=lambda x : x[1] , reverse= True)
     return(rating_recipe)
         
@@ -72,39 +76,6 @@ def setUserName(username):
     else :
         return username.capitalize()            
 
-'''
-                        data: {
-							  labels: [1500,1600,1700,1750,1800,1850,1900,1950,1999,2050],
-							  datasets: [{ 
-								  data: [86,114,106,106,107,111,133,221,783,2478],
-								  label: "Africa",
-								  borderColor: "#3e95cd",
-								  fill: false
-								}, { 
-								  data: [282,350,411,502,635,809,947,1402,3700,5267],
-								  label: "Asia",
-								  borderColor: "#8e5ea2",
-								  fill: false
-								}, { 
-								  data: [168,170,178,190,203,276,408,547,675,734],
-								  label: "Europe",
-								  borderColor: "#3cba9f",
-								  fill: false
-								}, { 
-								  data: [40,20,10,16,24,38,74,167,508,784],
-								  label: "Latin America",
-								  borderColor: "#e8c3b9",
-								  fill: false
-								}, { 
-								  data: [6,3,2,2,7,26,82,172,312,433],
-								  label: "North America",
-								  borderColor: "#c45850",
-								  fill: false
-								}
-							  ]
-							}
-
-'''
 
 def getChartData(userID):
     user = Users.objects.get(id = userID)
@@ -163,8 +134,9 @@ def getDailyCal(userId):
         
     if len(Kcal)>0:
         for itr in Kcal:
-            recipe = Recipes.objects.get(Receipe_Id= itr.Receipe_Id_id)                
-            calToday += float(recipe.Calories)
+            recipe = Recipes.objects.get(Receipe_Id= itr.Receipe_Id_id)
+            qtymulcal = float(recipe.Calories) * float(itr.qty)                
+            calToday += qtymulcal
             
     return calToday
 

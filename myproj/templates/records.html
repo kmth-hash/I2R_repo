@@ -46,8 +46,8 @@
 			</button>
 			<div class="collapse navbar-collapse justify-content-center" id="navbarNav">
 			  <ul class="navbar-nav">
-				<li class="nav-item active">
-				  <a class="nav-link" href="#">Home <span class="sr-only"></span></a>
+				<li class="nav-item">
+				  <a class="nav-link" href="/home">Home <span class="sr-only"></span></a>
 				</li>
 				<li class="nav-item">
 				  <a class="nav-link" href="/search">Get Recipe</a>
@@ -55,7 +55,7 @@
 				<li class="nav-item">
 				  <a class="nav-link" href="/bmi">BMI calculator</a>
 				</li>
-				<li class="nav-item dropdown">
+				<li class="nav-item dropdown active">
 					<a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 						{{username}} &nbsp;<i class="fa fa-user"></i>
 					</a>
@@ -81,7 +81,9 @@
 	{% include './includes/messages.html' %}
     
     <div class="container" >
-        <div  class="container border rounded">
+        <div style="border: 1px solid grey;-webkit-box-shadow: 5px 3px 14px -4px rgba(0,0,0,0.75);
+		-moz-box-shadow: 5px 3px 14px -4px rgba(0,0,0,0.75);
+		box-shadow: 5px 3px 14px -4px rgba(0,0,0,0.75); border-radius: 8px; margin-top: 10px;"  class="container">
             <div class=" font-weight-bold col-12 p-2" >
                 <center>
 					<h3 class="text-white">Tracker</h3>
@@ -89,7 +91,7 @@
                 <hr class="bg-white " style="color: white;"/>
 					<div class="container text-white">
 						<div class="row ">
-							<div class="col-lg-6 col-12">
+							<div class="col-lg-6 col-12 mt-2">
 								<div class="container rounded border bg-white p-2">
 									<div class="row">
 										<div class="col-6">
@@ -127,7 +129,7 @@
 								</div>
 							</div>	
 
-							<div class="col-lg-6  col-12 mt-2">
+							<div class="col-lg-6 col-12 mt-2">
 								<div class="container rounded border p-2 " style="background-color: whitesmoke;">
 									<div class="row">
 										<div class="col-6">
@@ -260,7 +262,9 @@
 
 
 	<div class="container mt-3">
-		<div class="container col-12 border rounded border-white">
+		<div style="border: 1px solid grey;-webkit-box-shadow: 5px 3px 14px -4px rgba(0,0,0,0.75);
+		-moz-box-shadow: 5px 3px 14px -4px rgba(0,0,0,0.75);
+		box-shadow: 5px 3px 14px -4px rgba(0,0,0,0.75); border-radius: 8px; margin-top: 10px;" class="container col-12">
 			<h4 class="text-white mt-2">
 				Chart
 			</h4>
@@ -310,7 +314,7 @@
 							options: {
 							  title: {
 								display: true,
-								text: 'Population growth (millions): Europe & Africa'
+								text: 'Calories intake'
 							  },
 							  legend: { display: false }
 							}
@@ -323,7 +327,9 @@
 	</div>
 
 	<div class="container mt-3">
-		<div class="container col-12 border rounded border-white">
+		<div style="border: 1px solid grey;-webkit-box-shadow: 5px 3px 14px -4px rgba(0,0,0,0.75);
+		-moz-box-shadow: 5px 3px 14px -4px rgba(0,0,0,0.75);
+		box-shadow: 5px 3px 14px -4px rgba(0,0,0,0.75); border-radius: 8px; margin-bottom: 10px;" class="container col-12">
 			<h4 class="text-white mt-2">
 				Chart
 			</h4>
@@ -343,8 +349,31 @@
 						  <h4 class="">Potato Fritters</h4>
 							
 							<p class=" font-weight-bold">Nice and crisp on the outside, soft and warm on the inside. Quick and easy to make.</p>
-						
-						  	<div class="d-flex flex-row bd-highlight mb-2"> 
+							<div class="row" style="padding: 10px;">
+									<div style="padding-left: 0px;" class="col-md-3">
+										<span>
+											<h5 class="text-black-50">calories <span class="text-dark font-weight-bold"> 35 KCal</span> </h5>
+										</span>
+									</div>
+									<div class="col-md-3">
+										<span>
+											<h5 class="text-black-50">calories <span class="text-dark font-weight-bold"> 35 KCal</span> </h5>
+										</span>
+									</div>
+									<div class="col-md-3">
+										<span>
+											<h5 class="text-black-50">calories <span class="text-dark font-weight-bold"> 35 KCal</span> </h5>
+										</span>
+									</div>
+									<button class="btn btn-success ml-auto mr-1 pt-1 pb-2" style="text-align: right;">
+										<a href="/search/recipes/recipe/{{i.id}}" style="text-decoration: none;">
+										Recipe <i class="fa fa-arrow-right" aria-hidden="true"></i>
+										</a>
+									</button>
+										
+							</div>
+							
+						  	<!-- <div class="d-flex flex-row bd-highlight mb-2"> 
 								<div class="p-2 bd-highlight">
 									<h5 class="text-black-50">calories <span class="text-dark font-weight-bold"> 35 KCal</span> </h5>
 								</div>
@@ -362,7 +391,7 @@
 									Recipe <i class="fa fa-arrow-right" aria-hidden="true"></i>
 									</a>
 								</button>
-					  		</div>
+					  		</div> -->
 						
 					</div>
 				</div>

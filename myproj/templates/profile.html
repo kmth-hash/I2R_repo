@@ -74,6 +74,10 @@
                   Edit profile
               </div>
           <hr style="margin: 0px;">
+          <div onclick="user_activity('{{uid}}')" id="edit_profile">
+            User activities
+        </div>
+    <hr style="margin: 0px;">
           
             </div>
             
@@ -126,7 +130,7 @@ box-shadow: 6px 3px 16px -5px rgba(0,0,0,0.75);" class="panel">
         <div style="font-size: 20px;" class="bio-graph-heading">
             Previously tried recipes
         </div>
-        <div  style="background: whitesmoke; padding-left: 20px;height: 270px; overflow-y: scroll; overflow-x: hidden;" class="panel-body bio-graph-info">
+        <div  style="background: whitesmoke; padding-left: 20px;height: 320px; overflow-y: scroll; overflow-x: hidden;" class="panel-body bio-graph-info">
             <h1 class="text-black-50 font-weight-bold"></h1>
             <div class="row">
                 <h1>1.</h1>
@@ -250,6 +254,10 @@ box-shadow: 6px 3px 16px -5px rgba(0,0,0,0.75);" class="panel">
     
 </div>
 <script>
+    function user_activity(id){
+        console.log(id)
+        window.location.href = '/record/'+id
+    }
     function edit_profile(){
         document.getElementById('body').style.display = 'block'
         
