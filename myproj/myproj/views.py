@@ -480,14 +480,17 @@ def admin(request):
         ingredients = request.POST['new_ing']
         procedure = request.POST['new_procedure']
         category = request.POST['new_category']
+        ing_req = request.POST['new_ing_req']
         ing_list = list(ingredients.split(','))
-        ing_list_tags = list(ingredients.split(','))
-        for i in range(len(ing_list)):
-            ing_list_tags[i] = "&#9830"+ing_list[i]+"<br>"
+        ing_list_tags = list(ing_req.split(','))
+        print(ing_list)
+        print(ing_list_tags)
+        for i in range(len(ing_list_tags)):
+            ing_list_tags[i] = "&#9830"+ing_list_tags[i]+"<br>"
         
         recipe_ingredient_to_add = " ".join(ing_list_tags)
 
-        image_to_add = "assests/img/rec/"+name+".png"
+        image_to_add = "assets/img/rec/"+name+".jpg"
         category_obj = Category.objects.get(Category_Name=category)
         category_id = category_obj.Category_Id
         max_recp_obj = Recipes.objects.last()
