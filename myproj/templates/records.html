@@ -370,9 +370,9 @@
 				<div class="rounded m-3 p-1 col-12">
 					<div class="row">
 					  <div class="col-lg-2 col-3">
-						<a href="/search/recipe/1">
-							<img src="/../static/{{val.image}}" height="80px" width="80px" class="text-center " alt="">
-						</a>
+						
+							<img src="/../static/{{val.image}}" height="100%" width="100px" style="border-radius: 5px;"  alt="">
+						
 					  </div>
 					  <div class="recipe_name col-lg-10 col-9">
 						
@@ -410,7 +410,7 @@
 			{% else %}
 
 			<div class="container bg-white pt-2">
-				<h5 class="font-weight-bold text-black-50 mt-3">Today</h5>
+				<h5 class="font-weight-bold text-black-50 mt-3">{{ item.Name }}</h5>
 				<hr class="p-0 m-0" >
 				<div class="rounded m-3 p-1 col-12">
 					<h5>No recipes prepared this day.</h5>

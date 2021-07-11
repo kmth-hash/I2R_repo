@@ -241,9 +241,9 @@ def recipesLast3Days(userId):
             item['Calories'] = r.Calories
             item['Fats'] = r.Fats
             valLists.append(item)
-        data.append({'Name' : days[2] , 'status':True ,'data' : valLists })
+        data.append({'Name' : 'Day Before Yesterday' , 'status':True ,'data' : valLists })
     else:
-        data.append({'Name' : days[2] , 'status':False })
+        data.append({'Name' : 'Day Before Yesterday' , 'status':False })
 
     
     return data
