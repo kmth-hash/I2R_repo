@@ -73,6 +73,7 @@ def profile(request):
         return redirect('/profile')
     else:
         item=item_return(user_id)
+        print(item)
         with connection.cursor() as cursor:
             cursor.execute('SELECT * FROM myproj_recipes as t1,myproj_receipe_tracker as t2 WHERE t1."Receipe_Id"=t2."Receipe_Id_id" AND t2."User_Id_id"=%s ORDER BY t2."Day"',[user_id])
             row = cursor.fetchall()
@@ -299,7 +300,6 @@ def mainpage(request):
                 'imageURL':uploaded_file_url,
                 'name':image_text
             }
-            print("bye")
             print(predicted_items)
             if str(image_text).title() not in predicted_items:
                 print("hello")
