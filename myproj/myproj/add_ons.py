@@ -133,8 +133,9 @@ def weeklyCalories(userId):
         
         if len(Kcal)>0:
             for itr in Kcal:
-                recipe = Recipes.objects.get(Receipe_Id= itr.Receipe_Id_id)                
-                weeklyCal += float(recipe.Calories)
+                recipe = Recipes.objects.get(Receipe_Id= itr.Receipe_Id_id) 
+                qtymulcal = float(recipe.Calories) * float(itr.qty)               
+                weeklyCal += qtymulcal
             
     return weeklyCal
 
@@ -147,7 +148,7 @@ def weeklyBurn(userId):
         
         if len(Kcal)>0:
             for itr in Kcal:
-                              
+                           
                 weeklyCal += float(itr.Duration * itr.Calories)
             
     return weeklyCal
