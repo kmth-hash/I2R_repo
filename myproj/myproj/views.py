@@ -164,6 +164,7 @@ def recipes(request):
     calories = int(calories) - int(consumed_calories)
     for i in return_recipes(predicted_items):
         # recipes_array.append(i)
+        print(calories, )
         if i[1]>20.0:
             with connection.cursor() as cursor:
                 cursor.execute('SELECT "Category_Name" from myproj_category where "Category_Id"=%s',[i[0][11]])
@@ -564,17 +565,78 @@ def record(request,id):
     user = Users.objects.get(id = id)
     userinfo = User_Details.objects.get(User_Id=user)
     
-    print(user)
+    #print(user)
     data = getChartData(id)
     weeklyCaldata  = weeklyCalories(id)
+    weeklyTotal = int(userinfo.Calories) * 7
+    recipesData = recipesLast3Days(id)
+    dailyburn = getDailyBurn(id)    
+    weeklyburn = int(weeklyBurn(id))
     todayCal = getDailyCal(id)
-    print(isLoggedIn)
-    print(weeklyCaldata , todayCal)
+    #print(isLoggedIn)
+    #print(weeklyCaldata , todayCal)
     labels = json.dumps(data['labels']) 
     datasets = json.dumps(data['datasets'][0]['data'])
+    activities = json.dumps(data['datasets'][1]['data'])
     #updateTracker(user.id,1,False)
     
-    return render(request, "records.html" , {'labels' : labels ,
-                                            "datasets":datasets, 'isLoggedIn' : isLoggedIn , 
-                                            'username' : user.username, 'user' : user , 
+    return render(request, "records.html" , {'labels' : labels , 'weeklyTotal' : weeklyTotal , 'data' : recipesData ,
+                                            "datasets":datasets, 'isLoggedIn' : isLoggedIn , 'activities' : activities ,
+                                            'username' : user.username, 'user' : user , 'dailyburn' : dailyburn, 'weeklyburn' : weeklyburn ,
                                             'userinfo' : userinfo , 'weeklyCal' : weeklyCaldata , 'dailyCal' : todayCal })
+
+
+def burnout(request, id):
+    if not request.session.has_key('username'):
+        return redirect('/login')
+    global isLoggedIn
+
+    user = Users.objects.get(id = id)
+    userinfo = User_Details.objects.get(User_Id=user)
+    d = str(datetime.date.today())
+
+    res = Activities.objects.filter(
+        User_Id=user , Day=d
+    )
+    status  = ''
+    if len(res)==0:
+        status = True
+    else:
+        status = False
+
+
+
+    return  render(request, "activity.html" , {'status':status , 'userinfo':userinfo , 'user' : user })
+
+
+
+def updateBurn(request,id, act , tm):
+    allActs = {'j' : {'name' : 'Jogging'  , 'calories' : 500 } , 
+                's' : {'name' : 'Swimming'  , 'calories' : 505 } ,
+                'b' : {'name' : 'Badminton'  , 'calories' : 480 } ,
+                'h' : {'name' : 'HIIT'  , 'calories' : 750 } ,
+                'w' : {'name' : 'Weight Lifting'  , 'calories' : 425 } ,
+                'r' : {'name' : 'Jumprope'  , 'calories' : 800 } ,
+                'x' : {'name' : 'Boxing'  , 'calories' : 800 } ,
+                'c' : {'name' : 'Cycling'  , 'calories' : 600 } ,
+                
+                 }
+    duration = {'t' : 0.5 , 'h': 1 , 'ht' : 1.5 , 'w' : 2}
+    user = Users.objects.get(id = id)
+    userinfo = User_Details.objects.get(User_Id=user)
+    d = str(datetime.date.today())
+    forwardLink = f'/burnout/{id}'
+    
+    try:
+        print(user, allActs[act], d, duration[tm])
+        obj = Activities(User_Id=user, Calories = allActs[act]['calories'],Day=d ,Name= allActs[act]['name'], Duration = duration[tm])
+        obj.save()
+        messages.success(request , 'Successfully Updated!')
+        
+    except Exception as ex:
+        print(ex)
+        messages.warning(request, 'Failed to update .')
+    
+   
+
+    return redirect(forwardLink)

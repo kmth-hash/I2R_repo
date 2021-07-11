@@ -133,7 +133,7 @@
 										<div class="col-6">
 											<h5></h5>
 											<center>
-												<img src="{% static 'assets/img/fire.png' %}" height="80px" width="80px" class="text-center rounded-circle" alt="">
+												<img src="{% static 'assets/img/fire.png' %}" height="80px" width="80px" class="text-center  rounded-circle" alt="">
 											</center>
 										</div>
 										<div class="col-6">
@@ -175,8 +175,7 @@
 											<center>
 												<div class="col-6">
 													<h4 class="text-success font-weight-bold">{{weeklyCal}}</h4>
-													<hr class="mt-0 mb-0 w-100 " style="border : 1px black solid;" />
-													<h4 class="text-dark font-weight-bold">{{userinfo.Calories}}</h4>
+													
 												</div>
 												<h3 class=" text-danger font-weight-bold pb-0">KCal</h3>
 											</center>
@@ -195,19 +194,18 @@
 										<div class="col-6">
 											<h5></h5>
 											<center>
-												<img src="{% static 'assets/img/fire.png' %}" height="80px" width="80px" class="text-center rounded-circle" alt="">
+												<img src="{% static 'assets/img/weights.jpg' %}" height="80px" width="80px" class="text-center rounded-circle" alt="">
 											</center>
 										</div>
 										<div class="col-6">
 											<h5></h5>
 											<center>
-												<h6 class=" font-weight-bold text-black-50">Calorie Intake today</h6>
+												<h6 class=" font-weight-bold text-black-50">Calorie Burn today</h6>
 											</center>
 											<center>
 												<div class="col-6">
-													<h4 class="text-success font-weight-bold">{{dailyCal}}</h4>
-													<hr class="mt-0 mb-0 w-100 " style="border : 1px black solid;" />
-													<h4 class="text-dark font-weight-bold">{{userinfo.Calories}}</h4>
+													<h4 class="text-success font-weight-bold">{{dailyburn}}</h4>
+													
 												</div>
 												<h3 class=" text-danger font-weight-bold pb-0">KCal</h3>
 											</center>
@@ -226,19 +224,18 @@
 										<div class="col-6">
 											<h5></h5>
 											<center>
-												<img src="{% static 'assets/img/fire.png' %}" height="80px" width="80px" class="text-center rounded-circle" alt="">
+												<img src="{% static 'assets/img/shoes.png' %}" height="80px" width="80px" class="text-center rounded-circle" alt="">
 											</center>
 										</div>
 										<div class="col-6">
 											<h5></h5>
 											<center>
-												<h6 class=" font-weight-bold text-black-50">Calorie Intake today</h6>
+												<h6 class=" font-weight-bold text-black-50">Calorie Burn this week</h6>
 											</center>
 											<center>
 												<div class="col-6">
-													<h4 class="text-success font-weight-bold">346</h4>
-													<hr class="mt-0 mb-0 w-100 " style="border : 1px black solid;" />
-													<h4 class="text-dark font-weight-bold">1900</h4>
+													<h4 class="text-success font-weight-bold">{{weeklyburn}}</h4>
+													
 												</div>
 												<h3 class=" text-danger font-weight-bold pb-0">KCal</h3>
 											</center>
@@ -263,9 +260,16 @@
 		<div style="border: 1px solid grey;-webkit-box-shadow: 5px 3px 14px -4px rgba(0,0,0,0.75);
 		-moz-box-shadow: 5px 3px 14px -4px rgba(0,0,0,0.75);
 		box-shadow: 5px 3px 14px -4px rgba(0,0,0,0.75); border-radius: 8px; margin-top: 10px;" class="container col-12">
-			<h4 class="text-white mt-2">
-				Chart
-			</h4>
+			<div class="mt-3">
+				<h4 class="text-white mt-2 w-auto" style="display: inline;">
+					Chart
+				</h4>
+			</div>
+			<div class="w-100 d-flex align-items-end">
+				<a class="btn btn-success ml-auto" href="/burnout/{{user.id}}">
+					Workout <i class="fa fa-arrow-right" aria-hidden="true"></i>
+				</a>
+			</div>
 			<hr/>
 			<div class="container bg-white pt-2">
 				<canvas id="line-chart" width="800" height="450">
@@ -288,6 +292,16 @@
 							mydata[i] = mydata[i].replaceAll('\"', "");
 						}
 						console.log(mydata);
+
+						var myAct = '{{ activities|safe }}';
+						myAct = myAct.replace("[", "").replace("]","");
+						myAct = myAct.split(", ");
+
+						for(var i=0;i<myAct.length;i++)
+						{
+							myAct[i] = myAct[i].replaceAll('\"', "");
+						}
+						console.log(myAct);
 						
 						var labelArr2 = ["Day 1 ,Day 2 ,Day 3 ,Day 4 ,Day 5 ,Day 6 ,Day 7 ,Day 8 ,Day 9 ,Day 10 "];
 						console.log(labelArr.length , mydata.length , labelArr2.length);
@@ -298,7 +312,7 @@
 							  datasets: [{
 								  label: "Calorie Intake",
 								  type: "line",
-								  borderColor: "#8e5ea2",
+								  borderColor: "#83e85a",
 								  data: mydata,
 								  fill: false
 								},  {
@@ -306,7 +320,20 @@
 								  type: "bar",
 								  backgroundColor: "rgba(0,0,0,0.2)",
 								  data: mydata,
-								}
+								} , 
+								{
+									label: "Calorie Burnout",
+									type: "line",
+									borderColor: "#ff304f",
+									data: myAct,
+									fill: false
+								  },  {
+									label: "Calorie Burnout",
+									type: "bar",
+									backgroundColor: "rgba(0,0,0,0.2)",
+									data: myAct,
+								  }
+
 							  ]
 							},
 							options: {
@@ -332,30 +359,35 @@
 				Chart
 			</h4>
 			<hr/>
+			{% for item in data %}
+			{% if item.status %}
+			
 			<div class="container bg-white pt-2">
-				<h5 class="font-weight-bold text-black-50 mt-3">Today</h5>
+				<h5 class="font-weight-bold text-black-50 mt-3">{{item.Name}}</h5>
 				<hr class="p-0 m-0" >
+				
+			{% for val in item.data %}
 				<div class="rounded m-3 p-1 col-12">
 					<div class="row">
 					  <div class="col-lg-2 col-3">
 						<a href="/search/recipe/1">
-							<img src="{% static 'assets/img/rec/alooPakoda.jpg' %}" height="80px" width="80px" class="text-center " alt="">
+							<img src="/../static/{{val.image}}" height="80px" width="80px" class="text-center " alt="">
 						</a>
 					  </div>
 					  <div class="recipe_name col-lg-10 col-9">
 						
-						  <h4 class="">Potato Fritters</h4>
+						  <h4 class="">{{val.RecipeName}}</h4>
 							
-							<p class=" font-weight-bold">Nice and crisp on the outside, soft and warm on the inside. Quick and easy to make.</p>
+							<p class=" font-weight-bold">{{val.Description}}</p>
 							<div class="row" style="padding: 10px;">
 									<div style="padding-left: 0px;" class="col-md-3">
 										<span>
-											<h5 class="text-black-50">calories <span class="text-dark font-weight-bold"> 35 KCal</span> </h5>
+											<h5 class="text-black-50">Calories <span class="text-dark font-weight-bold"> {{val.Calories}} KCal</span> </h5>
 										</span>
 									</div>
 									<div class="col-md-3">
 										<span>
-											<h5 class="text-black-50">calories <span class="text-dark font-weight-bold"> 35 KCal</span> </h5>
+											<h5 class="text-black-50">Fats <span class="text-dark font-weight-bold"> {{val.Fats}} KCal</span> </h5>
 										</span>
 									</div>
 									<div class="col-md-3">
@@ -364,37 +396,29 @@
 										</span>
 									</div>
 									<button class="btn btn-success ml-auto mr-1 pt-1 pb-2" style="text-align: right;">
-										<a href="/search/recipes/recipe/{{i.id}}" style="text-decoration: none;">
+										<a href="/search/recipes/recipe/{{val.ID}}" style="text-decoration: none;">
 										Recipe <i class="fa fa-arrow-right" aria-hidden="true"></i>
 										</a>
-									</button>
-										
-							</div>
-							
-						  	<!-- <div class="d-flex flex-row bd-highlight mb-2"> 
-								<div class="p-2 bd-highlight">
-									<h5 class="text-black-50">calories <span class="text-dark font-weight-bold"> 35 KCal</span> </h5>
-								</div>
-
-								<div class="p-2 bd-highlight">
-									<h5 class="text-black-50">calories <span class="text-dark font-weight-bold"> 35 KCal</span> </h5>
-								</div>
-
-								<div class="p-2 bd-highlight">
-									<h5 class="text-black-50">calories <span class="text-dark font-weight-bold"> 35 KCal</span> </h5>
-								</div>
-
-								<button class=" btn btn-success ml-auto mr-1 pt-1 pb-1" style="text-align: right;">
-									<a href="/search/recipes/recipe/{{i.id}}">
-									Recipe <i class="fa fa-arrow-right" aria-hidden="true"></i>
-									</a>
-								</button>
-					  		</div> -->
-						
+									</button>										
+							</div>			
 					</div>
 				</div>
 			  </div>
+			  {% endfor %}
 			</div>
+			
+			{% else %}
+
+			<div class="container bg-white pt-2">
+				<h5 class="font-weight-bold text-black-50 mt-3">Today</h5>
+				<hr class="p-0 m-0" >
+				<div class="rounded m-3 p-1 col-12">
+					<h5>No recipes prepared this day.</h5>
+					
+			  </div>
+			</div>
+			{% endif %}
+			{% endfor %}
 		</div>
 	</div>
 

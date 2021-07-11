@@ -26,7 +26,7 @@ class Receipe_Tracker(models.Model):
     Day = models.TextField()
     qty = models.IntegerField()
     def __str__(self):
-        return "happy"
+        return self.Receipe_Id.Name
 
 class Ingredients(models.Model):
     Ingredient_id = models.IntegerField(primary_key=True  )

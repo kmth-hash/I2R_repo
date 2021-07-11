@@ -80,6 +80,7 @@ def setUserName(username):
 def getChartData(userID):
     user = Users.objects.get(id = userID)
     trackerData = []
+    activities = []
     days = []
     labels = []
     for i in range(7):
@@ -88,7 +89,7 @@ def getChartData(userID):
         days.append(str(d))
     labels = days
     days.sort()
-    print(days)
+    #print(days)
     for i in range(7):
         Kcal = Receipe_Tracker.objects.filter(User_Id=user, Day= days[i])
         dailyTotal = 0
@@ -99,15 +100,28 @@ def getChartData(userID):
                 dailyTotal += float(recipe.Calories)
             
         trackerData.append(dailyTotal)
-    
+
+    for i in range(7):
+        objs = Activities.objects.filter(User_Id=user, Day= days[i])
+        dailyTotal = 0
+        if len(objs)>0:
+            for itr in objs:                
+                dailyTotal += float(itr.Duration * itr.Calories)            
+        activities.append(dailyTotal)
+    print('activities' ,activities)
+
     data = dict()
     data['labels'] = days
     data['datasets'] = [{'data': trackerData,
 								  "label": "Calorie Intake",
-								  'borderColor': "#3e95cd",
+								  'borderColor': "#a7ff83",
+								  'fill': False
+								},{'data': activities,
+								  "label": "Calorie Intake",
+								  'borderColor': "#ff304f",
 								  'fill': False
 								}]
-    print(data)
+    #print(data)
     return data
 
 def weeklyCalories(userId):
@@ -124,6 +138,19 @@ def weeklyCalories(userId):
             
     return weeklyCal
 
+def weeklyBurn(userId):
+    user = Users.objects.get(id = userId)    
+    weeklyCal = 0
+    for i in range(7):
+        d = datetime.date.today() - datetime.timedelta(days = i)        
+        Kcal = Activities.objects.filter(User_Id=user, Day= str(d))
+        
+        if len(Kcal)>0:
+            for itr in Kcal:
+                              
+                weeklyCal += float(itr.Duration * itr.Calories)
+            
+    return weeklyCal
 
 def getDailyCal(userId):
     user = Users.objects.get(id = userId)    
@@ -140,6 +167,83 @@ def getDailyCal(userId):
             
     return calToday
 
+def getDailyBurn(userId):
+    user = Users.objects.get(id = userId)    
+    calToday = 0
+    
+    d = datetime.date.today()     
+    Kcal = Activities.objects.filter(User_Id=user, Day= str(d))
+        
+    if len(Kcal)>0:
+        for itr in Kcal:
+            calToday += float(itr.Duration * itr.Calories)
+            
+    return calToday
+
 def getUserInfo(userId):
     u  = User_Details.objects.get(User_Id=userId)
     return u
+
+def recipesLast3Days(userId):
+    user = Users.objects.get(id = userId)
+    d = datetime.date.today()
+    data = []
+    days = [str(d),str(datetime.date.today() - datetime.timedelta(days = 1)),str(datetime.date.today() - datetime.timedelta(days = 2))]
+    
+    temp = Receipe_Tracker.objects.filter(User_Id=user, Day=days[0])
+    print(temp)
+    if len(temp)>0:              
+        valLists = []
+        for itr in temp:
+            item = dict()
+            r = Recipes.objects.get(Receipe_Id= itr.Receipe_Id_id)
+            item['ID'] = r.Receipe_Id
+            item['image'] = r.Receipe_Image
+            item['RecipeName'] = r.Name
+            item['Desciption'] = r.Description
+            item['Calories'] = r.Calories
+            item['Fats'] = r.Fats
+            valLists.append(item)
+        data.append({'Name' : 'Today' ,'status': True, 'data' : valLists })
+    else:
+        data.append({'Name' : 'Today' ,'status': False})
+
+    temp = Receipe_Tracker.objects.filter(User_Id=user, Day=days[1])
+    print(temp)
+    if len(temp)>0:
+        valLists = []
+        for itr in temp:
+            item = dict()
+            r = Recipes.objects.get(Receipe_Id= itr.Receipe_Id_id)
+            item['ID'] = r.Receipe_Id
+            item['image'] = r.Receipe_Image
+            item['RecipeName'] = r.Name
+            item['Desciption'] = r.Description
+            item['Calories'] = r.Calories
+            item['Fats'] = r.Fats
+            valLists.append(item)
+        data.append({'Name' : 'Yesterday' ,'status' : True, 'data' : valLists })
+    else:
+        data.append({'Name' : 'Yesterday' ,'status' : False})
+    
+    temp = Receipe_Tracker.objects.filter(User_Id=user, Day=days[2])
+    print(temp)
+    if len(temp)>0:
+        valLists = []
+        for itr in temp:
+            item = dict()
+            r = Recipes.objects.get(Receipe_Id= itr.Receipe_Id_id)
+            item['ID'] = r.Receipe_Id
+            item['image'] = r.Receipe_Image
+            item['RecipeName'] = r.Name
+            item['Desciption'] = r.Description
+            item['Calories'] = r.Calories
+            item['Fats'] = r.Fats
+            valLists.append(item)
+        data.append({'Name' : days[2] , 'status':True ,'data' : valLists })
+    else:
+        data.append({'Name' : days[2] , 'status':False })
+
+    
+    return data
+    
