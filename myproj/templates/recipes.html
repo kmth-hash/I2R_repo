@@ -32,9 +32,6 @@
                 <li class="nav-item active">
                   <a class="nav-link" href="/search">Get Recipe</a>
                 </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="/bmi">BMI calculator</a>
-                </li>
                 <li class="nav-item dropdown">
 					<a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 						{{username}} &nbsp;<i class="fa fa-user"></i>
@@ -68,10 +65,8 @@
           <h2 class="">{{i.name}}</h2>
           <hr style="background-color:white">
           <p class="text-white-50 font-weight-bold">{{i.description}}</p>
-          <div id="scrollmenu">
-            <a href="spicy">Spicy</a><a href="rice-items">Rice Items</a><a href="non-veg">Non Veg</a><a href="Chicken">Chicken</a>
-            <a href="Chinese">Chinese</a>
-            <a href="More Options">More Options</a>
+          <div class="row">
+            <button style="margin-left: 20px; padding: 8px; font-size: 12.5px;"class="btn btn-primary">{{ i.category }} </button>
           </div>
             <div style="align-items: flex-end;text-align: right;margin-bottom: 3px;"> <div>
               <span style="background-color: rgb(182, 47, 47);color: white;padding: 3px;border-radius: 5px;padding-left: 5px;"data-toggle="modal" data-target="#{{ forloop.counter }}" data-id="{{ forloop.counter }}">Try it now 

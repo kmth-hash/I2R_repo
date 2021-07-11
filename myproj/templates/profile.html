@@ -32,9 +32,6 @@
 				<li class="nav-item">
 				  <a class="nav-link" href="/search">Get Recipe</a>
 				</li>
-				<li class="nav-item">
-				  <a class="nav-link" href="/bmi">BMI calculator</a>
-				</li>
 				<li class="nav-item dropdown active">
 					<a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 						{{username}} &nbsp;<i class="fa fa-user"></i>
@@ -132,42 +129,21 @@ box-shadow: 6px 3px 16px -5px rgba(0,0,0,0.75);" class="panel">
         </div>
         <div  style="background: whitesmoke; padding-left: 20px;height: 320px; overflow-y: scroll; overflow-x: hidden;" class="panel-body bio-graph-info">
             <h1 class="text-black-50 font-weight-bold"></h1>
-            <div class="row">
-                <h1>1.</h1>
-                <img style="margin-left:8px;border-radius: 5px;" height="80px" width="100px" src="{% static 'assets/img/rec/frenchfries.jpg' %}" alt="">
-                <div class="col-md-6">
-                    <div class="column">
-                        <h4>French Fries</h4>
-                        <h6>Description</h6>
-                        <h6>Tried on 04/07/2021</h6>
-                    </div>
-                </div>
-            </div>
-            <hr>
-            <div class="row">
-                <h1>2.</h1>
-                <img style="margin-left:8px;border-radius: 5px;" height="80px" width="100px" src="{% static 'assets/img/rec/aloogobi.jpg' %}" alt="">
-                <div class="col-md-6">
-                    <div class="column">
-                        <h4>Aloo Gobi</h4>
-                        <h6>Description</h6>
-                        <h6>Tried on 04/07/2021</h6>
-                    </div>
-                </div>
-            </div>
-            <hr>
-            <div class="row">
-                <h1>3.</h1>
-                <img style="margin-left:8px;border-radius: 5px;" height="80px" width="100px" src="{% static 'assets/img/rec/alootikki.jpg' %}" alt="">
-                <div class="col-md-6">
-                    <div class="column">
-                        <h4>Aloo Tikki</h4>
-                        <h6>Description</h6>
-                        <h6>Tried on 04/07/2021</h6>
-                    </div>
-                </div>
-            </div>
-            <hr>
+            
+           {% for i in user_receipe_list %}
+           <div class="row">
+           <h1>{{ forloop.counter }}.</h1>
+           <img style="margin-left:8px;border-radius: 5px;" height="100%" width="100px" src="{% static ''|add:i.7 %}" alt="">
+           <div class="col-md-8">
+               <div class="column">
+                   <h4>{{ i.1 }}</h4>
+                   <h6 style="text-align: justify;">{{ i.8 }}</h6>
+                   <h6><strong> Tried on: </strong>{{ i.13 }} <span style="margin-left: 20px;"><strong>Calories Intook:</strong>{% widthratio i.3 1 i.16 %}</span></h6>   
+               </div>
+           </div>
+       </div>
+       <hr>
+           {% endfor%}
         </div>
     </div>
   </div>
@@ -211,6 +187,7 @@ box-shadow: 6px 3px 16px -5px rgba(0,0,0,0.75);" class="panel">
     <br>
     <form action="" method="post">
         {% csrf_token %}
+        <input type="hidden" name="user_gender" value="{{i.4}}" >
         <div style="padding-left: 20px;">
             <div class="row" style="padding-bottom: 10px;">
                 <div class="col-md-2"">

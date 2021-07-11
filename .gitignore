@@ -2,6 +2,7 @@
 
 my_env
 env
+py3.7
 
 #migrations file
 migrations/*

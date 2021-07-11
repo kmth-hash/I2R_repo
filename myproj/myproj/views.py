@@ -47,6 +47,8 @@ def item_return(userid):
     connection.close()
     return item
 def profile(request):
+    if not request.session.has_key('username'):
+        return redirect('/login')
     global isLoggedIn
     user_id = request.session['uid']
     email = request.session['email']
@@ -56,16 +58,30 @@ def profile(request):
         age = request.POST['age']
         height = request.POST['height']
         weight = request.POST['weight']
+        gender = request.POST['user_gender']
+        print(gender)
+        if gender == 'male':
+            BMR = int((10*float(weight)) + (6.25*float(height)) - (5*float(age)) + 5)
+        else:
+            BMR = int((10*float(weight)) + (6.25*float(height)) - (5*float(age)) - 161)
         with connection.cursor() as cursor:
             cursor.execute('UPDATE myproj_users SET "username"=%s WHERE "id"=%s',[name,user_id])
-            cursor.execute('UPDATE myproj_user_details SET "height"=%s,"weight"=%s,"age"=%s WHERE "User_Id_id"=%s',[height,weight,age,user_id])
+            cursor.execute('UPDATE myproj_user_details SET "height"=%s,"weight"=%s,"age"=%s,"Calories"=%s WHERE "User_Id_id"=%s',[height,weight,age,BMR,user_id])
         connection.close()
         request.session['username'] = name
         messages.success(request , 'Profile Updated Successfully!')
         return redirect('/profile')
     else:
         item=item_return(user_id)
-    return render(request,'profile.html',{'isLoggedIn':isLoggedIn,'username':username,'data':item,'mail':email,'uid':user_id})
+        with connection.cursor() as cursor:
+            cursor.execute('SELECT * FROM myproj_recipes as t1,myproj_receipe_tracker as t2 WHERE t1."Receipe_Id"=t2."Receipe_Id_id" AND t2."User_Id_id"=%s ORDER BY t2."Day"',[user_id])
+            row = cursor.fetchall()
+            user_recipe_list = list()
+            for i in row:
+                user_recipe_list.append(i)
+                #print(i[16])
+        print(item)
+    return render(request,'profile.html',{'isLoggedIn':isLoggedIn,'username':username,'data':item,'mail':email,'uid':user_id,'user_receipe_list':user_recipe_list})
 def firstcall(request):
     print("here inside first")
     if request.session.has_key('username'):
@@ -122,10 +138,10 @@ def signup(request):
 
 def recipes(request):
     recipe_string = ''
+    uid=request.session['uid']
     if not request.session.has_key('username'):
         return redirect('/login')
     if request.method == "POST":
-        uid=request.session['uid']
         recipes_array=request.session['recipe_array']
         if not request.POST.get('cheatday', None) == None:
             print("its a cheatday")
@@ -143,11 +159,17 @@ def recipes(request):
     remaining_calories=[]
     recipes_array=[]
     recipe_string = ', '.join(map(str, predicted_items))
+    consumed_calories = getDailyCal(uid)
     calories = request.session['remaining_calories_perday']
+    calories = int(calories) - int(consumed_calories)
     for i in return_recipes(predicted_items):
         # recipes_array.append(i)
         print(calories, )
         if i[1]>20.0:
+            with connection.cursor() as cursor:
+                cursor.execute('SELECT "Category_Name" from myproj_category where "Category_Id"=%s',[i[0][11]])
+                row = cursor.fetchone()
+            connection.close()
             recipe_details = {
             'recipe_id':i[0][0],
             'name':i[0][1],
@@ -160,8 +182,11 @@ def recipes(request):
             'description':i[0][8],
             'procedure':i[0][9],
             'ingredients':i[0][10],
+            'category':row[0],
             'remaining_calories':int(calories)//int(i[0][3])
+            
             }
+            print(i[0][10])
             recipes_array.append(recipe_details)
         else:
             pass

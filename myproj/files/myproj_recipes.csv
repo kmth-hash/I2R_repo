@@ -1,104 +1,126 @@
 Receipe_Id,Name,Fats,Calories,Quantity,Proteins,Carbohydrates,Receipe_Image,Category_Id_id,Description,procedure,ingredients
-1,Potato Fritters,21g,309,100g,7g,23g,assets/img/rec/alooPakoda.png,1,"Nice and crisp on the outside, soft and warm on the inside. Quick and easy to make.","<h2>Step 1- Combine potatoes and onion with egg in a bowl.</h2>
-<h2>Step 2- Add flour slowly until mixture comes together.</h2>
-<h2>Step 3-Add salt and pepper to taste.</h2>
-<h2>Step 4-Cover base of fry-pan with oil and heat.</h2>
-<h2>Step 5-Add spoons full of mixture into frypan and flatten.</h2>
-<h2>Step 6-Turn and cook until golden on both sides.</h2>","&#9830 4 medium sized potato<br>
-&#9830  tsp salt<br>
-&#9830  cup corn flour<br>
-&#98302 tbsp oil<br>
-&#9830  tsp pepper (crushed)<br>
-&#9830  tsp kashmiri red chilli powder<br>
-&#9830 oil for deep frying<br>
-&#9830  tsp mixed herbs (basil, marjoram, oregano, rosemary, sage, thyme)"
-2,Tomato Rice,10g,121,90g,2g,7g,assets/img/rec/tomatoRice.png,2,"Healthy and flavoured rice recipe prepared mainly with basmati rice and spiced tomato masala. it is an ideal one pot meal or lunch box recipe which can also be served for breakfast and dinner. generally, it is served without any side dish but tastes amazing when served with choice of sour raita.","<h2>Step 1- In a large kadai heat 3 tsp oil and splutter tempering..</h2>
-<h2>Step 2-  Saute few cashews until golden brown.</h2>
-<h2>Step 3 - Add 1 onion, 1 green chilli,  tsp ginger paste and saute well.</h2>
-<h2>Step 4 - Add 2 tomatoes and saute until tomatoes turn soft and mushy.</h2>
-<h2>Step 5 - Add  tsp turmeric,  tsp chilli powder,  tsp coriander powder,  tsp salt and 2 tbsp mint leaves..</h2>
-<h2>Step 6 - Saute and cook for a minute.</h2>
-<h2>Step 7 - Add 2 cups cooked rice and mix gently.</h2>
-<h2>Step 8 - Cover and simmer for 5 minutes to absorb all masala.</h2>
-<h2>Step 9 - Finally, serve tomato rice with raita of your choice.</h2>","&#9830 3 tsp oil<br>
-&#9830 1 tsp mustard<br>
-&#9830 1 tsp cumin / jeera<br>
-&#9830  tsp urad dal<br>
-&#9830  tsp chana dal<br>
-&#9830 few fenugreek / methi<br>
-&#9830 1 inch cinnamon / dalchini<br>
-&#9830 4 cloves<br>
-&#9830 few curry leaves<br>
-&#9830 few cashew / kaju<br>
-&#9830 1 onion (finely chopped)<br>
-&#9830 1 green chilli (slit)<br>
-&#9830  tsp ginger paste<br>
-&#9830 2 tomato (finely chopped)<br>
-&#9830  tsp turmeric / haldi<br>
-&#9830  tsp kashmiri red chilli powder<br>
-&#9830  tsp coriander powder<br>
-&#9830  tsp salt<br>
-&#9830 2 tbsp mint / pudina (chopped)<br>
-&#9830 2 cup rice (cooked)<br>
-&#9830 2 tbsp coriander (finely chopped)"
-3,Fried Rice,15g,394,135g,8g,56g,assets/img/rec/friedRice.png,2," A popular and flavoured rice recipe made with cooked rice, finely chopped veggies and seasoning ingredients. it is a staple food to many south-east asian countries, but in india it is served as street food from indo chinese cuisine. it tastes great when served with manchurian gravy recipes or dal recipes.","<h2>Step 1-  In a large kadai heat 2 tbsp oil and stir-fry 2 clove garlic.</h2>
-<h2>Step 2-  Saute  onion and 2 tbsp spring onion until they sweat.</h2>
-<h2>Step 3 - Add vegetables of your choice like  carrot, 2 tbsp cabbage, 2 tbsp peas, 5 beans,  capsicum and  tsp salt.</h2>
-<h2>Step 4 - Stir fry on high flame without overcooking vegetables.</h2>
-<h2>Step 5 - Now add 2 tbsp soy sauce and 1 tbsp vinegar. stir-fry until the sauce is combined well.</h2>
-<h2>Step 6 - Keeping the flame on high, add cooked rice.</h2>
-<h2>Step 7 - Add 1 tsp pepper and  tsp salt. adjust the salt as soy sauce has salt.</h2>
-<h2>Step 8 - Stir-fry by mixing well making sure rice grains won't break.</h2>
-<h2>Step 9 - Add 2 tbsp spring onions and mix well.</h2>
-<h2>Step 10 - Enjoy veg fried rice!!!!!!!</h2>","For cooking rice:<br>
+1,Potato Fritters,21g,309,100g,7g,23g,assets/img/rec/potatofritters.jpg,1,"Nice and crisp on the outside, soft and warm on the inside. Quick and easy to make.","<h2>Step 1</h2>Combine potatoes and onion with egg in a bowl.<br><br>
+
+<h2>Step 2</h2>Add flour slowly until mixture comes together.<br><br>
+
+<h2>Step 3</h2>Add salt and pepper to taste.<br><br>
+
+<h2>Step 4</h2>Cover base of fry-pan with oil and heat.<br><br>
+
+<h2>Step 5</h2>Add spoons full of mixture into frypan and flatten.<br><br>
+
+<h2>Step 6</h2>Turn and cook until golden on both sides.","&#9830 2 potatoes grated peeled<br>
+&#9830 1 onion grated<br>
+&#9830 1 egg<br>
+&#9830 2 tbs plain flour<br>
+&#9830 1 pinch salt and pepper *to taste"
+2,Tomato Rice,10g,121,90g,2g,7g,assets/img/rec/tomatorice.jpg,2,"Healthy and flavoured rice recipe prepared mainly with basmati rice and spiced tomato masala. it is an ideal one pot meal or lunch box recipe which can also be served for breakfast and dinner. generally, it is served without any side dish but tastes amazing when served with choice of sour raita.","<h2>Step 1</h2> Wash and drain the basmati rice and soak for about 20 minutes. Take a deep pan, put it on medium flame and pour water into it. Bring it to a boil, and then add the soaked rice. Cover the pan with a lid and cook on medium flame till the rice becomes soft, but not mushy. Now remove from fire and keep it aside.<br><br>
+<h2>Step 2</h2>Now put the chopped tomatoes in a blender and blend them properly. Transfer the puree to a bowl and keep it aside. Now heat 2 tbsps of oil in a pan and add the ingredients for seasoning (mustard, asafoetida, curry leaves, dried red chillies). Add onions and saute till they turn slightly pinkish in hue. Then add green chillies and ginger-garlic paste. Saute these ingredients for a minute.<br><br>
+<h2>Step 3</h2>Now, add the tomato puree, turmeric powder, red chilli powder, sambar powder and salt as required. Cook until the oil separates. Add the cooked rice to the tomato gravy and mix well. Once done, transfer the tomato rice to a serving bowl and garnish it with chopped coriander leaves. Serve hot with papads, potato chips or raita.
+","&#9830 1 cup basmati rice<br>
+&#9830 2 medium onion<br>
+&#9830 2 teaspoon sambhar powder<br>
+&#9830 1 handful coriander leaves<br>
+&#9830 2 tablespoon refined oil<br>
+&#9830 1/2 teaspoon garlic paste<br>
+&#9830 4 large tomato<br>
+&#9830 3 medium green chilli<br>
+&#9830 1/4 teaspoon turmeric<br>
+&#9830 salt as required<br>
+&#9830 1/2 teaspoon ginger paste<br>
+&#9830 2 pinches red chilli powder<br>
+&#9830 1/4 teaspoon mustard seeds<br>
+&#9830 7 curry leaves<br>
+&#9830 1 pinch asafoetida<br>
+&#9830 2 red chilli<br>"
+3,Fried Rice,15g,394,135g,8g,56g,assets/img/rec/friedrice.jpg,2," A popular and flavoured rice recipe made with cooked rice, finely chopped veggies and seasoning ingredients. it is a staple food to many south-east asian countries, but in india it is served as street food from indo chinese cuisine. it tastes great when served with manchurian gravy recipes or dal recipes.","<h2>Step 1</h2>In a large kadai heat 3 tsp oil and splutter tempering..<br><br>
+
+<h2>Step 2</h2> Saute few cashews until golden brown.<br><br>
+
+<h2>Step 3</h2>Add 1 onion, 1 green chilli,  tsp ginger paste and saute well.<br><br>
+
+<h2>Step 4</h2>Add 2 tomatoes and saute until tomatoes turn soft and mushy.<br><br>
+
+<h2>Step 5</h2>Add  tsp turmeric,  tsp chilli powder,  tsp coriander powder,  tsp salt and 2 tbsp mint leaves..<br><br>
+
+<h2>Step 6</h2>Saute and cook for a minute.<br><br>
+
+<h2>Step 7</h2>Add 2 cups cooked rice and mix gently.<br><br>
+
+<h2>Step 8</h2>Cover and simmer for 5 minutes to absorb all masala.<br><br>
+
+<h2>Step 9</h2>Finally, serve tomato rice with raita of your choice.","For cooking rice:<br>
 &#9830 1 cup basmati rice<br>
 &#9830 1 tsp  oil<br>
-&#9830  tsp salt<br>
+&#9830 1/2 tsp salt<br>
 &#9830 water for soaking & boiling<br>
 
 For fried rice:<br>
 &#9830 2 tbsp oil<br>
 &#9830 2 clove garlic (finely chopped)<br>
-&#9830  onion (finely chopped)<br>
+&#9830 1/2 onion (finely chopped)<br>
 &#9830 4 tbsp spring onion (chopped)<br>
-&#9830  carrot (finely chopped)<br>
+&#9830 1/4 carrot (finely chopped)<br>
 &#9830 2 tbsp cabbage (finely chopped)<br>
 &#9830 2 tbsp peas / matar<br>
 &#9830 5 beans (chopped)<br>
-&#9830  capsicum (finely chopped)<br>
-&#9830  tsp salt<br>
+&#9830 1/4 capsicum (finely chopped)<br>
+&#9830 3/4 tsp salt<br>
 &#9830 2 tbsp soy sauce<br>
 &#9830 1 tbsp vinegar<br>
 &#9830 1 tsp pepper (crushed)<br>
-&#9830  tsp salt"
-4,French Fries,15g,312,100g,3g,41g,assets/img/rec/frenchfries.png,1,"a hugely popular deep-fried snack recipe made with less starch potatoes. the concept of french fries was popularised by the fast-food chain mcdonalds and served as sides with burger or sandwich meal. store-bought comes with artificial preservatives for the extra stiffness, but the same can be achieved in homemade without any preservatives.","<h2>Step 1-  Firstly, peel the skin of potato. recommend using maris piper potatoes as they have creamy white flesh and fluffy texture.</h2>
-<h2>Step 2-  Cut into 1 cm thick sticks.</h2>
-<h2>Step 3 - Rinse in ice cold water until the starch runs out clean.</h2>
-<h2>Step 4 - Pat dry in kitchen towel to remove excess moisture.</h2>
-<h2>Step 5 - Now deep fry in hot oil. make sure the oil is approximately 140 degree celcius.</h2>
-<h2>Step 6 - Deep fry for 6 minutes or until the potatoes turn tender. they will not go brown at this stage.</h2>
-<h2>Step 7 - Drain off over kitchen towel and cool completely. if you are looking to freeze the potatoes, then you can freeze the fries in zip lock bag upto 3 months.</h2>
-<h2>Step 8 - Once they are cooled completely, deep fry in hot oil. make sure the oil is approximately 180 degree celcius.</h2>
-<h2>Step 9 - Stir occasionally and fry until it turns golden brown and crisp.</h2>
-<h2>Step 10 - Drain off to remove excess oil.</h2>
-<h2>Now sprinkle  tsp chilli powder and  tsp salt. mix well.</h2>
-<h2>Finally, enjoy homemade french fries with eggless mayonnaise as an evening snack.</h2>
+&#9830 1/4 tsp salt"
+4,French Fries,15g,312,100g,3g,41g,assets/img/rec/frenchFries.jpg,1,"a hugely popular deep-fried snack recipe made with less starch potatoes. the concept of french fries was popularised by the fast-food chain mcdonalds and served as sides with burger or sandwich meal. store-bought comes with artificial preservatives for the extra stiffness, but the same can be achieved in homemade without any preservatives.","<h2>Step 1</h2> Firstly, peel the skin of potato. recommend using maris piper potatoes as they have creamy white flesh and fluffy texture.<br><br>
+
+<h2>Step 2</h2> Cut into 1 cm thick sticks.<br><br>
+
+<h2>Step 3</h2>Rinse in ice cold water until the starch runs out clean.<br><br>
+
+<h2>Step 4</h2>Pat dry in kitchen towel to remove excess moisture.<br><br>
+
+<h2>Step 5</h2>Now deep fry in hot oil. make sure the oil is approximately 140 degree celcius.<br><br>
+
+<h2>Step 6</h2>Deep fry for 6 minutes or until the potatoes turn tender. they will not go brown at this stage.<br><br>
+
+<h2>Step 7</h2>Drain off over kitchen towel and cool completely. if you are looking to freeze the potatoes, then you can freeze the fries in zip lock bag upto 3 months.<br><br>
+
+<h2>Step 8</h2>Once they are cooled completely, deep fry in hot oil. make sure the oil is approximately 180 degree celcius.<br><br>
+
+<h2>Step 9</h2>Stir occasionally and fry until it turns golden brown and crisp.<br><br>
+
+<h2>Step 10</h2>Drain off to remove excess oil.<br><br>
+
+<h2>Step 11</h2>Now sprinkle  tsp chilli powder and  tsp salt. mix well.<br><br>
+
+<h2>Step 12</h2>Finally, enjoy homemade french fries with eggless mayonnaise as an evening snack.
+
+
 ","&#9830 4 large potato (maris piper)<br>
 &#9830 cold water (for rinsing)<br>
 &#9830 oil (for frying)<br>
-&#9830  tsp chilli powder<br>
-&#9830  tsp salt"
-5,Aloo Tamatar Curry,20g,280,100g,10g,60g,assets/img/rec/aloopotato.png,3,"An easy and simple gravy based curry recipe made with boiled potatoes and tomatoes. it is an ideal day to day curry recipe which can be made in no time and can be served with poori, roti, chapathi or any flavoured rice recipe. the recipe can be made dry or gravy version, but this recipe is dedicated to the gravy version.","<h2>Step1 - firstly, in a large kadai heat 2 tbsp oil and saute 1 bay leaf, 1 inch cinnamon, 2 pods cardamom, pinch hing, 1 tsp kaduri methi, 1 tsp cumin and 2 tbsp coriander</h2>
-<h2>Step2 - now add 1 onion and saute well. saute until onions turn golden brown.</h2>
-<h2>Step3 - further add 1 tsp ginger garlic paste and saute well.</h2>
-<h2>Steip4 - keeping the flame on low add  tsp turmeric, 1 tsp chilli powder, 1 tsp coriander powder,  tsp garam masala and 1 tsp salt.</h2>
-<h2>Steip5 - saute on low flame until spices turn aromatic.</h2>
-<h2>Steip6 - add 1 tomato and saute well until tomatoes turn soft and mushy.</h2>
-<h2>Steip7 - further mash 2 boiled potato slightly.</h2>
-<h2>Steip8 - mix well making sure all the spices are well combined.</h2>
-<h2>Steip9 - now add 1-2 cup water and stir adjusting consistency as required.</h2>
-<h2>Steip10 - cover and simmer for 10 minutes making sure flavours are absorbed well.</h2>
-<h2>Steip11 - finally, add 2 tbsp coriander and enjoy aloo tamatar ki sabji with phulka or poori.</h2>","&#9830 2 tbsp oil<br>
+&#9830 1/2 tsp chilli powder<br>
+&#9830 1/2 tsp salt"
+5,Aloo Tamatar Curry,20g,280,100g,10g,60g,assets/img/rec/alootamatar.jpg,3,"An easy and simple gravy based curry recipe made with boiled potatoes and tomatoes. it is an ideal day to day curry recipe which can be made in no time and can be served with poori, roti, chapathi or any flavoured rice recipe. the recipe can be made dry or gravy version, but this recipe is dedicated to the gravy version.","<h2>Step 1</h2>firstly, in a large kadai heat 2 tbsp oil and saute 1 bay leaf, 1 inch cinnamon, 2 pods cardamom, pinch hing, 1 tsp kaduri methi, 1 tsp cumin and 2 tbsp coriander<br><br>
+
+<h2>Step 1</h2>now add 1 onion and saute well. saute until onions turn golden brown.<br><br>
+
+<h2>Step 3</h2>further add 1 tsp ginger garlic paste and saute well.<br><br>
+
+<h2>Step 4</h2>keeping the flame on low add  tsp turmeric, 1 tsp chilli powder, 1 tsp coriander powder,  tsp garam masala and 1 tsp salt.<br><br>
+
+<h2>Step 5</h2>saute on low flame until spices turn aromatic.<br><br>
+
+<h2>Step 6</h2>add 1 tomato and saute well until tomatoes turn soft and mushy.<br><br>
+
+<h2>Step 7</h2>further mash 2 boiled potato slightly.<br><br>
+
+<h2>Step 8</h2>mix well making sure all the spices are well combined.<br><br>
+
+<h2>Step 9</h2>now add 1-2 cup water and stir adjusting consistency as required.<br><br>
+
+<h2>Step 10</h2>cover and simmer for 10 minutes making sure flavours are absorbed well.<br><br>
+
+<h2>Step 11</h2>finally, add 2 tbsp coriander and enjoy aloo tamatar ki sabji with phulka or poori.","&#9830 2 tbsp oil<br>
 &#9830 1 bay leaf<br>
 &#9830 1 inch cinnamon<br>
 &#9830 2 pods cardamom<br>
@@ -108,59 +130,70 @@ For fried rice:<br>
 &#9830 2 tbsp coriander (finely chopped)<br>
 &#9830 1 onion (finely chopped)<br>
 &#9830 1 tsp ginger garlic paste<br>
-&#9830  tsp turmeric<br>
+&#9830 1/2 tsp turmeric<br>
 &#9830 1 tsp kashmiri red chilli powder<br>
 &#9830 1 tsp coriander powder<br>
-&#9830  tsp garam masala<br>
+&#9830 1/2 tsp garam masala<br>
 &#9830 1 tsp salt<br>
 &#9830 1 tomato (finely chopped)<br>
-&#9830 1 cup water<br>
+&#9830 11/2 cup water<br>
 &#9830 2 potato / aloo (boiled)<br>
 &#9830 2 tbsp coriander (finely chopped)"
-6,Gajar ka halwa,21g,386,1cup,6g,42g,assets/img/rec/halwa.png,4,"Halwa recipes are one of the popular choices from indian cuisine is made with myriad ingredients. generally, it is made with cereals, pulses, flour or combination of these ingredients. however, it can also be made with a choice of fruits and vegetables. one such veggie-based halwa is a carrot halwa recipe known for its texture and taste.","<h2>Step1 - Firstly, peel the skin of carrot and grate finely. keep aside. traditionally, delhi carrot is used to prepare halwa.</h2>
-<h2>Step2 - in a large kadai heat  cup ghee and fry 10 cashew, 10 almonds.</h2>
-<h2>Step3 - fry until it turns golden brown. keep aside.</h2>
-<h2>Step4 - in the same ghee add grated carrot and saute well.</h2>
-<h2>Step5 - saute for 5 minutes or until it changes colour slightly.</h2>
-<h2>Step6 - now pour 3 cup milk and give a good stir.</h2>
-<h2>Step7 - boil for 10 minutes stirring occasionally.</h2>
-<h2>Step8 - continue to boil until the carrots are cooked well and milk reduces.</h2>
-<h2>Step9 - once the milk thickens completely, add  cup sugar.</h2>
-<h2>Step10 - mix well and cook until the sugar dissolves and thickens.</h2>
-<h2>Step11 - cook until the halwa thickens and ghee releases from sides.</h2>
-<h2>Step12 - now turn off the flame and  cup khoya,  tsp cardamom powder and fried nuts.</h2>
-<h2>Step13 - mix well making sure everything is well combined.</h2>
-<h2>Step14 - finally, enjoy gajar ka halwa or carrot halwa chilled or warm.</h2>","&#9830 1 kg carrot<br>
-&#9830  cup ghee / clarified butter<br>
+6,Gajar ka halwa,21g,386,1cup,6g,42g,assets/img/rec/carrothalwa.png,4,"Halwa recipes are one of the popular choices from indian cuisine is made with myriad ingredients. generally, it is made with cereals, pulses, flour or combination of these ingredients. however, it can also be made with a choice of fruits and vegetables. one such veggie-based halwa is a carrot halwa recipe known for its texture and taste.","<h2>Step 2</h2>in a large kadai heat  cup ghee and fry 10 cashew, 10 almonds.<br><br>
+
+<h2>Step 3</h2>fry until it turns golden brown. keep aside.<br><br>
+
+<h2>Step 4</h2>in the same ghee add grated carrot and saute well.<br><br>
+
+<h2>Step 5</h2>saute for 5 minutes or until it changes colour slightly.<br><br>
+
+<h2>Step 6</h2>now pour 3 cup milk and give a good stir.<br><br>
+
+<h2>Step 7</h2>boil for 10 minutes stirring occasionally.<br><br>
+
+<h2>Step 8</h2>continue to boil until the carrots are cooked well and milk reduces.<br><br>
+
+<h2>Step 9</h2>once the milk thickens completely, add  cup sugar.<br><br>
+
+<h2>Step 10</h2>mix well and cook until the sugar dissolves and thickens.<br><br>
+
+<h2>Step 11</h2>cook until the halwa thickens and ghee releases from sides.<br><br>
+
+<h2>Step 12</h2>now turn off the flame and  cup khoya,  tsp cardamom powder and fried nuts.<br><br>
+
+<h2>Step 13</h2>mix well making sure everything is well combined.<br><br>
+
+<h2>Step 14finally, enjoy gajar ka halwa or carrot halwa chilled or warm.","&#9830 1 kg carrot<br>
+&#9830 1/4 cup ghee / clarified butter<br>
 &#9830 10 cashew / kaju (chopped)<br>
 &#9830 10 almonds / badam (chopped)<br>
 &#9830 3 cup milk<br>
-&#9830  cup sugar<br>
-&#9830  cup khoya / mawa<br>
-&#9830  tsp cardamom powder"
-7,Paneer Butter Masala,48g,635,1cup,84g,118g,assets/img/rec/paneerbuttermasala.png,3,"Perhaps one of the premium north indian or punjabi curries if not the king of the paneer curries. it is known for its mildly sweet and spicy taste with the goodness of fresh cream and butter topping with moist paneer. it is one of the most curries for most vegetarians and is prepared for lunch and dinner and served with freshly baked roti, chapati, naan and even a choice of rice.","<h1>How to make gravy base:<h1>
-<h2>firstly, in a large kadai heat 2 tbsp oil and 2 tbsp butter.</h2>
-<h2>add 5 cloves, 2 pods cardamom and saute on low flame until it turns aromatic.</h2>
-<h2>now add 2 onion, 2 clove garlic, 1 inch ginger.</h2>
-<h2>saute until onions shrink slightly.
-<h2>further add 3 tomato, 15 cashew and saute for 2 minutes.
-<h2>cover and boil for 10 minutes, or until tomato softens.
-<h2>cool completely and transfer to the blender and blend to smooth paste.
-<h2>pass the curry to the filter to get rid of seeds and skin.
-<h2>smooth and silky, the tomato-onion paste is ready. keep aside.
-<h1>how to make paneer butter masala:</h1>
-<h2>Step 1 - firstly, in a large kadai heat 2 tbsp oil, 2 tbsp butter, 1 bay leaf and 1 chilli. saute until the spices turn aromatic.
-<h2>Step 2 - now add 1 onion and saute until onions turn and golden brown.
-<h2>Step 3 - keeping the flame on low, add  tsp turmeric, 1 tsp chilli powder,  tsp coriander powder,  tsp cumin powder,  garam masala and 1 tsp salt.
-<h2>Step 4 - saute until the spices turn aromatic. make sure not to burn the spices.
-<h2>Step 5 - add in prepared onion tomato paste and mix well.
-<h2>Step 6 - cook until the oil separates from the masala paste.
-<h2>Step 7 - now add 1 cup water and mix well adjusting the consistency.
-<h2>Step 8 - further, add in 2 tbsp cream and mix well.
-<h2>Step 9 - also, add 16 cubes of paneer and mix gently.
-<h2>Step 10 - simmer for 5 minutes, or until the paneer absorbs the flavour.
-<h2>Step 11 - add 1 tsp kasuri methi and 2 tbsp coriander. mix well.
-<h2>Step 12 - finally, enjoy paneer butter masala with roti or naan.","for masala paste:<br>
+&#9830 3/4 cup sugar<br>
+&#9830 1/2 cup khoya / mawa<br>
+&#9830 1/4 tsp cardamom powder"
+7,Paneer Butter Masala,48g,635,1cup,84g,118g,assets/img/rec/paneerbuttermasala.png,3,"Perhaps one of the premium north indian or punjabi curries if not the king of the paneer curries. it is known for its mildly sweet and spicy taste with the goodness of fresh cream and butter topping with moist paneer. it is one of the most curries for most vegetarians and is prepared for lunch and dinner and served with freshly baked roti, chapati, naan and even a choice of rice.","<h1>How to make gravy base:<h1><br><br>
+<h2>firstly, in a large kadai heat 2 tbsp oil and 2 tbsp butter.<br><br>
+<h2>add 5 cloves, 2 pods cardamom and saute on low flame until it turns aromatic.<br><br>
+<h2>now add 2 onion, 2 clove garlic, 1 inch ginger.<br><br>
+<h2>saute until onions sbrink slightly.<br><br>
+<h2>further add 3 tomato, 15 cashew and saute for 2 minutes.<br><br>
+<h2>cover and boil for 10 minutes, or until tomato softens.<br><br>
+<h2>cool completely and transfer to the blender and blend to smooth paste.<br><br>
+<h2>pass the curry to the filter to get rid of seeds and skin.<br><br>
+<h2>smooth and silky, the tomato-onion paste is ready. keep aside.<br><br>
+<h1>how to make paneer butter masala:</h1><br><br>
+<h2>Step 1</h2>firstly, in a large kadai heat 2 tbsp oil, 2 tbsp butter, 1 bay leaf and 1 chilli. saute until the spices turn aromatic.<br><br>
+<h2>Step 2</h2>now add 1 onion and saute until onions turn and golden brown.<br><br>
+<h2>Step 3</h2>keeping the flame on low, add  tsp turmeric, 1 tsp chilli powder,  tsp coriander powder,  tsp cumin powder,  garam masala and 1 tsp salt.<br><br>
+<h2>Step 4</h2>saute until the spices turn aromatic. make sure not to burn the spices.<br><br>
+<h2>Step 5</h2>add in prepared onion tomato paste and mix well.<br><br>
+<h2>Step 6</h2>cook until the oil separates from the masala paste.<br><br>
+<h2>Step 7</h2>now add 1 cup water and mix well adjusting the consistency.<br><br>
+<h2>Step 8</h2>further, add in 2 tbsp cream and mix well.<br><br>
+<h2>Step 9</h2>also, add 16 cubes of paneer and mix gently.<br><br>
+<h2>Step 10</h2>simmer for 5 minutes, or until the paneer absorbs the flavour.<br><br>
+<h2>Step 11</h2>add 1 tsp kasuri methi and 2 tbsp coriander. mix well.<br><br>
+<h2>Step 12</h2>finally, enjoy paneer butter masala with roti or naan.","for masala paste:<br>
 &#9830 2 tbsp oil<br>
 &#9830 2 tbsp butter<br>
 &#9830 5 cloves<br>
@@ -177,27 +210,36 @@ for curry:<br>
 &#9830 1 bay leaf<br>
 &#9830 1 chilli<br>
 &#9830 1 onion (finely chopped)<br>
-&#9830  tsp turmeric<br>
+&#9830 1/2 tsp turmeric<br>
 &#9830 1 tsp chilli powder<br>
-&#9830  tsp coriander powder<br>
-&#9830  tsp cumin powder<br>
-&#9830  garam masala<br>
+&#9830 3/4 tsp coriander powder<br>
+&#9830 1/4 tsp cumin powder<br>
+&#9830 1/2 garam masala<br>
 &#9830 1 tsp salt<br>
 &#9830 1 cup water<br>
 &#9830 2 tbsp cream<br>
 &#9830 16 cubes paneer<br>
 &#9830 1 tsp kasuri methi<br>
 &#9830 2 tbsp coriander (finely chopped)"
-8,Aloo gobi,11.3g,208,1 cup,3g,23.7g,assets/img/rec/aloogobi.png,3,"A simple, quick and easy dry curry recipe made with a combination of potatoes and cauliflower. this is one of the most common day to day side dish recipe served with roti, chapati and even naan bread. there are many variants to this recipe where it can be made with thick gravy, but this recipe is a dry version of it.","<h2>Step1- </h2> firstly, in a large kadai, heat 3 tsp oil and saute 1 tsp cumin and 1 tsp kasuri methi until they turn aromatic.<br>
-<h2>Step2- </h2>further, add 1 onion and saute well.<br>
-<h2>Step3- </h2>now add 1 tsp ginger garlic paste, 1 chilli and saute for a minute.<br>
-<h2>Step4- </h2>keeping the flame on low add  tsp turmeric,  tsp chilli powder,  tsp coriander powder,  tsp cumin powder and  tsp salt.<br>
-<h2>Step5- </h2>saute on low flame, until the spices turn aromatic.<br>
-<h2>Step6- </h2>further, add 1 tomato and saute until tomatoes turn soft and mushy.<br>
-<h2>Step7- </h2>now add fried aloo and gobi.<br>
-<h2>Step8- </h2>mix gently without breaking them. if you prefer gravy, then add  cup water.<br>
-<h2>Step9- </h2>furthermore, add  tsp aamchur,  tsp garam masala and 2 tbsp coriander leaves. mix well.<br>
-<h2>Step10- </h2>finally, aloo gobi dry recipe is ready to serve with roti or rice.","for frying:<br>
+8,Aloo gobi,11.3g,208,1 cup,3g,23.7g,assets/img/rec/aloogobi.jpg,3,"A simple, quick and easy dry curry recipe made with a combination of potatoes and cauliflower. this is one of the most common day to day side dish recipe served with roti, chapati and even naan bread. there are many variants to this recipe where it can be made with thick gravy, but this recipe is a dry version of it.","<h2>Step 1</h2>firstly, in a large kadai, heat 3 tsp oil and saute 1 tsp cumin and 1 tsp kasuri methi until they turn aromatic.<br><br>
+
+<h2>Step 2</h2>further, add 1 onion and saute well.<br><br>
+
+<h2>Step 3</h2>now add 1 tsp ginger garlic paste, 1 chilli and saute for a minute.<br><br>
+
+<h2>Step 4</h2>keeping the flame on low add  tsp turmeric,  tsp chilli powder,  tsp coriander powder,  tsp cumin powder and  tsp salt.<br><br>
+
+<h2>Step 5</h2>saute on low flame, until the spices turn aromatic.<br><br>
+
+<h2>Step 6</h2>further, add 1 tomato and saute until tomatoes turn soft and mushy.<br><br>
+
+<h2>Step 7</h2>now add fried aloo and gobi.<br><br>
+
+<h2>Step 8</h2>mix gently without breaking them. if you prefer gravy, then add  cup water.<br><br>
+
+<h2>Step 9</h2>furthermore, add  tsp aamchur,  tsp garam masala and 2 tbsp coriander leaves. mix well.<br><br>
+
+<h2>Step 10</h2>finally, aloo gobi dry recipe is ready to serve with roti or rice.","for frying:<br>
 &#9830 4 tbsp oil<br>
 &#9830 15 florets gobi / cauliflower<br>
 &#9830 2 potato / aloo (peeled & chopped)<br>
@@ -209,286 +251,332 @@ for sabzi:<br>
 &#9830 1 onion (finely chopped)<br>
 &#9830 1 tsp  ginger garlic paste<br>
 &#9830 1 chilli (slit)<br>
-&#9830  tsp turmeric<br>
-&#9830  tsp kashmiri red chilli powder<br>
-&#9830  tsp coriander powder<br>
-&#9830  tsp cumin powder / jeera powder<br>
-&#9830  tsp salt<br>
+&#9830 1/4 tsp turmeric<br>
+&#9830 1/2 tsp kashmiri red chilli powder<br>
+&#9830 1/2 tsp coriander powder<br>
+&#9830 1/4 tsp cumin powder / jeera powder<br>
+&#9830 3/4 tsp salt<br>
 &#9830 1 tomato (finely chopped)<br>
-&#9830  tsp aamchur<br>
-&#9830  tsp garam masala<br>
+&#9830 1/2 tsp aamchur<br>
+&#9830 1/4 tsp garam masala<br>
 &#9830 2 tbsp coriander (finely chopped)"
-9,Veg Pulao,7.3g,231,1.5 cup,4g,37.3g,assets/img/rec/vegpulao.png,2,"An easy and simple flavoured rice recipe made with long grain rice, choice of vegetables and fresh herbs. it is one of the popular rice variants or choice for many indians and is often served for lunch and dinner, if not for morning breakfast. the simple pulao recipes do not contain all the required flavour and spice in it and can be served as it is, but tastes great when served with simple yoghurt raita.","Step 1. firstly, in a small mixi take  cup coriander,  cup mint, 1 inch ginger, 2 clove garlic, 2 chilli, 2 pod cardamom, 1 inch cinnamon, 5 cloves and 1 tsp fennel.
-Step  2. add  cup water and blend smooth paste. keep aside.
-Step 3. ina large kadai, heat 2 tbsp ghee. add 1 tsp cumin, 1 bay leaf, 1 inch cinnamon, 2 pod cardamom, 3 cloves,  tsp pepper and 5 cashew.
-Step 4. saute on low flame until the spices turn aromatic.
-Step 5. now add  onion and saute until the colour changes slightly.
-Step 6. further, add 1 tomato and saute until the tomatoes turn soft and mushy.
-Step 7. additionally, add 5 beans,  capsicum, 2 tbsp peas,  carrot and  potato.
-Step 8. saute for a minute until the vegetables turn aromatic.
-Step 9. now add prepared coriander pudina masala paste and 1 tsp salt. mix well.
-Step 10. further, add 2 cup water and stir well getting to a boil.
-Step 11. once the water comes to a rolling boil, add 1 cup basmati rice. make sure to soak basmati rice for 20 minutes.
-Step 12. mix well, cover and simmer for 20 minutes.
-Step 13. after 20 minutes, veg pulao is ready to serve.","for pulao masala paste:
-&#9830  cup coriander
-&#9830  cup mint / pudina
-&#9830 1 inch ginger
-&#9830 2 clove garlic
-&#9830 2 chilli
-&#9830 2 pod cardamom
-&#9830 1 inch cinnamon
-&#9830 5 cloves
-&#9830 1 tsp fennel / saunf
-&#9830  cup water
-for veg pulao:
-&#9830 2 tbsp ghee / clarified butter
-&#9830 1 tsp cumin
-&#9830 1 bay leaf
-&#9830 1 inch cinnamon
-&#9830 2 pod cardamom
-&#9830 3 cloves
-&#9830  tsp pepper
-&#9830 5 cashew (halves)
-&#9830  onion (sliced)
-&#9830 1 tomato (finely chopped)
-&#9830 5 beans (chopped)
-&#9830  capsicum (cubed)
-&#9830 2 tbsp peas
-&#9830  carrot (chopped)
-&#9830  potato (cubed)
-&#9830 1 tsp salt
-?2 cup water
-?1 cup basmati rice (soaked 20 minutes)
-for onion tomato raita:
-?1 cup curd
-?1 cup water
-? onion (finely chopped)
-? tomato (finely chopped)
-? cucumber (finely chopped)
-?2 tbsp coriander (finely chopped)
-? tsp roasted cumin powder
-? tsp salt"
-10,Biriyani,17.9g,241,1 cup,4.8g,13.9g,assets/img/rec/biriyani.png,2,A simple and quick aromatic veg dum biryani recipe prepared in pressure cooker. it is a quick and ideal meal for lunch and dinner which can match restaurant style hyderabadi dum biryani recipe.,"Step 1.firstly, in a large kadai heat 2 tbsp oil and 1 tsp ghee.
-Step 2.saute 1 bay leaf, 1 mace, 1 inch cinnamon, 1 star anise, 1 back cardamom, 3 cloves, 2 pods cardamom, 1 tsp cumin and  tsp fennel.
-Step 3.add 1 onion followed by 1 tsp ginger garlic paste.
-Step 4.saute until onions turn golden brown.
-Step 5.further add 1 tomato and saute until tomatoes turn soft and mushy.
-Step 6.now add 1 potato,  carrot and  tsp salt.
-Step 7.cover and cook until potatoes are half cooked.
-Step 8.further add  tsp turmeric, 1 tsp chilli powder,  tsp cumin powder, 1 tsp garam masala, 1 tsp coriander powder, 4 prunes and  tsp salt.
-Step 9.saute until spices turn aromatic.
-Step 10.additionally, add  cup curd and saute until oil is released.
-Step 11.furthermore add 5 beans, 7 florets cauliflower, 2 tbsp peas and 5 cubes capsicum.
-Step 12.saute for a minute or until its combined well.
-Step 13.add 1 cup water and mix well.
-Step 14.cover and cook for 5 minutes or until vegetables are half cooked.
-Step 15.take 1 cup of gravy and keep aside.
-Step 16.now layer up with 2 tbsp coriander and 2 tbsp fried onion.
-Step 17.spread half of cooked rice over the biryani gravy.
-Step 18.top with reserved gravy uniformly.
-Step 19.further spread remaining cooked rice and level up.
-Step 20.top with 2 tbsp coriander, 2 tbsp mint and 2 tbsp fried onion.
-Step 21.sprinkle  tsp saffron food colour,  cup water and 1 tsp ghee.
-Step 22.cover with aluminium foil and close the lid. you can also use the dough to seal.
-Step 23.simmer for 20 minutes or until rice is cooked fully.
-Step 24.finally, enjoy bombay biryani with raita and slices of onion","&#9830 3 tbsp ghee / clarified butter
-&#9830 2 bay leaf / tej patta
-&#9830 2 inch cinnamon stick / dalchini
-&#9830 1 star anise
-&#9830 5 cloves / lavang
-&#9830 4 cardamom / elachi
-&#9830  tsp pepper
-&#9830  tsp cumin seeds / jeera
-&#9830 1 medium onion (finely chopped)
-&#9830 1 tsp ginger - garlic paste
-&#9830 5 beans (chopped)
-&#9830 10 florets gobi / cauliflower
-&#9830  cup peas / mattar
-&#9830 1 carrot (chopped)
-&#9830 1 potato (cubed)
-&#9830 3 mushrooms (sliced)
-&#9830 1 cup curd / yogurt
-&#9830  tsp turmeric / haldi
-&#9830 1 tsp kashmiri chilli powder / lal mirch powder
-&#9830  tsp cumin powder / jeera powder
-&#9830 2 tsp biryani masala
-&#9830 salt to taste
-&#9830 6 tbsp coriander leaves (finely chopped)
-&#9830 20 mint / pudina leaves (roughly chopped)
-&#9830 6 tbsp onions (fried)
-&#9830 1 cups basmati rice (soaked 30 minutes)
-&#9830 2 tbsp saffron water
+9,Veg Pulao,7.3g,231,1.5 cup,4g,37.3g,assets/img/rec/pulao.JPG,2,"An easy and simple flavoured rice recipe made with long grain rice, choice of vegetables and fresh herbs. it is one of the popular rice variants or choice for many indians and is often served for lunch and dinner, if not for morning breakfast. the simple pulao recipes do not contain all the required flavour and spice in it and can be served as it is, but tastes great when served with simple yoghurt raita.","<h2>Step 1</h2>firstly, in a small mixi take  cup coriander,  cup mint, 1 inch ginger, 2 clove garlic, 2 chilli, 2 pod cardamom, 1 inch cinnamon, 5 cloves and 1 tsp fennel.<br><br>
+
+<h2>Step 12</h2>add  cup water and blend smooth paste. keep aside.<br><br>
+
+<h2>Step 3</h2>In a large kadai, heat 2 tbsp ghee. add 1 tsp cumin, 1 bay leaf, 1 inch cinnamon, 2 pod cardamom, 3 cloves,  tsp pepper and 5 cashew.<br><br>
+
+<h2>Step 4</h2>saute on low flame until the spices turn aromatic.<br><br>
+
+<h2>Step 5</h2>now add  onion and saute until the colour changes slightly.<br><br>
+
+<h2>Step 6</h2> further, add 1 tomato and saute until the tomatoes turn soft and mushy.<br><br>
+
+<h2>Step 6</h2> additionally, add 5 beans,  capsicum, 2 tbsp peas,  carrot and  potato.<br><br>
+
+<h2>Step 8</h2> saute for a minute until the vegetables turn aromatic.<br><br>
+
+<h2>Step 9</h2> now add prepared coriander pudina masala paste and 1 tsp salt. mix well.<br><br>
+
+<h2>Step 10</h2> further, add 2 cup water and stir well getting to a boil.<br><br>
+
+<h2>Step 11</h2> once the water comes to a rolling boil, add 1 cup basmati rice. make sure to soak basmati rice for 20 minutes.<br><br>
+
+<h2>Step 12</h2> mix well, cover and simmer for 20 minutes.<br><br>
+
+<h2>Step 13</h2> after 20 minutes, veg pulao is ready to serve.","for pulao masala paste:<br>
+&#9830 1/2 cup coriander<br>
+&#9830 1/4 cup mint / pudina<br>
+&#9830 1 inch ginger<br>
+&#9830 2 clove garlic<br>
+&#9830 2 chilli<br>
+&#9830 2 pod cardamom<br>
+&#9830 1 inch cinnamon<br>
+&#9830 5 cloves<br>
+&#9830 1 tsp fennel / saunf<br>
+&#9830 1/4 cup water<br>
+for veg pulao:<br>
+&#9830 2 tbsp ghee / clarified butter<br>
+&#9830 1 tsp cumin<br>
+&#9830 1 bay leaf<br>
+&#9830 1 inch cinnamon<br>
+&#9830 2 pod cardamom<br>
+&#9830 3 cloves<br>
+&#9830 1/2 tsp pepper<br>
+&#9830 5 cashew (halves)<br>
+&#9830 1/2 onion (sliced)<br>
+&#9830 1 tomato (finely chopped)<br>
+&#9830 5 beans (chopped)<br>
+&#9830 1/2 capsicum (cubed)<br>
+&#9830 2 tbsp peas<br>
+&#9830 1/2 carrot (chopped)<br>
+&#9830 1/2 potato (cubed)<br>
+&#9830 1 tsp salt<br>
+&#9830 2 cup water<br>
+&#9830 1 cup basmati rice (soaked 20 minutes)<br>
+for onion tomato raita:<br>
+&#9830 1 cup curd<br>
+&#9830 1 cup water<br>
+&#9830 1/2 onion (finely chopped)<br>
+&#9830 1/2 tomato (finely chopped)<br>
+&#9830 1/2 cucumber (finely chopped)<br>
+&#9830 2 tbsp coriander (finely chopped)<br>
+&#9830 1/2 tsp roasted cumin powder<br>
+&#9830 1/4 tsp salt"
+10,Biriyani,17.9g,241,1 cup,4.8g,13.9g,assets/img/rec/vegbiriyani.jpg,2,A simple and quick aromatic veg dum biryani recipe prepared in pressure cooker. it is a quick and ideal meal for lunch and dinner which can match restaurant style hyderabadi dum biryani recipe.,"<h2>Step 1</h2>firstly, in a large kadai heat 2 tbsp oil and 1 tsp ghee.<br><br>
+
+<h2>Step 2</h2>saute 1 bay leaf, 1 mace, 1 inch cinnamon, 1 star anise, 1 back cardamom, 3 cloves, 2 pods cardamom, 1 tsp cumin and  tsp fennel.<br><br>
+
+<h2>Step 3</h2>add 1 onion followed by 1 tsp ginger garlic paste.<br><br>
+
+<h2>Step 4</h2>saute until onions turn golden brown.<br><br>
+
+<h2>Step 5</h2>further add 1 tomato and saute until tomatoes turn soft and mushy.<br><br>
+
+<h2>Step 6</h2>now add 1 potato,  carrot and  tsp salt.<br><br>
+
+<h2>Step 7</h2>cover and cook until potatoes are half cooked.<br><br>
+
+<h2>Step 8</h2>further add  tsp turmeric, 1 tsp chilli powder,  tsp cumin powder, 1 tsp garam masala, 1 tsp coriander powder, 4 prunes and  tsp salt.<br><br>
+
+<h2>Step 9</h2>saute until spices turn aromatic.<br><br>
+
+<h2>Step 10</h2>additionally, add  cup curd and saute until oil is released.<br><br>
+
+<h2>Step 11</h2>furthermore add 5 beans, 7 florets cauliflower, 2 tbsp peas and 5 cubes capsicum.<br><br>
+
+<h2>Step 12</h2>saute for a minute or until its combined well.<br><br>
+
+<h2>Step 13</h2>add 1 cup water and mix well.<br><br>
+
+<h2>Step 14</h2>cover and cook for 5 minutes or until vegetables are half cooked.<br><br>
+
+<h2>Step 15</h2>take 1 cup of gravy and keep aside.<br><br>
+
+<h2>Step 16</h2>now layer up with 2 tbsp coriander and 2 tbsp fried onion.<br><br>
+
+<h2>Step 17</h2>spread half of cooked rice over the biryani gravy.<br><br>
+
+<h2>Step 18</h2>top with reserved gravy uniformly.<br><br>
+
+<h2>Step 19</h2>further spread remaining cooked rice and level up.<br><br>
+
+<h2>Step 20</h2>top with 2 tbsp coriander, 2 tbsp mint and 2 tbsp fried onion.<br><br>
+
+<h2>Step 21</h2>sprinkle  tsp saffron food colour,  cup water and 1 tsp ghee.<br><br>
+
+<h2>Step 22</h2>cover with aluminium foil and close the lid. you can also use the dough to seal.<br><br>
+
+<h2>Step 23</h2>simmer for 20 minutes or until rice is cooked fully.<br><br>
+
+<h2>Step 24</h2>finally, enjoy bombay biryani with raita and slices of onion<br><br>
+","&#9830 3 tbsp ghee / clarified butter<br>
+&#9830 2 bay leaf / tej patta<br>
+&#9830 2 inch cinnamon stick / dalchini<br>
+&#9830 1 star anise<br>
+&#9830 5 cloves / lavang<br>
+&#9830 4 cardamom / elachi<br>
+&#9830 1/2 tsp pepper<br>
+&#9830 1/2 tsp cumin seeds / jeera<br>
+&#9830 1 medium onion (finely chopped)<br>
+&#9830 1 tsp ginger - garlic paste<br>
+&#9830 5 beans (chopped)<br>
+&#9830 10 florets gobi / cauliflower<br>
+&#9830 1/4 cup peas / mattar<br>
+&#9830 1 carrot (chopped)<br>
+&#9830 1 potato (cubed)<br>
+&#9830 3 mushrooms (sliced)<br>
+&#9830 1 cup curd / yogurt<br>
+&#9830 1/2 tsp turmeric / haldi<br>
+&#9830 1 tsp kashmiri chilli powder / lal mirch powder<br>
+&#9830 1/4 tsp cumin powder / jeera powder<br>
+&#9830 2 tsp biryani masala<br>
+&#9830 salt to taste<br>
+&#9830 6 tbsp coriander leaves (finely chopped)<br>
+&#9830 20 mint / pudina leaves (roughly chopped)<br>
+&#9830 6 tbsp onions (fried)<br>
+&#9830 11/2 cups basmati rice (soaked 30 minutes)<br>
+&#9830 2 tbsp saffron water<br>
 &#9830 2 cups water"
-11,Aloo Tikki,3.8g,89,1 plate,1.2g,9.5g,assets/img/rec/alootikki.png,1,"A simple and easy patty recipe made with boiled and mashed potatoes. the potato-based tikki is the foundation for many recipes like sandwich, burger, street food and many chaat recipes. having said that the dish can be served as it is with simple sides and condiments like green chutney or tamarind chutney as party starters.","Step 1.firstly, in a large mixing bowl take 3 boiled and grated potato. make sure to pressure cook potatoes for 4-5 whistles and drain off the water as soon as pressure releases.
-Step 2.add 1 chilli, 1 tsp ginger garlic paste,  tsp turmeric and  tsp chilli powder.
-Step 3.also add  tsp cumin powder,  tsp aamchur,  tsp chaat masala and  tsp salt.
-Step 4.further add 2 tbsp mint and 2 tbsp coriander.
-Step 5.now add 2 tbsp cornflour and mix well alternatively use poha powder or rice flour as it helps to absorb moisture.
-Step 6.mix well forming a soft dough.
-Step 7.grease hand with oil and prepare ball-sized tikki.
-Step 8.shallow fry in hot oil. you can alternatively roast or deep fry.
-Step 9.roast on low flame until it turns golden brown.
-Step 10.flip over and cook on both sides.
-Step 11.finally, enjoy aloo tikki with green chutney, tamarind chutney or prepare aloo tikki chaat.","&#9830 3 potato / aloo (boiled & grated)
-&#9830 1 chilli (finely chopped)
-&#9830 1 tsp ginger garlic paste
-&#9830  tsp turmeric
-&#9830  tsp kashmiri red chilli powder
-&#9830  tsp cumin powder / jeera powder
-&#9830  tsp aamchur / dry mango powder
-&#9830  tsp chaat masala
-&#9830  tsp salt
-&#9830 2 tbsp mint / pudina (chopped)
-&#9830 2 tbsp coriander (chopped)
-&#9830 2 tbsp corn flour
+11,Aloo Tikki,3.8g,89,1 plate,1.2g,9.5g,assets/img/rec/alootikki.jpg,1,"A simple and easy patty recipe made with boiled and mashed potatoes. the potato-based tikki is the foundation for many recipes like sandwich, burger, street food and many chaat recipes. having said that the dish can be served as it is with simple sides and condiments like green chutney or tamarind chutney as party starters.","<h2>Step 1</h2>firstly, in a large mixing bowl take 3 boiled and grated potato. make sure to pressure cook potatoes for 4-5 whistles and drain off the water as soon as pressure releases.<br><br>
+
+<h2>Step 2</h2>add 1 chilli, 1 tsp ginger garlic paste,  tsp turmeric and  tsp chilli powder.<br><br>
+
+<h2>Step 3</h2>also add  tsp cumin powder,  tsp aamchur,  tsp chaat masala and  tsp salt.<br><br>
+
+<h2>Step 4</h2>further add 2 tbsp mint and 2 tbsp coriander.<br><br>
+
+<h2>Step 5</h2>now add 2 tbsp cornflour and mix well alternatively use poha powder or rice flour as it helps to absorb moisture.<br><br>
+
+<h2>Step 6</h2>mix well forming a soft dough.<br><br>
+
+<h2>Step 7</h2>grease hand with oil and prepare ball-sized tikki.<br><br>
+
+<h2>Step 8</h2>shallow fry in hot oil. you can alternatively roast or deep fry.<br><br>
+
+<h2>Step 9</h2>roast on low flame until it turns golden brown.<br><br>
+
+<h2>Step 10</h2>flip over and cook on both sides.<br><br>
+
+<h2>Step 11</h2>finally, enjoy aloo tikki with green chutney, tamarind chutney or prepare aloo tikki chaat.","&#9830 3 potato / aloo (boiled & grated)<br>
+&#9830 1 chilli (finely chopped)<br>
+&#9830 1 tsp ginger garlic paste<br>
+&#9830 1/4 tsp turmeric<br>
+&#9830 1/2 tsp kashmiri red chilli powder<br>
+&#9830 1/2 tsp cumin powder / jeera powder<br>
+&#9830 1/2 tsp aamchur / dry mango powder<br>
+&#9830 1/2 tsp chaat masala<br>
+&#9830 1/2 tsp salt<br>
+&#9830 2 tbsp mint / pudina (chopped)<br>
+&#9830 2 tbsp coriander (chopped)<br>
+&#9830 2 tbsp corn flour<br>
 &#9830 oil ( for frying)"
-12,Veg Khurma,6g,124,1 cup,2.9g,8.6g,assets/img/rec/vegkhurma.png,3,"A simple and creamy flavoured mix vegetable recipe made with a coconut masala. it is known for its mild spice and creamy taste as compared to the traditional curries made with tomato and onion based sauce. there are myriad ways of making kurma or korma recipe, but this recipe is dedicated to south indian version of kurma recipe.","Step 1.firstly, in a large kadai heat 4 tsp oil and saute spices.
-Step 2.add 1 onion and saute well.
-Step 3.further, add 1 tomato and saute until soft and mushy.
-Step 4.now add vegetables and 1 tsp salt.
-Step 5.saute for 2 minutes or until vegetables are stir-fried.
-Step 6.also, add 2 cup water and stir well.
-Step 7.cover and boil for 10 minutes or until vegetables are almost cooked.
-Step 8.add in prepared masala paste to the cooked vegetables and stir fry for 2 minutes.
-Step 9.now add 1 cup water and stir well.
-Step 10.cover and cook for 10 minutes or until vegetables are cooked completely.
-Step 11.finally, enjoy veg kurma with poori or chapati.","for masala paste:
-&#9830 1 cup coconut (grated)
-&#9830 8 cashew / kaju
-&#9830 1 inch ginger
-&#9830 1 clove garlic
-&#9830 2 chilli
-&#9830 2 tbsp poppy seeds / khus khus
-&#9830 1 tsp coriander seeds
-&#9830  tsp fennel / saunf
-&#9830 handful coriander
-&#9830  cup water
-for kurma:
-&#9830 4 tsp oil
-&#9830 1 bay leaf
-&#9830 1 inch cinnamon
-&#9830 2 pods cardamom
-&#9830 3 cloves
-&#9830 1 onion (finely chopped)
-&#9830 1 tomato (finely chopped)
-&#9830  carrot (chopped)
-&#9830 10 florets cauliflower / gobi
-&#9830 3 tbsp peas / matar
-&#9830 1 potato (chopped)
-&#9830 5 beans (chopped)
-&#9830 1 tsp salt
-&#9830 2 cup water
-&#9830 1 cup water"
-13,carrot chips,1.1g,252,1 cup,5.99g,58.88g,assets/img/rec/carrotchips.png,1,,"<h2>step1-preheat oven to 150 degrees</h2>
-<h2>step2- Thinly slice carrot into chips</h2>
-<h2>Step3- firmly pat dry with paper towel<h2>
-<h2>step4- Apply the oil and bake it for 30 minutes, flip thr carrots over after 15minutes, sprinkle salt to it</h2>
-<h2>step5 - You can add some of your favorite spice combos!!</h2>",
-15,Potato wedges,5g,181,3/4cup,4g,31g,assets/img/rec/potatowedges.png,1,A simple potato based snack recipe which is usually served as sides in a fast food or fine dine restaurants with main meals. generally wedges are served with sweet chilli sauce or sour cream with extra seasonings on top of crisp wedges along with burger.,"<h2>Step1-preheat the oven to 400 degrees, sloce the potatoes  into wedges.</h2>
-<h2>step2-toss the potatoes with vegetable oil, chilli powder, garlic powder, salt and pepper</h2>
-<h2>step3-spray a baking sheet with cooking spray. Lay out the mixture in a  single layer on pan</h2>
-<h2>step4-bake for 35 minutes , flip after 25 minutes . If they stick at all , they aren't ready to be flipped.</h2>
-<h2>step5- Enjoy the snack</h2>","&#9830 4 medium sized potato
-&#9830  tsp salt
-&#9830  cup corn flour
-&#9830 2 tbsp oil
-&#9830  tsp pepper (crushed)
-&#9830  tsp kashmiri red chilli powder
+12,Veg Khurma,6g,124,1 cup,2.9g,8.6g,assets/img/rec/vegkhurma.jpg,3,"A simple and creamy flavoured mix vegetable recipe made with a coconut masala. it is known for its mild spice and creamy taste as compared to the traditional curries made with tomato and onion based sauce. there are myriad ways of making kurma or korma recipe, but this recipe is dedicated to south indian version of kurma recipe.","<h2>Step 1</h2>firstly, in a large kadai heat 4 tsp oil and saute spices.<br><br>
+<h2>Step 2</h2>add 1 onion and saute well.<br><br>
+<h2>Step 3</h2>further, add 1 tomato and saute until soft and mushy.<br><br>
+<h2>Step 4</h2>now add vegetables and 1 tsp salt.<br><br>
+<h2>Step 5</h2>saute for 2 minutes or until vegetables are stir-fried.<br><br>
+<h2>Step 6</h2>also, add 2 cup water and stir well.<br><br>
+<h2>Step 7</h2>cover and boil for 10 minutes or until vegetables are almost cooked.<br><br>
+<h2>Step 8</h2>add in prepared masala paste to the cooked vegetables and stir fry for 2 minutes.<br><br>
+<h2>Step 9</h2>now add 1 cup water and stir well.<br><br>
+<h2>Step 10</h2>cover and cook for 10 minutes or until vegetables are cooked completely.<br><br>
+<h2>Step 11</h2>finally, enjoy veg kurma with poori or chapati.","for masala paste:<br>
+&#9830 1 cup coconut (grated)<br>
+&#9830 8 cashew / kaju<br>
+&#9830 1 inch ginger<br>
+&#9830 1 clove garlic<br>
+&#9830 2 chilli<br>
+&#9830 2 tbsp poppy seeds / khus khus<br>
+&#9830 1 tsp coriander seeds<br>
+&#9830 1/2 tsp fennel / saunf<br>
+&#9830 handful coriander<br>
+&#9830 1/4 cup water<br>
+for kurma:<br>
+&#9830 4 tsp oil<br>
+&#9830 1 bay leaf<br>
+&#9830 1 inch cinnamon<br>
+&#9830 2 pods cardamom<br>
+&#9830 3 cloves<br>
+&#9830 1 onion (finely chopped)<br>
+&#9830 1 tomato (finely chopped)<br>
+&#9830 1/2 carrot (chopped)<br>
+&#9830 10 florets cauliflower / gobi<br>
+&#9830 3 tbsp peas / matar<br>
+&#9830 1 potato (chopped)<br>
+&#9830 5 beans (chopped)<br>
+&#9830 1 tsp salt<br>
+&#9830 2 cup water<br>
+&#9830 11/2 cup water"
+13,carrot chips,1.1g,252,1 cup,5.99g,58.88g,assets/img/rec/carrotchips.jpg,1,,"<h2>Step 1</h2>preheat oven to 150 degrees<br><br>
+
+<h2>Step 2</h2> Thinly slice carrot into chips<br><br>
+
+<h2>Step 3</h2> firmly pat dry with paper towel<br><br>
+
+<h2>Step 4</h2> Apply the oil and bake it for 30 minutes, flip tbr carrots over after 15minutes, sprinkle salt to it<br><br>
+
+<h2>step 5</h2>You can add some of your favorite spice combos!!","&#9830 4 carrots, washed<br>
+&#9830 2 teaspoons extra-virgin olive oil<br>
+&#9830 1/4 teaspoon salt"
+14,Potato wedges,5g,181,3/4cup,4g,31g,assets/img/rec/potatowedges.jpg,1,A simple potato based snack recipe which is usually served as sides in a fast food or fine dine restaurants with main meals. generally wedges are served with sweet chilli sauce or sour cream with extra seasonings on top of crisp wedges along with burger.,"<h2>Step 1</h2>preheat the oven to 400 degrees, sloce the potatoes  into wedges.<br><br>
+
+<h2>Step 2</h2>toss the potatoes with vegetable oil, chilli powder, garlic powder, salt and pepper<br><br>
+
+<h2>Step 3</h2>spray a baking sheet with cooking spray. Lay out the mixture in a  single layer on pan<br><br>
+
+<h2>Step 4</h2>bake for 35 minutes , flip after 25 minutes . If they stick at all , they aren't ready to be flipped.<br><br>
+
+<h2>Step 5</h2> Enjoy the snack","&#9830 4 medium sized potato<br>
+&#9830 3/4 tsp salt<br>
+&#9830 1/4 cup corn flour<br>
+&#9830 2 tbsp oil<br>
+&#9830 1/2 tsp pepper (crushed)<br>
+&#9830 1/2 tsp kashmiri red chilli powder<br>
 &#9830 oil for deep frying"
-16,Tomato Bruschetta,2g,132,8slices,4g,26g,assets/img/rec/tomatobruschetts.png,1,"Bruschetta is a famous Italian starter dish consisting grilled bread topped with vegetables, salt and cheese.","<h2>Step1</h2> To begin making the Cheesy Bruschetta With Capsicum And Tomatoes recipe, In a bowl add chopped tomatoes, onions, capsicum, 
-basil/cilantro, dried oregano, lemon juice, salt, black pepper powder.
-<h2>Step1</h2>Mix everything well and cover it with the plastic wrap and let it sit for an hour.
-<h2>Step1</h2>Cut baguette into 1/2 inch slices.
-<h2>Step1</h2>Spread Del Monte's Olive Oil or butter on one side of the each bread slice and put it into the preheated 400 F oven on a
- baking sheet for 5 to 7 minutes.
-<h2>Step1</h2>Place some tomato, capsicum & onion mixture on each bread slice. Add some grated mozzarella cheese over it.
-<h2>Step1</h2>Put the bread again in the oven until the cheese has melted.
-<h2>Step1</h2>Garnish with the chopped basil and serve immediately. Serve Cheesy Bruschetta With Capsicum And Tomatoes with
- Fresh Tomato Basil Pasta with Spinach.","&#9830 1 cup Tomato , chopped
-&#9830 1/2 French Loaf
-&#9830 1/4 cup Onion , chopped
-&#9830 1 Green Bell Pepper (Capsicum) , chopped
-&#9830 2 tablespoons Basil leaves , finely chopped
-&#9830 1 teaspoon Dried oregano
-&#9830 1 tablespoon Lemon juice
-&#9830 Salt , to taste
-&#9830 Black pepper powder , to taste
-&#9830 Extra Virgin Olive Oil , or butter
+15,Tomato Bruschetta,2g,132,8slices,4g,26g,assets/img/rec/tomatobruschette.jpg,1,"Bruschetta is a famous Italian starter dish consisting grilled bread topped with vegetables, salt and cheese.","<h2>Step 1</h2>To begin making the Cheesy Bruschetta With Capsicum And Tomatoes recipe, In a bowl add chopped tomatoes, onions, capsicum, basil/cilantro, dried oregano, lemon juice, salt, black pepper powder.<br><br>
+
+<h2>Step 2</h2>Mix everything well and cover it with the plastic wrap and let it sit for an hour.<br><br>
+
+<h2>Step 3</h2>Cut baguette into 1/2 inch slices.<br><br>
+
+<h2>Step 4</h2>Spread Del Monte's Olive Oil or butter on one side of the each bread slice and put it into the preheated 400 F oven on a baking sheet for 5 to 7 minutes.<br><br>
+
+<h2>Step 5</h2>Place some tomato, capsicum & onion mixture on each bread slice. Add some grated mozzarella cheese over it.<br><br>
+
+<h2>Step 6</h2>Put the bread again in the oven until the cheese has melted.<br><br>
+
+<h2>Step 7</h2>Garnish with the chopped basil and serve immediately. Serve Cheesy Bruschetta With Capsicum And Tomatoes with Fresh Tomato Basil Pasta with Spinach.","&#9830 1 cup Tomato , chopped<br>
+&#9830 1/2 French Loaf<br>
+&#9830 1/4 cup Onion , chopped<br>
+&#9830 1 Green Bell Pepper (Capsicum) , chopped<br>
+&#9830 2 tablespoons Basil leaves , finely chopped<br>
+&#9830 1 teaspoon Dried oregano<br>
+&#9830 1 tablespoon Lemon juice<br>
+&#9830 Salt , to taste<br>
+&#9830 Black pepper powder , to taste<br>
+&#9830 Extra Virgin Olive Oil , or butter<br>
 &#9830 1/2 cup Mozzarella cheese , grated"
-17,Cauliflower fried rice,5g,110,1cup,6g,12g,assets/img/rec/cauliflowerrice.png,2,A unique fusion or combination of 2 indo chinese recipes made with deep fried gobi florets and stir-fried rice. it is particularly served as street food in cosmopolitan urban cities for its dwellers. the recipe is very much inspired by the popular chicken fried rice where gobi would mimic the chicken.,"<h2>step1.Place the cauliflower in a food processor and pulse until in small rice like pieces. Microwave or steam for 2-4 minutes until soft.</h2>
-<h2>step2 whisk together the egg and egg white and season with salt nd pepper.</h2>
-<h2>step3. .Heat the pan over medium heat.Add a tsp of vegetable oil to the pan . Add eggs and cook until just scrambled. remove  
-from the pan and set aside</h2>
-<h2>step4.add vegetable oil ,sesame oil to the pan. add carrot, cabbage, garlic, ginger and other veggies you like. 
-cook for 1-2 minutesuntil they begin to soften</h2>
-<h2>step5. Add cauliflower rice and cook for2-4 more minutes, stir constantly until the cauliflower begins to crisp up.</h2>
-<h2>step6.add soya sauce and egg. stir together and cook for a minute</h2>
-<h2>Enjoy the food</h2>","for blanching:
-&#9830 30 florets gobi / cauliflower
-&#9830 1 tsp salt
-&#9830 3 cup hot water
-for batter:
-&#9830  cup maida / plain flour
-&#9830 2 tbsp corn flour
-&#9830  tsp kashmiri red chilli powder
-&#9830  tsp ginger garlic paste
-&#9830  tsp salt
-&#9830  cup water
-&#9830 oil for frying
-for fried rice:
-&#9830 4 tsp oil
-&#9830 3 clove garlic (finely chopped)
-&#9830 1 chilli (slit)
-&#9830  onion (finely chopped)
-&#9830 4 tbsp spring onion (chopped)
-&#9830  carrot (chopped)
-&#9830 4 beans (chopped)
-&#9830  capsicum (chopped)
-&#9830 1 tbsp vinegar
-&#9830 1 tbsp soy sauce
-&#9830 4 cup cooked basmati rice
-&#9830 1 tsp pepper (crushed)
-&#9830  tsp salt"
-18,carrot and cauliflower rice,4g,89,2/3 cup,3g,12g,assets/img/rec/cauliflowerrice.png,2,This Cauliflower Fried Rice recipe turns cauliflower into a delicious dinner. It makes a healthy low-carb meal loaded with veggies and takes less than 30 minutes to make. One of my favorite ways to cook cauliflower.,"<h2>step1.Pulse the cauliflower and carrots in a food processor until in small rice like pieces</h2>
-<h2>step2.Add to a pot with 1/4 cup of water and cook until tender on low heat, about 6-8 minutes.</h2>
-<h2>step3.For mash, boil the carrots and cauliflower for 20 minutes until tender. Drain and mash</h2>
-<h2>step4.Melt the butter in a small pan over medium low heat. Cook until it is just golden brown.</h2> 
-<h2>step5.Add the browned butter to the rice or mash. Season well with salt and pepper</h2>        
-",sdfsdf
-19,samosa ,4,43534,345,345,345,345345,1,"An ultra-popular deep fried snack recipe made with spiced potatoes and plain flour. it is a popular entree, appetizers or even as a street food snack with an extension as chaat recipe to it. as a snack, it can be consumed as it with wide a range of chutney","<h2>Step 1</h2>pinch a ball sized dough and grease with oil.
-<h2>Step 2</h2roll the dough into oval shape.
-<h2>Step 3</h2now cut it horizontally, diving into 2 equal portions using a knife.
-<h2>Step 4</h2grease with water and make cone.
-<h2>Step 5</h2stuff 2 tbsp of prepared samosa masala into the cone.
-<h2>Step 6</h2grease little water on the edges.
-<h2>Step 7</h2close and seal tightly by pressing firmly.
-<h2>Step 8</h2deep-fry the samosa on a low flame. alternatively bake at 180 degree celcius for 40 minutes.
-<h2>Step 9</h2stir occasionally, frying the samosa on low flame for atleast 15 minutes.
-<h2>Step 10</h2once the aloo samosa turns golden and crisp, drain off over kitchen paper.
-<h2>Step 11</h2finally, enjoy aloo samosa with green chutney and tamarind chutney.","for dough:
-&#9830 2 cup maida / plain flour
-&#9830  tsp ajwain / carom seeds
-&#9830  tsp salt
-&#9830  cup oil
-&#9830  cup water
-for stuffing:
-&#9830 2 tsp oil
-&#9830 1 tsp cumin / jeera
-&#9830  tsp coriander seeds (crushed)
-&#9830  tsp fennel / saunf
-&#9830 pinch hing / asafoetida
-&#9830 1 inch ginger (finely chopped)
-&#9830 1 chilli (finely chopped)
-&#9830  cup peas / matar
-&#9830  tsp kashmiri red chilli powder
-&#9830  tsp coriander powder
-&#9830  tsp cumin powder / jeera powder
-&#9830  tsp aamchur / dry mango powder
-&#9830  tsp garam masala
-&#9830  tsp pepper (crushed)
-&#9830  tsp salt
-&#9830 4 potato / aloo (boiled & mashed)
-&#9830 5 cashew / kaju (chopped)
-&#9830 2 tbsp raisins / kishmish
-&#9830 2 tbsp coriander (finely chopped)"
+16,Cauliflower fried rice,5g,110,1cup,6g,12g,assets/img/rec/cauliflowerfriedrice.jpg,2,A unique fusion or combination of 2 indo chinese recipes made with deep fried gobi florets and stir-fried rice. it is particularly served as street food in cosmopolitan urban cities for its dwellers. the recipe is very much inspired by the popular chicken fried rice where gobi would mimic the chicken.,"<h2>step 1</h2>Place the cauliflower in a food processor and pulse until in small rice like pieces. Microwave or steam for 2-4 minutes until soft.<br><br>
+
+<h2>step 2</h2>whisk together the egg and egg white and season with salt nd pepper.<br><br>
+
+<h2>step 3</h2> Heat the pan over medium heat.Add a tsp of vegetable oil to the pan . Add eggs and cook until just scrambled. remove from the pan and set aside<br><br>
+
+<h2>step 4</h2>add vegetable oil ,sesame oil to the pan. add carrot, cabbage, garlic, ginger and other veggies you like.cook for 1-2 minutesuntil they begin to soften<br><br>
+
+<h2>step 5</h2> Add cauliflower rice and cook for2-4 more minutes, stir constantly until the cauliflower begins to crisp up.<br><br>
+
+<h2>step 6</h2>add soya sauce and egg. stir together and cook for a minute
+","for blanching:<br>
+&#9830 30 florets gobi / cauliflower<br>
+&#9830 1 tsp salt<br>
+&#9830 3 cup hot water<br>
+for batter:<br>
+&#9830 1/2 cup maida / plain flour<br>
+&#9830 2 tbsp corn flour<br>
+&#9830 1/2 tsp kashmiri red chilli powder<br>
+&#9830 1/2 tsp ginger garlic paste<br>
+&#9830 1/2 tsp salt<br>
+&#9830 1/2 cup water<br>
+&#9830 oil for frying<br>
+for fried rice:<br>
+&#9830 4 tsp oil<br>
+&#9830 3 clove garlic (finely chopped)<br>
+&#9830 1 chilli (slit)<br>
+&#9830 1/2 onion (finely chopped)<br>
+&#9830 4 tbsp spring onion (chopped)<br>
+&#9830 1/2 carrot (chopped)<br>
+&#9830 4 beans (chopped)<br>
+&#9830 1/2 capsicum (chopped)<br>
+&#9830 1 tbsp vinegar<br>
+&#9830 1 tbsp soy sauce<br>
+&#9830 4 cup cooked basmati rice<br>
+&#9830 1 tsp pepper (crushed)<br>
+&#9830 1/2 tsp salt"
+17,samosa ,5g,109,1,3g,12g,assets/img/rec/samosa.jpg,1,"An ultra-popular deep fried snack recipe made with spiced potatoes and plain flour. it is a popular entree, appetizers or even as a street food snack with an extension as chaat recipe to it. as a snack, it can be consumed as it with wide a range of chutney","<h2>Step 1</h2>first, make the filling. Put a pan on medium flame and add 2 tsp oil in it. Once the oil is hot enough, add cumin seeds and allow them to crackle.<br><br>
+<h2>Step 2</h2>Now, add whole coriander seeds, ginger and green chilli. Saute for a minute and then add chopped cashews and raisins, peanuts if you like them, boiled and mashed potatoes, cumin powder, coriander powder, garam masala powder, red chilli powder, salt to taste, kasoori methi leaves, coriander leaves. Mix well and saute for 2 minutes. Your stuffing is ready!<br><br>
+<h2>Step 3</h2>Now, to prepare the dough, take a mixing bowl and combine all-purpose flour along with carom seeds and salt. Mix and then add ghee and start kneading by adding a little water at a time. Ensure that you add water gradually and make a firm dough. A soft dough will not make your samosas crispy. Cover the dough with a damp muslin cloth and keep aside for about half an hour<br><br>
+<h2>Step 4</h2>Once done, roll out few small-sized balls from the dough. Flatten them further with the help of your palms and then with a rolling pin. Give them a round shape and cut in half. Now dip your hands in water, fold the edges of the semi-circle in order to give it a cone shape.<br><br>
+<h2>Step 5</h2>Take the filling with the help of a spoon and stuff it in the cone. Seal the ends properly by pressing the edges lightly with your fingers. Then, heat oil in a pan and deep fry the samosas on low heat until they turn golden brown and crispy. Serve with tomato ketchup and green chutney. Enjoy it as a tea-time snack!
+
+","&#9830 2 cup all purpose flour<br>
+&#9830 1 teaspoon cumin seeds<br>
+&#9830 1 teaspoon crushed ginger<br>
+&#9830 1 teaspoon raisins<br>
+&#9830 5 boiled potato<br>
+&#9830 1 teaspoon coriander powder<br>
+&#9830 1 teaspoon red chilli powder<br>
+&#9830 1 teaspoon kasoori methi leaves<br>
+&#9830 1 teaspoon carom seeds<br>
+&#9830 1/4 cup water<br>
+&#9830 2 cup refined oil<br>
+&#9830 1/2 teaspoon coriander seeds<br>
+&#9830 1 teaspoon green chilli<br>
+&#9830 1 teaspoon cashews<br>
+&#9830 1 teaspoon cumin powder<br>
+&#9830 1/2 teaspoon garam masala powder<br>
+&#9830 salt as required<br>
+&#9830 1 teaspoon coriander leaves<br>
+&#9830 2 tablespoon ghee<br>
+&#9830 1 handful raw peanuts"

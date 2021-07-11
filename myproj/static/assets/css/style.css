@@ -667,6 +667,7 @@ box-shadow: 2px 4px 14px -3px rgba(0,0,0,0.75);
 .footer-area .container{
 	position: relative;
 	z-index: 1;
+    bottom: 0px;
 }
 .footer-area h3{
 	color: #ffffff;

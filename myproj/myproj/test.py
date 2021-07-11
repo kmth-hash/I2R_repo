@@ -26,8 +26,8 @@ def store_categories():
 
 def store_recipes():
     files_DIR = os.getcwd()+"\\files"
-    file1 = open(files_DIR+"\\recipe.csv" , "r")
-    f1 = pd.DataFrame(pd.read_csv(files_DIR+"\\recipe.csv"))
+    file1 = open(files_DIR+"\\myproj_recipes.csv" , "r")
+    f1 = pd.DataFrame(pd.read_csv(files_DIR+"\\myproj_recipes.csv"))
     
     for index, row in f1.iterrows():
         #print(row['Recipe_Id'] ,index+1)

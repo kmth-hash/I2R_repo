@@ -89,9 +89,6 @@
             <li class="nav-item active">
               <a class="nav-link" href="/search">Get Recipe</a>
             </li>
-            <li class="nav-item">
-              <a class="nav-link" href="/bmi">BMI calculator</a>
-            </li>
             <li class="nav-item dropdown">
               <a
                 class="nav-link dropdown-toggle"
@@ -213,50 +210,11 @@
             <h4 style="color: white">Ingredients</h4>
             <hr />
             <div style="color: white; font-size: 16px" class="container">
-              <span>
-                <i class="fa fa-check-circle-o" aria-hidden="true"></i>
-                1 Potatoe
-              </span>
-              <br />
-              <span>
-                <i class="fa fa-check-circle-o" aria-hidden="true"></i>
-                ½ carrot
-              </span>
-              <br />
-              <span>
-                <i class="fa fa-check-circle-o" aria-hidden="true"></i>
-                1 tomato
-              </span>
-              <br />
-              <span>
-                <i class="fa fa-check-circle-o" aria-hidden="true"></i>
-                5 beans
-              </span>
-              <br />
-              <span>
-                <i class="fa fa-check-circle-o" aria-hidden="true"></i>
-                ½ onion
-              </span>
-              <br />
-              <span>
-                <i class="fa fa-check-circle-o" aria-hidden="true"></i>
-                ½ tsp pepper
-              </span>
-              <br />
-              <span>
-                <i class="fa fa-check-circle-o" aria-hidden="true"></i>
-                1 cup basmati rice
-              </span>
-              <br />
-              <span>
-                <i class="fa fa-check-circle-o" aria-hidden="true"></i>
-                5 cashew
-              </span>
-              <br />
+              {{ tolist.ingredients | safe}}
             </div>
           </div>
           <div
-            style="border-radius: 10px"
+            style="border-radius: 10px;height: fit-content;"
             class="col-lg-6 col-md-12 col-sm-12 border col-xs-12"
           >
             <h4 style="color: white" class="mt-2">Nutritional Facts</h4>
@@ -264,27 +222,11 @@
               Serving per {{tolist.quantity}}
             </p>
             <div>
-<<<<<<< HEAD
-                <h4 style="color: white;">Directions :</h4>
-                <div class="container description" id="procedure">
-                    {{ recipe.Description }}
-                </div>
-            </div>
-            <div class="header">
-                <h4 style="color: white;">Categories :</h4>
-                <div class="row">
-                    <button class="btn btn-primary">Snacky</button>
-                    <button class="btn btn-success">Easy</button>
-                    <button class="btn btn-danger">Spicy</button>
-                    <button class="btn btn-warning">Cheesy</button>
-                    <button class="btn btn-info">Sides</button>
-=======
               <table style="color: whitesmoke" class="table">
                 <tr>
                   <td>Calories</td>
                   <th id="calories">{{tolist.calories}}</th>
                 </tr>
->>>>>>> bac72e8a8ad8b1b3314c557e5b88f00591fd062e
 
                 <tr>
                   <td>Proteins</td>
@@ -315,11 +257,7 @@
         <div class="header">
           <h4 style="color: white">Categories :</h4>
           <div class="row">
-            <button class="btn btn-primary">Snacky</button>
-            <button class="btn btn-success">Easy</button>
-            <button class="btn btn-danger">Spicy</button>
-            <button class="btn btn-warning">Cheesy</button>
-            <button class="btn btn-info">Sides</button>
+            <button class="btn btn-primary">{{ tolist.category }} </button>
           </div>
         </div>
       </div>
