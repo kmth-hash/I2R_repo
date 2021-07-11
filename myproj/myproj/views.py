@@ -58,9 +58,15 @@ def profile(request):
         age = request.POST['age']
         height = request.POST['height']
         weight = request.POST['weight']
+        gender = request.POST['user_gender']
+        print(gender)
+        if gender == 'male':
+            BMR = int((10*float(weight)) + (6.25*float(height)) - (5*float(age)) + 5)
+        else:
+            BMR = int((10*float(weight)) + (6.25*float(height)) - (5*float(age)) - 161)
         with connection.cursor() as cursor:
             cursor.execute('UPDATE myproj_users SET "username"=%s WHERE "id"=%s',[name,user_id])
-            cursor.execute('UPDATE myproj_user_details SET "height"=%s,"weight"=%s,"age"=%s WHERE "User_Id_id"=%s',[height,weight,age,user_id])
+            cursor.execute('UPDATE myproj_user_details SET "height"=%s,"weight"=%s,"age"=%s,"Calories"=%s WHERE "User_Id_id"=%s',[height,weight,age,BMR,user_id])
         connection.close()
         request.session['username'] = name
         messages.success(request , 'Profile Updated Successfully!')
@@ -73,7 +79,8 @@ def profile(request):
             user_recipe_list = list()
             for i in row:
                 user_recipe_list.append(i)
-                print(i[16])
+                #print(i[16])
+        print(item)
     return render(request,'profile.html',{'isLoggedIn':isLoggedIn,'username':username,'data':item,'mail':email,'uid':user_id,'user_receipe_list':user_recipe_list})
 def firstcall(request):
     print("here inside first")
