@@ -187,6 +187,7 @@ box-shadow: 6px 3px 16px -5px rgba(0,0,0,0.75);" class="panel">
     <br>
     <form action="" method="post">
         {% csrf_token %}
+        <input type="hidden" name="user_gender" value="{{i.4}}" >
         <div style="padding-left: 20px;">
             <div class="row" style="padding-bottom: 10px;">
                 <div class="col-md-2"">
