@@ -29,7 +29,7 @@
 						Admin &nbsp;<i class="fa fa-user"></i>
 					</a>
 					<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-					  <a style="cursor: pointer;" onclick="callme()" class="dropdown-item">Logout</a>
+					  <a style="cursor: pointer;" href="/logout" class="dropdown-item">Logout</a>
 					  <a style="cursor: pointer;" class="dropdown-item">Help</a>
 					</div>
 				  </li>
@@ -248,10 +248,16 @@
             </div>
             <div class="row">
                 <div class="col-md-2">
-                    <h6 class="text-white-50 font-weight-bold">Ingredients: </h6>
+                    <h6 class="text-white-50 font-weight-bold">Main Ingredients: </h6>
                 </div>
                 <div class="col-md-10">
                     <textarea placeholder="Ingredients" name="new_ing" rows="3" style="width: 81%; border-radius: 5px;"></textarea>
+                </div>
+                <div class="col-md-2">
+                    <h6 class="text-white-50 font-weight-bold">Ingredients required: </h6>
+                </div>
+                <div class="col-md-10">
+                    <textarea placeholder="Ingredients Required" name="new_ing_req" rows="3" style="width: 81%; border-radius: 5px;"></textarea>
                 </div>
             </div>
             <div class="row">
@@ -282,15 +288,15 @@
             var body = document.body,html = document.documentElement;
             var height = Math.max( body.scrollHeight, body.offsetHeight, 
                        html.clientHeight, html.scrollHeight, html.offsetHeight );
-            document.getElementById('body').style.height = height+'px';
-            document.getElementById('insideact').style.top = height/2+50 +'px'
-            document.body.style.overflowY = "hidden";
+            document.getElementById('body').style.height = height +'px';
+            document.getElementById('insideact').style.top = height/1.5 +50 +'px'
+            
             
             
         }
 
         function clearme(){
-            document.body.style.overflowY = "scroll";
+            
             document.getElementById('body').style.display = 'none'   
         document.getElementById('insideact').style.top = '-400px'
             document.getElementById('activity').style.background = 'none'

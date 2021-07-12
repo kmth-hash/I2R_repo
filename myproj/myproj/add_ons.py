@@ -134,8 +134,9 @@ def weeklyCalories(userId):
         
         if len(Kcal)>0:
             for itr in Kcal:
-                recipe = Recipes.objects.get(Receipe_Id= itr.Receipe_Id_id)                
-                weeklyCal += float(recipe.Calories)
+                recipe = Recipes.objects.get(Receipe_Id= itr.Receipe_Id_id) 
+                qtymulcal = float(recipe.Calories) * float(itr.qty)               
+                weeklyCal += qtymulcal
             
     return weeklyCal
 
@@ -148,7 +149,7 @@ def weeklyBurn(userId):
         
         if len(Kcal)>0:
             for itr in Kcal:
-                              
+                           
                 weeklyCal += float(itr.Duration * itr.Calories)
             
     return weeklyCal
@@ -254,9 +255,9 @@ def recipesLast3Days(userId):
             item['Calories'] = r.Calories
             item['Fats'] = r.Fats
             valLists.append(item)
-        data.append({'Name' : days[2] , 'status':True ,'data' : valLists })
+        data.append({'Name' : 'Day Before Yesterday' , 'status':True ,'data' : valLists })
     else:
-        data.append({'Name' : days[2] , 'status':False })
+        data.append({'Name' : 'Day Before Yesterday' , 'status':False })
 
     
     return data
