@@ -49,6 +49,8 @@ def item_return(userid):
 def profile(request):
     if not request.session.has_key('username'):
         return redirect('/login')
+    if request.session.has_key('first_time'):
+        del request.session['first_time']
     global isLoggedIn
     user_id = request.session['uid']
     email = request.session['email']
@@ -82,8 +84,12 @@ def profile(request):
                 user_recipe_list.append(i)
                 #print(i[16])
         print(item)
+        consumed_calories = afterworkout(request,user_id)
+        item[0][5] = float(item[0][5]) - consumed_calories
     return render(request,'profile.html',{'isLoggedIn':isLoggedIn,'username':username,'data':item,'mail':email,'uid':user_id,'user_receipe_list':user_recipe_list})
 def firstcall(request):
+    if request.session.has_key('first_time'):
+        del request.session['first_time']
     print("here inside first")
     if request.session.has_key('username'):
         uid=request.session['uid']
@@ -111,6 +117,8 @@ def predict(iurl,predicted_items,request):
     return jh
 
 def signup(request):
+    if request.session.has_key('first_time'):
+        del request.session['first_time']
     global isLoggedIn,user_id,name  
     if request.method=='POST' :
         name = request.POST['first_name']+" "+request.POST['last_name']
@@ -138,6 +146,8 @@ def signup(request):
     return render(request , 'signup.html' , {})
 
 def recipes(request):
+    if request.session.has_key('first_time'):
+        del request.session['first_time']
     recipe_string = ''
     uid=request.session['uid']
     if not request.session.has_key('username'):
@@ -160,7 +170,7 @@ def recipes(request):
     remaining_calories=[]
     recipes_array=[]
     recipe_string = ', '.join(map(str, predicted_items))
-    consumed_calories = getDailyCal(uid)
+    consumed_calories = afterworkout(request,uid)
     calories = request.session['remaining_calories_perday']
     calories = int(calories) - int(consumed_calories)
     for i in return_recipes(predicted_items):
@@ -208,6 +218,8 @@ def recipes(request):
     return render(request , 'recipes.html' , {'recipe_data':recipes_array,'predicted_items':recipe_string,'username':username,'calories':calories})
 
 def login(request):
+    if request.session.has_key('first_time'):
+        del request.session['first_time']
     global isLoggedIn
     res = ''
     if request.method=='POST':
@@ -264,6 +276,9 @@ def logout(request):
         del request.session['predicted_items']
         del request.session['remaining_calories_perday']
         del request.session['recipe_array']
+        # del request.session['daily_cal_man']
+        # del request.session['workout']
+        # del request.session['first_time']
         isLoggedIn = False
         username = ''
         imagesToPreview=[]
@@ -274,6 +289,8 @@ def logout(request):
     return redirect('/home')
 
 def mainpage(request):
+    if request.session.has_key('first_time'):
+        del request.session['first_time']
     if not request.session.has_key('username'):
         return redirect('/login')
     imagesToPreview=request.session['imagestopreview']
@@ -376,6 +393,8 @@ def addNewRecipe(request):
 
 
 def recipe(request, id):
+    if request.session.has_key('first_time'):
+        del request.session['first_time']
     tolist=request.session['recipe_array']
     recipe_id=tolist['recipe_id']
     uid=request.session['uid']
@@ -410,6 +429,8 @@ def recipe(request, id):
     return render(request, 'recipe.html', {'username':username,'tolist':tolist,'likes':likes,'present':present})
 
 def signupprofile(request):
+    if request.session.has_key('first_time'):
+        del request.session['first_time']
     global user_id,name
     print("reached")
     if request.method == 'POST':
@@ -429,6 +450,7 @@ def signupprofile(request):
 
 
 def users():
+    
     with connection.cursor() as cursor:
         cursor.execute('SELECT  t1.id,t1.username,t1.email,t2.height,t2.weight,t2.age,t2.gender from myproj_users as t1,myproj_user_details as t2 WHERE t1.id = t2."User_Id_id" ' )
         row = cursor.fetchall()
@@ -452,6 +474,8 @@ def receipe_returned():
 
 
 def admin(request):
+    if request.session.has_key('first_time'):
+        del request.session['first_time']
     if request.method == "POST" and request.POST.get("form_type") == 'formOne':
         id_return = request.POST['delete_button']
         with connection.cursor() as cursor:
@@ -584,6 +608,8 @@ def record(request,id):
 
 
 def burnout(request, id):
+    if request.session.has_key('first_time'):
+        del request.session['first_time']
     if not request.session.has_key('username'):
         return redirect('/login')
     global isLoggedIn
@@ -608,6 +634,8 @@ def burnout(request, id):
 
 
 def updateBurn(request,id, act , tm):
+    if request.session.has_key('first_time'):
+        del request.session['first_time']
     allActs = {'j' : {'name' : 'Jogging'  , 'calories' : 500 } , 
                 's' : {'name' : 'Swimming'  , 'calories' : 505 } ,
                 'b' : {'name' : 'Badminton'  , 'calories' : 480 } ,
@@ -628,6 +656,7 @@ def updateBurn(request,id, act , tm):
         print(user, allActs[act], d, duration[tm])
         obj = Activities(User_Id=user, Calories = allActs[act]['calories'],Day=d ,Name= allActs[act]['name'], Duration = duration[tm])
         obj.save()
+        request.session['dummy'] = allActs[act]['calories'] * duration[tm]
         messages.success(request , 'Successfully Updated!')
         
     except Exception as ex:

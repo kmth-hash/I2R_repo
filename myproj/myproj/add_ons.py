@@ -97,10 +97,11 @@ def getChartData(userID):
             for itr in Kcal:
                 recipe = Recipes.objects.get(Receipe_Id= itr.Receipe_Id_id)
                 #print(recipe)
-                dailyTotal += float(recipe.Calories)
+                asd = float(recipe.Calories) * float(itr.qty)
+                dailyTotal+=asd
             
         trackerData.append(dailyTotal)
-
+    print('asdasd',trackerData)
     for i in range(7):
         objs = Activities.objects.filter(User_Id=user, Day= days[i])
         dailyTotal = 0
@@ -151,7 +152,21 @@ def weeklyBurn(userId):
                 weeklyCal += float(itr.Duration * itr.Calories)
             
     return weeklyCal
-
+def afterworkout(re,userId):
+    calToday = getDailyCal(userId)
+    if re.session.has_key('first_time'):
+            if re.session.has_key('dummy'):
+                if not calToday<getDailyBurn(userId):
+                    calToday-=getDailyBurn(userId)
+                del re.session['dummy']
+            else:
+                if not calToday<getDailyBurn(userId):
+                    calToday-=getDailyBurn(userId)
+    else:
+                if not calToday<getDailyBurn(userId):
+                    calToday-=getDailyBurn(userId)
+                    re.session['first_time'] = calToday
+    return calToday
 def getDailyCal(userId):
     user = Users.objects.get(id = userId)    
     calToday = 0
@@ -164,7 +179,7 @@ def getDailyCal(userId):
             recipe = Recipes.objects.get(Receipe_Id= itr.Receipe_Id_id)
             qtymulcal = float(recipe.Calories) * float(itr.qty)                
             calToday += qtymulcal
-            
+        # calToday = afterworkout(calToday,re,userId)
     return calToday
 
 def getDailyBurn(userId):
@@ -177,7 +192,6 @@ def getDailyBurn(userId):
     if len(Kcal)>0:
         for itr in Kcal:
             calToday += float(itr.Duration * itr.Calories)
-            
     return calToday
 
 def getUserInfo(userId):
